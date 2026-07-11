@@ -1,0 +1,2418 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guida Gargano — Vieste, Peschici, Mattinata & Dintorni • Giugno 2026</title>
+  <style>
+    :root {
+      --sea: #0a7ea4;
+      --sea-light: #3ab4d8;
+      --sand: #f5e9c8;
+      --sand-dark: #e8d5a0;
+      --rock: #2c2c2c;
+      --rock-mid: #3e3e3e;
+      --white: #fafafa;
+      --accent: #e07b39;
+      --green: #4a7c59;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #1a1a1a;
+      color: #eee;
+      line-height: 1.7;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      background: linear-gradient(160deg, #0a4f6e 0%, #0a7ea4 40%, #1a9cc7 70%, #2eb8e0 100%);
+      padding: 80px 20px 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 60px;
+      background: #1a1a1a;
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #d0f0ff;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 8vw, 4.5rem);
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      letter-spacing: -1px;
+    }
+    .hero h1 span { color: #ffe082; }
+    .hero-sub {
+      margin-top: 14px;
+      font-size: 1.1rem;
+      color: #c8eaf8;
+      font-style: italic;
+    }
+    .hero-dates {
+      margin-top: 24px;
+      display: inline-flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero-dates .pill {
+      background: rgba(255,255,255,0.2);
+      border-radius: 30px;
+      padding: 8px 20px;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+
+    /* RESIDENCE CARD */
+    .residence-card {
+      max-width: 700px;
+      margin: 40px auto 10px;
+      background: linear-gradient(135deg, #1e3a2f, #2a5040);
+      border: 1px solid #3a6050;
+      border-radius: 16px;
+      padding: 26px 30px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .residence-icon { font-size: 2.5rem; flex-shrink: 0; }
+    .residence-card h3 { color: #7ed4a8; font-size: 1.1rem; margin-bottom: 6px; }
+    .residence-card p { font-size: 0.9rem; color: #b0cfbe; }
+    .residence-card strong { color: #afe8c5; }
+    .residence-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .residence-meta a, .residence-meta span {
+      font-size: 0.82rem;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 4px 12px;
+      color: #afe8c5;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .residence-meta a:hover { background: rgba(255,255,255,0.13); }
+
+    /* DIRECTIONS */
+    .directions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 14px;
+      margin-top: 4px;
+    }
+    .direction-card {
+      background: #242424;
+      border: 1px solid #333;
+      border-radius: 14px;
+      padding: 18px;
+    }
+    .direction-card .from {
+      font-size: 0.82rem;
+      font-weight: bold;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .direction-card p {
+      font-size: 0.85rem;
+      color: #aaa;
+      line-height: 1.55;
+    }
+    .direction-card p strong { color: #ddd; }
+    .gps-box {
+      background: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .gps-box .gps-icon { font-size: 1.4rem; }
+    .gps-box p { font-size: 0.87rem; color: #999; }
+    .gps-box strong { color: #7ed4a8; font-family: monospace; font-size: 0.95rem; }
+    .gps-box a { color: var(--sea-light); font-size: 0.82rem; text-decoration: none; }
+
+    /* SECTION */
+    section {
+      max-width: 760px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--sea-light);
+      margin-bottom: 8px;
+    }
+    section h2 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      color: #fff;
+      margin-bottom: 24px;
+      border-left: 4px solid var(--accent);
+      padding-left: 14px;
+    }
+
+    /* DAY CARDS */
+    .day-card {
+      background: #242424;
+      border-radius: 16px;
+      border: 1px solid #333;
+      margin-bottom: 20px;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .day-card:hover { transform: translateY(-2px); }
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 22px;
+      background: #2c2c2c;
+      cursor: pointer;
+    }
+    .day-num {
+      background: var(--accent);
+      color: #fff;
+      border-radius: 10px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .day-info h3 { font-size: 1rem; color: #fff; }
+    .day-info .day-date { font-size: 0.82rem; color: #888; margin-top: 2px; }
+    .day-tag {
+      margin-left: auto;
+      background: rgba(58, 180, 216, 0.15);
+      border: 1px solid rgba(58,180,216,0.3);
+      color: var(--sea-light);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+    .day-body {
+      padding: 20px 22px;
+      border-top: 1px solid #333;
+    }
+    .day-body ul { list-style: none; }
+    .day-body ul li {
+      padding: 7px 0 7px 24px;
+      position: relative;
+      border-bottom: 1px solid #2e2e2e;
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+    .day-body ul li:last-child { border-bottom: none; }
+    .day-body ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    .day-body ul li strong { color: #fff; }
+    .day-body ul li em { color: #aaa; font-style: italic; font-size: 0.87rem; }
+    .insider-tip {
+      margin-top: 16px;
+      background: rgba(74, 124, 89, 0.2);
+      border-left: 3px solid var(--green);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      color: #a8d4b4;
+    }
+    .insider-tip::before { content: '🌿 Dritta locale: '; font-weight: bold; color: #7ed4a8; }
+
+    /* HIDDEN GEMS */
+    .gems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .gem-card {
+      background: #242424;
+      border: 1px solid #333;
+      border-radius: 14px;
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+    .gem-card:hover { border-color: var(--sea-light); }
+    .gem-icon { font-size: 2rem; margin-bottom: 10px; }
+    .gem-card h4 { font-size: 0.95rem; color: #fff; margin-bottom: 6px; }
+    .gem-card p { font-size: 0.83rem; color: #999; line-height: 1.5; }
+    .gem-card .gem-tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.72rem;
+      color: var(--sea-light);
+      border: 1px solid rgba(58,180,216,0.3);
+      border-radius: 10px;
+      padding: 2px 8px;
+    }
+
+    /* FOOD */
+    .food-list { display: flex; flex-direction: column; gap: 12px; }
+    .food-item {
+      background: #242424;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 16px 18px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .food-emoji { font-size: 1.6rem; flex-shrink: 0; }
+    .food-item h4 { font-size: 0.95rem; color: #fff; margin-bottom: 4px; }
+    .food-item p { font-size: 0.85rem; color: #999; }
+    .food-item .avoid { font-size: 0.8rem; color: #c0826a; margin-top: 4px; }
+
+    /* BEACHES */
+    .beach-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .beach-card {
+      background: linear-gradient(160deg, #0d3a52, #0a2d40);
+      border: 1px solid #1a5070;
+      border-radius: 14px;
+      padding: 18px;
+    }
+    .beach-card h4 { color: #7ed4e8; font-size: 0.9rem; margin-bottom: 6px; }
+    .beach-card p { font-size: 0.82rem; color: #8ab8c8; }
+    .crowd-meter {
+      margin-top: 10px;
+      display: flex;
+      gap: 4px;
+    }
+    .crowd-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #2a5a6a;
+    }
+    .crowd-dot.fill { background: var(--accent); }
+    .crowd-label { font-size: 0.75rem; color: #668; margin-left: 6px; }
+
+    /* TIPS */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .tip-card {
+      background: #242424;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .tip-card .tip-icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .tip-card h4 { font-size: 0.88rem; color: #ddd; margin-bottom: 5px; }
+    .tip-card p { font-size: 0.82rem; color: #888; }
+
+    /* MAP LINK */
+    .map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 10px;
+      font-size: 0.75rem;
+      color: #4a9fd4;
+      text-decoration: none;
+      border: 1px solid rgba(74,159,212,0.3);
+      border-radius: 20px;
+      padding: 3px 10px;
+      transition: background 0.2s;
+    }
+    .map-link:hover { background: rgba(74,159,212,0.1); }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #555;
+      font-size: 0.82rem;
+      border-top: 1px solid #2a2a2a;
+      margin-top: 60px;
+    }
+    footer span { color: var(--sea-light); }
+
+    /* NAV MENU — TWO LEVEL */
+    .nav-menu {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(18,18,18,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #2a2a2a;
+    }
+    .nav-cities-row {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      border-bottom: 1px solid #282828;
+      padding: 0 12px;
+    }
+    .nav-cities-row::-webkit-scrollbar { display: none; }
+    .nav-city-btn {
+      padding: 9px 16px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: #666;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-family: inherit;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-city-btn:hover { color: #bbb; }
+    .nav-city-btn.active { color: #fff; border-bottom-color: var(--accent); }
+    .nav-sections-row {
+      max-width: 760px;
+      margin: 0 auto;
+      display: none;
+      gap: 2px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 0 12px;
+    }
+    .nav-sections-row::-webkit-scrollbar { display: none; }
+    .nav-sections-row.active { display: flex; }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      padding: 7px 10px;
+      text-decoration: none;
+      color: #777;
+      font-size: 0.67rem;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      flex-shrink: 0;
+    }
+    .nav-item:hover { color: #fff; border-bottom-color: var(--sea-light); }
+    .nav-item .nav-icon { font-size: 1.05rem; }
+
+    /* PESCHICI INTRO CARD */
+    .peschici-intro {
+      background: linear-gradient(135deg, #0d2a3d, #0a3d52);
+      border: 1px solid #1a5a7a;
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 28px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .peschici-intro .pi-icon { font-size: 2.8rem; flex-shrink: 0; }
+    .peschici-intro h3 { color: #7ed4e8; font-size: 1.1rem; margin-bottom: 6px; }
+    .peschici-intro p { font-size: 0.88rem; color: #8ab8c8; line-height: 1.6; }
+    .peschici-intro .pi-meta {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;
+    }
+    .peschici-intro .pi-meta span {
+      font-size: 0.78rem;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(58,180,216,0.2);
+      border-radius: 20px;
+      padding: 3px 10px;
+      color: #7ed4e8;
+    }
+    .peschici-sub {
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #1a7a9a;
+      margin: 20px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #1a3a4a;
+    }
+
+    /* OWNER RECOMMENDATIONS */
+    .owner-rec-box {
+      background: linear-gradient(135deg, #1e2e1a, #2a3d20);
+      border: 1px solid #4a7c35;
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-bottom: 28px;
+    }
+    .owner-rec-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .owner-avatar {
+      width: 48px; height: 48px;
+      background: #4a7c35;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .owner-rec-header h3 { font-size: 1rem; color: #a8e07a; margin-bottom: 3px; }
+    .owner-rec-header p { font-size: 0.82rem; color: #7aaa55; }
+    .owner-rec-badge {
+      margin-left: auto;
+      background: rgba(74,124,53,0.3);
+      border: 1px solid #4a7c35;
+      color: #a8e07a;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.72rem;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+    .owner-rec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 10px;
+    }
+    .owner-rec-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(74,124,53,0.3);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .owner-rec-item h4 { font-size: 0.88rem; color: #c8f0a0; margin-bottom: 5px; }
+    .owner-rec-item .rec-addr { font-size: 0.78rem; color: #7aaa55; line-height: 1.5; }
+    .owner-rec-item .rec-tel { font-size: 0.78rem; color: #5a9040; margin-top: 4px; }
+    .owner-rec-item .rec-tel a { color: #88cc55; text-decoration: none; }
+    .owner-rec-section-title {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #5a9040;
+      margin: 16px 0 8px;
+    }
+
+    /* PRACTICAL CARDS (panifici, gelaterie, etc.) */
+    .practical-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .practical-card {
+      background: #242424;
+      border: 1px solid #333;
+      border-radius: 14px;
+      padding: 18px;
+    }
+    .practical-card .p-icon { font-size: 1.6rem; margin-bottom: 8px; }
+    .practical-card h4 { font-size: 0.95rem; color: #fff; margin-bottom: 5px; }
+    .practical-card p { font-size: 0.83rem; color: #999; line-height: 1.5; }
+    .practical-card .p-tag {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.72rem;
+      color: var(--sea-light);
+      border: 1px solid rgba(58,180,216,0.3);
+      border-radius: 10px;
+      padding: 2px 8px;
+    }
+    .practical-card .p-note {
+      font-size: 0.78rem;
+      color: #4a7c59;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 600px) {
+      .residence-card { flex-direction: column; }
+      .day-tag { display: none; }
+    }
+  
+    /* ===================== GALLERY ===================== */
+    #gallery-lock-overlay {
+      position: fixed; inset: 0; z-index: 9000;
+      background: rgba(10,20,30,0.97);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 18px;
+    }
+    .lock-box {
+      background: #1a2a38; border: 1px solid #0a7ea4;
+      border-radius: 18px; padding: 44px 40px;
+      text-align: center; max-width: 380px; width: 90%;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    }
+    .lock-icon { font-size: 2.8rem; margin-bottom: 14px; }
+    .lock-box h2 { color: #fff; font-size: 1.4rem; margin-bottom: 6px; }
+    .lock-box p { color: #aac; font-size: 0.9rem; margin-bottom: 22px; }
+    .lock-input {
+      width: 100%; padding: 13px 16px; border-radius: 10px;
+      border: 1px solid #0a7ea4; background: #0d1a26;
+      color: #fff; font-size: 1rem; margin-bottom: 14px;
+      outline: none; text-align: center; letter-spacing: 2px;
+    }
+    .lock-input:focus { border-color: #3ab4d8; }
+    .lock-btn {
+      width: 100%; padding: 13px; border-radius: 10px;
+      background: linear-gradient(135deg, #0a7ea4, #3ab4d8);
+      color: #fff; font-size: 1rem; font-weight: 700;
+      border: none; cursor: pointer; transition: opacity .2s;
+    }
+    .lock-btn:hover { opacity: .85; }
+    .lock-error { color: #e07b39; font-size: 0.88rem; min-height: 18px; margin-top: 4px; }
+
+    /* Gallery grid */
+    #gallery-section { display: none; }
+    #gallery-section.unlocked { display: block; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px; padding: 10px 0;
+    }
+    .photo-item {
+      position: relative; border-radius: 10px; overflow: hidden;
+      aspect-ratio: 1; background: #111; cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .photo-item:hover { transform: scale(1.03); box-shadow: 0 4px 20px rgba(0,126,164,0.4); }
+    .photo-item img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .photo-num {
+      position: absolute; bottom: 6px; right: 8px;
+      background: rgba(0,0,0,0.55); color: #fff;
+      font-size: 0.7rem; padding: 2px 7px; border-radius: 20px;
+    }
+    /* Lightbox */
+    #lightbox {
+      position: fixed; inset: 0; z-index: 9500;
+      background: rgba(0,0,0,0.95);
+      display: none; align-items: center; justify-content: center;
+      flex-direction: column;
+    }
+    #lightbox.active { display: flex; }
+    #lightbox img {
+      max-width: 92vw; max-height: 82vh;
+      border-radius: 10px; box-shadow: 0 8px 40px rgba(0,0,0,0.7);
+    }
+    .lb-counter { color: #aac; margin-top: 12px; font-size: 0.9rem; }
+    .lb-close {
+      position: fixed; top: 18px; right: 22px;
+      color: #fff; font-size: 2rem; cursor: pointer;
+      background: rgba(0,0,0,0.5); border-radius: 50%;
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      border: none; line-height: 1;
+    }
+    .lb-nav {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      color: #fff; font-size: 2.5rem; cursor: pointer;
+      background: rgba(0,0,0,0.4); border: none;
+      padding: 10px 16px; border-radius: 8px;
+      transition: background .2s;
+    }
+    .lb-nav:hover { background: rgba(10,126,164,0.6); }
+    .lb-prev { left: 10px; }
+    .lb-next { right: 10px; }
+    /* Gallery nav button */
+    .nav-section-btn.gallery-btn {
+      background: linear-gradient(135deg, rgba(10,126,164,0.35), rgba(58,180,216,0.25));
+      border-color: #3ab4d8 !important;
+      color: #ffe082 !important;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">✦ Guida Autentica del Gargano ✦</div>
+  <h1>Gargano <span>&</span> Puglia</h1>
+  <p class="hero-sub">Vieste · Peschici · Mattinata · Vico del Gargano · Monte Sant'Angelo</p>
+  <div class="hero-dates">
+    <span class="pill">📅 20 – 27 Giugno 2026</span>
+    <span class="pill">🏡 Residence Costamartino</span>
+    <span class="pill">🌊 Gargano autentico</span>
+  </div>
+</div>
+
+<!-- NAV MENU — due livelli: città → sezioni -->
+<nav class="nav-menu">
+
+  <!-- LIVELLO 1: selezione città -->
+  <div class="nav-cities-row">
+    <button class="nav-city-btn active" data-city="vieste">🏖️ Vieste</button>
+    <button class="nav-city-btn" data-city="peschici">🏘️ Peschici</button>
+    <button class="nav-city-btn" data-city="mattinata">🌅 Mattinata</button>
+    <button class="nav-city-btn" data-city="gargano">🗺️ Gargano</button>
+  </div>
+
+  <!-- LIVELLO 2: sezioni Vieste (default visibile) -->
+  <div class="nav-sections-row active" data-city-sections="vieste">
+    <button class="nav-section-btn gallery-btn" onclick="openGallery()">📸 Foto vacanza</button>
+
+    <a href="#spiagge" class="nav-item"><span class="nav-icon">🏖️</span>Spiagge</a>
+    <a href="#cultura" class="nav-item"><span class="nav-icon">🏛️</span>Cultura</a>
+    <a href="#ristoranti" class="nav-item"><span class="nav-icon">🐟</span>Ristoranti</a>
+    <a href="#panifici" class="nav-item"><span class="nav-icon">🍞</span>Panifici</a>
+    <a href="#gelaterie" class="nav-item"><span class="nav-icon">🍦</span>Gelaterie</a>
+    <a href="#supermercati" class="nav-item"><span class="nav-icon">🛒</span>Supermercati</a>
+    <a href="#mercato" class="nav-item"><span class="nav-icon">🧺</span>Mercato</a>
+  </div>
+
+  <!-- LIVELLO 2: sezioni Peschici -->
+  <div class="nav-sections-row" data-city-sections="peschici">
+    <a href="#peschici" class="nav-item"><span class="nav-icon">🏘️</span>Intro</a>
+    <a href="#peschici-borgo" class="nav-item"><span class="nav-icon">🗺️</span>Borgo</a>
+    <a href="#peschici-spiagge" class="nav-item"><span class="nav-icon">🏖️</span>Spiagge</a>
+  </div>
+
+  <!-- LIVELLO 2: sezioni Mattinata -->
+  <div class="nav-sections-row" data-city-sections="mattinata">
+    <a href="#mattinata" class="nav-item"><span class="nav-icon">🌅</span>Intro</a>
+    <a href="#mattinata-luoghi" class="nav-item"><span class="nav-icon">🗺️</span>Luoghi</a>
+    <a href="#mattinata-spiagge" class="nav-item"><span class="nav-icon">🏖️</span>Spiagge</a>
+  </div>
+
+  <!-- LIVELLO 2: sezioni Gargano generale -->
+  <div class="nav-sections-row" data-city-sections="gargano">
+    <a href="#borghi" class="nav-item"><span class="nav-icon">🏘️</span>Borghi</a>
+    <a href="#arte" class="nav-item"><span class="nav-icon">🎨</span>Arte</a>
+    <a href="#itinerario" class="nav-item"><span class="nav-icon">📅</span>Itinerario</a>
+    <a href="#arrivare" class="nav-item"><span class="nav-icon">🚗</span>Arrivare</a>
+  </div>
+
+</nav>
+
+<!-- RESIDENCE -->
+<div style="max-width:760px;margin:0 auto;padding:0 20px;">
+  <div class="residence-card">
+    <div class="residence-icon">🏡</div>
+    <div>
+      <h3>La tua base: Residence Costamartino</h3>
+      <p>Su una collina a <strong>1,6 km da Vieste</strong>, immerso negli ulivi con vista sul mare Adriatico. Lontano dal caos del centro, vicino alla natura. La spiaggia più vicina è <strong>San Lorenzo (2,1 km)</strong> — meno affollata della Scialara. Ottima partenza per esplorare il Gargano autentico.</p>
+      <div class="residence-meta">
+        <span>📍 C.da Coppitella 34 — 71019 Vieste (FG)</span>
+        <a href="tel:+390884706078">📞 0884.706078</a>
+        <a href="tel:+393383352212">📱 338.3352212</a>
+        <a href="mailto:info@costamartino.it">✉️ info@costamartino.it</a>
+        <a href="https://www.costamartino.it" target="_blank">🌐 costamartino.it</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COME ARRIVARE -->
+<section id="arrivare">
+  <div class="section-label">Logistica</div>
+  <h2>Come arrivare in auto</h2>
+
+  <div class="gps-box">
+    <div class="gps-icon">🛰️</div>
+    <div>
+      <p>Coordinate GPS del Residence Costamartino</p>
+      <strong>41.876780°N — 16.158556°E</strong><br/>
+      <a href="https://www.google.com/maps/search/41.876780,16.158556" target="_blank">→ Apri in Google Maps</a>
+    </div>
+  </div>
+
+  <div class="directions-grid">
+
+    <div class="direction-card">
+      <div class="from">🅰️ Da Bari</div>
+      <p>
+        Autostrada <strong>A14</strong>, uscita <strong>Cerignola Est</strong>.<br/><br/>
+        Seguire le indicazioni per <strong>Manfredonia → Mattinata → Vieste</strong>.<br/><br/>
+        Una volta a Vieste, seguire il GPS per C.da Coppitella 34.
+      </p>
+    </div>
+
+    <div class="direction-card">
+      <div class="from">🅱️ Da Pescara</div>
+      <p>
+        Autostrada <strong>A14</strong>, uscita <strong>Poggio Imperiale</strong>.<br/><br/>
+        Imboccare la <strong>SSV del Gargano</strong> e percorrerla fino all'ultima uscita.<br/><br/>
+        Seguire le indicazioni per <strong>Peschici</strong>, poi proseguire sulla <strong>SS-89</strong> Peschici–Vieste.
+      </p>
+    </div>
+
+    <div class="direction-card">
+      <div class="from">🅽 Da Napoli</div>
+      <p>
+        Autostrada <strong>A14</strong>, uscita <strong>Cerignola Est</strong>.<br/><br/>
+        Poi procedere come da Bari: indicazioni per <strong>Manfredonia → Mattinata → Vieste</strong>.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ITINERARIO -->
+<section id="itinerario">
+  <div class="section-label">Giorno per giorno</div>
+  <h2>Itinerario 7 notti</h2>
+
+  <!-- GG1 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">1</div>
+      <div class="day-info">
+        <h3>Arrivo & orientamento lento</h3>
+        <div class="day-date">Venerdì 20 Giugno</div>
+      </div>
+      <div class="day-tag">🚗 Arrivo</div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Check-in a Costamartino</strong> — goditi il tramonto dalla collina con vista sul mare e sulla Foresta Umbra, senza fare niente. <em>È uno dei panorami più belli della zona.</em></li>
+        <li><strong>Spiaggia di San Lorenzo</strong> (a 5 min in auto) — sabbia dorata, meno frequentata della Scialara. Primo tuffo.</li>
+        <li><strong>Cena a Vieste bassa</strong> — non nel centro storico affollato, ma nelle trattorie fuori dal flusso turistico lungo via Fazzini o corso Lorenzo Fazzini.</li>
+      </ul>
+      <div class="insider-tip">Al supermercato Conad o Penny Market vicino Vieste fai la spesa per colazioni e pranzi al sacco — risparmia e mangi meglio.</div>
+    </div>
+  </div>
+
+  <!-- GG2 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">2</div>
+      <div class="day-info">
+        <h3>Spiagge selvagge a nord</h3>
+        <div class="day-date">Sabato 21 Giugno</div>
+      </div>
+      <div class="day-tag">🏖️ Mare</div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Spiaggia di Sospetto</strong> — caletta quasi sconosciuta a nord di Vieste, accessibile via sterrato. Niente stabilimenti, solo rocce bianche e acqua turchese.</li>
+        <li><strong>Cala della Sanguinara</strong> — nome suggestivo, posto mozzafiato. Falesie bianche, acque verdi, frequentata solo dai locali. Porta pranzo al sacco.</li>
+        <li>Rientro nel pomeriggio, aperitivo sul terrazzo di Costamartino guardando il mare.</li>
+      </ul>
+      <div class="insider-tip">Queste spiagge non hanno servizi. Porta acqua, cibo, crema solare e scarpe da scoglio. Prima mattina per evitare anche i pochi presenti.</div>
+    </div>
+  </div>
+
+  <!-- GG3 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">3</div>
+      <div class="day-info">
+        <h3>Vico del Gargano — il borgo vero</h3>
+        <div class="day-date">Domenica 22 Giugno</div>
+      </div>
+      <div class="day-tag">🏘️ Entroterra</div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Vico del Gargano</strong> (~40 min da Vieste) — nell'elenco dei Borghi più belli d'Italia ma quasi ignorato dai turisti. Centro storico medievale autentico, non restaurato per i visitatori: semplicemente rimasto così.</li>
+        <li><strong>Il Vicolo del Bacio</strong> — il passaggio più stretto del borgo (50 cm), dove gli innamorati si sfiorano per forza. Non è un'attrazione turistica: è un vicolo antico che esiste da secoli.</li>
+        <li><strong>Paposcia vichese</strong> — focaccia gonfia tipica <i>solo</i> di Vico, farcita con salumi e formaggi locali. Non si trova altrove. Mangiala lì sul posto.</li>
+        <li>Visita al Castello normanno con panorama sull'intero Gargano.</li>
+      </ul>
+      <div class="insider-tip">Domenica mattina presto è perfetta: il mercatino locale vende prodotti agricoli della zona — miele, olio, funghi della Foresta Umbra, cacioricotta fresca.</div>
+    </div>
+  </div>
+
+  <!-- GG4 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">4</div>
+      <div class="day-info">
+        <h3>Foresta Umbra — i sentieri fuori mappa</h3>
+        <div class="day-date">Lunedì 23 Giugno</div>
+      </div>
+      <div class="day-tag">🌲 Natura</div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Foresta Umbra</strong> (~40 min da Vieste) — non il sentiero principale con i turisti. Chiedi al centro visitatori i <strong>percorsi secondari</strong>: faggi, cerri e tassi millenari nell'ombra, in silenzio quasi totale.</li>
+        <li>Sentiero del <strong>Lago di Umbra</strong> (laghetto artificiale immerso nel bosco) — breve, suggestivo, praticamente vuoto.</li>
+        <li>Se ami il birdwatching: la foresta ospita il picchio nero e il falco pecchiaiolo — mattina presto è il momento migliore.</li>
+        <li>Pranzo al sacco in una radura — uno dei momenti più belli del viaggio.</li>
+        <li>Rientro via <strong>Monte Sant'Angelo</strong> (30 min deviazione) — santuario UNESCO scavato nella roccia, meno turistico di quanto si pensi fuori stagione.</li>
+      </ul>
+      <div class="insider-tip">Indossa scarpe da trekking e porta acqua abbondante. In giugno la foresta regala un'ombra magnifica — 5–8°C più fresca della costa.</div>
+    </div>
+  </div>
+
+  <!-- GG5 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">5</div>
+      <div class="day-info">
+        <h3>Spiaggia di Zaiana & mare libero</h3>
+        <div class="day-date">Martedì 24 Giugno</div>
+      </div>
+      <div class="day-tag">🌊 Spiaggia nascosta</div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Spiaggia di Zaiana</strong> — una delle meno conosciute del Gargano, senza stabilimenti. Falesie bianche, acqua verde smeraldo, ciottoli bianchi. Raggiungerla richiede un breve cammino su sterrato: è il filtro naturale che la mantiene vuota.</li>
+        <li><strong>Snorkeling</strong> lungo la costa rocciosa — le acque poco profonde tra le falesie sono ricche di polpi, saraghi e ricci.</li>
+        <li>Pausa a <strong>Peschici</strong> al ritorno (~30 min) — aperitivo con vista sul golfo dalle terrazze del borgo medievale, lontano dai bar del lungomare.</li>
+      </ul>
+      <div class="insider-tip">A Peschici cerca la gelateria artigianale nel caruggio principale — fan locali da decenni, non ha insegna luminosa.</div>
+    </div>
+  </div>
+
+  <!-- GG6 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">6</div>
+      <div class="day-info">
+        <h3>Giro in barca privato & trabucchi</h3>
+        <div class="day-date">Mercoledì 25 Giugno</div>
+      </div>
+      <div class="day-tag">🚤 Mare</div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Giro in barca</strong> — non i tour organizzati da 50 persone. Cerca i pescatori locali al porto di Vieste la mattina presto: molti affittano piccole barche a noleggio o fanno escursioni private su accordo. Grotte, archi, calette inaccessibili via terra.</li>
+        <li><strong>Arco di San Felice</strong> — monolite forato dal mare, uno dei simboli del Gargano. Vederlo dal mare è completamente diverso.</li>
+        <li><strong>I trabucchi</strong> — antiche macchine da pesca su palafitte a picco sul mare. Alcuni sono diventati ristoranti. Scegli quelli meno noti fuori Vieste per pranzare sul mare con pesce pescato quella mattina.</li>
+        <li>Pomeriggio: spiaggia libera di <strong>Punta Lunga</strong> (3,6 km da Costamartino) — sabbia fine, acque basse, famiglie locali.</li>
+      </ul>
+      <div class="insider-tip">Al porto di Vieste verso le 6–7 di mattina trovi i pescatori che rientrano. Spesso vendono pesce freschissimo direttamente dalla barca a prezzi locali.</div>
+    </div>
+  </div>
+
+  <!-- GG7 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">7</div>
+      <div class="day-info">
+        <h3>Giorno lento & centro storico autentico</h3>
+        <div class="day-date">Giovedì 26 Giugno</div>
+      </div>
+      <div class="day-tag">🏙️ Vieste</div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Centro storico di Vieste</strong> — non di giorno con le masse, ma all'alba (6:30–8:00). I vicoli bianchi in silenzio sono un'altra cosa. Poi colazione al bar dei locali, non sul lungomare.</li>
+        <li><strong>Chianca Amara</strong> — la pietra su cui nel 1554 i pirati turchi decapitarono 5.000 abitanti. È lì, in un vicolo, senza folla e senza biglietto. Un pezzo di storia reale.</li>
+        <li><strong>Cattedrale di Vieste</strong> — sec. XI, ingresso libero, quasi sempre vuota. Architettura romanica pugliese autentica.</li>
+        <li>Pomeriggio: ultimo mare alla <strong>Spiaggia dei Colombi</strong> (3,5 km da Costamartino) — tranquilla, poca sabbia, molto scoglio e acqua limpidissima.</li>
+        <li>Sera: <strong>cena d'addio</strong> da Osteria degli Archi o Antichi Sapori — prenota con anticipo.</li>
+      </ul>
+      <div class="insider-tip">Il mercato del pesce di Vieste è in via delle Marinerie — mattina presto, solo locali. Il polpo fresco qui costa la metà del ristorante.</div>
+    </div>
+  </div>
+
+  <!-- GG8 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">8</div>
+      <div class="day-info">
+        <h3>Partenza</h3>
+        <div class="day-date">Venerdì 27 Giugno</div>
+      </div>
+      <div class="day-tag">🚗 Rientro</div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li>Ultima colazione con vista mare da Costamartino.</li>
+        <li>Compra le scorte per casa: <strong>olio extravergine del Gargano</strong>, <strong>caciocavallo podolico</strong> e <strong>miele di sulla</strong> — dai produttori locali, non nei negozi per turisti.</li>
+        <li>Check-out e partenza.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SPIAGGE NASCOSTE -->
+<section id="spiagge">
+  <div class="section-label">Lontano dalla folla</div>
+  <h2>Spiagge meno conosciute</h2>
+  <div class="beach-grid">
+
+    <div class="beach-card">
+      <h4>Spiaggia di Sospetto</h4>
+      <p>Caletta semiselvatica a nord di Vieste. Sterrato, nessun servizio, acqua turchese. Quasi sconosciuta.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Spiaggia+di+Sospetto+Vieste+FG" target="_blank">📍 Google Maps</a>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Poco frequentata</span>
+      </div>
+    </div>
+
+    <div class="beach-card">
+      <h4>Cala della Sanguinara</h4>
+      <p>Falesie bianche, acque verde smeraldo. Solo locali. Porta pranzo al sacco.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Cala+della+Sanguinara+Vieste+FG" target="_blank">📍 Google Maps</a>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Quasi vuota</span>
+      </div>
+    </div>
+
+    <div class="beach-card">
+      <h4>Spiaggia di Zaiana</h4>
+      <p>Una delle più nascoste del Gargano. Ciottoli bianchi, nessuno stabilimento, breve cammino su sterrato.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Spiaggia+di+Zaiana+Vieste+FG" target="_blank">📍 Google Maps</a>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Raramente affollata</span>
+      </div>
+    </div>
+
+    <div class="beach-card">
+      <h4>Spiaggia di San Lorenzo</h4>
+      <p>A 2 km da Costamartino. Più tranquilla della Scialara, sabbia dorata, pochi stabilimenti.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Spiaggia+San+Lorenzo+Vieste+FG" target="_blank">📍 Google Maps</a>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Moderata in giugno</span>
+      </div>
+    </div>
+
+    <div class="beach-card">
+      <h4>Spiaggia dei Colombi</h4>
+      <p>A 3,5 km da Costamartino. Scoglio, acqua limpida, molto frequentata dai locali, non dai turisti.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Spiaggia+dei+Colombi+Vieste+FG" target="_blank">📍 Google Maps</a>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Locale</span>
+      </div>
+    </div>
+
+    <div class="beach-card">
+      <h4>Punta Lunga</h4>
+      <p>A 3,6 km da Costamartino. Sabbia fine, mare basso, famiglie del posto.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Punta+Lunga+Vieste+FG" target="_blank">📍 Google Maps</a>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Locale</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- POSTI NASCOSTI -->
+<section>
+  <div class="section-label">Off the beaten path</div>
+  <h2>Posti che non trovi sulle brochure</h2>
+  <div class="gems-grid">
+
+    <div class="gem-card">
+      <div class="gem-icon">🏘️</div>
+      <h4>Vico del Gargano</h4>
+      <p>Borgo medievale nei "Borghi più belli d'Italia". Paposcia, castello normanno, vicoli autentici. I pugliesi lo conoscono, i turisti no.</p>
+      <span class="gem-tag">~40 min da Vieste</span>
+      <a class="map-link" href="https://maps.google.com/?q=Vico+del+Gargano+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🌲</div>
+      <h4>Foresta Umbra (sentieri)</h4>
+      <p>Non il percorso principale. I sentieri secondari sono quasi vuoti. Faggi centenari, silenzio, 8°C in meno rispetto alla costa.</p>
+      <span class="gem-tag">~40 min da Vieste</span>
+      <a class="map-link" href="https://maps.google.com/?q=Foresta+Umbra+Gargano+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">⛪</div>
+      <h4>Monte Sant'Angelo</h4>
+      <p>Santuario UNESCO scavato nella roccia. Luogo di pellegrinaggio millenario. Meno affollato fuori agosto.</p>
+      <span class="gem-tag">~50 min da Vieste</span>
+      <a class="map-link" href="https://maps.google.com/?q=Santuario+San+Michele+Arcangelo+Monte+Sant+Angelo+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🎣</div>
+      <h4>Porto di Vieste all'alba</h4>
+      <p>I pescatori rientrano alle 6–7. Si compra pesce fresco dalla barca. Atmosfera autentica, prezzi locali.</p>
+      <span class="gem-tag">Centro Vieste</span>
+      <a class="map-link" href="https://maps.google.com/?q=Porto+di+Vieste+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🪨</div>
+      <h4>Chianca Amara</h4>
+      <p>Pietra storica nel cuore del centro storico. Nessun biglietto, nessuna fila. Storia vera, non ricostruita.</p>
+      <span class="gem-tag">Centro storico</span>
+      <a class="map-link" href="https://maps.google.com/?q=Chianca+Amara+Vieste+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🫒</div>
+      <h4>Masserie locali</h4>
+      <p>Lungo la strada per Peschici ci sono masserie che vendono olio, formaggio e vino direttamente. Niente etichette per turisti.</p>
+      <span class="gem-tag">SS89 verso Peschici</span>
+      <a class="map-link" href="https://maps.google.com/?q=SS89+Vieste+Peschici+Gargano" target="_blank">📍 Google Maps</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CIBO AUTENTICO -->
+<section>
+  <div class="section-label">Mangiare come un locale</div>
+  <h2>Cucina autentica</h2>
+  <div class="food-list">
+
+    <div class="food-item">
+      <div class="food-emoji">🐙</div>
+      <div>
+        <h4>Polpo alla brace o in insalata</h4>
+        <p>Piatto base del Gargano. Al porto puoi comprarlo fresco la mattina dai pescatori. Nei trabucchi lo cucinano sul momento.</p>
+      </div>
+    </div>
+
+    <div class="food-item">
+      <div class="food-emoji">🍚</div>
+      <div>
+        <h4>Tiella di riso, patate e cozze</h4>
+        <p>Il piatto pugliese per eccellenza. In ogni trattoria locale, non nei ristoranti sul lungomare. Cotta in teglia di terracotta.</p>
+      </div>
+    </div>
+
+    <div class="food-item">
+      <div class="food-emoji">🫓</div>
+      <div>
+        <h4>Paposcia di Vico del Gargano</h4>
+        <p>Focaccia gonfia, morbida, farcita. Esiste <em>solo</em> a Vico del Gargano. Non si trova altrove in questa forma. Imperdibile.</p>
+      </div>
+    </div>
+
+    <div class="food-item">
+      <div class="food-emoji">🧀</div>
+      <div>
+        <h4>Caciocavallo podolico</h4>
+        <p>Il formaggio del Gargano, da latte di vacca podolica allevata allo stato brado. Comprarlo direttamente in masseria.</p>
+      </div>
+    </div>
+
+    <div class="food-item">
+      <div class="food-emoji">🐟</div>
+      <div>
+        <h4>Pesce al trabucco</h4>
+        <p>Mangia in uno dei trabucchi meno noti fuori Vieste — il pesce viene pescato quella stessa mattina con la struttura storica.</p>
+        <p class="avoid">⚠️ Evita i ristoranti con il menù fotografico e la scritta "Fish & Chips" sul lungomare.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MATTINATA -->
+<section id="mattinata">
+  <div class="section-label">~45 minuti da Vieste · Costa sud del Gargano</div>
+  <h2>Mattinata — Faraglioni, olio e borgo bianco</h2>
+
+  <div class="peschici-intro">
+    <div class="pi-icon">🏔️</div>
+    <div>
+      <h3>Il lato sud del Gargano — completamente diverso</h3>
+      <p>Mattinata (5.800 abitanti) si trova sul versante <strong>meridionale del Gargano</strong>, a 45 minuti da Vieste percorrendo la spettacolare <strong>SP53</strong> — una delle strade costiere più belle d'Italia, con belvedere sui faraglioni e sul golfo di Manfredonia. Il paese è bianco, calmo, quasi privo di turismo di massa rispetto alla costa nord. È famoso per tre cose: i <strong>faraglioni della Baia delle Zagare</strong>, l'<strong>olio extravergine DOP del Gargano</strong> e le <strong>mandorle</strong>. La strada da Vieste vale già il viaggio.</p>
+      <div class="pi-meta">
+        <span>📍 ~45 min da Vieste</span>
+        <span>🛣️ SP53 panoramica</span>
+        <span>🪨 Faraglioni icona</span>
+        <span>🫒 Olio DOP</span>
+        <span>🏖️ Pass spiaggia</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="peschici-sub">⚠️ Info importante — Baia delle Zagare</div>
+  <div style="background:#1a1a0a;border:1px solid #6a5a00;border-radius:12px;padding:16px 20px;margin-bottom:20px;font-size:0.87rem;color:#c8b860;line-height:1.65;">
+    La zona libera della Baia delle Zagare è protetta: <strong>solo 20 pass gratuiti al giorno</strong>, distribuiti all'<strong>Info Point di Mattinata — Corso Matino 64</strong>. I pass sono <strong>nominativi, non prenotabili</strong>, ritiro di persona con documento d'identità. In alta stagione: fila prima dell'apertura. Alternativa senza pass: <strong>escursione in barca</strong> da Mattinata o Vieste (le barche si fermano davanti ai faraglioni per soste bagno). Scarpe da scoglio obbligatorie — fondale di ciottoli bianchi.
+  </div>
+
+  <div id="mattinata-luoghi" class="peschici-sub">🗺️ Cosa vedere e fare</div>
+  <div class="gems-grid">
+
+    <div class="gem-card">
+      <div class="gem-icon">🪨</div>
+      <h4>Baia delle Zagare — i faraglioni</h4>
+      <p>L'immagine iconica del Gargano: due faraglioni (l'<strong>Arco di Diomede</strong> e le <strong>Forbici</strong>) che emergono dall'acqua davanti a una falesia bianca di 100 metri. Area protetta, accesso regolamentato (vedi info sopra). Da vedere <strong>necessariamente in barca</strong> se non hai il pass — la prospettiva dal mare è quella che finisce su tutti i libri.</p>
+      <span class="gem-tag">~15 km da Mattinata · Iconica</span>
+      <a class="map-link" href="https://maps.google.com/?q=Baia+delle+Zagare+Mattinata+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🛣️</div>
+      <h4>SP53 — la strada panoramica</h4>
+      <p>Il percorso da Vieste a Mattinata sulla SP53 è <strong>uno dei più belli d'Italia</strong>: falesie bianche a picco sul mare, tornanti, belvedere improvvisati su calette turchesi. Fermati dove vuoi — ogni curva ha una vista diversa. Meglio la mattina presto, senza traffico. Strada stretta e tortuosa: guida con calma.</p>
+      <span class="gem-tag">Vieste → Mattinata · 45 min</span>
+      <a class="map-link" href="https://maps.google.com/?q=SP53+Vieste+Mattinata+Gargano" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🏛️</div>
+      <h4>Monte Saraceno</h4>
+      <p>Sito archeologico daunico del <strong>VII–V sec. a.C.</strong> su un promontorio a picco sul golfo. Necropoli con oltre 200 tombe, resti di insediamento preistorico. Vista straordinaria su Manfredonia e la pianura del Tavoliere. Quasi sconosciuto ai turisti — ci si arriva a piedi da Mattinata con una breve escursione.</p>
+      <span class="gem-tag">Archeologia · Vista golfo</span>
+      <a class="map-link" href="https://maps.google.com/?q=Monte+Saraceno+Mattinata+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🤍</div>
+      <h4>Borgo di Mattinata</h4>
+      <p>Case bianche, strade silenziose, niente negozi di souvenir. Il <strong>Corso Matino</strong> è la via principale — ci sono i bar storici, la piazza, il mercato mattutino. Mattinata vive di turismo balneare ma conserva una vita di paese autentica. Visitala nel pomeriggio quando i turisti sono in spiaggia.</p>
+      <span class="gem-tag">Borgo · Autentico</span>
+      <a class="map-link" href="https://maps.google.com/?q=Mattinata+centro+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🫒</div>
+      <h4>Olio DOP del Gargano</h4>
+      <p>Mattinata è uno dei cuori produttivi dell'<strong>olio extravergine DOP Dauno</strong>, con cultivar autoctone <em>Ogliarola del Gargano</em> e <em>Coratina</em>. Lungo la strada per Mattinata trovi frantoi e aziende agricole che vendono direttamente. Compra qui — è diverso (e molto migliore) di quello nei negozi di Vieste per turisti.</p>
+      <span class="gem-tag">DOP · Frantoi diretti</span>
+      <a class="map-link" href="https://maps.google.com/?q=Frantoio+olio+Mattinata+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🍦</div>
+      <h4>Bar Serafino — il gelato di Mattinata</h4>
+      <p>Su Corso Matino, il bar storico di Mattinata. Gelato artigianale con gusti locali — <strong>mandorla del Gargano, fico e agrumi</strong> — a prezzi da paese (non da resort). Frequentato da chi abita a Mattinata da generazioni. La tappa obbligata dopo una mattinata in spiaggia.</p>
+      <span class="gem-tag">Corso Matino · Storico</span>
+      <a class="map-link" href="https://maps.google.com/?q=Bar+Serafino+Mattinata+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+  </div>
+
+  <div id="mattinata-spiagge" class="peschici-sub">🏖️ Spiagge di Mattinata e dintorni</div>
+  <div class="beach-grid">
+
+    <div class="beach-card">
+      <h4>Baia delle Zagare</h4>
+      <p>La più famosa — faraglioni, falesia 100m, acque smeraldo. Pass obbligatorio (20/giorno) oppure in barca. Ciottoli bianchi, scarpe da scoglio.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Baia+delle+Zagare+Mattinata+FG" target="_blank">📍 Google Maps</a>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Pass richiesto</span>
+      </div>
+    </div>
+
+    <div class="beach-card">
+      <h4>Lido di Mattinata</h4>
+      <p>La spiaggia sabbiosa vicina al paese. Comoda, con servizi, buona per una mezza giornata. Meno spettacolare delle calette ma ideale se arrivi tardi.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Lido+di+Mattinata+FG" target="_blank">📍 Google Maps</a>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Moderata</span>
+      </div>
+    </div>
+
+    <div class="beach-card">
+      <h4>Spiaggia di Pugnochiuso</h4>
+      <p>Ghiaia bianchissima, acque smeraldo, falesia alle spalle. Tra le più belle del Gargano. Tecnicamente territorio di Vieste ma più vicina a Mattinata. Pochi accessi.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Spiaggia+Pugnochiuso+Gargano+FG" target="_blank">📍 Google Maps</a>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Poco affollata</span>
+      </div>
+    </div>
+
+    <div class="beach-card">
+      <h4>Grotte marine — in barca</h4>
+      <p>Dal porto di Mattinata partono escursioni che costegiano le falesie, entrano nelle grotte e si fermano davanti ai faraglioni. La via migliore per vedere tutto senza pass e senza code.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Porto+di+Mattinata+FG" target="_blank">📍 Google Maps</a>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Escursione</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="insider-tip" style="margin-top:20px;">Formula consigliata: partenza da Costamartino alle 7:30, pass Baia delle Zagare all'Info Point appena apre (Corso Matino 64), spiaggia mattina con faraglioni, pranzo con olio locale in una trattoria del paese, gelato da Serafino, rientro via SP53 fermandosi ai belvedere al pomeriggio. Distanza totale: ~90 km andata/ritorno.</div>
+
+</section>
+
+<!-- PESCHICI -->
+<section id="peschici">
+  <div class="section-label">~30 minuti da Vieste</div>
+  <h2>Peschici — Il borgo sul dirupo</h2>
+
+  <div class="peschici-intro">
+    <div class="pi-icon">🌊</div>
+    <div>
+      <h3>Perché vale il viaggio (anche solo per un giorno)</h3>
+      <p>Peschici (4.200 abitanti) sorge su un <strong>promontorio a 90 metri sul mare</strong>, con case bianche impilate sulla roccia come un presepe. A differenza di Vieste non è stata inglobata dal turismo di massa: il suo centro storico è ancora vivo, con vicoli stretti che finiscono su terrazze con vista sul golfo. Il borgo è dominato da un <strong>castello normanno dell'XI sec.</strong> e circondato da calette inaccessibili dalla terraferma. Abbinala a una mezza giornata di mare nelle spiagge attorno — alcune tra le più belle del Gargano.</p>
+      <div class="pi-meta">
+        <span>📍 ~30 min da Vieste</span>
+        <span>🧭 SS89 Vieste–Peschici</span>
+        <span>🏖️ Spiagge selvagge</span>
+        <span>🏰 Castello XI sec.</span>
+        <span>🚤 Grotta marina</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="peschici-borgo" class="peschici-sub">🏘️ Cosa vedere nel borgo</div>
+  <div class="gems-grid">
+
+    <div class="gem-card">
+      <div class="gem-icon">🏰</div>
+      <h4>Castello Normanno</h4>
+      <p>Costruito nell'XI sec. dai Normanni sull'estremità del promontorio. Panorama a 360° sul golfo del Gargano. L'interno ospita mostre temporanee. La posizione è strategica: da qui si vede tutta la costa fino a Vieste. Ingresso a pagamento, pochi visitatori rispetto al castello di Vieste.</p>
+      <span class="gem-tag">Centro storico · XI sec.</span>
+      <a class="map-link" href="https://maps.google.com/?q=Castello+Normanno+Peschici+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🤍</div>
+      <h4>Centro storico — vicoli bianchi</h4>
+      <p>Scalinate strette, archi pensili, case bianche con le porte azzurre. Le terrazze affacciate sull'Adriatico offrono viste mozzafiato. Da percorrere la mattina presto o al tramonto, quando la luce radente tinge tutto di arancione. Architettura spontanea senza restauri per i turisti.</p>
+      <span class="gem-tag">Alba o tramonto</span>
+      <a class="map-link" href="https://maps.google.com/?q=Centro+Storico+Peschici+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🚶</div>
+      <h4>Sentiero dell'Amore</h4>
+      <p>Percorso panoramico che costeggia le falesie a picco sul mare, attraverso macchia mediterranea. Circa 2 km tra profumo di rosmarino e timo selvatico, con vedute sul golfo di Manaccora. Particolarmente bello al tramonto. Punto di partenza vicino al Trabucco di Monte Pucci.</p>
+      <span class="gem-tag">Trekking leggero · 2 km</span>
+      <a class="map-link" href="https://maps.google.com/?q=Sentiero+dell+Amore+Peschici+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">⚓</div>
+      <h4>Museo del Mare</h4>
+      <p>Piccolo museo dedicato alla storia marinara di Peschici: reti d'epoca, attrezzi da pesca tradizionali, modelli di trabucchi, foto storiche dei pescatori. Racconta la Peschici di prima del turismo — quella che esiste ancora nelle case degli anziani del borgo.</p>
+      <span class="gem-tag">Centro storico · Piccolo e autentico</span>
+      <a class="map-link" href="https://maps.google.com/?q=Museo+del+Mare+Peschici+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🍷</div>
+      <h4>Aperitivo con vista sul golfo</h4>
+      <p>Le terrazze dei bar nel caruggio principale di Peschici si affacciano direttamente sul golfo. Nessuna piattaforma turistica, solo tavolini di legno su terrazze antiche. Ordina un Primitivo del Gargano con olive locali e goditi una delle viste più belle della costa pugliese.</p>
+      <span class="gem-tag">Ora d'oro · Aperitivo</span>
+      <a class="map-link" href="https://maps.google.com/?q=Peschici+centro+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🪵</div>
+      <h4>Trabucco di Monte Pucci</h4>
+      <p>Il trabucco più fotografato del Gargano, a picco sulla scogliera a pochi minuti da Peschici. Anche se non pranzi (prenotazione settimane prima), vale arrivarci a piedi per la foto. Il meccanismo originale delle reti è ancora funzionante. Tramonto da qui: uno dei più belli del Gargano.</p>
+      <span class="gem-tag">~2 km da Peschici · Iconico</span>
+      <a class="map-link" href="https://maps.google.com/?q=Trabucco+Monte+Pucci+Peschici+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+  </div>
+
+  <div id="peschici-spiagge" class="peschici-sub">🏖️ Spiagge intorno a Peschici</div>
+  <div class="beach-grid">
+
+    <div class="beach-card">
+      <h4>Baia di Manaccora</h4>
+      <p>La spiaggia più grande nei pressi di Peschici. Sabbia fine, acque basse e trasparenti. Qualche stabilimento, ma anche ampi tratti liberi. Ottima per famiglie e per chi vuole comodità.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Baia+di+Manaccora+Peschici+FG" target="_blank">📍 Google Maps</a>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Moderata</span>
+      </div>
+    </div>
+
+    <div class="beach-card">
+      <h4>Cala Lunga</h4>
+      <p>Caletta stretta tra falesie bianche, acque verde smeraldo. Accessibile a piedi da un sentiero o in barca. Nessun servizio, silenzio quasi totale anche in giugno.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Cala+Lunga+Peschici+FG" target="_blank">📍 Google Maps</a>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Quasi vuota</span>
+      </div>
+    </div>
+
+    <div class="beach-card">
+      <h4>Grotta di Peschici</h4>
+      <p>Grotta marina accessibile solo via mare, con stalattiti e acque color smeraldo. Le escursioni partono dal porto di Peschici con barchette locali. Non con i giri organizzati da 40 persone — cerca i pescatori.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Porto+di+Peschici+FG" target="_blank">📍 Google Maps</a>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Solo in barca</span>
+      </div>
+    </div>
+
+    <div class="beach-card">
+      <h4>Vignanotica</h4>
+      <p>Spiaggia di ghiaia bianca protetta da una falesia alta 100m — una delle più spettacolari del Gargano. Accessibile da una lunga scalinata (circa 300 gradini). Il panorama dall'alto vale quanto la discesa.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Spiaggia+Vignanotica+Gargano+FG" target="_blank">📍 Google Maps</a>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">I gradini filtrano</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="insider-tip" style="margin-top:20px;">Peschici è a soli 30 min da Costamartino. La formula ideale: partenza alle 8:00, spiaggia mattina a Cala Lunga o Manaccora, pranzo al Trabucco (se prenotato) oppure in una trattoria del centro storico, pomeriggio nel borgo al tramonto. Rientro a Vieste per cena.</div>
+
+</section>
+
+<!-- ALTRI BORGHI DEL GARGANO -->
+<section id="borghi">
+  <div style="max-width:760px;margin:0 auto;padding:0 20px;">
+    <div class="section-label">Touring Club · Lonely Planet · Italia.it</div>
+    <h2>Altri Borghi del Gargano</h2>
+    <p style="color:#aaa;margin-bottom:28px;font-size:0.9rem;line-height:1.7;">
+      Oltre a Vieste, Peschici e Mattinata, il Gargano offre un patrimonio straordinario. Queste sono le destinazioni segnalate da tutte le principali guide internazionali come <strong style="color:#ccc;">imperdibili</strong>.
+    </p>
+
+    <div class="gems-grid">
+
+      <!-- Monte Sant'Angelo -->
+      <div class="gem-card">
+        <div class="gem-icon">⛪</div>
+        <div>
+          <h3>Monte Sant'Angelo</h3>
+          <span class="gem-tag">⭐⭐⭐ Imperdibile · Sito UNESCO</span>
+          <p>Il borgo sacro per eccellenza del Gargano. Il <strong>Santuario di San Michele Arcangelo</strong> è uno dei luoghi di pellegrinaggio più antichi d'Europa (V sec. d.C.) e sito UNESCO dal 2011, incluso nel percorso longobardo <em>Via Sacra Langobardorum</em>. Sopra il borgo si erge il <strong>Castello Normanno-Svevo</strong> (€2), con vista a 360° sul promontorio. Il centro storico medievale, tutto bianco su una roccia a 843 m slm, è percorribile a piedi tra vicoli stretti e botteghe artigiane.</p>
+          <span class="gem-tag">🏔️ 843 m slm · 45 min da Vieste · Gratuito (Santuario)</span>
+          <a class="map-link" href="https://maps.google.com/?q=Monte+Sant%27Angelo+FG" target="_blank">📍 Google Maps</a>
+        </div>
+      </div>
+
+      <!-- Foresta Umbra -->
+      <div class="gem-card">
+        <div class="gem-icon">🌳</div>
+        <div>
+          <h3>Foresta Umbra</h3>
+          <span class="gem-tag">⭐⭐⭐ Imperdibile · Sito UNESCO</span>
+          <p>Il cuore verde e segreto del Gargano: <strong>10.500 ettari</strong> di foresta primaria con faggi millenari, lecci, cerri e tassi antichissimi. Patrimonio UNESCO dal 2017 come parte delle <em>Faggete Vetuste d'Europa</em>. Il Centro Visitatori ha sentieri segnalati per tutti i livelli. L'<strong>escursione notturna guidata</strong> tra i cervi è tra le esperienze più emozionanti del Parco Nazionale. D'estate offre un fresco rifugio naturale rispetto al caldo della costa.</p>
+          <span class="gem-tag">🦌 Cervi e caprioli · Sentieri · Centro Visitatori</span>
+          <a class="map-link" href="https://maps.google.com/?q=Foresta+Umbra+Gargano+FG" target="_blank">📍 Google Maps</a>
+        </div>
+      </div>
+
+      <!-- Isole Tremiti -->
+      <div class="gem-card">
+        <div class="gem-icon">🏝️</div>
+        <div>
+          <h3>Isole Tremiti</h3>
+          <span class="gem-tag">⭐⭐⭐ Imperdibile · Arcipelago adriatico</span>
+          <p>L'unico arcipelago dell'Adriatico italiano, a soli 22 km dalla costa del Gargano. <strong>San Domino</strong> è la più grande: grotte marine, calette nascoste e pineta. <strong>San Nicola</strong> ospita una fortezza medievale e l'<em>Abbazia di Santa Maria a Mare</em> (X sec.). Acqua cristallina con visibilità fino a 20 m, paradiso per snorkeling e diving. Traghetti da <strong>Vieste</strong> (~1h30), <strong>Peschici</strong> (~1h), Manfredonia (~2h). In luglio-agosto prenotare con settimane di anticipo.</p>
+          <span class="gem-tag">⛴️ Traghetto da Vieste e Peschici · Snorkeling · No auto</span>
+          <a class="map-link" href="https://maps.google.com/?q=Isole+Tremiti+FG" target="_blank">📍 Google Maps</a>
+        </div>
+      </div>
+
+      <!-- Vico del Gargano -->
+      <div class="gem-card">
+        <div class="gem-icon">🍊</div>
+        <div>
+          <h3>Vico del Gargano</h3>
+          <span class="gem-tag">⭐⭐⭐ Borghi più belli d'Italia</span>
+          <p>Inserito ufficialmente tra i <strong>"Borghi più belli d'Italia"</strong>, Vico è un gioiello medievale nell'entroterra del Gargano settentrionale. Famoso per i <strong>giardini di agrumi</strong> coltivati dentro le mura del centro storico — profumo di arancio e limone in ogni vicolo. Il <strong>14 febbraio</strong>, giorno di San Valentino (patrono del paese), il borgo si trasforma in un festival dei fidanzati unico in Italia. Panorama mozzafiato sull'Adriatico e sulla costa da Peschici a Rodi Garganico.</p>
+          <span class="gem-tag">🍋 Agrumi · Borgo medievale · 30 min da Peschici</span>
+          <a class="map-link" href="https://maps.google.com/?q=Vico+del+Gargano+FG" target="_blank">📍 Google Maps</a>
+        </div>
+      </div>
+
+      <!-- Rodi Garganico -->
+      <div class="gem-card">
+        <div class="gem-icon">🌊</div>
+        <div>
+          <h3>Rodi Garganico</h3>
+          <span class="gem-tag">⭐⭐ "Piccola Costiera Amalfitana"</span>
+          <p>Soprannominata la <strong>"Piccola Costiera Amalfitana"</strong> per le terrazze di agrumi e ulivi a picco sul mare. Il centro storico si arrampica su una rocca tra la <strong>Spiaggia di Levante</strong> e quella di <strong>Ponente</strong> — entrambe facilmente raggiungibili a piedi. Porto turistico vivace e ben attrezzato, ottimo punto di imbarco per le <strong>Isole Tremiti</strong>. Atmosfera più rilassata rispetto a Vieste, con meno turisti e prezzi più abbordabili.</p>
+          <span class="gem-tag">🍋 Terrazze agrumi · 2 spiagge · Porto Tremiti</span>
+          <a class="map-link" href="https://maps.google.com/?q=Rodi+Garganico+FG" target="_blank">📍 Google Maps</a>
+        </div>
+      </div>
+
+      <!-- San Giovanni Rotondo -->
+      <div class="gem-card">
+        <div class="gem-icon">✝️</div>
+        <div>
+          <h3>San Giovanni Rotondo</h3>
+          <span class="gem-tag">⭐⭐ Pellegrinaggio · Architettura moderna</span>
+          <p>Uno dei luoghi di pellegrinaggio più visitati al mondo: oltre <strong>7 milioni di visitatori l'anno</strong> vengono per Padre Pio, canonizzato nel 2002. La <strong>Chiesa di Padre Pio progettata da Renzo Piano</strong> (2004) è un capolavoro dell'architettura contemporanea — capiente 6.500 fedeli, realizzata in pietra del Gargano a spirale, già presente nella sezione Arte. Nella vecchia <strong>Chiesa di Santa Maria delle Grazie</strong> si può visitare la cella in cui il frate ha vissuto e sofferto.</p>
+          <span class="gem-tag">🏛️ Renzo Piano · Cella Padre Pio · 1h da Vieste</span>
+          <a class="map-link" href="https://maps.google.com/?q=San+Giovanni+Rotondo+FG" target="_blank">📍 Google Maps</a>
+        </div>
+      </div>
+
+      <!-- Manfredonia & Siponto -->
+      <div class="gem-card">
+        <div class="gem-icon">🏰</div>
+        <div>
+          <h3>Manfredonia & Siponto</h3>
+          <span class="gem-tag">⭐⭐ Città di mare · Arte · Porto Tremiti</span>
+          <p>La città più grande del Gargano, fondata nel 1256 da Manfredi di Svevia. Il <strong>Castello Svevo-Angioino</strong> ospita il Museo Nazionale del Gargano con stele daunie uniche al mondo. A Siponto sorge la <strong>Basilica di Santa Maria Maggiore</strong> (XI sec.) con l'installazione di Tresoldi — la "cattedrale di filo" visibile anche di notte. Porto principale per i traghetti verso le <strong>Isole Tremiti</strong> e gateway meridionale al Gargano.</p>
+          <span class="gem-tag">⛴️ Porto Tremiti · Castello · Tresoldi · Museo Dauno</span>
+          <a class="map-link" href="https://maps.google.com/?q=Manfredonia+FG" target="_blank">📍 Google Maps</a>
+        </div>
+      </div>
+
+      <!-- Ischitella -->
+      <div class="gem-card">
+        <div class="gem-icon">🫒</div>
+        <div>
+          <h3>Ischitella</h3>
+          <span class="gem-tag">⭐ Borgo collinare · Vista panoramica</span>
+          <p>Borgo medievale su una collina con uno dei panorami più spettacolari di tutto il Gargano: lo sguardo abbraccia il <strong>Lago di Varano</strong> (il lago costiero più grande della Puglia, 60 km²) e l'Adriatico in un solo colpo d'occhio. Celebre per la produzione di <strong>olio extravergine DOP del Gargano</strong>. Nei vicoli del centro storico si respira l'atmosfera autentica dei borghi agricoli garganici, senza turisti di massa.</p>
+          <span class="gem-tag">🫒 Olio DOP · Lago di Varano · Borgo autentico</span>
+          <a class="map-link" href="https://maps.google.com/?q=Ischitella+FG" target="_blank">📍 Google Maps</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ARTE & ARCHITETTURA -->
+<section id="arte">
+  <div class="section-label">Per chi ama l'arte e l'architettura</div>
+  <h2>Arte &amp; Architettura nel Gargano</h2>
+  <div class="gems-grid">
+
+    <div class="gem-card">
+      <div class="gem-icon">🕸️</div>
+      <h4>Basilica di Siponto — Edoardo Tresoldi</h4>
+      <p>Una delle opere d'arte contemporanea più straordinarie d'Italia. Tresoldi ha ricostruito in <strong>rete metallica trasparente</strong> i volumi della basilica paleocristiana del IV–VI sec. Il risultato è una "chiesa fantasma" che dialoga con i resti romani sotto i piedi. Parco Archeologico di Siponto, Manfredonia.</p>
+      <span class="gem-tag">~1h da Vieste · Manfredonia</span>
+      <a class="map-link" href="https://maps.google.com/?q=Basilica+Siponto+Tresoldi+Manfredonia+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">⛪</div>
+      <h4>Santuario di Monte Sant'Angelo — UNESCO</h4>
+      <p>Patrimonio UNESCO "Longobardi in Italia". La grotta sacra è scavata direttamente nella roccia — ci si entra scendendo 86 scalini nell'oscurità. Il <strong>campanile ottagonale normanno</strong> (sec. XI) è uno dei più belli della Puglia. Il quartiere "Junno" attorno è medievale puro: archi, basoli e case in pietra bianca.</p>
+      <span class="gem-tag">~50 min · UNESCO</span>
+      <a class="map-link" href="https://maps.google.com/?q=Santuario+San+Michele+Arcangelo+Monte+Sant+Angelo+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🏰</div>
+      <h4>Castello Svevo-Angioino di Manfredonia</h4>
+      <p>Fondato nel 1256 da Manfredi di Svevia (figlio di Federico II). Ospita il <strong>Museo Nazionale del Gargano</strong> con le celebri <strong>stele daunie</strong> — sculture funerarie in pietra del VII–V sec. a.C., una delle collezioni più rare al mondo. Il castello domina il golfo con le sue torri aragonesi.</p>
+      <span class="gem-tag">~1h · Manfredonia</span>
+      <a class="map-link" href="https://maps.google.com/?q=Castello+Svevo+Angioino+Manfredonia+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">✝️</div>
+      <h4>Basilica di Padre Pio — Renzo Piano</h4>
+      <p>Una delle opere più importanti di architettura religiosa contemporanea in Italia. Progettata da <strong>Renzo Piano</strong> (2004), capace di 30.000 fedeli. La struttura in pietra di Apricena e acciaio è un capolavoro di integrazione tra tecnologia moderna e spiritualità. Vale il viaggio anche per chi non è credente.</p>
+      <span class="gem-tag">~55 min · San Giovanni Rotondo</span>
+      <a class="map-link" href="https://maps.google.com/?q=Basilica+Padre+Pio+Renzo+Piano+San+Giovanni+Rotondo+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🏛️</div>
+      <h4>Parco Archeologico di Siponto</h4>
+      <p>Sotto la basilica di Tresoldi giacciono i resti di <strong>Siponto romana</strong> (194 a.C.) — pavimenti a mosaico, colonne, la basilica paleocristiana a tre navate. Un sito dove arte contemporanea e archeologia si sovrappongono in modo unico. Ingresso nel parco include sia i resti che l'opera di Tresoldi.</p>
+      <span class="gem-tag">~1h · Manfredonia</span>
+      <a class="map-link" href="https://maps.google.com/?q=Parco+Archeologico+Siponto+Manfredonia+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">⛩️</div>
+      <h4>Abbazia di Santa Maria di Pulsano</h4>
+      <p>Fondata nel VI sec. da San Gregorio Magno su un tempio pagano. Circondano l'abbazia oltre <strong>20 eremi scavati nella roccia</strong> — i monaci medievali vivevano letteralmente dentro la montagna. "Luoghi del Cuore" del FAI. Atmosfera di silenzio assoluto, architettura monastica intatta. L'8 settembre c'è il pellegrinaggio su muli.</p>
+      <span class="gem-tag">~55 min · vicino Monte Sant'Angelo</span>
+      <a class="map-link" href="https://maps.google.com/?q=Abbazia+Santa+Maria+Pulsano+Monte+Sant+Angelo+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🏘️</div>
+      <h4>Vico del Gargano — architettura medievale</h4>
+      <p>Il centro storico medievale più intatto del Gargano. Il <strong>Castello Normanno</strong> domina dall'alto; sotto, un labirinto di <strong>archi pensili, scalinate esterne e palazzi baronali</strong> del '400–'500 che nessuno ha "restaurato per i turisti". Il vicolo del Bacio è largo 50 cm — il più stretto della zona.</p>
+      <span class="gem-tag">~40 min da Vieste</span>
+      <a class="map-link" href="https://maps.google.com/?q=Castello+Normanno+Vico+del+Gargano+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🗿</div>
+      <h4>Stele Daunie — Museo di Manfredonia</h4>
+      <p>All'interno del castello di Manfredonia: la collezione di <strong>stele daunie</strong> è una delle più importanti d'Europa. Sculture funerarie in pietra calcarea del <strong>VII–V sec. a.C.</strong>, con figure umane incise e simboli geometrici. Le popolazioni daunie che abitavano il Gargano prima dei Romani le usavano come lapidi. Rarissime.</p>
+      <span class="gem-tag">~1h · Museo Nazionale del Gargano</span>
+      <a class="map-link" href="https://maps.google.com/?q=Museo+Nazionale+del+Gargano+Manfredonia+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CULTURA & STORIA -->
+<section id="cultura">
+  <div class="section-label">Patrimonio storico</div>
+  <h2>Cultura &amp; Storia</h2>
+  <div class="gems-grid">
+
+    <div class="gem-card">
+      <div class="gem-icon">⛪</div>
+      <h4>Cattedrale di Santa Maria Assunta</h4>
+      <p>Sec. XI, stile romanico pugliese. Ingresso libero, quasi sempre vuota. Una delle più antiche del Gargano — nessuna fila, nessun biglietto.</p>
+      <span class="gem-tag">Centro storico · Gratuito</span>
+      <a class="map-link" href="https://maps.google.com/?q=Cattedrale+Santa+Maria+Assunta+Vieste+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🪨</div>
+      <h4>Chianca Amara</h4>
+      <p>La "pietra triste": nel 1554 i pirati turchi di Dragut vi decapitarono 5.000 abitanti di Vieste. Nascosta in un vicolo del centro storico, senza insegne. Storia vera, non ricostruita.</p>
+      <span class="gem-tag">Centro storico · Gratuito</span>
+      <a class="map-link" href="https://maps.google.com/?q=Chianca+Amara+Vieste+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🏰</div>
+      <h4>Castello Svevo</h4>
+      <p>Fortezza normanna-sveva a picco sul mare, sec. XI. Visita solo su prenotazione — pochi lo sanno, quindi gruppi piccoli. Vista panoramica eccezionale.</p>
+      <span class="gem-tag">Prenotazione richiesta</span>
+      <a class="map-link" href="https://maps.google.com/?q=Castello+Svevo+Vieste+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🕌</div>
+      <h4>Borgo Ottocentesco</h4>
+      <p>La zona meno turistica di Vieste, fuori dal centro medievale. Architettura del '800, vita locale autentica, nessun negozio di souvenir. Una Vieste parallela che i turisti non trovano.</p>
+      <span class="gem-tag">Zona nord · Autentico</span>
+      <a class="map-link" href="https://maps.google.com/?q=Vieste+Vecchia+centro+storico+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🗼</div>
+      <h4>Torri Costiere Saracene</h4>
+      <p>Nel 1563 furono costruite 10 torri di avvistamento contro i pirati saraceni. Alcune sono ancora intatte lungo la costa. Torre del Porticello e Torre di Malepasso tra le meglio conservate.</p>
+      <span class="gem-tag">Costa · Accessibili</span>
+      <a class="map-link" href="https://maps.google.com/?q=Torre+del+Porticello+Vieste+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">⛩️</div>
+      <h4>Punta San Francesco</h4>
+      <p>L'estremità del roccione su cui sorge Vieste Vecchia. Piccola chiesa, panorama a 360° sul mare Adriatico, pochissimi turisti rispetto al centro. Meglio all'alba o al tramonto.</p>
+      <span class="gem-tag">Centro storico · Vista mare</span>
+      <a class="map-link" href="https://maps.google.com/?q=Punta+San+Francesco+Vieste+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">💡</div>
+      <h4>Faro di Santa Eufemia</h4>
+      <p>Faro sull'isolotto di Santa Eufemia, visibile da gran parte della città. Non visitabile dall'interno, ma il contorno al tramonto è uno dei panorami più fotogenici di Vieste.</p>
+      <span class="gem-tag">Vista dal mare/costa</span>
+      <a class="map-link" href="https://maps.google.com/?q=Faro+Santa+Eufemia+Vieste+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">⛪</div>
+      <h4>Monte Sant'Angelo (UNESCO)</h4>
+      <p>~50 min da Vieste. Santuario di San Michele Arcangelo scavato nella roccia, patrimonio UNESCO — una delle mete di pellegrinaggio medievali più importanti d'Europa. Il quartiere "Junno" è medievale puro.</p>
+      <span class="gem-tag">~50 min · UNESCO</span>
+      <a class="map-link" href="https://maps.google.com/?q=Santuario+San+Michele+Arcangelo+Monte+Sant+Angelo+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- RISTORANTI PESCE -->
+<section id="ristoranti">
+  <div class="section-label">Dove mangiare</div>
+  <h2>Pesce fresco — locali autentici</h2>
+
+  <!-- CONSIGLI PROPRIETARIO -->
+  <div class="owner-rec-box">
+    <div class="owner-rec-header">
+      <div class="owner-avatar">👨‍🍳</div>
+      <div>
+        <h3>Consigliati da Girolamo Dirodi</h3>
+        <p>Proprietario del Residence Costamartino — i suoi locali di fiducia a Vieste</p>
+      </div>
+      <span class="owner-rec-badge">✓ Segnalati dal proprietario</span>
+    </div>
+
+    <div class="owner-rec-section-title">In città</div>
+    <div class="owner-rec-grid">
+
+      <div class="owner-rec-item">
+        <h4>Osteria degli Archi</h4>
+        <div class="rec-addr">📍 Via Ripe 2</div>
+        <div class="rec-tel">☎ <a href="tel:0884705199">0884.705199</a></div>
+        <a class="map-link" href="https://maps.google.com/?q=Osteria+degli+Archi+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+
+      <div class="owner-rec-item">
+        <h4>Al Dragone ⭐</h4>
+        <div class="rec-addr">📍 Via Duomo 8</div>
+        <div class="rec-tel">☎ <a href="tel:0884701212">0884.701212</a></div>
+        <div class="rec-tel" style="color:#a8e07a;font-size:0.75rem">↑ già in guida</div>
+        <a class="map-link" href="https://maps.google.com/?q=Al+Dragone+Ristorante+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+
+      <div class="owner-rec-item">
+        <h4>Molo 54</h4>
+        <div class="rec-addr">📍 Molo nord</div>
+        <div class="rec-tel">☎ <a href="tel:0884701080">0884.701080</a></div>
+        <a class="map-link" href="https://maps.google.com/?q=Ristorante+Molo54+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+
+      <div class="owner-rec-item">
+        <h4>Borgo Antico</h4>
+        <div class="rec-addr">📍 Corso C. Battisti</div>
+        <div class="rec-tel">☎ <a href="tel:0884701377">0884.701377</a></div>
+        <a class="map-link" href="https://maps.google.com/?q=Borgo+Antico+Ristorante+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+
+      <div class="owner-rec-item">
+        <h4>Osteria Al Duomo</h4>
+        <div class="rec-addr">📍 Via Alessandro III 27</div>
+        <div class="rec-tel">☎ <a href="tel:0884708243">0884.708243</a></div>
+        <a class="map-link" href="https://maps.google.com/?q=Osteria+Al+Duomo+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+
+      <div class="owner-rec-item">
+        <h4>Al Tramonto</h4>
+        <div class="rec-addr">📍 Loc. Porticello</div>
+        <div class="rec-tel">☎ <a href="tel:0884594581">0884.594581</a></div>
+        <a class="map-link" href="https://maps.google.com/?q=Ristorante+Al+Tramonto+Porticello+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+
+      <div class="owner-rec-item">
+        <h4>Da Enzo — Paposceria</h4>
+        <div class="rec-addr">📍 Via Tre Piccioni 1</div>
+        <div class="rec-tel">☎ <a href="tel:3284121982">328.4121982</a></div>
+        <a class="map-link" href="https://maps.google.com/?q=Da+Enzo+Paposceria+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+
+      <div class="owner-rec-item">
+        <h4>Box 19</h4>
+        <div class="rec-addr">📍 Via S. Maria di Merino 13</div>
+        <div class="rec-tel">☎ <a href="tel:0884705229">0884.705229</a></div>
+        <a class="map-link" href="https://maps.google.com/?q=Ristorante+Box+19+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+
+      <div class="owner-rec-item">
+        <h4>Lido San Lorenzo</h4>
+        <div class="rec-addr">📍 Loc. Defensola</div>
+        <div class="rec-tel">☎ <a href="tel:0884320610">0884.320610</a></div>
+        <a class="map-link" href="https://maps.google.com/?q=Lido+San+Lorenzo+Defensola+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+
+      <div class="owner-rec-item">
+        <h4>Caffetteria Ferri</h4>
+        <div class="rec-addr">📍 Lungomare Europa 33</div>
+        <div class="rec-tel">☎ <a href="tel:0884706320">0884.706320</a></div>
+        <a class="map-link" href="https://maps.google.com/?q=Caffetteria+Ferri+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+
+    </div>
+
+    <div class="owner-rec-section-title">Fuori dal centro</div>
+    <div class="owner-rec-grid">
+
+      <div class="owner-rec-item">
+        <h4>Masseria La Valle del Cerro</h4>
+        <div class="rec-addr">📍 Loc. Marzaniello</div>
+        <div class="rec-tel">☎ <a href="tel:3403131765">340.3131765</a></div>
+        <a class="map-link" href="https://maps.google.com/?q=Masseria+Valle+del+Cerro+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+
+      <div class="owner-rec-item">
+        <h4>Locanda San Luca</h4>
+        <div class="rec-addr">📍 Loc. Spacco</div>
+        <div class="rec-tel">☎ <a href="tel:0884705930">0884.705930</a></div>
+        <a class="map-link" href="https://maps.google.com/?q=Locanda+San+Luca+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+
+      <div class="owner-rec-item">
+        <h4>Lume di Candela</h4>
+        <div class="rec-addr">📍 Loc. Piano Piccolo</div>
+        <div class="rec-tel">☎ <a href="tel:3280194914">328.0194914</a></div>
+        <a class="map-link" href="https://maps.google.com/?q=Lume+di+Candela+Ristorante+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+
+      <div class="owner-rec-item">
+        <h4>Chalet degli Ulivi</h4>
+        <div class="rec-addr">📍 Loc. Marchionna 3</div>
+        <div class="rec-tel">☎ <a href="tel:3464143598">346.4143598</a></div>
+        <a class="map-link" href="https://maps.google.com/?q=Chalet+degli+Ulivi+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="food-list">
+
+    <div class="food-item">
+      <div class="food-emoji">🎣</div>
+      <div>
+        <h4>Trattoria Onda Marina</h4>
+        <p>Via Trepiccioni 5 · Prezzo medio ~29€ · Rating 8.8/10 su TheFork. Considerata dai locali <em>"il miglior pesce fresco di Vieste"</em>. Piccola, nessuna scenografia turistica, cucina diretta.</p>
+        <p style="margin-top:5px;font-size:0.82rem;color:#aaa;">💡 Prenota sempre — ha pochi coperti.</p>
+        <a class="map-link" href="https://maps.google.com/?q=Trattoria+Onda+Marina+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+    </div>
+
+    <div class="food-item">
+      <div class="food-emoji">🪨</div>
+      <div>
+        <h4>Al Dragone</h4>
+        <p>Nel cuore di Vieste Vecchia, vicino alla Cattedrale. Ricavato direttamente nella roccia — l'ambiente è straordinario. Consigliato dal Gambero Rosso. Pesce fresco, cucina tradizionale senza fronzoli.</p>
+        <p style="margin-top:5px;font-size:0.82rem;color:#aaa;">💡 Prenotare con anticipo — molto richiesto nonostante sia poco pubblicizzato.</p>
+        <a class="map-link" href="https://maps.google.com/?q=Al+Dragone+Ristorante+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+    </div>
+
+    <div class="food-item">
+      <div class="food-emoji">🏠</div>
+      <div>
+        <h4>Antonella Home Restaurant</h4>
+        <p>4.8/5 con 253 recensioni — voto altissimo con numeri autentici. "Home restaurant" significa cucina familiare, pochi coperti, prodotti locali. L'esperienza opposta al ristorante turistico.</p>
+        <p style="margin-top:5px;font-size:0.82rem;color:#aaa;">💡 Prenotazione obbligatoria e anticipata.</p>
+        <a class="map-link" href="https://maps.google.com/?q=Antonella+Home+Restaurant+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+    </div>
+
+    <div class="food-item">
+      <div class="food-emoji">🍷</div>
+      <div>
+        <h4>Enoteca Vesta</h4>
+        <p>Wine bar ricavato in una grotta nel centro storico. Abbina vini del Gargano a crudi di pesce e piatti di mare. Atmosfera unica, frequentato da chi abita a Vieste — non dai vacanzieri mordi-e-fuggi.</p>
+        <a class="map-link" href="https://maps.google.com/?q=Enoteca+Vesta+Vieste+FG" target="_blank">📍 Google Maps</a>
+      </div>
+    </div>
+
+    <div class="food-item">
+      <div class="food-emoji">🪵</div>
+      <div>
+        <h4>Trabucco di Monte Pucci <span style="font-size:0.8rem;color:#888">(Peschici, 30 min)</span></h4>
+        <p>Il trabucco più autentico della zona. Pesce pescato quella mattina con la struttura storica. ~80€/persona — non economico, ma l'esperienza non ha paragoni. 4.3/5 con 1.413 recensioni.</p>
+        <p style="margin-top:5px;font-size:0.82rem;color:#aaa;">💡 Prenotare settimane prima in giugno.</p>
+        <a class="map-link" href="https://maps.google.com/?q=Trabucco+Monte+Pucci+Peschici+FG" target="_blank">📍 Google Maps</a>
+      </div>
+    </div>
+
+    <div class="food-item">
+      <div class="food-emoji">🌿</div>
+      <div>
+        <h4>Agriturismo Azzarone <span style="font-size:0.8rem;color:#888">(entroterra)</span></h4>
+        <p>Tra le campagne verso la Foresta Umbra. Cucina di terra del Gargano: orecchiette fatte a mano, costatine d'agnello, dolci con marmellate artigianali, olio proprio. Per quando vuoi staccare dal pesce.</p>
+        <a class="map-link" href="https://maps.google.com/?q=Agriturismo+Azzarone+Vieste+Gargano+FG" target="_blank">📍 Google Maps</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PANIFICI -->
+<section id="panifici">
+  <div class="section-label">Pane & Focaccia</div>
+  <h2>Panifici</h2>
+  <div class="practical-grid">
+
+    <div class="practical-card">
+      <div class="p-icon">🍞</div>
+      <h4>Panificio Ciuffreda</h4>
+      <p>Contrada Defensola 55. Consigliato dalla gente del posto da generazioni. Pane a basso lievito, frise, castagnette, pane casereccio. <strong>Ottime focacce</strong> e dolci — perfetti per il pic nic in spiaggia.</p>
+      <span class="p-tag">4.4/5 · Zona nord di Vieste</span>
+      <p class="p-note">💡 Arriva presto — le focacce finiscono.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Panificio+Ciuffreda+Vieste+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="practical-card">
+      <div class="p-icon">🔴</div>
+      <h4>Il Fornaio — Panificio Latorre</h4>
+      <p>Da oltre 40 anni sinonimo del buon pane viestano. <strong>4 punti vendita</strong> in città (Via De Maria e Via Papa Giovanni tra i più comodi). Famosa la <strong>focaccia rossa</strong> — leggera, gustosa, ineguagliabile a qualsiasi ora.</p>
+      <span class="p-tag">4.2/5 · 4 sedi a Vieste</span>
+      <p class="p-note">💡 La focaccia rossa è il must — biscotti e dolci ottimi.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Il+Fornaio+Panificio+Latorre+Vieste+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="practical-card">
+      <div class="p-icon">🫓</div>
+      <h4>Forni del centro storico</h4>
+      <p>Nei vicoli di Vieste Vecchia ci sono piccoli forni artigianali che sfornano <strong>focacce con alici, rustici e taralli di pesce</strong>. Nessun nome fisso — seguita l'odore del forno a legna la mattina presto.</p>
+      <span class="p-tag">Centro storico · Artigianale</span>
+      <p class="p-note">💡 Ideali per colazione o spuntino da porto.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Centro+storico+Vieste+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- GELATERIE -->
+<section id="gelaterie">
+  <div class="section-label">Gelato artigianale</div>
+  <h2>Gelaterie</h2>
+  <div class="practical-grid">
+
+    <div class="practical-card">
+      <div class="p-icon">🍦</div>
+      <h4>Gelateria Maggiore</h4>
+      <p>Via Santa Maria di Merino 40. Dal 1981 — <strong>la più storica di Vieste</strong>. Gelati artigianali con prodotti del territorio: agrumi del Gargano, mandorle, fichi. Granite eccellenti. Aperto tutti i giorni 8:00–22:00.</p>
+      <span class="p-tag">Dal 1981 · Via S.M. di Merino 40</span>
+      <p class="p-note">💡 Prova i gusti con ingredienti locali: mandorla, fico, agrumi.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Gelateria+Maggiore+Vieste+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="practical-card">
+      <div class="p-icon">🌊</div>
+      <h4>Gelateria Marina Piccola</h4>
+      <p>Affacciata sulla baia di Marina Piccola nel centro storico. Gelato artigianale con vista mare — uno dei panorami più belli di Vieste mentre mangi il cono. Meno conosciuta della Maggiore.</p>
+      <span class="p-tag">4.4/5 · Marina Piccola</span>
+      <p class="p-note">💡 Perfetta dopo la passeggiata serale nel centro storico.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Marina+Piccola+Vieste+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SUPERMERCATI -->
+<section id="supermercati">
+  <div class="section-label">Spesa quotidiana</div>
+  <h2>Supermercati</h2>
+  <div class="practical-grid">
+
+    <div class="practical-card">
+      <div class="p-icon">🛒</div>
+      <h4>Conad City</h4>
+      <p>Via D. Alighieri / Jenner 1 — sul <strong>corso principale</strong> di Vieste, posizione comodissima. Il più fornito della zona. Aperto tutti i giorni con orario continuato in estate. Accanto al mercato giornaliero dell'ortofrutta.</p>
+      <span class="p-tag">Corso principale · Ogni giorno</span>
+      <p class="p-note">💡 Colazioni, acqua, pranzi al sacco — compra qui.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Conad+City+Vieste+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="practical-card">
+      <div class="p-icon">💶</div>
+      <h4>Penny Market</h4>
+      <p>Discount della zona — prezzi più bassi del Conad per prodotti di base come acqua, snack, prodotti confezionati. Utile per fare scorte economiche all'inizio della settimana.</p>
+      <span class="p-tag">Discount · Periferia Vieste</span>
+      <p class="p-note">💡 Per acqua e crema solare spendi meno qui.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Penny+Market+Vieste+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- MERCATO -->
+<section id="mercato">
+  <div class="section-label">Prodotti locali</div>
+  <h2>Mercato ortofrutticolo</h2>
+  <div class="practical-grid">
+
+    <div class="practical-card">
+      <div class="p-icon">🥦</div>
+      <h4>Mercato giornaliero</h4>
+      <p>Accanto al Conad sul corso principale — <strong>aperto ogni giorno</strong> con bancarelle di frutta e verdura fresche. Prodotti locali pugliesi, prezzi di mercato. Il posto giusto per peperoni, pomodori, melanzane e frutta di stagione.</p>
+      <span class="p-tag">Ogni giorno · Corso principale</span>
+      <p class="p-note">💡 Mattina presto per la scelta migliore.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Mercato+ortofrutticolo+Vieste+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="practical-card">
+      <div class="p-icon">🧺</div>
+      <h4>Mercato quindicinale del Lungomare</h4>
+      <p>Sul Lungomare Europa — si tiene <strong>due volte al mese</strong>. Durante il tuo soggiorno (20–27 giugno) cade il <strong>30 giugno</strong> (fuori periodo) — ma se passi dopo il 27, vale la visita. Frutta, verdura, formaggi, olio, taralli, artigianato locale.</p>
+      <span class="p-tag">Lungomare Europa · Quindicinale</span>
+      <p class="p-note">💡 Olio, caciocavallo e taralli direttamente dai produttori.</p>
+      <a class="map-link" href="https://maps.google.com/?q=Lungomare+Europa+Vieste+FG" target="_blank">📍 Google Maps</a>
+    </div>
+
+    <div class="practical-card">
+      <div class="p-icon">🫒</div>
+      <h4>Cosa comprare al mercato</h4>
+      <p>I prodotti tipici da non perdere: <strong>olio extravergine del Gargano</strong>, <strong>caciocavallo podolico</strong>, <strong>miele di sulla</strong>, <strong>taralli pugliesi</strong>, pomodori fiaschetto, peperoncini cruschi. Tutto a prezzi locali.</p>
+      <span class="p-tag">Prodotti tipici garganici</span>
+      <p class="p-note">💡 Porta una borsa termica per i formaggi freschi.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONSIGLI PRATICI -->
+<section>
+  <div class="section-label">Logistica</div>
+  <h2>Consigli pratici</h2>
+  <div class="tips-grid">
+
+    <div class="tip-card">
+      <div class="tip-icon">🌡️</div>
+      <h4>Meteo giugno</h4>
+      <p>27–33°C, sole quasi garantito. Mare 23–25°C. Serate piacevoli, mai afosa come agosto.</p>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">🚗</div>
+      <h4>Auto indispensabile</h4>
+      <p>Da Costamartino non si raggiunge niente a piedi. L'auto è essenziale per le spiagge nascoste e l'entroterra.</p>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">💧</div>
+      <h4>Acqua & spiagge libere</h4>
+      <p>Porta sempre 2L di acqua. Le spiagge nascoste non hanno bar. Borsa termica con pranzo al sacco.</p>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">🥾</div>
+      <h4>Cosa portare</h4>
+      <p>Scarpe da scoglio, maschera snorkeling, zaino leggero per la foresta, crema 50+, contanti (i locali non accettano carte).</p>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">⏰</div>
+      <h4>Orari strategici</h4>
+      <p>Spiagge all'alba o dopo le 17. Borghi la mattina presto. Evita 11–15 al sole diretto.</p>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">📵</div>
+      <h4>Connessione</h4>
+      <p>In Foresta Umbra e nelle calette nascoste il segnale è assente. Scarica mappe offline (Maps.me o Google Maps offline) prima di partire.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>Guida creata per <span>Dario</span> · Gargano — Vieste, Peschici, Mattinata & Dintorni · Giugno 2026</p>
+  <p style="margin-top:8px; color:#444;">Buon viaggio nel Gargano autentico 🌊</p>
+</footer>
+
+
+<script>
+// Nav a due livelli: click su città → mostra relative sezioni
+(function () {
+  var cityBtns = document.querySelectorAll('.nav-city-btn');
+  var sectionRows = document.querySelectorAll('.nav-sections-row');
+
+  cityBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var city = this.dataset.city;
+
+      // aggiorna pulsanti città
+      cityBtns.forEach(function (b) { b.classList.remove('active'); });
+      this.classList.add('active');
+
+      // aggiorna righe sezioni
+      sectionRows.forEach(function (row) {
+        if (row.dataset.citySections === city) {
+          row.classList.add('active');
+        } else {
+          row.classList.remove('active');
+        }
+      });
+    });
+  });
+})();
+</script>
+
+
+<!-- ========== GALLERY SECTION ========== -->
+<section id="gallery-section">
+  <div class="section-label">Galleria privata</div>
+  <h2>📸 Foto Vacanza — Vieste 2026</h2>
+  <p style="color:#aac; margin-bottom:20px;">Vieste, Gargano · 20–27 Giugno 2026 · <span id="gallery-count" style="color:#3ab4d8;"></span></p>
+  <div class="gallery-grid" id="gallery-grid">
+    <div class="photo-item" data-index="1">
+      <img src="photos/01_photo_f727089b8be648a4ad72be62d1049c49.jpg" alt="Foto 1 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 1)">
+      <div class="photo-num">1</div>
+    </div>
+    <div class="photo-item" data-index="2">
+      <img src="photos/02_photo_8012f207aaf8474bb80eaa6518d19dd1.jpg" alt="Foto 2 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 2)">
+      <div class="photo-num">2</div>
+    </div>
+    <div class="photo-item" data-index="3">
+      <img src="photos/03_photo_a33b6070d7424e74a51a3c503bff8157.jpg" alt="Foto 3 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 3)">
+      <div class="photo-num">3</div>
+    </div>
+    <div class="photo-item" data-index="4">
+      <img src="photos/04_photo_c39106c0b2524998aad224427139c11d.jpg" alt="Foto 4 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 4)">
+      <div class="photo-num">4</div>
+    </div>
+    <div class="photo-item" data-index="5">
+      <img src="photos/05_photo_fbffe9b7ee78402c9446d5870424f8aa.jpg" alt="Foto 5 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 5)">
+      <div class="photo-num">5</div>
+    </div>
+    <div class="photo-item" data-index="6">
+      <img src="photos/06_photo_6545bbc53b0643a59472f0048327f680.jpg" alt="Foto 6 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 6)">
+      <div class="photo-num">6</div>
+    </div>
+    <div class="photo-item" data-index="7">
+      <img src="photos/07_photo_d12defc327134c5984642b07321d601b.jpg" alt="Foto 7 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 7)">
+      <div class="photo-num">7</div>
+    </div>
+    <div class="photo-item" data-index="8">
+      <img src="photos/08_photo_08d315ce454b47a191d13e14d84fefcb.jpg" alt="Foto 8 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 8)">
+      <div class="photo-num">8</div>
+    </div>
+    <div class="photo-item" data-index="9">
+      <img src="photos/09_photo_b27f23a46b74423aba6a3b6a618730c1.jpg" alt="Foto 9 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 9)">
+      <div class="photo-num">9</div>
+    </div>
+    <div class="photo-item" data-index="10">
+      <img src="photos/10_photo_deaf0e7b906a49d39816c7397242aac3.jpg" alt="Foto 10 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 10)">
+      <div class="photo-num">10</div>
+    </div>
+    <div class="photo-item" data-index="11">
+      <img src="photos/11_photo_eee34c3114ae4ab09a0758d2fe9b4d26.jpg" alt="Foto 11 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 11)">
+      <div class="photo-num">11</div>
+    </div>
+    <div class="photo-item" data-index="12">
+      <img src="photos/12_photo_b060f81d0d3a45c0a33f3d1b6166fe28.jpg" alt="Foto 12 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 12)">
+      <div class="photo-num">12</div>
+    </div>
+    <div class="photo-item" data-index="13">
+      <img src="photos/13_photo_217fe5bd22fa4f508a1c9a1571098c1e.jpg" alt="Foto 13 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 13)">
+      <div class="photo-num">13</div>
+    </div>
+    <div class="photo-item" data-index="14">
+      <img src="photos/14_photo_27107aebc60d458c8be95fbf480dbeaa.jpg" alt="Foto 14 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 14)">
+      <div class="photo-num">14</div>
+    </div>
+    <div class="photo-item" data-index="15">
+      <img src="photos/15_photo_1dc4367f6cd7429884bab0f20afeb9ee.jpg" alt="Foto 15 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 15)">
+      <div class="photo-num">15</div>
+    </div>
+    <div class="photo-item" data-index="16">
+      <img src="photos/16_photo_b5686ac61fed48a0ae967d6eff055fdd.jpg" alt="Foto 16 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 16)">
+      <div class="photo-num">16</div>
+    </div>
+    <div class="photo-item" data-index="17">
+      <img src="photos/17_photo_b2edd1f53a054dd59a2b9db453d44ad8.jpg" alt="Foto 17 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 17)">
+      <div class="photo-num">17</div>
+    </div>
+    <div class="photo-item" data-index="18">
+      <img src="photos/18_photo_f2838a4328ed46b6a48aaefe8080db47.jpg" alt="Foto 18 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 18)">
+      <div class="photo-num">18</div>
+    </div>
+    <div class="photo-item" data-index="19">
+      <img src="photos/19_photo_dfb75640aa8a43f682e4262cf6428c53.jpg" alt="Foto 19 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 19)">
+      <div class="photo-num">19</div>
+    </div>
+    <div class="photo-item" data-index="20">
+      <img src="photos/20_photo_a9d4e75774c5420a8556b4fbece53ae1.jpg" alt="Foto 20 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 20)">
+      <div class="photo-num">20</div>
+    </div>
+    <div class="photo-item" data-index="21">
+      <img src="photos/21_photo_47605ef2e01a4287bad8c64725f247ec.jpg" alt="Foto 21 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 21)">
+      <div class="photo-num">21</div>
+    </div>
+    <div class="photo-item" data-index="22">
+      <img src="photos/22_photo_89a0f518501c4144a7adaef49979ec4c.jpg" alt="Foto 22 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 22)">
+      <div class="photo-num">22</div>
+    </div>
+    <div class="photo-item" data-index="23">
+      <img src="photos/23_photo_1c04a76044334b22b1e7626164a76645.jpg" alt="Foto 23 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 23)">
+      <div class="photo-num">23</div>
+    </div>
+    <div class="photo-item" data-index="24">
+      <img src="photos/24_photo_035bf7eb2b0145bf84198847dd4f0a96.jpg" alt="Foto 24 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 24)">
+      <div class="photo-num">24</div>
+    </div>
+    <div class="photo-item" data-index="25">
+      <img src="photos/25_photo_db66d98723b1453fa4267388c3e09564.jpg" alt="Foto 25 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 25)">
+      <div class="photo-num">25</div>
+    </div>
+    <div class="photo-item" data-index="26">
+      <img src="photos/26_photo_f3ca48bcc9ad4236aae219469f28170f.jpg" alt="Foto 26 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 26)">
+      <div class="photo-num">26</div>
+    </div>
+    <div class="photo-item" data-index="27">
+      <img src="photos/27_photo_1b9c4d247ebe45af8494e2a7c51d0289.jpg" alt="Foto 27 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 27)">
+      <div class="photo-num">27</div>
+    </div>
+    <div class="photo-item" data-index="28">
+      <img src="photos/28_photo_4e1a326ac2074d10a4c756cfbac826f5.jpg" alt="Foto 28 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 28)">
+      <div class="photo-num">28</div>
+    </div>
+    <div class="photo-item" data-index="29">
+      <img src="photos/29_photo_466af051c7d14640b4836c9d15b2ec29.jpg" alt="Foto 29 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 29)">
+      <div class="photo-num">29</div>
+    </div>
+    <div class="photo-item" data-index="30">
+      <img src="photos/30_photo_c0fd1bbf50084b90a0253c2196c6e0d1.jpg" alt="Foto 30 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 30)">
+      <div class="photo-num">30</div>
+    </div>
+    <div class="photo-item" data-index="31">
+      <img src="photos/31_photo_d1948bf20c724122b31fa8c9bc4fa08a.jpg" alt="Foto 31 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 31)">
+      <div class="photo-num">31</div>
+    </div>
+    <div class="photo-item" data-index="32">
+      <img src="photos/32_photo_c3cfbeb9fd4c4b66bf7bca3847707f7d.jpg" alt="Foto 32 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 32)">
+      <div class="photo-num">32</div>
+    </div>
+    <div class="photo-item" data-index="33">
+      <img src="photos/33_photo_0c64302827ac443cbb378672caba7cb2.jpg" alt="Foto 33 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 33)">
+      <div class="photo-num">33</div>
+    </div>
+    <div class="photo-item" data-index="34">
+      <img src="photos/34_photo_2ed67e46455942c4a07b6f8fe643a5e9.jpg" alt="Foto 34 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 34)">
+      <div class="photo-num">34</div>
+    </div>
+    <div class="photo-item" data-index="35">
+      <img src="photos/35_photo_3efbdac0192842b39c80d22ad5a23db2.jpg" alt="Foto 35 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 35)">
+      <div class="photo-num">35</div>
+    </div>
+    <div class="photo-item" data-index="36">
+      <img src="photos/36_photo_306bf6344b5247e79ba2212b14dd1ec7.jpg" alt="Foto 36 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 36)">
+      <div class="photo-num">36</div>
+    </div>
+    <div class="photo-item" data-index="37">
+      <img src="photos/37_photo_28784ce572ed420482ba629f123c9066.jpg" alt="Foto 37 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 37)">
+      <div class="photo-num">37</div>
+    </div>
+    <div class="photo-item" data-index="38">
+      <img src="photos/38_photo_222110b2833848e5a51a9f2daeed77ee.jpg" alt="Foto 38 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 38)">
+      <div class="photo-num">38</div>
+    </div>
+    <div class="photo-item" data-index="39">
+      <img src="photos/39_photo_d834c7199c954558ab36d4cf07e72244.jpg" alt="Foto 39 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 39)">
+      <div class="photo-num">39</div>
+    </div>
+    <div class="photo-item" data-index="40">
+      <img src="photos/40_photo_9870b959af30422ab462cfcc53639a87.jpg" alt="Foto 40 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 40)">
+      <div class="photo-num">40</div>
+    </div>
+    <div class="photo-item" data-index="41">
+      <img src="photos/41_photo_f632684ec38848fb8f4e94f318e0331b.jpg" alt="Foto 41 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 41)">
+      <div class="photo-num">41</div>
+    </div>
+    <div class="photo-item" data-index="42">
+      <img src="photos/42_photo_de660a5466254d019402143142a2cdd9.jpg" alt="Foto 42 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 42)">
+      <div class="photo-num">42</div>
+    </div>
+    <div class="photo-item" data-index="43">
+      <img src="photos/43_photo_53a058202538426a8fbd5382452af6ca.jpg" alt="Foto 43 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 43)">
+      <div class="photo-num">43</div>
+    </div>
+    <div class="photo-item" data-index="44">
+      <img src="photos/44_photo_225d91ab12354acd8837e41cd0857848.jpg" alt="Foto 44 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 44)">
+      <div class="photo-num">44</div>
+    </div>
+    <div class="photo-item" data-index="45">
+      <img src="photos/45_photo_f730061660a14413a21f14640163c762.jpg" alt="Foto 45 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 45)">
+      <div class="photo-num">45</div>
+    </div>
+    <div class="photo-item" data-index="46">
+      <img src="photos/46_photo_93d34955ccfb4745aa070cb8e1226f21.jpg" alt="Foto 46 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 46)">
+      <div class="photo-num">46</div>
+    </div>
+    <div class="photo-item" data-index="47">
+      <img src="photos/47_photo_379859aae7a94d309dec7447f929cde1.jpg" alt="Foto 47 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 47)">
+      <div class="photo-num">47</div>
+    </div>
+    <div class="photo-item" data-index="48">
+      <img src="photos/48_photo_2738fb2dc0ff4680a216818dd37100f3.jpg" alt="Foto 48 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 48)">
+      <div class="photo-num">48</div>
+    </div>
+    <div class="photo-item" data-index="49">
+      <img src="photos/49_photo_5b8a0719c0564959acafe07f96c1f4f8.jpg" alt="Foto 49 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 49)">
+      <div class="photo-num">49</div>
+    </div>
+    <div class="photo-item" data-index="50">
+      <img src="photos/50_photo_c5c55654755448edb6b7c8487ee77dae.jpg" alt="Foto 50 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 50)">
+      <div class="photo-num">50</div>
+    </div>
+    <div class="photo-item" data-index="51">
+      <img src="photos/51_photo_cc712e73b05548d5bac13e338e0d7ec4.jpg" alt="Foto 51 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 51)">
+      <div class="photo-num">51</div>
+    </div>
+    <div class="photo-item" data-index="52">
+      <img src="photos/52_photo_fafa9bdc099e4a358a66250eb57d0b76.jpg" alt="Foto 52 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 52)">
+      <div class="photo-num">52</div>
+    </div>
+    <div class="photo-item" data-index="53">
+      <img src="photos/53_photo_0be7e827bff64eaca88af3599695c698.jpg" alt="Foto 53 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 53)">
+      <div class="photo-num">53</div>
+    </div>
+    <div class="photo-item" data-index="54">
+      <img src="photos/54_photo_643af6e87c8145e8a78cca289d6aa3fc.jpg" alt="Foto 54 - Vieste 2026" loading="lazy" onclick="openLightbox(this.src, 54)">
+      <div class="photo-num">54</div>
+    </div>
+  </div>
+</section>
+
+<!-- Password overlay -->
+<div id="gallery-lock-overlay" style="display:none;">
+  <div class="lock-box">
+    <div class="lock-icon">🔐</div>
+    <h2>Galleria privata</h2>
+    <p>Inserisci la password per vedere le foto della vacanza</p>
+    <input type="password" class="lock-input" id="pwd-input" placeholder="Password" onkeydown="if(event.key==='Enter') checkPwd()">
+    <button class="lock-btn" onclick="checkPwd()">Accedi alle foto</button>
+    <div class="lock-error" id="pwd-error"></div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <button class="lb-nav lb-prev" onclick="lbNav(-1)">‹</button>
+  <img id="lb-img" src="" alt="">
+  <div class="lb-counter" id="lb-counter"></div>
+  <button class="lb-nav lb-next" onclick="lbNav(1)">›</button>
+</div>
+
+<script>
+// ---- GALLERY PASSWORD LOGIC ----
+var GALLERY_PWD = 'silvia2026';
+var SESSION_KEY = 'gg_gallery_auth';
+var lbPhotos = [];
+var lbCurrent = 0;
+
+function openGallery() {
+  var section = document.getElementById('gallery-section');
+  var overlay = document.getElementById('gallery-lock-overlay');
+  if (sessionStorage.getItem(SESSION_KEY) === '1') {
+    unlockGallery();
+    section.scrollIntoView({behavior:'smooth'});
+  } else {
+    overlay.style.display = 'flex';
+    setTimeout(function(){ document.getElementById('pwd-input').focus(); }, 100);
+  }
+}
+
+function checkPwd() {
+  var val = document.getElementById('pwd-input').value;
+  var err = document.getElementById('pwd-error');
+  if (val === GALLERY_PWD) {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    document.getElementById('gallery-lock-overlay').style.display = 'none';
+    unlockGallery();
+    document.getElementById('gallery-section').scrollIntoView({behavior:'smooth'});
+  } else {
+    err.textContent = '❌ Password errata, riprova';
+    document.getElementById('pwd-input').value = '';
+    document.getElementById('pwd-input').focus();
+    setTimeout(function(){ err.textContent = ''; }, 3000);
+  }
+}
+
+function unlockGallery() {
+  var section = document.getElementById('gallery-section');
+  section.classList.add('unlocked');
+  var imgs = document.querySelectorAll('#gallery-grid img');
+  document.getElementById('gallery-count').textContent = imgs.length + ' foto';
+  lbPhotos = Array.from(imgs).map(function(img){ return img.src; });
+}
+
+function openLightbox(src, idx) {
+  lbCurrent = idx - 1;
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lb-counter').textContent = (lbCurrent+1) + ' / ' + lbPhotos.length;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function lbNav(dir) {
+  lbCurrent = (lbCurrent + dir + lbPhotos.length) % lbPhotos.length;
+  document.getElementById('lb-img').src = lbPhotos[lbCurrent];
+  document.getElementById('lb-counter').textContent = (lbCurrent+1) + ' / ' + lbPhotos.length;
+}
+
+// Chiudi lightbox con ESC
+document.addEventListener('keydown', function(e) {
+  var lb = document.getElementById('lightbox');
+  if (lb.classList.contains('active')) {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') lbNav(1);
+    if (e.key === 'ArrowLeft') lbNav(-1);
+  }
+});
+
+// Chiudi lightbox cliccando sfondo
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+
+// Check auth al caricamento (se già autenticato, sblocca subito)
+if (sessionStorage.getItem(SESSION_KEY) === '1') {
+  unlockGallery();
+}
+</script>
+
+</body>
+</html>

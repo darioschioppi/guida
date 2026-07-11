@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capri fuori dai sentieri battuti — Guida pratica</title>
+<style>
+  :root{
+    --blu-mare:#0a5f7a;
+    --blu-scuro:#083b52;
+    --sabbia:#f6efe3;
+    --terracotta:#c96a3b;
+    --testo:#2b2b2b;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI', Roboto, Arial, sans-serif;
+    background:var(--sabbia);
+    color:var(--testo);
+    line-height:1.65;
+  }
+  header{
+    background:linear-gradient(135deg, var(--blu-scuro), var(--blu-mare));
+    color:#fff;
+    padding:60px 20px 50px;
+    text-align:center;
+  }
+  header h1{
+    font-size:2.4em;
+    margin:0 0 10px;
+    letter-spacing:0.5px;
+  }
+  header p{
+    font-size:1.1em;
+    opacity:0.92;
+    max-width:700px;
+    margin:0 auto;
+  }
+  nav{
+    background:var(--blu-scuro);
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
+    padding:12px;
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  nav a{
+    color:#fff;
+    text-decoration:none;
+    font-size:0.9em;
+    padding:8px 14px;
+    border-radius:20px;
+    transition:background 0.2s;
+  }
+  nav a:hover{ background:rgba(255,255,255,0.15); }
+  main{
+    max-width:900px;
+    margin:0 auto;
+    padding:20px;
+  }
+  section{
+    margin:50px 0;
+  }
+  section h2{
+    color:var(--blu-scuro);
+    border-bottom:3px solid var(--terracotta);
+    padding-bottom:8px;
+    font-size:1.6em;
+  }
+  .card{
+    background:#fff;
+    border-radius:12px;
+    padding:20px 24px;
+    margin:18px 0;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    border-left:5px solid var(--blu-mare);
+  }
+  .card h3{
+    margin-top:0;
+    color:var(--terracotta);
+  }
+  .card .tag{
+    display:inline-block;
+    background:var(--sabbia);
+    color:var(--blu-scuro);
+    font-size:0.75em;
+    padding:3px 10px;
+    border-radius:12px;
+    margin-bottom:8px;
+  }
+  .tip{
+    background:#eef7f4;
+    border-left:5px solid #2e8b57;
+    padding:14px 20px;
+    border-radius:8px;
+    margin:20px 0;
+    font-size:0.95em;
+  }
+  .warn{
+    background:#fdf1e8;
+    border-left:5px solid var(--terracotta);
+    padding:14px 20px;
+    border-radius:8px;
+    margin:20px 0;
+    font-size:0.95em;
+  }
+  footer{
+    text-align:center;
+    padding:30px 20px;
+    background:var(--blu-scuro);
+    color:#fff;
+    font-size:0.85em;
+  }
+  footer a{ color:#ffd9a0; }
+  ul{ padding-left:20px; }
+  .grid2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  @media(max-width:640px){
+    .grid2{ grid-template-columns:1fr; }
+    header h1{ font-size:1.8em; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🏛️ Capri, oltre la Piazzetta</h1>
+  <p>Una guida pratica a Capri: storia e arte da scoprire, spiagge dove respirare senza la folla, e posti veri dove mangiare senza svuotare il portafoglio.</p>
+</header>
+
+<nav>
+  <a href="#storia">Storia &amp; Arte</a>
+  <a href="#spiagge">Spiagge poco affollate</a>
+  <a href="#mangiare">Dove mangiare</a>
+  <a href="#consigli">Consigli pratici</a>
+</nav>
+
+<main>
+
+  <section id="storia">
+    <h2>🏛️ Luoghi storici e artistici</h2>
+    <p>Capri non è solo Piazzetta e vetrine di lusso: è stata la residenza di un imperatore romano, il buen retiro di scrittori e pittori nordeuropei di fine '800, e conserva un patrimonio archeologico e artistico che spesso passa in secondo piano rispetto al panorama.</p>
+
+    <div class="card">
+      <span class="tag">Età romana</span>
+      <h3>Villa Jovis</h3>
+      <p>La residenza imperiale che Tiberio fece costruire sul Monte Tiberio, all'estremità orientale dell'isola, da cui governò l'impero per gli ultimi anni della sua vita (14-37 d.C.) senza quasi più tornare a Roma. Oggi restano le rovine imponenti di cisterne, terme e ambienti di rappresentanza, con una vista sul golfo che spiega perché un imperatore abbia scelto proprio questo punto. Si raggiunge solo a piedi (circa 45 minuti di camminata in salita da Capri centro): proprio per questo è uno dei siti storici meno affollati dell'isola.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">Medioevo — XIV secolo</span>
+      <h3>Certosa di San Giacomo</h3>
+      <p>Monastero certosino fondato nel 1371, è uno dei complessi monumentali più importanti del sud Italia. Ospita affreschi, un chiostro quattrocentesco e il Museo Diefenbach. L'ingresso è gratuito o a costo simbolico ed è quasi sempre tranquillo, nonostante si trovi a pochi minuti dai Giardini di Augusto.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">Belle époque</span>
+      <h3>Giardini di Augusto e Via Krupp</h3>
+      <p>Giardini terrazzati con una delle vedute più fotografate al mondo sui Faraglioni e sulla Via Krupp, la strada a tornanti scavata nella roccia nel 1902 per volere dell'industriale Friedrich Alfred Krupp. Ingresso a pagamento simbolico (1€), utile a mantenere il giardino ben curato e poco caotico rispetto alla Piazzetta a due passi.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">Primo '900</span>
+      <h3>Villa San Michele (Axel Munthe) — Anacapri</h3>
+      <p>La casa-museo del medico e scrittore svedese Axel Munthe, che la costruì fondendo reperti romani, arredi antichi e un giardino botanico con vista sul golfo di Napoli. È uno dei musei più "vissuti" dell'isola: meno turisti che a Capri centro, e un'atmosfera sospesa tra arte, natura e letteratura.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">Natura & geologia</span>
+      <h3>Grotta Azzurra e Faraglioni</h3>
+      <p>La Grotta Azzurra resta la meta più iconica (da vedere presto al mattino per luce migliore ed evitare la fila di barche), mentre i Faraglioni — i tre scogli calcarei simbolo dell'isola — si possono ammirare gratuitamente dai Giardini di Augusto o percorrendo a piedi il sentiero panoramico verso Punta Tragara.</p>
+    </div>
+  </section>
+
+  <section id="spiagge">
+    <h2>🏖️ Spiagge poco affollate</h2>
+    <p>Capri non è famosa per le spiagge sabbiose (l'isola è quasi tutta roccia calcarea), ma alcuni angoli restano più tranquilli della folla di Marina Grande e Marina Piccola in alta stagione.</p>
+
+    <div class="card">
+      <span class="tag">Storica</span>
+      <h3>Bagni di Tiberio</h3>
+      <p>Piccola baia vicino a Marina Grande, raggiungibile con una passeggiata di circa 30-40 minuti lungo la costa (o con un breve tragitto in barca a pagamento). La leggenda vuole che qui si bagnasse l'imperatore Tiberio: acqua calma e poco profonda, ideale anche in giornate di vento, e molto meno affollata rispetto agli stabilimenti centrali.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">Panoramica</span>
+      <h3>Marina Piccola (lato Scoglio delle Sirene)</h3>
+      <p>È la spiaggia più conosciuta dopo Marina Grande, ma allontanandosi dagli stabilimenti principali verso lo Scoglio delle Sirene si trovano scorci più isolati con vista sui Faraglioni. Meglio evitare le ore centrali di agosto; la mattina presto o il tardo pomeriggio regalano la stessa vista senza la folla.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">Selvaggia</span>
+      <h3>Grotta Verde e Punta Carena</h3>
+      <p>Sul lato occidentale dell'isola, verso Anacapri, la zona del faro di Punta Carena offre scogliere libere e un piccolo stabilimento, molto più tranquilli rispetto al versante di Capri centro. La Grotta Verde, raggiungibile solo in barca, deve il nome ai riflessi smeraldo dell'acqua e viene visitata da pochissimi tour rispetto alla Grotta Azzurra.</p>
+    </div>
+
+    <div class="tip">💡 <b>Consiglio pratico:</b> le spiagge di Capri si affollano soprattutto tra le 11 e le 16 in alta stagione (giugno-agosto). Arrivare presto al mattino o restare fino al tramonto è la strategia più semplice per goderle senza folla, oltre a evitare i weekend di luglio-agosto quando arrivano molte gite da Napoli e Sorrento.</div>
+  </section>
+
+  <section id="mangiare">
+    <h2>🍝 Dove mangiare senza spendere una fortuna</h2>
+    <p>La Piazzetta e le vie principali di Capri centro hanno prezzi turistici elevati. Le alternative migliori si trovano ad Anacapri e nelle strade secondarie lontane dal passeggio principale.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Anacapri, non Capri centro</h3>
+        <p>Anacapri ha un'atmosfera più locale e meno "da vetrina": prezzi generalmente più bassi per pizza, panini e piatti di pasta semplici, specialmente nelle vie lontane da Piazza Vittoria.</p>
+      </div>
+      <div class="card">
+        <h3>Pizza al taglio e paninoteche</h3>
+        <p>Cercate le piccole pizzerie a taglio o rosticcerie fuori dalle vie principali: un pasto veloce e genuino può costare una frazione di un pranzo al ristorante con vista mare.</p>
+      </div>
+      <div class="card">
+        <h3>Lontano dal mare, prezzi più onesti</h3>
+        <p>Come in molte località turistiche, i locali con vista diretta sul mare o sulla Piazzetta applicano un sovrapprezzo notevole. Allontanarsi anche di poche vie interne riduce spesso il conto senza perdere in qualità.</p>
+      </div>
+      <div class="card">
+        <h3>Mercato e alimentari locali</h3>
+        <p>Per un pranzo economico, un pacco di provola, pane fresco e pomodorini presi in un piccolo alimentari locale (ce ne sono sia a Capri che ad Anacapri) da consumare vista mare costa una piccola parte di un pasto al ristorante.</p>
+      </div>
+    </div>
+
+    <div class="warn">⚠️ <b>Nota onesta:</b> le ricerche online per nomi specifici di trattorie "economiche e non turistiche" a Capri hanno prodotto risultati poco affidabili o generici (molte fonti ripetono le stesse guide patinate rivolte al turismo di lusso). Prima di fidarsi di un singolo consiglio, meglio verificare su recensioni recenti (Google Maps, TripAdvisor) cercando parole chiave come "locale", "non turistico", "prezzi onesti" filtrando per le zone di Anacapri o le vie interne di Capri lontane dalla Piazzetta.</div>
+  </section>
+
+  <section id="consigli">
+    <h2>🧭 Consigli pratici</h2>
+    <ul>
+      <li><b>Come arrivare:</b> traghetti e aliscafi da Napoli, Sorrento e Positano; l'isola è pedonale, le auto private sono vietate ai non residenti.</li>
+      <li><b>Spostamenti sull'isola:</b> funicolare Marina Grande–Capri, autobus locali per Anacapri e le zone periferiche, taxi (aperti, tipici dell'isola) per tratte più dirette.</li>
+      <li><b>Periodo migliore:</b> maggio-giugno e settembre-ottobre offrono clima estivo con molta meno folla rispetto a luglio-agosto.</li>
+      <li><b>Scarpe comode:</b> molti dei luoghi più suggestivi (Villa Jovis, sentieri verso Punta Carena, Via Krupp) richiedono camminate su terreno irregolare.</li>
+      <li><b>Acqua e provviste:</b> portare una borraccia; i bar vicino alle attrazioni principali hanno prezzi turistici.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <p>Guida creata per Dario — contenuti raccolti e verificati tramite ricerche web, luglio 2026.</p>
+  <p>⚠️ Alcune informazioni su locali e prezzi possono cambiare: verificare sempre orari e disponibilità aggiornati prima della visita.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guida Bologna 2026 — La Dotta, La Grassa, La Rossa</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #1a1a1a;
+      color: #e8e0d0;
+      font-family: Georgia, 'Times New Roman', serif;
+      line-height: 1.7;
+    }
+
+    a { color: #e07b39; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, #8b0000 0%, #c0392b 40%, #2c1810 100%);
+      padding: 60px 24px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      color: #f5e9c8;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: #fff;
+      font-weight: normal;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    .hero h1 span { color: #f5c842; }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: #f5e9c8;
+      opacity: 0.9;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.75);
+    }
+    .hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(26,26,26,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #333;
+    }
+    /* Barra categorie */
+    .nav-categories {
+      display: flex;
+      gap: 6px;
+      padding: 10px 16px 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      border-bottom: 1px solid #2a2a2a;
+    }
+    .nav-categories::-webkit-scrollbar { display: none; }
+    .cat-btn {
+      white-space: nowrap;
+      padding: 7px 16px;
+      border-radius: 20px 20px 0 0;
+      font-size: 0.82rem;
+      color: #999;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-bottom: none;
+      background: #222;
+      transition: all 0.2s;
+      font-family: Georgia, serif;
+    }
+    .cat-btn:hover, .cat-btn.active {
+      background: #1a1a1a;
+      color: #f5c842;
+      border-color: #444;
+      border-bottom-color: #1a1a1a;
+    }
+    /* Barra link sezioni */
+    .nav-main {
+      display: flex;
+      gap: 4px;
+      padding: 8px 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-main::-webkit-scrollbar { display: none; }
+    .nav-main a {
+      white-space: nowrap;
+      padding: 5px 13px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      color: #ccc;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+    .nav-main a:hover {
+      background: rgba(224,123,57,0.15);
+      border-color: #e07b39;
+      color: #e07b39;
+      text-decoration: none;
+    }
+    .nav-section { display: none; }
+    .nav-section.visible { display: flex; }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* ── SEZIONI ── */
+    section { margin-bottom: 60px; }
+
+    h2 {
+      font-size: 1.7rem;
+      color: #f5c842;
+      border-bottom: 2px solid #3a2a10;
+      padding-bottom: 10px;
+      margin-bottom: 24px;
+      font-weight: normal;
+    }
+    h3 {
+      font-size: 1.2rem;
+      color: #e07b39;
+      margin: 24px 0 10px;
+    }
+    h4 {
+      font-size: 1rem;
+      color: #c8b89a;
+      margin: 16px 0 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    p { margin-bottom: 12px; color: #d4c8b8; }
+
+    ul, ol { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; color: #d4c8b8; }
+
+    /* ── INFO BOX ── */
+    .info-box {
+      background: #222;
+      border: 1px solid #333;
+      border-left: 4px solid #c0392b;
+      border-radius: 0 8px 8px 0;
+      padding: 18px 20px;
+      margin: 20px 0;
+    }
+    .info-box.verde { border-left-color: #4a7c59; }
+    .info-box.blu { border-left-color: #2980b9; }
+    .info-box.arancio { border-left-color: #e07b39; }
+
+    .tip-box {
+      background: #1e2e1e;
+      border: 1px solid #2d4a2d;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 0.92rem;
+    }
+    .tip-box::before { content: "💡 "; }
+
+    .warning-box {
+      background: #2a1f10;
+      border: 1px solid #5a3a10;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 0.92rem;
+    }
+    .warning-box::before { content: "⚠️ "; }
+
+    /* ── CARD GRID ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .card {
+      background: #222;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 18px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover { transform: translateY(-2px); border-color: #e07b39; }
+    .card-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+    .card h4 { margin: 0 0 8px; color: #f5c842; text-transform: none; font-size: 1rem; }
+    .card p { font-size: 0.88rem; margin: 0; color: #b0a090; }
+
+    /* ── DAY CARDS ── */
+    .day-card {
+      background: #222;
+      border: 1px solid #333;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .day-header {
+      background: linear-gradient(90deg, #3a0a0a, #5a1a1a);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .day-number {
+      background: #c0392b;
+      color: #fff;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .day-header h3 { margin: 0; color: #f5e9c8; font-size: 1.05rem; }
+    .day-header .day-meta { font-size: 0.8rem; color: #c8a080; }
+    .day-body { padding: 20px; }
+    .day-body ul li { margin-bottom: 10px; }
+    .day-body .time { color: #e07b39; font-size: 0.85rem; margin-right: 6px; }
+
+    /* ── RISTORANTI ── */
+    .restaurant-card {
+      background: #1e1a14;
+      border: 1px solid #3a3020;
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+    .restaurant-card h4 { color: #f5c842; font-size: 1rem; text-transform: none; margin: 0 0 4px; }
+    .restaurant-card .resto-meta {
+      font-size: 0.82rem;
+      color: #a08060;
+      margin-bottom: 10px;
+    }
+    .restaurant-card p { font-size: 0.9rem; margin: 0; }
+    .price-tag {
+      display: inline-block;
+      background: #3a2a10;
+      color: #f5c842;
+      border-radius: 4px;
+      padding: 1px 8px;
+      font-size: 0.8rem;
+      margin-left: 8px;
+    }
+
+    /* ── CROWD METER ── */
+    .crowd-meter { display: flex; gap: 4px; margin-top: 6px; }
+    .crowd-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #333;
+    }
+    .crowd-dot.filled { background: #e07b39; }
+    .crowd-label { font-size: 0.78rem; color: #888; margin-top: 4px; }
+
+    /* ── TABLE ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+    th {
+      background: #2a2a2a;
+      color: #f5c842;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: normal;
+      border-bottom: 1px solid #444;
+    }
+    td {
+      padding: 9px 14px;
+      border-bottom: 1px solid #2a2a2a;
+      color: #c8b89a;
+    }
+    tr:hover td { background: #222; }
+
+    /* ── PORTICI ── */
+    .portico-card {
+      background: #1a1a2a;
+      border: 1px solid #2a2a4a;
+      border-left: 4px solid #2980b9;
+      border-radius: 0 10px 10px 0;
+      padding: 16px 18px;
+      margin-bottom: 14px;
+    }
+    .portico-card h4 { color: #5dade2; text-transform: none; margin: 0 0 6px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      border-top: 1px solid #2a2a2a;
+      text-align: center;
+      padding: 24px;
+      font-size: 0.82rem;
+      color: #666;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #2a2a2a;
+      margin: 30px 0;
+    }
+
+    code {
+      background: #2a2a2a;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      color: #e07b39;
+    }
+
+    @media (max-width: 600px) {
+      .card-grid { grid-template-columns: 1fr; }
+      .hero-meta { flex-direction: column; align-items: center; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🏛️ Guida autentica 2026</div>
+  <h1>Bologna — <span>La Rossa</span></h1>
+  <div class="hero-sub">La Dotta · La Grassa · La Rossa</div>
+  <div class="hero-meta">
+    <span>🍝 Cucina emiliana autentica</span>
+    <span>🏛️ Portici UNESCO</span>
+    <span>🎓 Università più antica d'Europa</span>
+    <span>🔴 Emilia-Romagna</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-categories">
+    <button class="cat-btn active" onclick="showNav('generale')">🗺️ Generale</button>
+    <button class="cat-btn" onclick="showNav('musei')">🏛️ Musei & Arte</button>
+    <button class="cat-btn" onclick="showNav('cibo')">🍝 Cibo & Vino</button>
+    <button class="cat-btn" onclick="showNav('vita')">🌙 Vita & Serata</button>
+    <button class="cat-btn" onclick="showNav('gite')">🚂 Gite</button>
+  </div>
+
+  <div id="nav-generale" class="nav-main nav-section visible">
+    <a href="#orientarsi">🗺️ Orientarsi</a>
+    <a href="#logistica">🚗 Come arrivare</a>
+    <a href="#itinerario">📅 Itinerario</a>
+    <a href="#portici">🏛️ Portici UNESCO</a>
+    <a href="#piazze">🏙️ Piazze</a>
+    <a href="#torri">🗼 Torri</a>
+  </div>
+
+  <div id="nav-musei" class="nav-main nav-section">
+    <a href="#musei">🖼️ Musei</a>
+    <a href="#portici">🏛️ Portici UNESCO</a>
+    <a href="#piazze">🏙️ Monumenti</a>
+    <a href="#torri">🗼 Due Torri</a>
+    <a href="#chiese">⛪ Chiese</a>
+  </div>
+
+  <div id="nav-cibo" class="nav-main nav-section">
+    <a href="#gastronomia">🍝 Gastronomia</a>
+    <a href="#ristoranti">🍽️ Ristoranti</a>
+    <a href="#gelato">🍦 Gelato</a>
+    <a href="#mercati">🛒 Mercati</a>
+    <a href="#colazione">☕ Colazione</a>
+  </div>
+
+  <div id="nav-vita" class="nav-main nav-section">
+    <a href="#aperitivo">🍷 Aperitivo</a>
+    <a href="#notturna">🌙 Vita notturna</a>
+    <a href="#pratello">🎸 Via Pratello</a>
+    <a href="#circoli">🔴 Circoli ARCI</a>
+    <a href="#circoli-spazi">🏠 Spazi ARCI</a>
+    <a href="#circoli-lista">📋 Lista 71 circoli</a>
+    <a href="#circoli-tessera">🎟️ Tessera ARCI</a>
+  </div>
+
+  <div id="nav-gite" class="nav-main nav-section">
+    <a href="#gite">🚂 Gite fuori porta</a>
+  </div>
+</nav>
+
+<script>
+function showNav(cat) {
+  document.querySelectorAll('.nav-section').forEach(el => el.classList.remove('visible'));
+  document.querySelectorAll('.cat-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('nav-' + cat).classList.add('visible');
+  event.target.classList.add('active');
+}
+</script>
+
+<div class="container">
+
+  <!-- ORIENTARSI -->
+  <section id="orientarsi">
+    <h2>🗺️ Bologna — Orientarsi</h2>
+    <p>Bologna è una città a misura d'uomo: il centro storico si percorre interamente a piedi. I punti di riferimento principali sono <strong>Piazza Maggiore</strong> (il cuore), le <strong>Due Torri</strong> (l'orientamento) e i <strong>portici</strong> (che coprono 62 km nel solo centro).</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-icon">🔴</span>
+        <h4>La Rossa</h4>
+        <p>I mattoni rossi dei palazzi medievali che colorano ogni scorcio. Colore dominante del centro storico.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🎓</span>
+        <h4>La Dotta</h4>
+        <p>Sede della prima Università del mondo occidentale (1088). 100.000 studenti animano la città.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🍝</span>
+        <h4>La Grassa</h4>
+        <p>Capitale indiscussa della gastronomia italiana: tortellini, tagliatelle, ragù, mortadella.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🏛️</span>
+        <h4>I Portici</h4>
+        <p>62 km di portici nel centro storico, Patrimonio UNESCO dal 2021. Si cammina al coperto ovunque.</p>
+      </div>
+    </div>
+
+    <div class="info-box blu">
+      <h4>📍 Coordinate centro</h4>
+      <p>Piazza Maggiore: <a href="https://maps.google.com/?q=44.4938,11.3426" target="_blank">44.4938° N, 11.3426° E</a></p>
+      <p>Due Torri: <a href="https://maps.google.com/?q=44.4941,11.3474" target="_blank">44.4941° N, 11.3474° E</a></p>
+    </div>
+  </section>
+
+  <!-- LOGISTICA -->
+  <section id="logistica">
+    <h2>🚗 Come Arrivare e Muoversi</h2>
+
+    <h3>✈️ In aereo</h3>
+    <p><strong>Aeroporto Marconi (BLQ)</strong> — a 6 km dal centro. Il <strong>People Mover</strong> (monorotaia automatica) collega l'aeroporto alla stazione centrale in 7 minuti, €4,50.</p>
+
+    <h3>🚆 In treno</h3>
+    <p>Bologna Centrale è un nodo ferroviario fondamentale d'Italia. Alta velocità da Milano (65 min), Roma (2h10), Firenze (35 min). La stazione è a 15 min a piedi dal centro.</p>
+
+    <h3>🚗 In auto</h3>
+    <div class="warning-box">
+      Il centro storico di Bologna è ZTL (Zona Traffico Limitato) attiva H24. Non entrare mai senza permesso. Le telecamere sono attivissime e le multe arrivano a casa anche mesi dopo.
+    </div>
+
+    <table>
+      <tr><th>Parcheggio</th><th>Distanza centro</th><th>Costo indicativo</th></tr>
+      <tr><td>Autostazione (via Irnerio)</td><td>5 min a piedi</td><td>€1,50/h</td></tr>
+      <tr><td>Tanari (Porta San Donato)</td><td>8 min a piedi</td><td>€1,20/h</td></tr>
+      <tr><td>Staveco (via Riva Reno)</td><td>10 min a piedi</td><td>€1,00/h</td></tr>
+      <tr><td>Park&amp;Ride (periferici)</td><td>Bus navetta</td><td>€1/giorno</td></tr>
+    </table>
+
+    <h3>🚌 In città</h3>
+    <p>Il centro storico si gira <strong>a piedi</strong> — è tutto molto compatto. Per quartieri più lontani (San Luca, Borgo Panigale) usa i bus TPER o le biciclette del servizio <strong>Mi Muovo Bike</strong>.</p>
+
+    <div class="tip-box">
+      Il biglietto bus costa €1,50 (75 min). La <strong>Bologna Welcome Card</strong> include trasporti + musei: valutala se resti 2+ giorni.
+    </div>
+  </section>
+
+  <!-- ITINERARIO -->
+  <section id="itinerario">
+    <h2>📅 Itinerario Consigliato</h2>
+    <p>Bologna si esplora bene in <strong>2-3 giorni</strong>. Un weekend intenso può coprire i punti essenziali; tre giorni permettono di godersela con calma e fare una gita fuori porta.</p>
+
+    <div class="day-card">
+      <div class="day-header">
+        <div class="day-number">1</div>
+        <div>
+          <h3>Il cuore medievale</h3>
+          <div class="day-meta">Piazza Maggiore · Due Torri · Università · Quadrilatero</div>
+        </div>
+      </div>
+      <div class="day-body">
+        <ul>
+          <li><span class="time">09:00</span> <strong>Piazza Maggiore</strong> — inizia dalla piazza principale. Osserva la Basilica di San Petronio (la più grande chiesa gotica d'Italia incompiuta), il Palazzo del Podestà e il Palazzo Comunale.</li>
+          <li><span class="time">10:30</span> <strong>Fontana del Nettuno</strong> — il simbolo di Bologna dal 1566, opera del Giambologna. Ammirala e fotografala dalla piazza.</li>
+          <li><span class="time">11:00</span> <strong>Due Torri</strong> — sale sulla Torre degli Asinelli (498 gradini, €5) per una vista panoramica unica sulla città rossa. Prenotazione consigliata online.</li>
+          <li><span class="time">13:00</span> <strong>Pranzo al Quadrilatero</strong> — il mercato storico tra via Pescherie Vecchie e via Drapperie. Prendi un tagliere di salumi o un cartoccio di tigelle.</li>
+          <li><span class="time">15:00</span> <strong>Università e Archiginnasio</strong> — visita la biblioteca più antica d'Italia e il Teatro Anatomico (€3). Poi passeggia per via Zamboni, il cuore studentesco.</li>
+          <li><span class="time">17:30</span> <strong>Portici di via Indipendenza</strong> — passeggia fino alla stazione sotto i portici, goditi l'architettura.</li>
+          <li><span class="time">19:30</span> <strong>Aperitivo in Piazza Verdi</strong> — il cuore della vita notturna universitaria.</li>
+        </ul>
+        <div class="tip-box">
+          Salire sulla Torre degli Asinelli al tramonto (orario estivo fino alle 19:00) regala luci straordinarie sulla città rossa.
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">
+        <div class="day-number">2</div>
+        <div>
+          <h3>Santuario, portici e cucina</h3>
+          <div class="day-meta">San Luca · Mercato Albani · Laboratori del gusto</div>
+        </div>
+      </div>
+      <div class="day-body">
+        <ul>
+          <li><span class="time">08:30</span> <strong>Santuario di San Luca</strong> — la passeggiata più iconica di Bologna. Il portico più lungo del mondo (3,8 km, 666 archi) sale sulla collina. Vai la mattina presto per evitare il caldo. ~1h30 a/r a piedi, oppure bus 20.</li>
+          <li><span class="time">11:30</span> <strong>Rientro e Mercato Albani</strong> (o Mercato delle Erbe) — il mercato coperto con banchi di pasta fresca, salumi e formaggi locali.</li>
+          <li><span class="time">13:00</span> <strong>Pranzo autentico</strong> — tagliatelle al ragù in una trattoria storica del centro (vedi sezione ristoranti).</li>
+          <li><span class="time">15:30</span> <strong>MAST Gallery o MAMbo</strong> — il MAST è un museo di fotografia industriale gratuito e bellissimo; il MAMbo è il museo d'arte moderna in zona Manifattura delle Arti.</li>
+          <li><span class="time">18:00</span> <strong>Quartiere Pratello</strong> — la via più autentica della Bologna alternativa. Locali storici, murales, osterie economiche.</li>
+          <li><span class="time">20:00</span> <strong>Cena con tortellini in brodo</strong> — il piatto simbolo, da mangiare rigorosamente in brodo di cappone.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">
+        <div class="day-number">3</div>
+        <div>
+          <h3>Gita fuori porta (opzionale)</h3>
+          <div class="day-meta">Modena · Ferrara · Ravenna</div>
+        </div>
+      </div>
+      <div class="day-body">
+        <ul>
+          <li><span class="time">Opzione A</span> <strong>Modena</strong> (30 min in treno) — Duomo UNESCO, Palazzo Ducale, aceto balsamico DOP e la casa natale di Pavarotti. Pranzo con tigelle e gnocco fritto.</li>
+          <li><span class="time">Opzione B</span> <strong>Ferrara</strong> (30 min in treno) — la città rinascimentale per eccellenza. Castello Estense, Palazzo dei Diamanti, mura ciclistiche. Silenziosa e magica.</li>
+          <li><span class="time">Opzione C</span> <strong>Ravenna</strong> (1h in treno) — i mosaici bizantini più belli d'Occidente. Mausoleo di Galla Placidia, Basilica di Sant'Apollinare. Patrimonio UNESCO.</li>
+        </ul>
+        <div class="tip-box">
+          Tutte e tre le città sono raggiungibili con treni regionali frequenti da Bologna Centrale. Nessuna necessità di auto.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTICI -->
+  <section id="portici">
+    <h2>🏛️ I Portici — Patrimonio UNESCO</h2>
+    <p>Dal 2021 i Portici di Bologna sono <strong>Patrimonio dell'Umanità UNESCO</strong>. Con 62 km nel solo centro storico (oltre 40 km riconosciuti UNESCO), sono la più estesa rete porticata al mondo. Si cammina sempre al coperto, pioggia o sole.</p>
+
+    <div class="portico-card">
+      <h4>🏛️ Portici di Strada Maggiore</h4>
+      <p>Eleganti e armoniosi, ospitano negozi storici e caffetterie. Perfetti per una passeggiata serale.</p>
+    </div>
+    <div class="portico-card">
+      <h4>🏛️ Portico di San Luca (3,8 km)</h4>
+      <p>Il portico più lungo del mondo. 666 archi salgono dal centro fino al Santuario di San Luca sulla collina. Un'esperienza unica, soprattutto all'alba.</p>
+    </div>
+    <div class="portico-card">
+      <h4>🏛️ Portici di via dell'Indipendenza</h4>
+      <p>Il boulevard principale di Bologna, con portici su entrambi i lati. Collega la stazione a Piazza Maggiore (1,2 km).</p>
+    </div>
+    <div class="portico-card">
+      <h4>🏛️ Portici del Pavaglione (Piazza Maggiore)</h4>
+      <p>Gli storici portici sotto il Palazzo dei Banchi, cuore delle passeggiate bolognesi sin dal Medioevo.</p>
+    </div>
+
+    <div class="info-box verde">
+      <strong>💡 Curiosità UNESCO:</strong> gli archi del portico di San Luca sono esattamente 666, numero non casuale — nella tradizione cristiana rappresenta le tentazioni che il pellegrino supera salendo al santuario.
+    </div>
+  </section>
+
+  <!-- PIAZZE -->
+  <section id="piazze">
+    <h2>🏙️ Piazze e Monumenti</h2>
+
+    <h3>⭐⭐⭐ Piazza Maggiore</h3>
+    <p>Il salotto di Bologna. Circondata da Palazzo Comunale, Palazzo del Podestà, Palazzo dei Banchi e la Basilica di San Petronio. La sera si riempie di bolognesi di tutte le età — un rito quotidiano.</p>
+
+    <h3>⛲ Fontana del Nettuno (1566)</h3>
+    <p>Capolavoro del Giambologna, simbolo della città. Il Nettuno bronzeo domina l'omonima piazza adiacente a Piazza Maggiore. Osserva i dettagli delle sirene — molto... audaci per l'epoca.</p>
+
+    <h3>🎓 Piazza Verdi</h3>
+    <p>Il cuore della vita universitaria e alternativa. Davanti al Teatro Comunale, sempre animata da studenti, artisti di strada, mercatini. L'aperitivo qui è economico e autentico.</p>
+
+    <h3>🌿 Piazza Santo Stefano</h3>
+    <p>Una delle piazze più belle e meno turistiche. Il complesso delle Sette Chiese (o Basilica di Santo Stefano) è un labirinto di edifici religiosi dal IV al XII secolo. Ingresso gratuito.</p>
+
+    <div class="tip-box">
+      Piazza Santo Stefano è il posto giusto per sedersi sui gradini la sera, come fanno i bolognesi doc. Porta un po' di vino e mortadella dal mercato.
+    </div>
+  </section>
+
+  <!-- TORRI -->
+  <section id="torri">
+    <h2>🗼 Le Due Torri</h2>
+    <p>Simbolo assoluto di Bologna. Nel Medioevo la città contava oltre <strong>100 torri</strong> — oggi ne rimangono una ventina. Le più famose sono le <strong>Torri degli Asinelli e Garisenda</strong>, erette dalle famiglie nobiliari rivali nel XII secolo come status symbol.</p>
+
+    <table>
+      <tr><th>Torre</th><th>Altezza</th><th>Pendenza</th><th>Note</th></tr>
+      <tr><td>🗼 Asinelli</td><td>97,2 m</td><td>2,2°</td><td>Visitabile, 498 gradini, €5</td></tr>
+      <tr><td>🗼 Garisenda</td><td>48 m</td><td>3,2°</td><td>Chiusa al pubblico, a rischio crollo</td></tr>
+    </table>
+
+    <div class="warning-box">
+      La Torre Garisenda è recentemente oggetto di monitoraggio per rischio strutturale. L'area circostante è transennata. La situazione potrebbe evolversi — verifica prima della visita.
+    </div>
+
+    <div class="tip-box">
+      Dante Alighieri citò la Torre Garisenda nell'Inferno (Canto XXXI). Stare sotto di essa e guardarla inclinare verso di te è un'esperienza visiva che dà le vertigini.
+    </div>
+  </section>
+
+  <!-- GASTRONOMIA -->
+  <section id="gastronomia">
+    <h2>🍝 Gastronomia — La Grassa</h2>
+    <p>Bologna è la capitale indiscussa della cucina italiana. Qui nascono i piatti che il mondo intero ha copiato (male). Regola d'oro: <strong>diffida dei ristoranti turistici</strong> con foto plastificate sul menù.</p>
+
+    <h3>📜 I Piatti Obbligatori</h3>
+
+    <div class="info-box arancio">
+      <h4>🍝 Tagliatelle al Ragù</h4>
+      <p>La ricetta autentica è depositata alla Camera di Commercio di Bologna (1982). La tagliatella deve essere larga quanto <strong>1/12.270 dell'altezza della Torre degli Asinelli</strong> (circa 8 mm). Il ragù non contiene pomodoro in grandi quantità — è a base di carne e soffritto.</p>
+    </div>
+
+    <div class="info-box arancio">
+      <h4>🥟 Tortellini in Brodo</h4>
+      <p>Da mangiare <strong>rigorosamente in brodo di cappone</strong>. Il ripieno è mortadella, prosciutto, lombo di maiale, Parmigiano Reggiano e noce moscata. Qualsiasi versione "asciutta" o "alla panna" è un'offesa alla tradizione.</p>
+    </div>
+
+    <div class="info-box arancio">
+      <h4>🥩 Mortadella IGP</h4>
+      <p>Non il salame industriale che conosci — la mortadella di Bologna autentica è una cosa completamente diversa. Provala al banco del Quadrilatero tagliata al coltello, spessa.</p>
+    </div>
+
+    <h3>🛒 Dove Comprare</h3>
+    <ul>
+      <li><strong>Quadrilatero</strong> (tra Piazza Maggiore e via Rizzoli) — il mercato storico per eccellenza. Salumerie, pescherie, erbe fresche. Aperto la mattina.</li>
+      <li><strong>Mercato delle Erbe</strong> (via Ugo Bassi) — mercato coperto con pasta fresca, formaggi, verdure. Frequentatissimo dai bolognesi.</li>
+      <li><strong>Paolo Atti &amp; Figli</strong> (via Caprarie 7) — la pasta fresca più famosa di Bologna dal 1880. Coda garantita.</li>
+      <li><strong>Salumeria Simoni</strong> (via Drapperie 5/2a) — per mortadella, culatello, Parmigiano stagionato. Autentico.</li>
+    </ul>
+
+    <h3 id="gelato">🍦 Gelato</h3>
+    <p>Bologna ha una scena gelateria di altissimo livello. Cerca i laboratori artigianali con gelato non colorato artificialmente.</p>
+
+    <div class="restaurant-card" style="border-color: #4a7c59;">
+      <h4>⭐ Gelateria Rizzo Giovanna — Dalla Gianna <span class="price-tag">€</span></h4>
+      <div class="resto-meta">📍 <a href="https://maps.app.goo.gl/e8Zn3GSGATPC27Kg8" target="_blank">Via San Mamolo 111/4a, Bologna</a></div>
+      <p>Gelateria artigianale di quartiere, amata dai bolognesi doc. Gelato autentico, ingredienti di qualità.</p>
+      <div class="info-box verde" style="margin-top:12px; padding: 12px 16px;">
+        <strong>🥐 Specialità estiva consigliata:</strong> <em>Cornetto con pallina di gelato all'interno</em> — la colazione estiva perfetta. Il caldo del cornetto appena sfornato incontra il freddo del gelato: un'esperienza da non perdere nei mesi estivi.
+      </div>
+    </div>
+
+    <ul>
+      <li><strong>Cremeria Funivia</strong> — uno dei migliori in città, molto amato dai bolognesi</li>
+      <li><strong>Gelateria Gianni</strong> (Piazza Maggiore) — storica, posizione imbattibile</li>
+      <li><strong>Stefino</strong> (via Pietralata) — meno turistica, prezzi onesti</li>
+    </ul>
+
+    <h3 id="colazione">☕ Colazione Bolognese</h3>
+    <p>La colazione bolognese si fa al bar, in piedi, veloce. Cappuccino schiumoso e brioche (qui chiamata "cornetto"). In estate la variante con <strong>pallina di gelato dentro il cornetto</strong> è una tradizione locale imperdibile — chiedila alle gelaterie storiche come <strong>Dalla Gianna</strong>.</p>
+
+    <div class="tip-box">
+      Nei mesi estivi (giugno-settembre) cerca le gelaterie che offrono il cornetto-gelato già dalla mattina. È la colazione preferita dai bolognesi quando fa caldo: fresco, goloso e veloce.
+    </div>
+  </section>
+
+  <!-- RISTORANTI -->
+  <section id="ristoranti">
+    <h2>🍽️ Ristoranti Consigliati</h2>
+    <p>Regola: cerca trattorie senza menù plastificato con foto, senza hostess che ti acchiappa per strada, senza "pizza" in bella evidenza.</p>
+
+    <div class="restaurant-card">
+      <h4>Trattoria Anna Maria <span class="price-tag">€€</span></h4>
+      <div class="resto-meta">📍 Via Belle Arti, 17/A · 🕐 Solo pranzo e cena (chiuso lunedì)</div>
+      <p>Istituzione bolognese dal 1929. Le tagliatelle al ragù qui sono un'esperienza religiosa. Prenotare è obbligatorio, anche settimane prima nei weekend.</p>
+    </div>
+
+    <div class="restaurant-card">
+      <h4>Osteria dell'Orsa <span class="price-tag">€</span></h4>
+      <div class="resto-meta">📍 Via Mentana, 1 · 🕐 Tutti i giorni</div>
+      <p>Storica osteria studentesca. Pasta fresca fatta in casa, prezzi popolari, ambiente caotico e autentico. Coda fuori quasi sempre — vale la pena aspettare.</p>
+    </div>
+
+    <div class="restaurant-card">
+      <h4>Trattoria Bertozzi <span class="price-tag">€€</span></h4>
+      <div class="resto-meta">📍 Via Andrea Costa, 84 · 🕐 Chiuso domenica sera e lunedì</div>
+      <p>Fuori dal centro, frequentata dai bolognesi. Tortellini in brodo da standing ovation. Atmosfera familiare e verace.</p>
+    </div>
+
+    <div class="restaurant-card">
+      <h4>Mercato di Mezzo <span class="price-tag">€</span></h4>
+      <div class="resto-meta">📍 Via Clavature, 12 · 🕐 Tutti i giorni</div>
+      <p>Food hall nel cuore del Quadrilatero. Tigelle, crescentine, piadine con salumi locali. Ideale per un pranzo veloce e buono senza spendere molto.</p>
+    </div>
+
+    <div class="restaurant-card">
+      <h4>Ristorante Cesarina <span class="price-tag">€€€</span></h4>
+      <div class="resto-meta">📍 Via Santo Stefano, 19 · 🕐 Chiuso lunedì</div>
+      <p>Per un'occasione speciale. Cucina emiliana di altissimo livello, carta dei vini eccellente. I lasagne verdi al forno sono leggendarie.</p>
+    </div>
+
+    <div class="warning-box">
+      Evita i ristoranti immediatamente intorno a Piazza Maggiore: prezzi gonfiati, qualità mediocre. Allontanati anche solo di 2-3 vie per trovare posti autentici.
+    </div>
+  </section>
+
+  <!-- APERITIVO -->
+  <section id="aperitivo">
+    <h2>🍷 Aperitivo e Vita Notturna</h2>
+    <p>Bologna è famosa per l'<strong>aperitivo generoso</strong>: molti locali offrono buffet abbondante con il prezzo della consumazione (€5-8). Una tradizione che sostituisce spesso la cena.</p>
+
+    <h3>🍻 Zone migliori</h3>
+    <ul>
+      <li><strong>Via del Pratello</strong> — la via più autentica e popolare. Osterie storiche, birre artigianali, prezzi onesti. Frequentata da bolognesi veri.</li>
+      <li><strong>Piazza Verdi</strong> — cuore universitario. Movida giovane, economica, vivace.</li>
+      <li><strong>Via Zamboni</strong> — altra zona universitaria con aperitivi a basso costo.</li>
+      <li><strong>Zona Galliera</strong> — locali più ricercati, cocktail bar di qualità.</li>
+    </ul>
+
+    <h3>🍷 Vini da ordinare</h3>
+    <ul>
+      <li><strong>Pignoletto</strong> — vino bianco frizzante dei Colli Bolognesi. Fresco e leggero, perfetto per l'aperitivo.</li>
+      <li><strong>Sangiovese dei Colli</strong> — rosso locale corposo.</li>
+      <li><strong>Lambrusco</strong> — dalla vicina Modena, frizzante e rosso. Non quello da supermercato: qui è un'altra cosa.</li>
+    </ul>
+
+    <div class="tip-box">
+      Il <strong>Spritz bolognese</strong> si fa con Aperol o Campari + Prosecco + Pignoletto. Chiedi ai bartender locali la loro versione.
+    </div>
+  </section>
+
+  <!-- GITE -->
+  <section id="gite">
+    <h2>🚂 Gite Fuori Porta</h2>
+
+    <table>
+      <tr><th>Destinazione</th><th>Tempo treno</th><th>Cosa vedere</th><th>Ideale per</th></tr>
+      <tr>
+        <td>🏎️ <strong>Modena</strong></td>
+        <td>30 min</td>
+        <td>Duomo UNESCO, aceto balsamico, Enzo Ferrari Museum</td>
+        <td>Gastronomia + motori</td>
+      </tr>
+      <tr>
+        <td>🏰 <strong>Ferrara</strong></td>
+        <td>35 min</td>
+        <td>Castello Estense, mura ciclistiche, centro UNESCO</td>
+        <td>Arte rinascimentale</td>
+      </tr>
+      <tr>
+        <td>✨ <strong>Ravenna</strong></td>
+        <td>1h</td>
+        <td>Mosaici bizantini UNESCO, Mausoleo di Galla Placidia</td>
+        <td>Arte e storia</td>
+      </tr>
+      <tr>
+        <td>🏔️ <strong>Appennino Bolognese</strong></td>
+        <td>1h (auto)</td>
+        <td>Lago di Suviana, borghi medievali, trekking</td>
+        <td>Natura e relax</td>
+      </tr>
+      <tr>
+        <td>🎨 <strong>Parma</strong></td>
+        <td>55 min</td>
+        <td>Teatro Farnese, Battistero, Parmigiano e Prosciutto DOP</td>
+        <td>Arte + gastronomia</td>
+      </tr>
+    </table>
+
+    <div class="info-box verde">
+      <strong>💡 Consiglio:</strong> con il biglietto regionale Emilia-Romagna puoi visitare tutte queste città in una giornata pagando poco. L'<strong>Emilia Pass</strong> giornaliero costa ~€13 e include treni regionali illimitati.
+    </div>
+  </section>
+
+  <!-- CIRCOLI ARCI -->
+  <section id="circoli">
+    <h2>🔴 Circoli ARCI Bologna</h2>
+    <p>Bologna è la città italiana con la più alta densità di <strong>circoli ARCI</strong>: oltre <strong>136 circoli affiliati</strong> in tutta l'area metropolitana, per circa 75.000 soci. Sono il cuore della vita associativa, culturale e sociale della città — locali, concerti, cineforum, teatro, eventi politici e sociali, tutto a prezzi popolari.</p>
+
+    <div class="info-box" style="border-left-color: #c0392b;">
+      <h4>🗺️ Trova il circolo più vicino</h4>
+      <p>Usa la mappa interattiva ufficiale:<br>
+      👉 <a href="https://arcibologna.it/trova-un-circolo/" target="_blank">arcibologna.it/trova-un-circolo</a><br>
+      <span style="font-size:0.85rem; color:#a08060;">136+ circoli georeferenziati su tutta l'area metropolitana</span></p>
+    </div>
+
+    <h3 id="circoli-spazi">🏠 Spazi gestiti direttamente da ARCI Bologna</h3>
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-icon">🌳</span>
+        <h4>Montagnola</h4>
+        <p>Parco della Montagnola, cuore verde del centro. Caffè, eventi, mercatino domenicale. Aperto a tutti.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🚪</span>
+        <h4>Porta Pratello</h4>
+        <p>Nella via più vivace di Bologna. Punto di riferimento della scena alternativa e della vita notturna popolare.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">⚡</span>
+        <h4>Spazio Zeta</h4>
+        <p>Spazio culturale multifunzionale. Concerti, dibattiti, laboratori creativi e attività giovanili.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">☕</span>
+        <h4>Kibō Café</h4>
+        <p>Caffè sociale con vocazione interculturale. Incontri, lingue, integrazione. Nome giapponese: "speranza".</p>
+      </div>
+    </div>
+
+    <h3 id="circoli-lista">📋 I 71 circoli ARCI nella città di Bologna</h3>
+    <p style="font-size:0.88rem; color:#a08060; margin-bottom:16px;">Fonte: mappa ufficiale "Città di Bologna — 71 circoli per la cultura e la partecipazione". Per indirizzi aggiornati consulta <a href="https://arcibologna.it/trova-un-circolo/" target="_blank">arcibologna.it/trova-un-circolo</a></p>
+
+    <div style="columns: 2; column-gap: 24px; margin-bottom: 20px;">
+      <ul style="padding-left:16px; break-inside:avoid;">
+        <li>About Bologna — via San Rocco, 16</li>
+        <li>Approdo — via Petroni, 68</li>
+        <li>Arci Brecht</li>
+        <li>Arci Mondo</li>
+        <li>Arcisolidarietà — via Emilio Zago, 2</li>
+        <li>ASAP APS</li>
+        <li>Associazione Jazz va a scuola</li>
+        <li>AVIS</li>
+        <li>Bologna for Climate Justice — via Zampieri, 20</li>
+        <li>Buffardialla</li>
+        <li>Cantieri Meticci</li>
+        <li>Cascine Rosse</li>
+        <li>Checkpoint Charly</li>
+        <li>Circolo Arci Benassi — viale Sergio Cavina, 4</li>
+        <li>Circolo Arci Guernelli — via Antonia Gandusio, 6/A</li>
+        <li>Circolo Nen — via di Corticella, 16</li>
+        <li>Contrattacci APS — via Giuseppe Grabinski, 2/5</li>
+        <li>DAS – Dispositivo Arti Sperimentali</li>
+        <li>Donkey</li>
+        <li>Ducati Motor — via Cavalieri Ducati, 3</li>
+        <li>Efesta APS — via Sant'Apollonia</li>
+        <li>Efesto House — via Capriolime, 35</li>
+        <li>Elefant — via del Pratello</li>
+        <li>Grabinski Point — via Giuseppe Grabinski, 2/5</li>
+        <li>Instabile Portazza</li>
+        <li>IOR — viale Pupilli, 1</li>
+        <li>Ippodromo — via Corticella, 61</li>
+        <li>Istantanea — via Cai Selvatica, 16</li>
+        <li>La Grossulola — via Kandinsky, 9</li>
+        <li>La Paresse — via Kandinsky</li>
+        <li>Leggere Strutture Art Factory — via Ferrarese, 164/A</li>
+        <li>Link 2.0 — via Francesco Fattori, 21</li>
+        <li>Meta Morfosi</li>
+        <li>Micce APS — via Libia, 11</li>
+        <li>Millenium — via Riva Reno, 77/A</li>
+        <li>Mondio APS</li>
+        <li>Officina Fotografica Shado — piazza dei Colori, 10 A/B</li>
+        <li>Opdodio — via Riva Reno, 77/A</li>
+        <li>Parco dei Ciliegi — via Glaucia, 21</li>
+        <li>Pol. E. Baloni — via Andrea Costa, 2/6</li>
+        <li>Queen APS</li>
+        <li>Reno Galliera Symphonic Band</li>
+        <li>Salnegom Blue Lab — piazza dei Colori, 27 A/B</li>
+        <li>Scuola di Musica Ivano Alla Gioia — via Michelino, 20</li>
+        <li>Senzaspine / Mercato Sonato — via del Chierghini, 12</li>
+        <li>Senzaspine Network — via del Chierghini, 12</li>
+        <li>Schietto — via del Chierghini, 16/B</li>
+        <li>Sidaps</li>
+        <li>Sini Kan APS</li>
+        <li>Teatridimpendenti</li>
+        <li>Teatro degli Angeli — via Massa Carrara, 3</li>
+        <li>Teatro del Navile — via Marchesetti, 2/A</li>
+        <li>Teatro Erasmo APS</li>
+        <li>Trigari</li>
+        <li>Turin — via Andrea Costa, 2/6</li>
+        <li>Un Altro Mondo è Possibile</li>
+        <li>Villa Paradise</li>
+        <li>Vircola</li>
+        <li>Zeròs Bonjou — piazza dei Colori, 27 A/B</li>
+      </ul>
+    </div>
+
+    <div class="warning-box">
+      ⚠️ Alcuni nomi e indirizzi sono stati trascritti da una foto a risoluzione limitata — verifica sempre su <a href="https://arcibologna.it/trova-un-circolo/" target="_blank">arcibologna.it/trova-un-circolo</a> per i dati aggiornati.
+    </div>
+
+    <h3 id="circoli-tessera">🎟️ Come funziona un circolo ARCI</h3>
+    <ul>
+      <li>Bisogna essere <strong>soci ARCI</strong> per accedere agli eventi (tessera annuale ~€10-15)</li>
+      <li>La tessera vale in <strong>tutti i 136 circoli</strong> dell'area metropolitana e in tutta Italia</li>
+      <li>Prezzi sempre popolari: birra a €2-3, concerti a €5-8, cene sociali a €10-12</li>
+      <li>Programmazione variegata: jazz, indie, folk, punk, cinema, teatro, dibattiti</li>
+    </ul>
+
+    <div class="info-box verde">
+      <strong>📍 Sede ARCI Bologna:</strong><br>
+      Via Emilio Zago, 2 — Bologna<br>
+      📞 051 521939 · ✉️ bologna@arci.it<br>
+      🌐 <a href="https://arcibologna.it" target="_blank">arcibologna.it</a>
+    </div>
+
+    <div class="tip-box">
+      Se sei a Bologna per più di un giorno, vale assolutamente la pena fare la tessera ARCI. Ti apre le porte di una Bologna autentica che i turisti non vedono mai — locali storici, concerti intimi, prezzi onesti.
+    </div>
+  </section>
+
+  <!-- MUSEI -->
+  <section id="musei">
+    <h2>🖼️ Musei e Cultura</h2>
+
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-icon">🏛️</span>
+        <h4>MAMbo</h4>
+        <p>Museo d'Arte Moderna di Bologna. In zona Manifattura delle Arti. Collezione permanente + mostre temporanee.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📸</span>
+        <h4>MAST Gallery</h4>
+        <p>Museo di fotografia industriale e sociale. <strong>Ingresso gratuito</strong>. Mostre di altissimo livello internazionale.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🔬</span>
+        <h4>Museo di Palazzo Poggi</h4>
+        <p>Collezioni scientifiche dell'Università. Anatomia, storia naturale, strumenti storici. Affascinante e poco affollato.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🎭</span>
+        <h4>Archiginnasio</h4>
+        <p>La più antica biblioteca universitaria d'Italia con il leggendario Teatro Anatomico in legno. €3.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🏺</span>
+        <h4>Museo Civico Medievale</h4>
+        <p>Oggetti, armi, sculture e codici miniati medievali nel Palazzo Ghisilardi-Fava. Spesso sottovalutato.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🎨</span>
+        <h4>Pinacoteca Nazionale</h4>
+        <p>Capolavori dal XIV al XVIII secolo. Raffaello, Guido Reni, i Carracci. Ingresso €5, gratuito la prima domenica del mese.</p>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      La <strong>prima domenica del mese</strong> molti musei statali sono gratuiti. Pianifica la visita di conseguenza per risparmiare.
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- INFO PRATICHE -->
+  <section>
+    <h2>ℹ️ Info Pratiche</h2>
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-icon">🏥</span>
+        <h4>Emergenze</h4>
+        <p>Pronto Soccorso: Ospedale Sant'Orsola (via Massarenti). Emergenze: 118 · Polizia: 112</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">💶</span>
+        <h4>Budget indicativo</h4>
+        <p>Pranzo trattoria: €12-18. Cena: €20-35. Aperitivo con buffet: €6-8. Gelato: €2-3.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌡️</span>
+        <h4>Clima</h4>
+        <p>Estate calda e umida (luglio-agosto anche 35°C+). Primavera e autunno ideali. Inverni freddi con nebbia.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🔗</span>
+        <h4>Link utili</h4>
+        <p><a href="https://www.bolognawelcome.com" target="_blank">bolognawelcome.com</a> — turismo ufficiale.<br><a href="https://www.tper.it" target="_blank">tper.it</a> — trasporti locali.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>📍 Guida Bologna 2026 · Realizzata da Dario Schioppi</p>
+  <p style="margin-top:6px"><a href="https://github.com/darioschioppi">github.com/darioschioppi</a></p>
+</footer>
+
+</body>
+</html>
