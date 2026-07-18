@@ -2,7 +2,7 @@
 
 Raccolta di guide di viaggio create per i viaggi di Dario: storia, luoghi da vedere, spiagge, ristoranti, rifugi e consigli pratici per ogni destinazione.
 
-🔗 [Vai all'archivio guide](./index.html)
+🌐 **[Vedi il sito live](https://darioschioppi.github.io/guida/)**
 
 ## Destinazioni
 
