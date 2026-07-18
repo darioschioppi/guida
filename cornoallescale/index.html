@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guida Trekking – Corno alle Scale</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:wght@700&display=swap');
+
+    :root {
+      --blu: #1B4965;
+      --blu-medio: #2E6F95;
+      --blu-chiaro: #5FA8D3;
+      --blu-pallido: #DCEEF7;
+      --blu-sfondo: #F2F9FC;
+      --caldo: #E07B39;
+      --caldo-chiaro: #FFE0C7;
+      --verde: #2D6A4F;
+      --verde-chiaro: #D8F3DC;
+      --testo: #1a2530;
+      --bianco: #ffffff;
+      --ombra: rgba(27,73,101,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--testo);
+      background: var(--blu-sfondo);
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #0B2545 0%, #1B4965 50%, #2E6F95 100%);
+      color: white;
+      padding: 60px 24px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 50px;
+      background: var(--blu-sfondo);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-emoji { font-size: 60px; display: block; margin-bottom: 16px; }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(28px, 6vw, 48px);
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .hero-sub {
+      font-size: clamp(16px, 3vw, 20px);
+      opacity: 0.92;
+      margin-bottom: 20px;
+    }
+    .badge-hero {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 30px;
+      padding: 8px 22px;
+      font-size: 16px;
+      margin: 4px;
+      backdrop-filter: blur(4px);
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(22px, 4vw, 30px);
+      color: var(--blu);
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--blu-chiaro);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-card {
+      background: linear-gradient(135deg, var(--blu) 0%, var(--blu-medio) 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 28px 32px;
+      margin: 24px 0;
+      box-shadow: 0 8px 30px var(--ombra);
+    }
+    .info-card h3 {
+      font-size: 22px;
+      margin-bottom: 14px;
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    .info-row {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+      align-items: flex-start;
+    }
+    .info-row .ic { font-size: 20px; min-width: 28px; }
+    .info-row span { opacity: 0.95; font-size: 17px; }
+
+    .box {
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin: 16px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .box-blu   { background: var(--blu-pallido); border-left: 5px solid var(--blu-medio); }
+    .box-caldo { background: var(--caldo-chiaro); border-left: 5px solid var(--caldo); }
+    .box-verde { background: var(--verde-chiaro); border-left: 5px solid var(--verde); }
+    .box-ic { font-size: 26px; min-width: 36px; margin-top: 2px; }
+    .box-body { flex: 1; }
+    .box-body strong { font-size: 17px; display: block; margin-bottom: 4px; color: var(--blu); }
+    .box-body p, .box-body li { font-size: 16px; color: #333; }
+    .box-caldo .box-body strong { color: #b5541a; }
+    .box-verde .box-body strong { color: var(--verde); }
+
+    .tratto-card {
+      background: var(--bianco);
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 20px 0;
+      box-shadow: 0 4px 20px var(--ombra);
+      border: 1px solid rgba(95,168,211,0.3);
+    }
+    .tratto-header {
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .tratto-number {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1;
+      min-width: 50px;
+      color: white;
+      opacity: 0.9;
+    }
+    .tratto-info { flex: 1; }
+    .tratto-info .quota {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.9;
+      color: white;
+    }
+    .tratto-info h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(19px, 3vw, 24px);
+      color: white;
+      line-height: 1.2;
+    }
+    .tratto-emoji { font-size: 38px; }
+    .tratto-body { padding: 24px 28px; }
+
+    .difficulty {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+    .diff-facile   { background: #d4edda; color: #155724; }
+    .diff-moderato { background: #fff3cd; color: #856404; }
+    .diff-intenso  { background: #fde8e8; color: #842029; }
+
+    .rifugio {
+      background: var(--blu-sfondo);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 12px 0;
+    }
+    .rifugio h4 {
+      font-size: 18px;
+      color: var(--blu);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .rifugio p, .rifugio li { font-size: 16px; color: #2a3038; margin: 4px 0; }
+    .rifugio ul { padding-left: 20px; }
+
+    .parcheggio {
+      background: #fff8e1;
+      border: 1px solid #ffe082;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin: 10px 0;
+      font-size: 15px;
+      color: #5c4000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mappa-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--blu);
+      color: white !important;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 10px;
+      transition: background 0.2s;
+    }
+    .mappa-link:hover { background: var(--blu-medio); }
+
+    .t1 .tratto-header { background: linear-gradient(135deg, #1B4965, #5FA8D3); }
+    .t2 .tratto-header { background: linear-gradient(135deg, #2D6A4F, #52B788); }
+    .t3 .tratto-header { background: linear-gradient(135deg, #7D4F50, #B07880); }
+    .t4 .tratto-header { background: linear-gradient(135deg, #5B4A00, #9B7E00); }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .checklist li {
+      background: var(--bianco);
+      border-radius: 10px;
+      padding: 12px 16px;
+      box-shadow: 0 2px 8px var(--ombra);
+      font-size: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #0B2545;
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+    }
+    footer a { color: var(--blu-chiaro); }
+
+    .back-link {
+      display: inline-block;
+      margin: 24px 0 0;
+      color: var(--blu);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-emoji">🏔️</span>
+  <h1>Corno alle Scale</h1>
+  <p class="hero-sub">Guida trekking — Le Polle · Lago Scaffaiolo · Croce del Corno</p>
+  <div>
+    <span class="badge-hero">📅 19 Luglio 2026</span>
+    <span class="badge-hero">⛰️ 1944 m</span>
+    <span class="badge-hero">🥾 Difficoltà E</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="info-card">
+    <h3>📌 Punto di partenza</h3>
+    <div class="info-row"><span class="ic">🅿️</span><span>Parcheggio <b>Le Polle</b> (1513 m) — fondo Val Dardagna, vicino alla seggiovia</span></div>
+    <div class="info-row"><span class="ic">🧭</span><span>Coordinate: 44.128963, 10.813941</span></div>
+    <div class="info-row"><span class="ic">🚗</span><span>Da Sasso Marconi: Marzabotto → Silla → Lizzano in Belvedere → Vidiciatico → la Ca' → Le Polle</span></div>
+    <div class="info-row"><span class="ic">☀️</span><span>Meteo previsto: nubi sparse, no piogge significative, 13-20°C</span></div>
+  </div>
+
+  <div class="box box-blu">
+    <span class="box-ic">🚡</span>
+    <div class="box-body">
+      <strong>Seggiovia Le Polle</strong>
+      <p>Dal parcheggio si può salire in quota con la seggiovia per accorciare il primo tratto di dislivello, per poi proseguire a piedi verso le Malghe e lo Scaffaiolo.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title">🗺️ Il percorso</h2>
+
+  <div class="tratto-card t1">
+    <div class="tratto-header">
+      <span class="tratto-number">1</span>
+      <div class="tratto-info">
+        <div class="quota">1513 m → 1647 m</div>
+        <h2>Le Polle → Rifugio Le Malghe</h2>
+      </div>
+      <span class="tratto-emoji">🌲</span>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-facile">Facile</span>
+      <p>Dal parcheggio (o dall'arrivo della seggiovia) si segue la pista sterrata che si collega alla Strada Forestale delle Malghe, attraversando un lembo di faggeta con vista sul circo terminale della Val Dardagna e sui monti Cupolino e Spigolino. Si attraversa il Torrente Dardagna e si arriva a <b>Le Malghe</b> (1647 m).</p>
+    </div>
+  </div>
+
+  <div class="tratto-card t2">
+    <div class="tratto-header">
+      <span class="tratto-number">2</span>
+      <div class="tratto-info">
+        <div class="quota">1647 m → 1946 m</div>
+        <h2>Le Malghe → Lago Scaffaiolo</h2>
+      </div>
+      <span class="tratto-emoji">💧</span>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-facile">Facile</span>
+      <p>Dallo stradello segnavia <b>329</b> si sale con alcuni tornanti direttamente al <b>Rifugio Duca degli Abruzzi</b> e al suggestivo <b>Lago Scaffaiolo</b>, tappa ideale per il pranzo in quota.</p>
+    </div>
+  </div>
+
+  <div class="tratto-card t3">
+    <div class="tratto-header">
+      <span class="tratto-number">3</span>
+      <div class="tratto-info">
+        <div class="quota">1675 m → 1944 m</div>
+        <h2>Variante alta: Passo della Porticciola → Croce del Corno</h2>
+      </div>
+      <span class="tratto-emoji">⛰️</span>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-moderato">Moderato</span>
+      <p>Chi vuole "rimanere alto" imbocca il sentiero <b>335a</b> che sale tagliando a mezza costa l'Alpe di Rocca Corneta fino al <b>Passo della Porticciola</b> (1675 m). Da qui il sentiero <b>335</b> risale il crinale fino a <b>Punta Sofia</b> (1939 m, croce di vetta) e alla vera cima del <b>Corno alle Scale</b> (1944 m).</p>
+      <p>Panorami molto ampi sulla Val Dardagna e sul Monte Cimone. Tratto esposto in cresta, sconsigliato con vento forte.</p>
+    </div>
+  </div>
+
+  <div class="tratto-card t4">
+    <div class="tratto-header">
+      <span class="tratto-number">4</span>
+      <div class="tratto-info">
+        <div class="quota">1944 m → 1513 m</div>
+        <h2>Discesa sull'altro versante</h2>
+      </div>
+      <span class="tratto-emoji">🔽</span>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-moderato">Moderato</span>
+      <p>Dalla Croce del Corno si scende verso sud (segnavia <b>129</b>) in direzione del <b>Passo dello Strofinatoio</b>, per poi ripiegare sul versante opposto e rientrare verso <b>Rifugio Le Rocce</b> e il parcheggio delle Polle, chiudendo l'anello.</p>
+    </div>
+  </div>
+
+  <div class="box box-caldo">
+    <span class="box-ic">⏱️</span>
+    <div class="box-body">
+      <strong>Dati tecnici anello completo</strong>
+      <p>Difficoltà E · Dislivello ~500 m in salita · Tempo totale 3h10 - 4h</p>
+    </div>
+  </div>
+
+  <h2 class="section-title">🍽️ Dove pranzare</h2>
+
+  <div class="rifugio">
+    <h4>🏠 Rifugio Le Malghe (1647 m)</h4>
+    <p>Bar-ristorante aperto sia in inverno che in estate. Prima tappa comoda, dal panino al piatto caldo.</p>
+  </div>
+
+  <div class="rifugio">
+    <h4>🏞️ Rifugio Duca degli Abruzzi — Lago Scaffaiolo</h4>
+    <p>Il più suggestivo: pranzo con vista sul lago. Servizio ristorazione <b>12:00-15:00</b>. Aperto tutti i giorni fino al 15 settembre.</p>
+    <ul>
+      <li>📧 info@rifugiolagoscaffaiolo.it</li>
+      <li>Consigliato arrivare tra le 12:00 e le 13:30 per essere sicuri del servizio</li>
+    </ul>
+  </div>
+
+  <div class="rifugio">
+    <h4>🪨 Rifugio Le Rocce</h4>
+    <p>Utile se si chiude l'anello scendendo dal versante della Croce del Corno verso Le Polle.</p>
+  </div>
+
+  <div class="parcheggio">
+    💡 Consiglio: pranzare allo Scaffaiolo verso le 12:30-13, poi decidere sul momento se si hanno gambe per salire alla Croce del Corno e chiudere l'anello, o rientrare direttamente.
+  </div>
+
+  <h2 class="section-title">🎒 Cosa portare</h2>
+  <ul class="checklist">
+    <li>🥾 Scarponi con suola scolpita</li>
+    <li>🧥 Giacca antivento (crinale esposto)</li>
+    <li>👕 Abbigliamento a strati</li>
+    <li>💧 Acqua abbondante</li>
+    <li>🧴 Crema solare</li>
+    <li>🗺️ Mappa/traccia GPS del sentiero</li>
+  </ul>
+
+  <a class="back-link" href="../">← Torna all'archivio guide</a>
+
+</div>
+
+<footer>
+  <p>Guida di Dario — aggiornata luglio 2026</p>
+</footer>
+
+</body>
+</html>
