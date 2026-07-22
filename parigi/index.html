@@ -135,6 +135,43 @@
       text-shadow: 0 1px 3px rgba(0,0,0,0.8);
     }
 
+    /* Video grid */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .video-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .video-item video {
+      width: 100%;
+      display: block;
+      background: #000;
+      aspect-ratio: 9/16;
+      max-height: 480px;
+      object-fit: contain;
+    }
+    .video-caption {
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .vc-title {
+      font-size: 15px;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .vc-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
     /* Lightbox */
     #lightbox {
       display: none;
@@ -1636,6 +1673,59 @@
       <img src="photos/252_photo_7ed395c6b1b64d05bb48af22805aa3f1.jpg" alt="Foto 252 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 252)">
       <div class="photo-num">252</div>
       <div class="photo-meta"><span class="pm-artist">Charles Le Brun (affreschi)</span><span class="pm-title">Galleria degli Specchi · Versailles</span><span class="pm-year">XVII sec.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section" id="video-section">
+  <div class="gallery-header">
+    <div class="gallery-title">🎬 Video della vacanza — <span>Parigi 2025</span></div>
+    <div class="gallery-count">4 video · agosto 2025</div>
+  </div>
+  <div class="video-grid">
+    <div class="video-item">
+      <video controls preload="metadata" poster="">
+        <source src="videos/01_opera_garnier.mov" type="video/quicktime">
+        <source src="videos/01_opera_garnier.mov" type="video/mp4">
+        Il tuo browser non supporta la riproduzione video. <a href="videos/01_opera_garnier.mov">Scarica il video</a>.
+      </video>
+      <div class="video-caption">
+        <span class="vc-title">Parigi dall'alto · Opéra Garnier</span>
+        <span class="vc-desc">Vista panoramica sui tetti parigini, con l'Opéra Garnier e la Torre Eiffel sullo sfondo grigio.</span>
+      </div>
+    </div>
+    <div class="video-item">
+      <video controls preload="metadata" poster="">
+        <source src="videos/02_passeggiata.mov" type="video/quicktime">
+        <source src="videos/02_passeggiata.mov" type="video/mp4">
+        Il tuo browser non supporta la riproduzione video. <a href="videos/02_passeggiata.mov">Scarica il video</a>.
+      </video>
+      <div class="video-caption">
+        <span class="vc-title">Passeggiata per le vie di Parigi</span>
+        <span class="vc-desc">Un momento di cammino tra le strade parigine, tra pozzanghere e architettura classica dopo la pioggia.</span>
+      </div>
+    </div>
+    <div class="video-item">
+      <video controls preload="metadata" poster="">
+        <source src="videos/03_arco_trionfo.mov" type="video/quicktime">
+        <source src="videos/03_arco_trionfo.mov" type="video/mp4">
+        Il tuo browser non supporta la riproduzione video. <a href="videos/03_arco_trionfo.mov">Scarica il video</a>.
+      </video>
+      <div class="video-caption">
+        <span class="vc-title">Arco di Trionfo · Vista panoramica</span>
+        <span class="vc-desc">Dall'alto dell'Arco di Trionfo, i viali haussmanniani conducono lo sguardo verso la Torre Eiffel e Montmartre.</span>
+      </div>
+    </div>
+    <div class="video-item">
+      <video controls preload="metadata" poster="">
+        <source src="videos/04_louvre_cour_napoleon.mov" type="video/quicktime">
+        <source src="videos/04_louvre_cour_napoleon.mov" type="video/mp4">
+        Il tuo browser non supporta la riproduzione video. <a href="videos/04_louvre_cour_napoleon.mov">Scarica il video</a>.
+      </video>
+      <div class="video-caption">
+        <span class="vc-title">Louvre · Cour Napoléon</span>
+        <span class="vc-desc">Panoramica sulla facciata storica del Louvre e sulla Piramide di vetro, tra turisti e cielo azzurro.</span>
+      </div>
     </div>
   </div>
 </section>
