@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guida Langhe — Borghi, Trekking e Sapori</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:wght@700&display=swap');
+
+    :root {
+      --vino: #5B1A28;
+      --vino-medio: #8C2F3E;
+      --vino-chiaro: #C97D8A;
+      --vino-pallido: #F3E1E4;
+      --sfondo: #FBF6EF;
+      --nocciola: #B5772E;
+      --nocciola-chiaro: #F2DFC0;
+      --verde: #566B3E;
+      --verde-chiaro: #E4EBD8;
+      --oro: #C9A227;
+      --testo: #2A1F1A;
+      --bianco: #ffffff;
+      --ombra: rgba(91,26,40,0.14);
+    }
+
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--testo);
+      background: var(--sfondo);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #2E0E17 0%, #5B1A28 55%, #8C2F3E 100%);
+      color: white;
+      padding: 60px 24px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 50px;
+      background: var(--sfondo);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-emoji { font-size: 60px; display: block; margin-bottom: 16px; }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(28px, 6vw, 48px);
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .hero-sub {
+      font-size: clamp(16px, 3vw, 20px);
+      opacity: 0.92;
+      margin-bottom: 20px;
+    }
+    .badge-hero {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 30px;
+      padding: 8px 22px;
+      font-size: 16px;
+      margin: 4px;
+      backdrop-filter: blur(4px);
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(22px, 4vw, 30px);
+      color: var(--vino);
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--vino-chiaro);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      scroll-margin-top: 70px;
+    }
+
+    .info-card {
+      background: linear-gradient(135deg, var(--vino) 0%, var(--vino-medio) 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 28px 32px;
+      margin: 24px 0;
+      box-shadow: 0 8px 30px var(--ombra);
+    }
+    .info-card h3 {
+      font-size: 22px;
+      margin-bottom: 14px;
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    .info-row {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+      align-items: flex-start;
+    }
+    .info-row .ic { font-size: 20px; min-width: 28px; }
+    .info-row span { opacity: 0.95; font-size: 17px; }
+
+    .box {
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin: 16px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .box-vino   { background: var(--vino-pallido); border-left: 5px solid var(--vino-medio); }
+    .box-noc { background: var(--nocciola-chiaro); border-left: 5px solid var(--nocciola); }
+    .box-verde { background: var(--verde-chiaro); border-left: 5px solid var(--verde); }
+    .box-ic { font-size: 26px; min-width: 36px; margin-top: 2px; }
+    .box-body { flex: 1; }
+    .box-body strong { font-size: 17px; display: block; margin-bottom: 4px; color: var(--vino); }
+    .box-body p, .box-body li { font-size: 16px; color: #333; }
+    .box-noc .box-body strong { color: #8a5a1e; }
+    .box-verde .box-body strong { color: var(--verde); }
+
+    .luogo-card {
+      background: var(--bianco);
+      border-radius: 16px;
+      padding: 20px 26px;
+      margin: 16px 0;
+      box-shadow: 0 4px 18px var(--ombra);
+      border-left: 5px solid var(--oro);
+    }
+    .luogo-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--vino);
+      font-size: 19px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .luogo-card p { font-size: 16px; color: #3a2e28; }
+    .luogo-tag {
+      display: inline-block;
+      background: var(--vino-pallido);
+      color: var(--vino);
+      font-size: 12.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-radius: 20px;
+      padding: 3px 12px;
+      margin-bottom: 8px;
+    }
+
+    .tratto-card {
+      background: var(--bianco);
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 20px 0;
+      box-shadow: 0 4px 20px var(--ombra);
+      border: 1px solid rgba(140,47,62,0.2);
+    }
+    .tratto-header {
+      padding: 18px 26px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      background: linear-gradient(135deg, var(--vino), var(--nocciola));
+    }
+    .tratto-emoji { font-size: 34px; }
+    .tratto-info { flex: 1; }
+    .tratto-info .quota {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.9;
+      color: white;
+    }
+    .tratto-info h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(18px, 3vw, 22px);
+      color: white;
+      line-height: 1.2;
+    }
+    .tratto-body { padding: 20px 26px; }
+
+    .difficulty {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+    }
+    .diff-facile   { background: #d4edda; color: #155724; }
+    .diff-moderato { background: #fff3cd; color: #856404; }
+    .diff-intenso  { background: #fde8e8; color: #842029; }
+
+    .ristorante {
+      background: var(--bianco);
+      border-radius: 14px;
+      padding: 18px 24px;
+      margin: 14px 0;
+      box-shadow: 0 3px 14px var(--ombra);
+    }
+    .ristorante h4 {
+      font-size: 18px;
+      color: var(--vino);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ristorante .zona {
+      font-size: 13.5px;
+      color: var(--nocciola);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .ristorante p { font-size: 16px; color: #2a3038; margin: 4px 0; }
+
+    .fascia {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 20px;
+      padding: 3px 12px;
+      margin-left: 8px;
+    }
+    .fascia-1 { background: var(--verde-chiaro); color: var(--verde); }
+    .fascia-2 { background: var(--nocciola-chiaro); color: #8a5a1e; }
+    .fascia-3 { background: var(--vino-pallido); color: var(--vino); }
+
+    .menu-item {
+      background: var(--bianco);
+      border-radius: 12px;
+      padding: 14px 20px;
+      margin: 10px 0;
+      box-shadow: 0 2px 10px var(--ombra);
+    }
+    .menu-item b { color: var(--vino); }
+
+    .abbinamento {
+      background: var(--nocciola-chiaro);
+      border-radius: 12px;
+      padding: 14px 20px;
+      margin: 10px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .abbinamento .vino-nome {
+      font-weight: 900;
+      color: var(--vino);
+      min-width: 150px;
+      font-size: 16px;
+    }
+    .abbinamento p { font-size: 15.5px; color: #3a2e28; }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .checklist li {
+      background: var(--bianco);
+      border-radius: 10px;
+      padding: 12px 16px;
+      box-shadow: 0 2px 8px var(--ombra);
+      font-size: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #2E0E17;
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+    }
+    footer a { color: var(--vino-chiaro); }
+
+    .back-link {
+      display: inline-block;
+      margin: 24px 0 0;
+      color: var(--vino);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    nav.toc {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(46,14,23,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    nav.toc .toc-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      gap: 4px;
+      padding: 10px 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    nav.toc .toc-inner::-webkit-scrollbar { display: none; }
+    nav.toc a {
+      white-space: nowrap;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #ecd6da;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+      font-weight: 700;
+    }
+    nav.toc a:hover, nav.toc a:focus {
+      background: rgba(201,125,138,0.25);
+      border-color: var(--vino-chiaro);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-emoji">🍷</span>
+  <h1>Langhe</h1>
+  <p class="hero-sub">Borghi fuori rotta, trekking tra le vigne, trattorie vere e menù da decifrare</p>
+  <div>
+    <span class="badge-hero">📍 Provincia di Cuneo</span>
+    <span class="badge-hero">🚗 ~1h da Busca</span>
+    <span class="badge-hero">🍇 Terra di Barolo e tartufo</span>
+  </div>
+</div>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#borghi">🏘️ Borghi non turistici</a>
+    <a href="#trekking">🥾 Trekking</a>
+    <a href="#ristoranti">🍽️ Ristoranti</a>
+    <a href="#attivita">🎈 Cose da fare</a>
+    <a href="#menu">📖 Menù Navigator</a>
+    <a href="#consigli">💡 Consigli</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="info-card">
+    <h3>📌 Come muoversi da Busca</h3>
+    <div class="info-row"><span class="ic">🚗</span><span>Da Busca (CN) ad Alba, cuore delle Langhe: circa 62 km, <b>~1h di auto</b> (via Fossano/Bra o via Cuneo/Marene).</span></div>
+    <div class="info-row"><span class="ic">🗺️</span><span>Le Langhe si dividono in tre zone: <b>Langa del Barolo</b> (attorno ad Alba, La Morra, Barolo — la più nota), <b>Bassa Langa</b> verso Dogliani, e <b>Alta Langa</b> (Bossolasco, Feisoglio, Mombarcaro — collinare, boscosa, molto meno turistica).</span></div>
+    <div class="info-row"><span class="ic">🍇</span><span>Il Roero, sull'altra sponda del Tanaro rispetto ad Alba, è spesso trascurato ma ha sentieri e cantine di grande interesse (Rocche del Roero).</span></div>
+    <div class="info-row"><span class="ic">📅</span><span>Ottima da visitare tutto l'anno: primavera/estate per trekking e vigneti verdi, autunno per vendemmia, foliage e tartufo.</span></div>
+  </div>
+
+  <h2 class="section-title" id="borghi">🏘️ Borghi e posti non turistici</h2>
+  <p style="margin-bottom:10px; color:#5a4a40;">Alternative meno battute ai soliti Barolo e La Morra, per chi vuole le Langhe senza la folla.</p>
+
+  <div class="luogo-card">
+    <span class="luogo-tag">Alta Langa</span>
+    <h3>🪨 Bergolo — il paese di pietra</h3>
+    <p>Uno dei borghi più piccoli e sorprendenti delle Langhe: case, vicoli e persino i tetti sono costruiti interamente in pietra locale (lose). Atmosfera medievale intatta, quasi nessun turista rispetto ai borghi del Barolo.</p>
+  </div>
+
+  <div class="luogo-card">
+    <span class="luogo-tag">Alta Langa</span>
+    <h3>🌻 Feisoglio</h3>
+    <p>Belvedere naturale poco frequentato sulla dorsale tra la Langa del Barolo e l'Alta Langa, con un castello in rovina. La seconda domenica di settembre si tiene la sagra della nocciola, piccola festa di paese senza pretese turistiche.</p>
+  </div>
+
+  <div class="luogo-card">
+    <span class="luogo-tag">Alta Langa</span>
+    <h3>🏡 Cissone</h3>
+    <p>Uno dei comuni più piccoli d'Italia, immerso nei noccioleti. Panorami aperti e silenzio quasi totale: l'anti-Barolo per definizione.</p>
+  </div>
+
+  <div class="luogo-card">
+    <span class="luogo-tag">Alta Langa</span>
+    <h3>🏔️ Mombarcaro</h3>
+    <p>Il comune più alto delle Langhe (896 m): nelle giornate limpide la vista arriva fino alle Alpi Marittime e, dicono i locali, fino al mare. Zona di produzione della Patata dell'Alta Valle Belbo.</p>
+  </div>
+
+  <div class="luogo-card">
+    <span class="luogo-tag">Alta Langa</span>
+    <h3>🥾 Niella Belbo e San Bovo</h3>
+    <p>Langhe più selvagge e isolate, case sparse su speroni rocciosi. Tappa del percorso escursionistico "Bar to Bar": atmosfera remota, lontana dai circuiti enoturistici classici.</p>
+  </div>
+
+  <div class="luogo-card">
+    <span class="luogo-tag">Langa del Barolo</span>
+    <h3>🍷 Perno (frazione di Monforte d'Alba)</h3>
+    <p>Borghetto minuscolo fuori dal centro turistico di Monforte, con una trattoria familiare autentica (Repubblica di Perno) e vigneti tutt'intorno senza pullman di visitatori.</p>
+  </div>
+
+  <div class="luogo-card">
+    <span class="luogo-tag">Roero</span>
+    <h3>🏜️ Le Rocche del Roero</h3>
+    <p>Canyon di sabbia scolpiti dall'erosione tra Monteu Roero, Santo Stefano Roero, Montà e Sommariva Perno: boschi e calanchi quasi ignorati da chi visita solo Alba. Area gestita dall'Ecomuseo delle Rocche, con sentieri segnalati.</p>
+  </div>
+
+  <div class="luogo-card">
+    <span class="luogo-tag">Alta Langa</span>
+    <h3>🛤️ Serravalle Langhe e Cravanzana</h3>
+    <p>Tappe della Grande Traversata delle Langhe (GTL) su crinali panoramici lontani dai flussi turistici del Barolo: borghi tranquilli, ottimi come base per camminate di mezza giornata.</p>
+  </div>
+
+  <h2 class="section-title" id="trekking">🥾 Trekking e camminate</h2>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">🍇</span>
+      <div class="tratto-info">
+        <div class="quota">~9 km · dislivello contenuto</div>
+        <h2>Sentiero del Barolo — La Morra</h2>
+      </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-facile">Facile</span>
+      <p>Anello di circa 9 km tra i vigneti e le frazioni di La Morra, terreno sterrato da percorrere preferibilmente asciutto. Partenza e arrivo dal centro di La Morra, con vedute che spaziano su tutta la Langa del Barolo. Perfetto per una mezza giornata, anche in bici da corsa leggera.</p>
+    </div>
+  </div>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">⛪</span>
+      <div class="tratto-info">
+        <div class="quota">5,7 km · 1h30 · dislivello 170 m</div>
+        <h2>Sentiero Religioso del Roero — Montà</h2>
+      </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-facile">Facile</span>
+      <p>Ripercorre l'antico cammino dei pellegrini da Montà al Sacro Monte dei Piloni, attraverso la Valle Diana. Ben segnalato dall'Ecomuseo delle Rocche del Roero, con mappe e tracce GPS scaricabili gratuitamente dal loro sito.</p>
+    </div>
+  </div>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">🌳</span>
+      <div class="tratto-info">
+        <div class="quota">5,5 km · 1h50 · dislivello 115 m</div>
+        <h2>Sentiero degli Asfodeli (S2) — Sommariva Perno</h2>
+      </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-facile">Facile</span>
+      <p>Anello storico nel bosco delle "fini superiori" del Roero: sentiero ombreggiato, ideale nelle giornate più calde, con soste panoramiche sulle rocche sabbiose.</p>
+    </div>
+  </div>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">🍄</span>
+      <div class="tratto-info">
+        <div class="quota">5,4 km · 1h20 · dislivello 170 m</div>
+        <h2>Sentiero del Tartufo — Montà</h2>
+      </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-moderato">Moderato</span>
+      <p>Il più impegnativo tra i sentieri del Roero segnalati, attraversa i boschi dove si cerca il tartufo con i cani da tartufo (trifolau). Possibile prenotare un'uscita guidata con l'Ecomuseo delle Rocche.</p>
+    </div>
+  </div>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">🥾</span>
+      <div class="tratto-info">
+        <div class="quota">Tappe da mezza giornata</div>
+        <h2>Grande Traversata delle Langhe (GTL)</h2>
+      </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-moderato">Moderato</span>
+      <p>Cammino a lunga distanza sui crinali dell'Alta Langa. Consigliate come spezzoni singoli senza zaino pesante: <b>Bossolasco–Serravalle Langhe</b> e <b>Cravanzana–Feisoglio–Niella Belbo</b> (che coincide con il percorso Bar to Bar). Molto panoramiche e quasi sempre deserte di altri camminatori.</p>
+    </div>
+  </div>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">🏰</span>
+      <div class="tratto-info">
+        <div class="quota">Tappa di cresta</div>
+        <h2>Bergolo — Prunetto</h2>
+      </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-moderato">Moderato</span>
+      <p>Percorso di cresta tra case di pietra e castelli, nel cuore dell'Alta Langa più autentica. Da abbinare a una visita al borgo di pietra di Bergolo.</p>
+    </div>
+  </div>
+
+  <div class="box box-verde">
+    <span class="box-ic">🚵</span>
+    <div class="box-body">
+      <strong>Anche in e-bike e a cavallo</strong>
+      <p>La rete sentieristica dell'Ecomuseo delle Rocche del Roero propone gli stessi percorsi anche in mountain bike, e-mountain bike e a cavallo, con mappe e tracce GPS scaricabili gratis dal loro sito.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="ristoranti">🍽️ Dove mangiare</h2>
+
+  <div class="ristorante">
+    <span class="zona">Perno, Monforte d'Alba</span>
+    <h4>🍷 Repubblica di Perno <span class="fascia fascia-1">Trattoria familiare</span></h4>
+    <p>Trattoria gestita da Marco Forneris, cucina piemontese classica ben eseguita, semplice e solida. Ha anche camere per chi vuole pernottare.</p>
+  </div>
+
+  <div class="ristorante">
+    <span class="zona">Roddino</span>
+    <h4>🍝 Osteria da Gemma <span class="fascia fascia-1">Trattoria storica</span></h4>
+    <p>Un'istituzione della Langa del Barolo: menù fisso a prezzo contenuto (circa 38€, vini esclusi), cucina del territorio senza fronzoli. Da prenotare con anticipo.</p>
+  </div>
+
+  <div class="ristorante">
+    <span class="zona">Monteu Roero</span>
+    <h4>🌅 Trattoria Belvedere <span class="fascia fascia-2">Panoramico</span></h4>
+    <p>Posizione panoramica sulla collina più alta del Roero. Piatti come la lingua croccante con salse, cantina di buon livello.</p>
+  </div>
+
+  <div class="ristorante">
+    <span class="zona">Castiglione Falletto</span>
+    <h4>🧀 Bar La Terrazza da Renza <span class="fascia fascia-1">Semplice</span></h4>
+    <p>Locale semplice con balcone panoramico sulle vigne, ideale per un tagliere di salumi e formaggi locali accompagnato da un buon calice.</p>
+  </div>
+
+  <div class="ristorante">
+    <span class="zona">Canale, Roero</span>
+    <h4>✨ Osteria dell'Enoteca <span class="fascia fascia-3">Ricercato</span></h4>
+    <p>Cucina regionale curata di Davide Palluda, ambiente più elegante, bel dehors esterno. Da prenotare per un'occasione speciale.</p>
+  </div>
+
+  <div class="ristorante">
+    <span class="zona">Guarene</span>
+    <h4>🍮 Osteria Imperfetta <span class="fascia fascia-2">Osteria-vineria</span></h4>
+    <p>Gestita dai fratelli Negro, cucina piemontese con qualche apertura al mare. La panna cotta è un piccolo classico da non perdere.</p>
+  </div>
+
+  <div class="ristorante">
+    <span class="zona">Castiglione Falletto</span>
+    <h4>⭐ Ristorante Argaj <span class="fascia fascia-3">Gourmet accessibile</span></h4>
+    <p>Esperienza gourmet a prezzi ancora competitivi, nel cuore delle Langhe del Barolo.</p>
+  </div>
+
+  <div class="box box-noc">
+    <span class="box-ic">📍</span>
+    <div class="box-body">
+      <strong>Vicino a Busca / Saluzzo / Cuneo</strong>
+      <p><b>Las Vegas</b> (Busca) — cucina piemontese casalinga, fritto misto piemontese segnalato come eccellente.<br>
+      <b>Ristorante Rododendro</b> (Saluzzo, Piazza Cavour) — cucina tradizionale piemontese e cuneese con ingredienti di territorio, comodo per una cena senza spostarsi fino alle Langhe.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="attivita">🎈 Cose da fare</h2>
+
+  <div class="box box-vino">
+    <span class="box-ic">🍄</span>
+    <div class="box-body">
+      <strong>Fiera Internazionale del Tartufo Bianco di Alba</strong>
+      <p>Dal 10 ottobre al 6 dicembre 2026, nei weekend, mercato-mostra nel centro storico di Alba dedicato al tartufo bianco. Da programmare in anticipo: parcheggi e affluenza importanti.</p>
+    </div>
+  </div>
+
+  <div class="box box-noc">
+    <span class="box-ic">🐕</span>
+    <div class="box-body">
+      <strong>A caccia di tartufo nel Roero</strong>
+      <p>L'Ecomuseo delle Rocche del Roero organizza battute guidate con trifolau (i cercatori di tartufo) e i loro cani, lungo il Sentiero del Tartufo di Montà.</p>
+    </div>
+  </div>
+
+  <div class="box box-vino">
+    <span class="box-ic">🍷</span>
+    <div class="box-body">
+      <strong>Degustazioni in piccole cantine familiari</strong>
+      <p><b>Cascina Sot</b> (Monforte d'Alba) — cantina familiare tra i vigneti, degustazioni di Barolo in un contesto raccolto.<br>
+      <b>Cascina Bordino</b> (Treiso) — piccola azienda di 6,5 ettari specializzata in Barbaresco, molto riconosciuta nonostante le dimensioni contenute.</p>
+    </div>
+  </div>
+
+  <div class="box box-verde">
+    <span class="box-ic">🚴</span>
+    <div class="box-body">
+      <strong>E-bike, mongolfiera e tour attivi</strong>
+      <p>Diversi agriturismi e cascine delle colline del Barolo propongono esperienze combinate: trekking panoramici, tour in e-bike tra le vigne e voli in mongolfiera all'alba sulle colline delle Langhe.</p>
+    </div>
+  </div>
+
+  <div class="box box-noc">
+    <span class="box-ic">🌰</span>
+    <div class="box-body">
+      <strong>Sagra della Nocciola — Feisoglio</strong>
+      <p>Seconda domenica di settembre: piccola fiera di paese dedicata alla Tonda Gentile delle Langhe IGP, genuina e senza il traffico delle fiere più famose.</p>
+    </div>
+  </div>
+
+  <div class="box box-vino">
+    <span class="box-ic">🗺️</span>
+    <div class="box-body">
+      <strong>Giro dei borghi dell'Alta Langa in giornata</strong>
+      <p>Bergolo, Feisoglio, Mombarcaro e Cravanzana in un unico itinerario su strada, con soste nelle botteghe locali di nocciole e formaggi (zona di produzione della Robiola di Roccaverano).</p>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="menu">📖 Menù Navigator</h2>
+  <p style="margin-bottom:10px; color:#5a4a40;">Cosa significano i piatti scritti nei menù dei ristoranti di Langa, e cosa berci insieme.</p>
+
+  <h3 style="font-family:'Playfair Display',Georgia,serif; color:var(--nocciola); margin:20px 0 10px; font-size:19px;">🥗 Antipasti</h3>
+  <div class="menu-item"><b>Vitello tonnato</b> — fettine di vitello freddo ricoperte di salsa a base di tonno, acciughe, capperi e maionese.</div>
+  <div class="menu-item"><b>Tonno di coniglio</b> — antipasto povero contadino: coniglio cotto, sfilacciato e conservato sott'olio, consistenza simile al tonno in scatola.</div>
+  <div class="menu-item"><b>Carne cruda battuta al coltello</b> — tartare di fassone piemontese tagliata a mano, condita con olio e limone, spesso con tartufo o funghi.</div>
+  <div class="menu-item"><b>Bagna cauda</b> — intingolo caldo di acciughe, aglio e olio in cui si intingono verdure crude e cotte.</div>
+  <div class="menu-item"><b>Peperoni con bagnetto</b> — peperoni arrostiti o in agrodolce con bagnetto verde (prezzemolo/aglio) o rosso (pomodoro).</div>
+  <div class="menu-item"><b>Insalata russa</b> — patate, carote e piselli legati con maionese; classico antipasto freddo piemontese.</div>
+  <div class="menu-item"><b>Finanziera</b> — piatto povero a base di frattaglie (rigaglie di pollo, filoni, animelle) sfumate con aceto o Marsala.</div>
+  <div class="menu-item"><b>Salame di Turgia / Testa in cassetta</b> — salumi tradizionali: il primo di manzo e suino speziato, il secondo simile a una testina cotta.</div>
+
+  <h3 style="font-family:'Playfair Display',Georgia,serif; color:var(--nocciola); margin:24px 0 10px; font-size:19px;">🍝 Primi</h3>
+  <div class="menu-item"><b>Tajarin</b> (al tartufo o al burro) — tagliolini sottilissimi all'uovo, conditi con burro e salvia o tartufo grattugiato.</div>
+  <div class="menu-item"><b>Agnolotti del plin</b> — piccoli ravioli ripieni di carne (arrosto misto), chiusi con un "pizzicotto" (plin), al burro o al sugo d'arrosto.</div>
+
+  <h3 style="font-family:'Playfair Display',Georgia,serif; color:var(--nocciola); margin:24px 0 10px; font-size:19px;">🥩 Secondi</h3>
+  <div class="menu-item"><b>Brasato al Barolo</b> — manzo marinato e stufato lentamente nel vino Barolo con verdure e spezie.</div>
+  <div class="menu-item"><b>Fritto misto piemontese</b> — carni, verdure, frattaglie e persino elementi dolci (amaretti, semolino fritto) impanati e fritti insieme.</div>
+
+  <h3 style="font-family:'Playfair Display',Georgia,serif; color:var(--nocciola); margin:24px 0 10px; font-size:19px;">🧀 Formaggi e tartufo</h3>
+  <div class="menu-item"><b>Robiola di Roccaverano DOP</b> — formaggio fresco a pasta molle, latte misto capra/vacca/pecora.</div>
+  <div class="menu-item"><b>Castelmagno DOP</b> — formaggio erborinato a pasta semidura, sapore intenso e piccante da stagionato.</div>
+  <div class="menu-item"><b>Murazzano DOP</b> — robiola a base di latte ovino, delicata, tipica dell'Alta Langa.</div>
+  <div class="menu-item"><b>Tartufo bianco/nero</b> — tubero pregiato di Alba (bianco, autunnale) e delle Langhe (nero), grattugiato su tajarin, uova, carne cruda.</div>
+
+  <h3 style="font-family:'Playfair Display',Georgia,serif; color:var(--nocciola); margin:24px 0 10px; font-size:19px;">🍰 Dolci</h3>
+  <div class="menu-item"><b>Bunet (o bonet)</b> — budino al cucchiaio a base di cacao, amaretti e caramello.</div>
+  <div class="menu-item"><b>Panna cotta</b> — dessert cremoso a base di panna, servito con caramello o frutti di bosco.</div>
+  <div class="menu-item"><b>Torta di nocciole delle Langhe/Piemonte IGP</b> — torta senza (o quasi) farina, a base di nocciola Tonda Gentile delle Langhe.</div>
+
+  <h3 style="font-family:'Playfair Display',Georgia,serif; color:var(--vino); margin:32px 0 10px; font-size:20px;">🍷 Abbinamenti vino-piatto</h3>
+
+  <div class="abbinamento"><span class="vino-nome">Barolo</span><p>Arrosti di carne rossa, brasato al Barolo, cacciagione, piatti tartufati, formaggi stagionati come il Castelmagno.</p></div>
+  <div class="abbinamento"><span class="vino-nome">Barbaresco</span><p>Simile al Barolo ma più elegante: carni rosse pregiate, formaggi stagionati, robiole scottate con tartufo bianco.</p></div>
+  <div class="abbinamento"><span class="vino-nome">Barbera d'Alba</span><p>Primi piatti (tajarin, agnolotti, risotti), pasta al forno, carni rosse e brasati più "quotidiani".</p></div>
+  <div class="abbinamento"><span class="vino-nome">Dolcetto d'Alba</span><p>Antipasti piemontesi, salumi, carpacci: vino da tutto pasto informale.</p></div>
+  <div class="abbinamento"><span class="vino-nome">Nebbiolo d'Alba</span><p>Primi a base di tagliatelle e risotti, salumi stagionati, fritti.</p></div>
+  <div class="abbinamento"><span class="vino-nome">Arneis / Roero Arneis</span><p>Antipasti di terra, formaggi freschi come la robiola, carni bianche, anche pesce di lago.</p></div>
+  <div class="abbinamento"><span class="vino-nome">Moscato d'Asti</span><p>Dolci e dessert (bunet, torta di nocciole, panna cotta), grazie alla dolcezza aromatica e bassa gradazione.</p></div>
+
+  <h2 class="section-title" id="consigli">💡 Consigli pratici</h2>
+  <ul class="checklist">
+    <li>🚗 Prenota sempre i ristoranti di Langa, specialmente nei weekend e in autunno durante la stagione del tartufo</li>
+    <li>🅿️ Nei borghi più piccoli i parcheggi sono limitati: arriva presto o a piedi dal paese vicino</li>
+    <li>🍂 Ottobre-novembre è alta stagione (tartufo, vendemmia, foliage): prenota alloggi con largo anticipo</li>
+    <li>🚴 Molte strade tra i vigneti sono percorribili anche in bicicletta, ottime per collegare più borghi in un giorno</li>
+    <li>📱 Scarica le tracce GPS dei sentieri dal sito dell'Ecomuseo delle Rocche del Roero prima di partire</li>
+    <li>🧥 In Alta Langa le temperature scendono più che nella Langa del Barolo: porta uno strato in più</li>
+  </ul>
+
+  <a class="back-link" href="../">← Torna all'archivio guide</a>
+
+</div>
+
+<footer>
+  <p>Guida di Dario — aggiornata luglio 2026</p>
+</footer>
+
+</body>
+</html>

@@ -12,6 +12,7 @@ Raccolta di guide di viaggio create per i viaggi di Dario: storia, luoghi da ved
 - 🥐 **[Parigi](./parigi/)** — Louvre, Musée d'Orsay e bistrot autentici — agosto 2025.
 - 🏔️ **[Vattaro](./vattaro/)** — Guida vacanza — giugno 2026.
 - 🥾 **[Corno alle Scale](./cornoallescale/)** — Trekking, rifugi e pranzo in quota — luglio 2026.
+- 🍷 **[Langhe](./langhe/)** — Borghi fuori rotta, trekking tra le vigne, trattorie e menù navigator — luglio 2026.
 
 ## Struttura
 
