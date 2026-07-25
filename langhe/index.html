@@ -277,6 +277,94 @@
     }
     .abbinamento p { font-size: 15.5px; color: #3a2e28; }
 
+    /* --- Menù Navigator: indice gestibile --- */
+    .navigator {
+      background: var(--bianco);
+      border-radius: 20px;
+      box-shadow: 0 6px 26px var(--ombra);
+      overflow: hidden;
+      margin: 20px 0 30px;
+      border: 1px solid rgba(140,47,62,0.15);
+    }
+    .navigator-index {
+      position: sticky;
+      top: 46px;
+      z-index: 50;
+      background: linear-gradient(135deg, var(--vino) 0%, var(--vino-medio) 100%);
+      padding: 18px 22px;
+    }
+    .navigator-search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 30px;
+      padding: 10px 18px;
+      margin-bottom: 12px;
+    }
+    .navigator-search span { font-size: 18px; }
+    .navigator-search input {
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      width: 100%;
+      color: var(--testo);
+    }
+    .navigator-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .nav-tab {
+      border: 2px solid rgba(255,255,255,0.55);
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 20px;
+      padding: 7px 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .nav-tab:hover { background: rgba(255,255,255,0.25); }
+    .nav-tab.active {
+      background: var(--oro);
+      border-color: var(--oro);
+      color: var(--vino);
+    }
+    .navigator-count {
+      color: rgba(255,255,255,0.85);
+      font-size: 13px;
+      margin-top: 10px;
+      text-align: right;
+    }
+    .navigator-body { padding: 8px 26px 26px; }
+    .menu-cat { scroll-margin-top: 150px; }
+    .menu-cat-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--nocciola);
+      margin: 26px 0 10px;
+      font-size: 19px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .menu-cat-title.vini-title { color: var(--vino); font-size: 20px; margin-top: 34px; }
+    .menu-item, .abbinamento { transition: opacity 0.15s; }
+    .menu-item.is-hidden, .abbinamento.is-hidden, .menu-cat.is-hidden { display: none !important; }
+    .navigator-empty {
+      display: none;
+      text-align: center;
+      padding: 30px 10px;
+      color: #8a5a1e;
+      font-style: italic;
+    }
+    .navigator-empty.show { display: block; }
+
     .checklist {
       list-style: none;
       padding: 0;
@@ -631,46 +719,82 @@
   </div>
 
   <h2 class="section-title" id="menu">📖 Menù Navigator</h2>
-  <p style="margin-bottom:10px; color:#5a4a40;">Cosa significano i piatti scritti nei menù dei ristoranti di Langa, e cosa berci insieme.</p>
+  <p style="margin-bottom:10px; color:#5a4a40;">Cosa significano i piatti scritti nei menù dei ristoranti di Langa, e cosa berci insieme. Usa la ricerca o i tab per saltare subito alla categoria che ti serve.</p>
 
-  <h3 style="font-family:'Playfair Display',Georgia,serif; color:var(--nocciola); margin:20px 0 10px; font-size:19px;">🥗 Antipasti</h3>
-  <div class="menu-item"><b>Vitello tonnato</b> — fettine di vitello freddo ricoperte di salsa a base di tonno, acciughe, capperi e maionese.</div>
-  <div class="menu-item"><b>Tonno di coniglio</b> — antipasto povero contadino: coniglio cotto, sfilacciato e conservato sott'olio, consistenza simile al tonno in scatola.</div>
-  <div class="menu-item"><b>Carne cruda battuta al coltello</b> — tartare di fassone piemontese tagliata a mano, condita con olio e limone, spesso con tartufo o funghi.</div>
-  <div class="menu-item"><b>Bagna cauda</b> — intingolo caldo di acciughe, aglio e olio in cui si intingono verdure crude e cotte.</div>
-  <div class="menu-item"><b>Peperoni con bagnetto</b> — peperoni arrostiti o in agrodolce con bagnetto verde (prezzemolo/aglio) o rosso (pomodoro).</div>
-  <div class="menu-item"><b>Insalata russa</b> — patate, carote e piselli legati con maionese; classico antipasto freddo piemontese.</div>
-  <div class="menu-item"><b>Finanziera</b> — piatto povero a base di frattaglie (rigaglie di pollo, filoni, animelle) sfumate con aceto o Marsala.</div>
-  <div class="menu-item"><b>Salame di Turgia / Testa in cassetta</b> — salumi tradizionali: il primo di manzo e suino speziato, il secondo simile a una testina cotta.</div>
+  <div class="navigator" id="navigator">
+    <div class="navigator-index">
+      <div class="navigator-search">
+        <span>🔎</span>
+        <input type="text" id="nav-search" placeholder="Cerca un piatto, un formaggio, un vino... (es. tartufo)" aria-label="Cerca nel menù navigator">
+      </div>
+      <div class="navigator-tabs" id="nav-tabs" role="tablist" aria-label="Categorie del menù">
+        <button class="nav-tab active" data-cat="all">🗂️ Tutte</button>
+        <button class="nav-tab" data-cat="antipasti">🥗 Antipasti</button>
+        <button class="nav-tab" data-cat="primi">🍝 Primi</button>
+        <button class="nav-tab" data-cat="secondi">🥩 Secondi</button>
+        <button class="nav-tab" data-cat="formaggi">🧀 Formaggi e tartufo</button>
+        <button class="nav-tab" data-cat="dolci">🍰 Dolci</button>
+        <button class="nav-tab" data-cat="vini">🍷 Abbinamenti vino</button>
+      </div>
+      <div class="navigator-count" id="nav-count"></div>
+    </div>
 
-  <h3 style="font-family:'Playfair Display',Georgia,serif; color:var(--nocciola); margin:24px 0 10px; font-size:19px;">🍝 Primi</h3>
-  <div class="menu-item"><b>Tajarin</b> (al tartufo o al burro) — tagliolini sottilissimi all'uovo, conditi con burro e salvia o tartufo grattugiato.</div>
-  <div class="menu-item"><b>Agnolotti del plin</b> — piccoli ravioli ripieni di carne (arrosto misto), chiusi con un "pizzicotto" (plin), al burro o al sugo d'arrosto.</div>
+    <div class="navigator-body">
 
-  <h3 style="font-family:'Playfair Display',Georgia,serif; color:var(--nocciola); margin:24px 0 10px; font-size:19px;">🥩 Secondi</h3>
-  <div class="menu-item"><b>Brasato al Barolo</b> — manzo marinato e stufato lentamente nel vino Barolo con verdure e spezie.</div>
-  <div class="menu-item"><b>Fritto misto piemontese</b> — carni, verdure, frattaglie e persino elementi dolci (amaretti, semolino fritto) impanati e fritti insieme.</div>
+      <div class="menu-cat" data-cat="antipasti">
+        <h3 class="menu-cat-title">🥗 Antipasti</h3>
+        <div class="menu-item" data-terms="vitello tonnato tonno maionese"><b>Vitello tonnato</b> — fettine di vitello freddo ricoperte di salsa a base di tonno, acciughe, capperi e maionese.</div>
+        <div class="menu-item" data-terms="tonno di coniglio conserva sott'olio"><b>Tonno di coniglio</b> — antipasto povero contadino: coniglio cotto, sfilacciato e conservato sott'olio, consistenza simile al tonno in scatola.</div>
+        <div class="menu-item" data-terms="carne cruda battuta al coltello tartare fassone tartufo"><b>Carne cruda battuta al coltello</b> — tartare di fassone piemontese tagliata a mano, condita con olio e limone, spesso con tartufo o funghi.</div>
+        <div class="menu-item" data-terms="bagna cauda acciughe aglio olio verdure"><b>Bagna cauda</b> — intingolo caldo di acciughe, aglio e olio in cui si intingono verdure crude e cotte.</div>
+        <div class="menu-item" data-terms="peperoni bagnetto verde rosso"><b>Peperoni con bagnetto</b> — peperoni arrostiti o in agrodolce con bagnetto verde (prezzemolo/aglio) o rosso (pomodoro).</div>
+        <div class="menu-item" data-terms="insalata russa patate carote piselli maionese"><b>Insalata russa</b> — patate, carote e piselli legati con maionese; classico antipasto freddo piemontese.</div>
+        <div class="menu-item" data-terms="finanziera frattaglie rigaglie pollo animelle"><b>Finanziera</b> — piatto povero a base di frattaglie (rigaglie di pollo, filoni, animelle) sfumate con aceto o Marsala.</div>
+        <div class="menu-item" data-terms="salame di turgia testa in cassetta salumi"><b>Salame di Turgia / Testa in cassetta</b> — salumi tradizionali: il primo di manzo e suino speziato, il secondo simile a una testina cotta.</div>
+      </div>
 
-  <h3 style="font-family:'Playfair Display',Georgia,serif; color:var(--nocciola); margin:24px 0 10px; font-size:19px;">🧀 Formaggi e tartufo</h3>
-  <div class="menu-item"><b>Robiola di Roccaverano DOP</b> — formaggio fresco a pasta molle, latte misto capra/vacca/pecora.</div>
-  <div class="menu-item"><b>Castelmagno DOP</b> — formaggio erborinato a pasta semidura, sapore intenso e piccante da stagionato.</div>
-  <div class="menu-item"><b>Murazzano DOP</b> — robiola a base di latte ovino, delicata, tipica dell'Alta Langa.</div>
-  <div class="menu-item"><b>Tartufo bianco/nero</b> — tubero pregiato di Alba (bianco, autunnale) e delle Langhe (nero), grattugiato su tajarin, uova, carne cruda.</div>
+      <div class="menu-cat" data-cat="primi">
+        <h3 class="menu-cat-title">🍝 Primi</h3>
+        <div class="menu-item" data-terms="tajarin tagliolini tartufo burro"><b>Tajarin</b> (al tartufo o al burro) — tagliolini sottilissimi all'uovo, conditi con burro e salvia o tartufo grattugiato.</div>
+        <div class="menu-item" data-terms="agnolotti del plin ravioli arrosto"><b>Agnolotti del plin</b> — piccoli ravioli ripieni di carne (arrosto misto), chiusi con un "pizzicotto" (plin), al burro o al sugo d'arrosto.</div>
+      </div>
 
-  <h3 style="font-family:'Playfair Display',Georgia,serif; color:var(--nocciola); margin:24px 0 10px; font-size:19px;">🍰 Dolci</h3>
-  <div class="menu-item"><b>Bunet (o bonet)</b> — budino al cucchiaio a base di cacao, amaretti e caramello.</div>
-  <div class="menu-item"><b>Panna cotta</b> — dessert cremoso a base di panna, servito con caramello o frutti di bosco.</div>
-  <div class="menu-item"><b>Torta di nocciole delle Langhe/Piemonte IGP</b> — torta senza (o quasi) farina, a base di nocciola Tonda Gentile delle Langhe.</div>
+      <div class="menu-cat" data-cat="secondi">
+        <h3 class="menu-cat-title">🥩 Secondi</h3>
+        <div class="menu-item" data-terms="brasato al barolo manzo vino stufato"><b>Brasato al Barolo</b> — manzo marinato e stufato lentamente nel vino Barolo con verdure e spezie.</div>
+        <div class="menu-item" data-terms="fritto misto piemontese carni verdure frattaglie amaretti"><b>Fritto misto piemontese</b> — carni, verdure, frattaglie e persino elementi dolci (amaretti, semolino fritto) impanati e fritti insieme.</div>
+      </div>
 
-  <h3 style="font-family:'Playfair Display',Georgia,serif; color:var(--vino); margin:32px 0 10px; font-size:20px;">🍷 Abbinamenti vino-piatto</h3>
+      <div class="menu-cat" data-cat="formaggi">
+        <h3 class="menu-cat-title">🧀 Formaggi e tartufo</h3>
+        <div class="menu-item" data-terms="robiola di roccaverano dop capra vacca pecora"><b>Robiola di Roccaverano DOP</b> — formaggio fresco a pasta molle, latte misto capra/vacca/pecora.</div>
+        <div class="menu-item" data-terms="castelmagno dop erborinato piccante stagionato"><b>Castelmagno DOP</b> — formaggio erborinato a pasta semidura, sapore intenso e piccante da stagionato.</div>
+        <div class="menu-item" data-terms="murazzano dop robiola ovino alta langa"><b>Murazzano DOP</b> — robiola a base di latte ovino, delicata, tipica dell'Alta Langa.</div>
+        <div class="menu-item" data-terms="tartufo bianco nero alba langhe grattugiato"><b>Tartufo bianco/nero</b> — tubero pregiato di Alba (bianco, autunnale) e delle Langhe (nero), grattugiato su tajarin, uova, carne cruda.</div>
+      </div>
 
-  <div class="abbinamento"><span class="vino-nome">Barolo</span><p>Arrosti di carne rossa, brasato al Barolo, cacciagione, piatti tartufati, formaggi stagionati come il Castelmagno.</p></div>
-  <div class="abbinamento"><span class="vino-nome">Barbaresco</span><p>Simile al Barolo ma più elegante: carni rosse pregiate, formaggi stagionati, robiole scottate con tartufo bianco.</p></div>
-  <div class="abbinamento"><span class="vino-nome">Barbera d'Alba</span><p>Primi piatti (tajarin, agnolotti, risotti), pasta al forno, carni rosse e brasati più "quotidiani".</p></div>
-  <div class="abbinamento"><span class="vino-nome">Dolcetto d'Alba</span><p>Antipasti piemontesi, salumi, carpacci: vino da tutto pasto informale.</p></div>
-  <div class="abbinamento"><span class="vino-nome">Nebbiolo d'Alba</span><p>Primi a base di tagliatelle e risotti, salumi stagionati, fritti.</p></div>
-  <div class="abbinamento"><span class="vino-nome">Arneis / Roero Arneis</span><p>Antipasti di terra, formaggi freschi come la robiola, carni bianche, anche pesce di lago.</p></div>
-  <div class="abbinamento"><span class="vino-nome">Moscato d'Asti</span><p>Dolci e dessert (bunet, torta di nocciole, panna cotta), grazie alla dolcezza aromatica e bassa gradazione.</p></div>
+      <div class="menu-cat" data-cat="dolci">
+        <h3 class="menu-cat-title">🍰 Dolci</h3>
+        <div class="menu-item" data-terms="bunet bonet budino cacao amaretti caramello"><b>Bunet (o bonet)</b> — budino al cucchiaio a base di cacao, amaretti e caramello.</div>
+        <div class="menu-item" data-terms="panna cotta caramello frutti di bosco"><b>Panna cotta</b> — dessert cremoso a base di panna, servito con caramello o frutti di bosco.</div>
+        <div class="menu-item" data-terms="torta di nocciole langhe piemonte igp"><b>Torta di nocciole delle Langhe/Piemonte IGP</b> — torta senza (o quasi) farina, a base di nocciola Tonda Gentile delle Langhe.</div>
+      </div>
+
+      <div class="menu-cat" data-cat="vini">
+        <h3 class="menu-cat-title vini-title">🍷 Abbinamenti vino-piatto</h3>
+        <div class="abbinamento" data-terms="barolo arrosti carne rossa brasato cacciagione tartufo castelmagno"><span class="vino-nome">Barolo</span><p>Arrosti di carne rossa, brasato al Barolo, cacciagione, piatti tartufati, formaggi stagionati come il Castelmagno.</p></div>
+        <div class="abbinamento" data-terms="barbaresco carni rosse formaggi stagionati robiole tartufo bianco"><span class="vino-nome">Barbaresco</span><p>Simile al Barolo ma più elegante: carni rosse pregiate, formaggi stagionati, robiole scottate con tartufo bianco.</p></div>
+        <div class="abbinamento" data-terms="barbera d'alba tajarin agnolotti risotti pasta al forno"><span class="vino-nome">Barbera d'Alba</span><p>Primi piatti (tajarin, agnolotti, risotti), pasta al forno, carni rosse e brasati più "quotidiani".</p></div>
+        <div class="abbinamento" data-terms="dolcetto d'alba antipasti salumi carpacci"><span class="vino-nome">Dolcetto d'Alba</span><p>Antipasti piemontesi, salumi, carpacci: vino da tutto pasto informale.</p></div>
+        <div class="abbinamento" data-terms="nebbiolo d'alba tagliatelle risotti salumi fritti"><span class="vino-nome">Nebbiolo d'Alba</span><p>Primi a base di tagliatelle e risotti, salumi stagionati, fritti.</p></div>
+        <div class="abbinamento" data-terms="arneis roero arneis antipasti formaggi freschi robiola carni bianche pesce"><span class="vino-nome">Arneis / Roero Arneis</span><p>Antipasti di terra, formaggi freschi come la robiola, carni bianche, anche pesce di lago.</p></div>
+        <div class="abbinamento" data-terms="moscato d'asti dolci dessert bunet torta di nocciole panna cotta"><span class="vino-nome">Moscato d'Asti</span><p>Dolci e dessert (bunet, torta di nocciole, panna cotta), grazie alla dolcezza aromatica e bassa gradazione.</p></div>
+      </div>
+
+      <p class="navigator-empty" id="nav-empty">Nessun piatto o vino trovato. Provi con un altro termine? 🍇</p>
+
+    </div>
+  </div>
 
   <h2 class="section-title" id="consigli">💡 Consigli pratici</h2>
   <ul class="checklist">
@@ -689,6 +813,75 @@
 <footer>
   <p>Guida di Dario — aggiornata luglio 2026</p>
 </footer>
+
+<script>
+(function() {
+  var navigator_ = document.getElementById('navigator');
+  if (!navigator_) return;
+
+  var searchInput = document.getElementById('nav-search');
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.nav-tab'));
+  var cats = Array.prototype.slice.call(document.querySelectorAll('.menu-cat'));
+  var countEl = document.getElementById('nav-count');
+  var emptyEl = document.getElementById('nav-empty');
+  var activeCat = 'all';
+
+  function normalize(s) {
+    return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  }
+
+  function applyFilters() {
+    var query = normalize(searchInput.value.trim());
+    var visibleCount = 0;
+
+    cats.forEach(function(cat) {
+      var catKey = cat.getAttribute('data-cat');
+      var catMatchesTab = (activeCat === 'all' || activeCat === catKey);
+      var items = Array.prototype.slice.call(cat.querySelectorAll('.menu-item, .abbinamento'));
+      var catHasVisibleItem = false;
+
+      items.forEach(function(item) {
+        var terms = normalize(item.getAttribute('data-terms') || item.textContent);
+        var matchesQuery = query === '' || terms.indexOf(query) !== -1;
+        var show = catMatchesTab && matchesQuery;
+        item.classList.toggle('is-hidden', !show);
+        if (show) { catHasVisibleItem = true; visibleCount++; }
+      });
+
+      cat.classList.toggle('is-hidden', !catHasVisibleItem);
+    });
+
+    emptyEl.classList.toggle('show', visibleCount === 0);
+
+    if (query === '') {
+      countEl.textContent = '';
+    } else {
+      countEl.textContent = visibleCount + (visibleCount === 1 ? ' risultato trovato' : ' risultati trovati');
+    }
+  }
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      activeCat = tab.getAttribute('data-cat');
+      applyFilters();
+      if (activeCat !== 'all') {
+        var target = document.querySelector('.menu-cat[data-cat="' + activeCat + '"]');
+        if (target) {
+          setTimeout(function() {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 50);
+        }
+      }
+    });
+  });
+
+  searchInput.addEventListener('input', applyFilters);
+
+  applyFilters();
+})();
+</script>
 
 </body>
 </html>
