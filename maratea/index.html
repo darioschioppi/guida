@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guida Maratea — La Perla del Tirreno</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:wght@700&display=swap');
+
+    :root {
+      --mare: #063C5B;
+      --mare-medio: #0E6E8C;
+      --mare-chiaro: #7EC8D8;
+      --mare-pallido: #E3F2F5;
+      --sfondo: #FCF9F2;
+      --terra: #B5622E;
+      --terra-chiara: #F5DFC8;
+      --oliva: #59703C;
+      --oliva-chiara: #E6EEDD;
+      --oro: #D9A441;
+      --testo: #22292C;
+      --bianco: #ffffff;
+      --ombra: rgba(6,60,91,0.14);
+    }
+
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--testo);
+      background: var(--sfondo);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #032638 0%, #063C5B 55%, #0E6E8C 100%);
+      color: white;
+      padding: 60px 24px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 50px;
+      background: var(--sfondo);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-emoji { font-size: 60px; display: block; margin-bottom: 16px; }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(28px, 6vw, 48px);
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .hero-sub {
+      font-size: clamp(16px, 3vw, 20px);
+      opacity: 0.92;
+      margin-bottom: 20px;
+    }
+    .badge-hero {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 30px;
+      padding: 8px 22px;
+      font-size: 16px;
+      margin: 4px;
+      backdrop-filter: blur(4px);
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(22px, 4vw, 30px);
+      color: var(--mare);
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--mare-chiaro);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      scroll-margin-top: 70px;
+    }
+
+    .info-card {
+      background: linear-gradient(135deg, var(--mare) 0%, var(--mare-medio) 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 28px 32px;
+      margin: 24px 0;
+      box-shadow: 0 8px 30px var(--ombra);
+    }
+    .info-card h3 {
+      font-size: 22px;
+      margin-bottom: 14px;
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    .info-row {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+      align-items: flex-start;
+    }
+    .info-row .ic { font-size: 20px; min-width: 28px; }
+    .info-row span { opacity: 0.95; font-size: 17px; }
+
+    .box {
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin: 16px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .box-mare   { background: var(--mare-pallido); border-left: 5px solid var(--mare-medio); }
+    .box-terra { background: var(--terra-chiara); border-left: 5px solid var(--terra); }
+    .box-oliva { background: var(--oliva-chiara); border-left: 5px solid var(--oliva); }
+    .box-ic { font-size: 26px; min-width: 36px; margin-top: 2px; }
+    .box-body { flex: 1; }
+    .box-body strong { font-size: 17px; display: block; margin-bottom: 4px; color: var(--mare); }
+    .box-body p, .box-body li { font-size: 16px; color: #333; }
+    .box-terra .box-body strong { color: #8a4a1e; }
+    .box-oliva .box-body strong { color: var(--oliva); }
+
+    .luogo-card {
+      background: var(--bianco);
+      border-radius: 16px;
+      padding: 20px 26px;
+      margin: 16px 0;
+      box-shadow: 0 4px 18px var(--ombra);
+      border-left: 5px solid var(--oro);
+    }
+    .luogo-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--mare);
+      font-size: 19px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .luogo-card p { font-size: 16px; color: #2a3038; }
+    .luogo-tag {
+      display: inline-block;
+      background: var(--mare-pallido);
+      color: var(--mare);
+      font-size: 12.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-radius: 20px;
+      padding: 3px 12px;
+      margin-bottom: 8px;
+    }
+
+    .tratto-card {
+      background: var(--bianco);
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 20px 0;
+      box-shadow: 0 4px 20px var(--ombra);
+      border: 1px solid rgba(14,110,140,0.2);
+    }
+    .tratto-header {
+      padding: 18px 26px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      background: linear-gradient(135deg, var(--mare), var(--oliva));
+    }
+    .tratto-emoji { font-size: 34px; }
+    .tratto-info { flex: 1; }
+    .tratto-info .quota {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.9;
+      color: white;
+    }
+    .tratto-info h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(18px, 3vw, 22px);
+      color: white;
+      line-height: 1.2;
+    }
+    .tratto-body { padding: 20px 26px; }
+
+    .difficulty {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+    }
+    .diff-facile   { background: #d4edda; color: #155724; }
+    .diff-moderato { background: #fff3cd; color: #856404; }
+    .diff-intenso  { background: #fde8e8; color: #842029; }
+
+    .spiaggia {
+      background: var(--bianco);
+      border-radius: 14px;
+      padding: 18px 24px;
+      margin: 14px 0;
+      box-shadow: 0 3px 14px var(--ombra);
+    }
+    .spiaggia h4 {
+      font-size: 18px;
+      color: var(--mare);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .spiaggia .zona {
+      font-size: 13.5px;
+      color: var(--terra);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .spiaggia p { font-size: 16px; color: #2a3038; margin: 4px 0; }
+
+    .fascia {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 20px;
+      padding: 3px 12px;
+      margin-left: 8px;
+    }
+    .fascia-1 { background: var(--oliva-chiara); color: var(--oliva); }
+    .fascia-2 { background: var(--terra-chiara); color: #8a4a1e; }
+    .fascia-3 { background: var(--mare-pallido); color: var(--mare); }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .checklist li {
+      background: var(--bianco);
+      border-radius: 10px;
+      padding: 12px 16px;
+      box-shadow: 0 2px 8px var(--ombra);
+      font-size: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #032638;
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+    }
+    footer a { color: var(--mare-chiaro); }
+
+    .back-link {
+      display: inline-block;
+      margin: 24px 0 0;
+      color: var(--mare);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    nav.toc {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(3,38,56,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    nav.toc .toc-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      gap: 4px;
+      padding: 10px 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    nav.toc .toc-inner::-webkit-scrollbar { display: none; }
+    nav.toc a {
+      white-space: nowrap;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #cdeaf1;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+      font-weight: 700;
+    }
+    nav.toc a:hover, nav.toc a:focus {
+      background: rgba(126,200,216,0.25);
+      border-color: var(--mare-chiaro);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-emoji">⛵</span>
+  <h1>Maratea</h1>
+  <p class="hero-sub">La Perla del Tirreno — borgo, 32 km di costa e sentieri sospesi tra mare e monte</p>
+  <div>
+    <span class="badge-hero">📍 Provincia di Potenza, Basilicata</span>
+    <span class="badge-hero">⛪ La città delle 44 chiese</span>
+    <span class="badge-hero">🌊 5 Vele Legambiente</span>
+  </div>
+</div>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#storia">🏛️ Storia e arte</a>
+    <a href="#spiagge">🏖️ Spiagge</a>
+    <a href="#trekking">🥾 Trekking</a>
+    <a href="#ristoranti">🍽️ Dove mangiare</a>
+    <a href="#consigli">💡 Consigli pratici</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="info-card">
+    <h3>📌 Prima di partire</h3>
+    <div class="info-row"><span class="ic">🗺️</span><span>Maratea è l'unico comune della Basilicata sul mar Tirreno: 32 km di costa incastonati tra il Cilento e la Calabria, con oltre 4.500 abitanti.</span></div>
+    <div class="info-row"><span class="ic">⛪</span><span>Conosciuta come "la città delle 44 chiese" per l'altissima concentrazione di chiese, cappelle e conventi nel centro storico.</span></div>
+    <div class="info-row"><span class="ic">🕊️</span><span>Il simbolo di Maratea è la Statua del Cristo Redentore (21,13 m) sul Monte San Biagio, visibile da gran parte della costa.</span></div>
+    <div class="info-row"><span class="ic">📅</span><span>Guida pensata per qualunque periodo: in estate regna il mare, in primavera/autunno emergono trekking, borgo e tranquillità senza folla.</span></div>
+  </div>
+
+  <h2 class="section-title" id="storia">🏛️ Storia e arte</h2>
+
+  <div class="luogo-card">
+    <span class="luogo-tag">Storia</span>
+    <h3>🏺 Dalle origini a Maratea inferiore</h3>
+    <p>Il territorio è abitato fin dal Paleolitico medio; il primo insediamento stabile risale all'Età del Bronzo su Capo la Timpa, vicino all'attuale porto. In epoca romana (III sec. a.C.) vi si insediarono ville patrizie. Nel Medioevo nacque sulla cima del Monte San Biagio il centro fortificato di "Marathia", passato sotto bizantini, normanni e poi Regno di Napoli. Nel 1434 il borgo si espanse a valle formando "Maratea inferiore" — l'attuale centro storico — separandosi amministrativamente dal Castello.</p>
+  </div>
+
+  <div class="luogo-card">
+    <span class="luogo-tag">Storia</span>
+    <h3>⚔️ Il Castello e l'assedio del 1806</h3>
+    <p>Durante l'assedio napoleonico del 1806, difeso dal colonnello borbonico Alessandro Mandarini, il Castello sulla cima del Monte San Biagio fu definitivamente abbandonato. Le sue rovine sono ancora visibili oggi, e raggiungibili con una passeggiata dal borgo antico o dal sentiero verso il Cristo Redentore.</p>
+  </div>
+
+  <div class="luogo-card">
+    <span class="luogo-tag">Da vedere</span>
+    <h3>🏘️ Il Borgo antico (Maratea inferiore)</h3>
+    <p>Il centro storico fu costruito arroccato e nascosto dal mare per proteggersi dalle incursioni saracene: vicoli, piazzette e le celebri 44 chiese lo rendono uno dei borghi più affascinanti della costa tirrenica. Ottimo per una passeggiata serale tra le stradine di pietra.</p>
+  </div>
+
+  <div class="luogo-card">
+    <span class="luogo-tag">Simbolo</span>
+    <h3>🕊️ Statua del Cristo Redentore</h3>
+    <p>Alta 21,13 metri, si trova sulla cima del Monte San Biagio (623 m), accanto alla Basilica Pontificia di San Biagio. Ingresso libero, visitabile 24 ore. Vi si arriva in auto (parcheggio a pagamento + navetta stagionale), a piedi con una scalinata dal borgo antico, oppure con un sentiero panoramico dal centro storico. Dal 2021 è attiva anche una via ferrata con ponti tibetani per chi vuole un'esperienza più avventurosa.</p>
+  </div>
+
+  <h2 class="section-title" id="spiagge">🏖️ Spiagge, tra le più note e le più nascoste</h2>
+  <p style="margin-bottom:10px; color:#3a4a4d;">Lungo i 32 km di costa sono censite circa 28 spiagge e calette. Ecco le principali, comprese alcune alternative meno frequentate.</p>
+
+  <div class="spiaggia">
+    <span class="zona">Marina di Maratea</span>
+    <h4>🏖️ Fiumicello <span class="fascia fascia-2">La più frequentata</span></h4>
+    <p>Insenatura protetta con sabbia grossolana e ciottoli, stabilimenti e ristoranti nelle vicinanze: la spiaggia più comoda per famiglie e chi vuole tutti i servizi a portata di mano.</p>
+  </div>
+
+  <div class="spiaggia">
+    <span class="zona">Centro</span>
+    <h4>🌋 Cala Jannita (Spiaggia Nera) <span class="fascia fascia-3">Particolare</span></h4>
+    <p>Sabbia nera di origine vulcanica, acque profonde, un piccolo stabilimento affiancato da area libera. Da qui, a nuoto, si raggiunge la Grotta della Sciabella.</p>
+  </div>
+
+  <div class="spiaggia">
+    <span class="zona">Zona sud</span>
+    <h4>🪨 Macarro (Cala Grande) <span class="fascia fascia-1">Fuori rotta</span></h4>
+    <p>Ciottoli e ghiaia, natura selvaggia e poco affollata. Accesso via sterrata e sentiero: scarpe comode consigliate. Una delle spiagge meno turistiche della zona.</p>
+  </div>
+
+  <div class="spiaggia">
+    <span class="zona">Centro</span>
+    <h4>🌤️ Santa Teresa <span class="fascia fascia-1">Tranquilla</span></h4>
+    <p>Piccola baia raccolta, sabbia dorata e ciottoli, prevalentemente libera: buona alternativa a Fiumicello per chi cerca meno folla.</p>
+  </div>
+
+  <div class="spiaggia">
+    <span class="zona">Marina di Maratea</span>
+    <h4>📸 Illicini <span class="fascia fascia-3">Scenografica</span></h4>
+    <p>Una delle spiagge più fotografate della zona, per l'incastro tra scogliera e acqua turchese.</p>
+  </div>
+
+  <div class="box box-oliva">
+    <span class="box-ic">🗝️</span>
+    <div class="box-body">
+      <strong>Le calette nascoste di Acquafredda</strong>
+      <p>La frazione di Acquafredda, a nord di Maratea, custodisce diverse calette meno note: Cala di Mezzanotte, Anginarra, Porticello, Pietre Cadenti. A Cersuta e Filocaio si trovano rispettivamente la spiaggia Rena d'u Nastru e quella d'i Vrenne, entrambe premiate in sondaggi social locali per la loro bellezza appartata.</p>
+    </div>
+  </div>
+
+  <div class="box box-mare">
+    <span class="box-ic">🌊</span>
+    <div class="box-body">
+      <strong>5 Vele Legambiente</strong>
+      <p>Maratea ha ricevuto le 5 Vele di Legambiente (il massimo riconoscimento per il mare pulito) dal 2011 al 2020, confermandosi tra le mete costiere più curate del Tirreno.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="trekking">🥾 Trekking e sentieri</h2>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">⚓</span>
+      <div class="tratto-info">
+        <div class="quota">2.100 m · 40 min · dislivello 268 m</div>
+        <h2>Porto — Centro storico</h2>
+      </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-facile">Facile/Turistico</span>
+      <p>Primo tratto del percorso che collega il Porto di Maratea al centro storico, con vista progressiva sul borgo arroccato.</p>
+    </div>
+  </div>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">🕊️</span>
+      <div class="tratto-info">
+        <div class="quota">2.400 m · 55 min · dislivello 445 m</div>
+        <h2>Centro storico — Cristo Redentore</h2>
+      </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-moderato">Moderato</span>
+      <p>Sentiero panoramico che sale dal borgo antico fino alla Statua del Cristo Redentore, passando per il bosco dei Carpini e la chiesetta della Madonna degli Ulivi. Il modo più suggestivo di arrivare al monumento simbolo di Maratea.</p>
+    </div>
+  </div>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">🌉</span>
+      <div class="tratto-info">
+        <div class="quota">~3 ore, con guida</div>
+        <h2>Via ferrata del Redentore (ponti tibetani)</h2>
+      </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-intenso">Impegnativo</span>
+      <p>Attiva dal 2021, un percorso attrezzato con ponti tibetani verso il Cristo Redentore: adrenalina e panorami a picco sul Tirreno, da fare con escursioni guidate.</p>
+    </div>
+  </div>
+
+  <div class="box box-terra">
+    <span class="box-ic">🏔️</span>
+    <div class="box-body">
+      <strong>Nei dintorni: Pollino, Cilento e Appennino Lucano</strong>
+      <p>Maratea è a pochi chilometri dal Parco Nazionale del Pollino, dal Parco Nazionale del Cilento e dal Parco dell'Appennino Lucano: per chi vuole allungare il soggiorno con trekking più impegnativi in montagna, questi parchi offrono sentieri ulteriori da programmare come gita di una giornata.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="ristoranti">🍽️ Dove mangiare e cosa provare</h2>
+
+  <div class="box box-mare">
+    <span class="box-ic">🐟</span>
+    <div class="box-body">
+      <strong>Pesce fresco al Porto e nel centro storico</strong>
+      <p>La categoria più affidabile a Maratea: ristoranti di pesce concentrati soprattutto al Porto di Maratea e nelle vie del centro storico, con proposte legate al pescato del giorno. Verificate le recensioni aggiornate su Google Maps/TripAdvisor al momento del soggiorno.</p>
+    </div>
+  </div>
+
+  <div class="box box-terra">
+    <span class="box-ic">🌶️</span>
+    <div class="box-body">
+      <strong>Sapori lucani da provare</strong>
+      <p>Anche se non un'esclusiva marateota, in Basilicata è imperdibile assaggiare i <b>peperoni cruschi</b> (peperoni di Senise, essiccati e fritti fino a diventare croccanti), spesso usati per accompagnare piatti di pasta o come contorno.</p>
+    </div>
+  </div>
+
+  <div class="box box-oliva">
+    <span class="box-ic">🍽️</span>
+    <div class="box-body">
+      <strong>La Bella Lucania Ristobottega</strong>
+      <p>Locale segnalato per i sapori autentici della cucina lucana: un buon punto di partenza se cercate un'accoglienza informale con piatti del territorio.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="consigli">💡 Consigli pratici</h2>
+  <ul class="checklist">
+    <li>🚗 In auto: A2 del Mediterraneo, uscita Lagonegro Nord-Maratea, poi SS585 "Fondovalle del Noce" (28 km, con uscite Nord/Acquafredda-Cersuta, Centro, Sud/Castrocucco-Marina)</li>
+    <li>🚆 In treno: linea Roma–Reggio Calabria–Sicilia, con stazioni proprie a Maratea, Acquafredda e Marina</li>
+    <li>✈️ Aeroporti più vicini: Lamezia Terme (~146 km, 2h), Salerno (~140 km, 2h15), Napoli Capodichino (~220 km, 2h15)</li>
+    <li>🅿️ Al Cristo Redentore il parcheggio è a pagamento (4€ prima ora + 3€/h) con navetta stagionale (1,50€ a/r)</li>
+    <li>🥾 Porta scarpe comode se vuoi raggiungere spiagge come Macarro o percorrere il sentiero verso il Cristo Redentore</li>
+    <li>📅 Estate ideale per il mare, ma alta stagione e più affollata; primavera/autunno migliori per trekking e tranquillità</li>
+  </ul>
+
+  <a class="back-link" href="../">← Torna all'archivio guide</a>
+
+</div>
+
+<footer>
+  <p>Guida di Dario — aggiornata luglio 2026</p>
+</footer>
+
+</body>
+</html>
