@@ -13,6 +13,7 @@ Raccolta di guide di viaggio create per i viaggi di Dario: storia, luoghi da ved
 - 🏔️ **[Vattaro](./vattaro/)** — Guida vacanza — giugno 2026.
 - 🥾 **[Corno alle Scale](./cornoallescale/)** — Trekking, rifugi e pranzo in quota — luglio 2026.
 - 🍷 **[Langhe](./langhe/)** — Borghi fuori rotta, trekking tra le vigne, trattorie e menù navigator — luglio 2026.
+- 🏔️ **[Alpi Giulie](./alpigiulie/)** — Tarvisio, Sella Nevea e Slovenia: itinerario di 7 giorni al fresco con budget contenuto — agosto 2026.
 
 ## Struttura
 

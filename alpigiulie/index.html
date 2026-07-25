@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guida Alpi Giulie — Tarvisio, Sella Nevea e Slovenia</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:wght@700&display=swap');
+
+    :root {
+      --blu: #0E4B5A;
+      --blu-medio: #1B7A8C;
+      --blu-chiaro: #7FC4CE;
+      --blu-pallido: #E1F1F3;
+      --sfondo: #F6FAF8;
+      --verde: #2F6B3A;
+      --verde-chiaro: #DCEFDD;
+      --roccia: #8A6D4B;
+      --roccia-chiara: #F0E6D4;
+      --oro: #D9A441;
+      --testo: #1D2B2E;
+      --bianco: #ffffff;
+      --ombra: rgba(14,75,90,0.14);
+    }
+
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--testo);
+      background: var(--sfondo);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #072F39 0%, #0E4B5A 55%, #1B7A8C 100%);
+      color: white;
+      padding: 60px 24px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 50px;
+      background: var(--sfondo);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-emoji { font-size: 60px; display: block; margin-bottom: 16px; }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(28px, 6vw, 48px);
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .hero-sub {
+      font-size: clamp(16px, 3vw, 20px);
+      opacity: 0.92;
+      margin-bottom: 20px;
+    }
+    .badge-hero {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 30px;
+      padding: 8px 22px;
+      font-size: 16px;
+      margin: 4px;
+      backdrop-filter: blur(4px);
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(22px, 4vw, 30px);
+      color: var(--blu);
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--blu-chiaro);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      scroll-margin-top: 70px;
+    }
+
+    .info-card {
+      background: linear-gradient(135deg, var(--blu) 0%, var(--blu-medio) 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 28px 32px;
+      margin: 24px 0;
+      box-shadow: 0 8px 30px var(--ombra);
+    }
+    .info-card h3 {
+      font-size: 22px;
+      margin-bottom: 14px;
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    .info-row {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+      align-items: flex-start;
+    }
+    .info-row .ic { font-size: 20px; min-width: 28px; }
+    .info-row span { opacity: 0.95; font-size: 17px; }
+
+    .box {
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin: 16px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .box-blu   { background: var(--blu-pallido); border-left: 5px solid var(--blu-medio); }
+    .box-roccia { background: var(--roccia-chiara); border-left: 5px solid var(--roccia); }
+    .box-verde { background: var(--verde-chiaro); border-left: 5px solid var(--verde); }
+    .box-ic { font-size: 26px; min-width: 36px; margin-top: 2px; }
+    .box-body { flex: 1; }
+    .box-body strong { font-size: 17px; display: block; margin-bottom: 4px; color: var(--blu); }
+    .box-body p, .box-body li { font-size: 16px; color: #333; }
+    .box-roccia .box-body strong { color: #7a5a2e; }
+    .box-verde .box-body strong { color: var(--verde); }
+
+    .luogo-card {
+      background: var(--bianco);
+      border-radius: 16px;
+      padding: 20px 26px;
+      margin: 16px 0;
+      box-shadow: 0 4px 18px var(--ombra);
+      border-left: 5px solid var(--oro);
+    }
+    .luogo-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--blu);
+      font-size: 19px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .luogo-card p { font-size: 16px; color: #2a3a3d; }
+    .luogo-tag {
+      display: inline-block;
+      background: var(--blu-pallido);
+      color: var(--blu);
+      font-size: 12.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-radius: 20px;
+      padding: 3px 12px;
+      margin-bottom: 8px;
+    }
+
+    .tratto-card {
+      background: var(--bianco);
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 20px 0;
+      box-shadow: 0 4px 20px var(--ombra);
+      border: 1px solid rgba(27,122,140,0.2);
+    }
+    .tratto-header {
+      padding: 18px 26px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      background: linear-gradient(135deg, var(--blu), var(--verde));
+    }
+    .tratto-emoji { font-size: 34px; }
+    .tratto-info { flex: 1; }
+    .tratto-info .quota {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.9;
+      color: white;
+    }
+    .tratto-info h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(18px, 3vw, 22px);
+      color: white;
+      line-height: 1.2;
+    }
+    .tratto-body { padding: 20px 26px; }
+
+    .difficulty {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+    }
+    .diff-facile   { background: #d4edda; color: #155724; }
+    .diff-moderato { background: #fff3cd; color: #856404; }
+    .diff-intenso  { background: #fde8e8; color: #842029; }
+
+    .alloggio {
+      background: var(--bianco);
+      border-radius: 14px;
+      padding: 18px 24px;
+      margin: 14px 0;
+      box-shadow: 0 3px 14px var(--ombra);
+    }
+    .alloggio h4 {
+      font-size: 18px;
+      color: var(--blu);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .alloggio .zona {
+      font-size: 13.5px;
+      color: var(--roccia);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .alloggio p { font-size: 16px; color: #2a3038; margin: 4px 0; }
+
+    .fascia {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 20px;
+      padding: 3px 12px;
+      margin-left: 8px;
+    }
+    .fascia-1 { background: var(--verde-chiaro); color: var(--verde); }
+    .fascia-2 { background: var(--roccia-chiara); color: #7a5a2e; }
+    .fascia-3 { background: var(--blu-pallido); color: var(--blu); }
+
+    .giorno-card {
+      background: var(--bianco);
+      border-radius: 16px;
+      padding: 20px 26px;
+      margin: 14px 0;
+      box-shadow: 0 4px 18px var(--ombra);
+      border-left: 5px solid var(--verde);
+    }
+    .giorno-card .num {
+      display: inline-block;
+      background: var(--verde);
+      color: white;
+      font-weight: 900;
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      text-align: center;
+      line-height: 34px;
+      margin-right: 10px;
+      font-size: 15px;
+    }
+    .giorno-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--blu);
+      font-size: 19px;
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .giorno-card p { font-size: 16px; color: #2a3a3d; }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .checklist li {
+      background: var(--bianco);
+      border-radius: 10px;
+      padding: 12px 16px;
+      box-shadow: 0 2px 8px var(--ombra);
+      font-size: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #072F39;
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+    }
+    footer a { color: var(--blu-chiaro); }
+
+    .back-link {
+      display: inline-block;
+      margin: 24px 0 0;
+      color: var(--blu);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    nav.toc {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7,47,57,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    nav.toc .toc-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      gap: 4px;
+      padding: 10px 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    nav.toc .toc-inner::-webkit-scrollbar { display: none; }
+    nav.toc a {
+      white-space: nowrap;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #d3ecf0;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+      font-weight: 700;
+    }
+    nav.toc a:hover, nav.toc a:focus {
+      background: rgba(127,196,206,0.25);
+      border-color: var(--blu-chiaro);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-emoji">🏔️</span>
+  <h1>Alpi Giulie</h1>
+  <p class="hero-sub">Tarvisio, Sella Nevea e le perle della Slovenia — una settimana fresca in montagna dopo Vattaro</p>
+  <div>
+    <span class="badge-hero">📍 Friuli-Venezia Giulia + Slovenia</span>
+    <span class="badge-hero">🚗 ~3h da Vattaro</span>
+    <span class="badge-hero">💶 Budget contenuto</span>
+  </div>
+</div>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#dove">📌 Dove andare</a>
+    <a href="#alloggio">🛏️ Dove dormire</a>
+    <a href="#itinerario">🗺️ Itinerario 7 giorni</a>
+    <a href="#friuli">⛰️ Friuli</a>
+    <a href="#slovenia">🇸🇮 Slovenia</a>
+    <a href="#ristoranti">🍽️ Dove mangiare</a>
+    <a href="#consigli">💡 Consigli pratici</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="info-card" id="dove">
+    <h3>📌 Perché le Alpi Giulie dopo Vattaro</h3>
+    <div class="info-row"><span class="ic">🚗</span><span>Da Vattaro (Trentino) a Tarvisio: circa 3h di auto, molto meno delle 4-5h necessarie per raggiungere il Piemonte. Restate "in zona" senza perdere una giornata di viaggio.</span></div>
+    <div class="info-row"><span class="ic">🌡️</span><span>Tarvisio è a 750 m, Sella Nevea a 1.190 m: temperature fresche anche nel cuore di agosto, ideale se cercate refrigerio dalla calura.</span></div>
+    <div class="info-row"><span class="ic">🇸🇮</span><span>Il confine con la Slovenia è a pochi minuti da Tarvisio: potete vedere due paesi diversi (e i laghi alpini più belli d'Europa, Bled e Bohinj) restando sempre in una base fissa e spendendo poco in spostamenti.</span></div>
+    <div class="info-row"><span class="ic">💶</span><span>Zona meno battuta e meno cara delle Dolomiti classiche: alloggi, ristoranti e parcheggi hanno prezzi più accessibili rispetto a Cortina o Val Gardena.</span></div>
+  </div>
+
+  <h2 class="section-title" id="alloggio">🛏️ Dove dormire (base fissa)</h2>
+  <p style="margin-bottom:10px; color:#3a4a4d;">Consiglio Tarvisio come base: più scelta di alloggi, supermercati e parcheggi, comodo per le gite sia in Friuli che in Slovenia. Sella Nevea è un'alternativa se preferite stare più in quota, a pochi passi dal Monte Canin.</p>
+
+  <div class="alloggio">
+    <span class="zona">Coccau di Tarvisio</span>
+    <h4>🌲 Agriturismo Fare Bio <span class="fascia fascia-1">~60-90€/notte</span></h4>
+    <p>Appartamenti in legno immersi nel verde, posizione defilata e tranquilla, comodo con l'auto propria essendo fuori dal centro. Buone recensioni per l'atmosfera familiare.</p>
+  </div>
+
+  <div class="alloggio">
+    <span class="zona">Tarvisio centro</span>
+    <h4>🏨 Albergo Edelweiss <span class="fascia fascia-2">da ~100€/notte</span></h4>
+    <p>Hotel centrale, camere pulite con poggiolo vista montagna, recensioni positive anche per soggiorni in coppia ad agosto ("oasi di pace"). Comodo a piedi per negozi e ristoranti.</p>
+  </div>
+
+  <div class="alloggio">
+    <span class="zona">Sella Nevea (1.190 m)</span>
+    <h4>⛰️ Canin Mountain Lodge <span class="fascia fascia-2">fascia media</span></h4>
+    <p>Direttamente sul comprensorio del Monte Canin, camere doppie con terrazza vista montagna. Ideale se volete stare in quota per le escursioni, meno comodo per le gite in Slovenia (aggiunge ~30 min di strada rispetto a Tarvisio).</p>
+  </div>
+
+  <div class="box box-roccia">
+    <span class="box-ic">💡</span>
+    <div class="box-body">
+      <strong>Consiglio prenotazione</strong>
+      <p>Verificate disponibilità e prezzo reale su Booking.com/Expedia prima di prenotare: agosto è alta stagione, meglio prenotare con un po' di anticipo scegliendo cancellazione gratuita.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="itinerario">🗺️ Proposta itinerario 7 giorni</h2>
+  <p style="margin-bottom:10px; color:#3a4a4d;">Base fissa a Tarvisio, gite in giornata. Ordine flessibile: adattatelo a meteo e voglia del momento.</p>
+
+  <div class="giorno-card">
+    <h3><span class="num">1</span>Arrivo e Tarvisio</h3>
+    <p>Trasferimento da Vattaro (~3h), check-in, passeggiata di ambientamento nel centro di Tarvisio e sulla ciclabile Alpe-Adria. Serata tranquilla per recuperare dal viaggio.</p>
+  </div>
+
+  <div class="giorno-card">
+    <h3><span class="num">2</span>Laghi di Fusine</h3>
+    <p>Giornata dedicata all'anello dei Laghi di Fusine (Superiore e Inferiore), passeggiata facile con vista sul massiccio del Mangart. Pranzo al sacco o rifugio in zona.</p>
+  </div>
+
+  <div class="giorno-card">
+    <h3><span class="num">3</span>Kranjska Gora e Passo Vršič</h3>
+    <p>Primo assaggio di Slovenia: solo 20 minuti da Tarvisio. Passeggiata nel borgo, eventualmente salita al Passo Vršič se avete voglia di guidare tornanti panoramici verso il Parco del Triglav.</p>
+  </div>
+
+  <div class="giorno-card">
+    <h3><span class="num">4</span>Lago di Bled + Gola di Vintgar</h3>
+    <p>Giornata clou: partenza presto per evitare la folla. Gola di Vintgar al mattino (ingresso ~10€ a testa, parcheggio alternativo gratuito a Spodnje Gorje camminando 1,5 km), poi Lago di Bled — giro a piedi gratuito, gita in barca all'isoletta se volete concedervi il lusso.</p>
+  </div>
+
+  <div class="giorno-card">
+    <h3><span class="num">5</span>Lago di Bohinj</h3>
+    <p>Più lontano e meno turistico di Bled, dentro il Parco Nazionale del Triglav. Giornata rilassata tra il lago, eventuale salita in funivia al Monte Vogel per la vista, o solo una nuotata in acque fresche.</p>
+  </div>
+
+  <div class="giorno-card">
+    <h3><span class="num">6</span>Val Saisera o Sella Nevea</h3>
+    <p>Giorno "leggero" in Italia: sentieri facili nella Val Saisera (Foresta di Tarvisio) o salita a Sella Nevea per un pranzo in quota con vista sul Monte Canin.</p>
+  </div>
+
+  <div class="giorno-card">
+    <h3><span class="num">7</span>Lago di Predil e relax</h3>
+    <p>Ultima giornata slow: Lago di Predil per un anello facile, pomeriggio libero per shopping di prodotti tipici (formaggio Montasio) o riposo prima del rientro.</p>
+  </div>
+
+  <div class="giorno-card">
+    <h3><span class="num">8</span>Rientro</h3>
+    <p>Check-out e rientro verso casa, eventualmente con una sosta libera se il percorso lo permette.</p>
+  </div>
+
+  <h2 class="section-title" id="friuli">⛰️ Cose da fare in Friuli (Alpi Giulie)</h2>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">💧</span>
+      <div class="tratto-info">
+        <div class="quota">Anello facile · ~1h</div>
+        <h2>Laghi di Fusine</h2>
+      </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-facile">Facile</span>
+      <p>Passeggiata ad anello intorno ai due laghi alpini, sullo sfondo il massiccio del Mangart. Raggiungibili anche in bici dalla ciclabile Alpe-Adria da Tarvisio (~10 km). Parcheggio a pagamento all'ingresso dell'area.</p>
+    </div>
+  </div>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">🏞️</span>
+      <div class="tratto-info">
+        <div class="quota">Anello facile</div>
+        <h2>Lago di Predil</h2>
+      </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-facile">Facile</span>
+      <p>Altro lago alpino con percorso ad anello semplice, ottimo per rinfrescarsi in estate lontano dalla folla di Fusine.</p>
+    </div>
+  </div>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">🌲</span>
+      <div class="tratto-info">
+        <div class="quota">Sentieri vari, per lo più facili</div>
+        <h2>Val Saisera e Val Bartolo</h2>
+      </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-facile">Facile</span>
+      <p>Le due valli laterali della Val Canale, dentro la Foresta di Tarvisio (la foresta demaniale più grande d'Italia). Sentieri ombreggiati, ottimi nelle giornate calde.</p>
+    </div>
+  </div>
+
+  <div class="box box-blu">
+    <span class="box-ic">🚲</span>
+    <div class="box-body">
+      <strong>Ciclabile Alpe-Adria</strong>
+      <p>Tratto gratuito percorribile a piedi o in bici da Tarvisio verso i Laghi di Fusine e oltre, quasi pianeggiante e panoramico.</p>
+    </div>
+  </div>
+
+  <div class="box box-roccia">
+    <span class="box-ic">🏘️</span>
+    <div class="box-body">
+      <strong>Centro di Tarvisio</strong>
+      <p>Borgo di confine tra Italia, Austria e Slovenia: passeggiata gratuita nel centro storico, negozi di prodotti tipici e attrezzatura da montagna.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="slovenia">🇸🇮 Gite in Slovenia (max ~1h-1h30 da Tarvisio)</h2>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">🎿</span>
+      <div class="tratto-info">
+        <div class="quota">~20 min da Tarvisio</div>
+        <h2>Kranjska Gora</h2>
+      </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-facile">Facile</span>
+      <p>La più vicina, ~18-20 km. Borgo con il centro di salto con gli sci di Planica, passeggiate gratuite, base per il Passo del Vršič e il Parco Nazionale del Triglav.</p>
+    </div>
+  </div>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">🏰</span>
+      <div class="tratto-info">
+        <div class="quota">~1h-1h15 da Tarvisio</div>
+        <h2>Lago di Bled</h2>
+      </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-facile">Facile</span>
+      <p>Il lago alpino più fotografato della Slovenia: castello arroccato (ingresso a pagamento), isoletta con chiesetta raggiungibile in barca a remi "pletna", giro a piedi gratuito (1-1,5h). Parcheggi centrali a pagamento (~2-4€/h): meglio parcheggiare più lontano o arrivare presto la mattina.</p>
+    </div>
+  </div>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">🌊</span>
+      <div class="tratto-info">
+        <div class="quota">6 km da Bled · ingresso 10€</div>
+        <h2>Gola di Vintgar</h2>
+      </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-facile">Facile</span>
+      <p>Passerelle in legno lungo una gola scavata dal fiume Radovna, spettacolare e rinfrescante. Biglietto 10€ adulti (riduzioni bambini/studenti), parcheggio all'ingresso 5€. Alternativa gratuita: parcheggiare a Spodnje Gorje e camminare l'ultimo tratto (~1,5 km). Aperta 8:00-17:00 (ultimo ingresso): andate presto in alta stagione per evitare code.</p>
+    </div>
+  </div>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">🚡</span>
+      <div class="tratto-info">
+        <div class="quota">Parco Nazionale del Triglav</div>
+        <h2>Lago di Bohinj</h2>
+      </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-facile">Facile</span>
+      <p>Più lontano di Bled e molto meno turistico: atmosfera autentica dentro il Parco Nazionale del Triglav. Possibilità di salire con la funivia al Monte Vogel (a pagamento) per un panorama d'alta quota.</p>
+    </div>
+  </div>
+
+  <div class="box box-verde">
+    <span class="box-ic">🚗</span>
+    <div class="box-body">
+      <strong>Passo del Vršič</strong>
+      <p>Strada di montagna panoramica con tornanti che collega Kranjska Gora al Parco del Triglav (zona Rifugio Tamar), con cascate e sentieri gratuiti nei dintorni. Da fare in una giornata di bel tempo.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="ristoranti">🍽️ Dove mangiare</h2>
+  <p style="margin-bottom:10px; color:#3a4a4d;">Non abbiamo trovato nomi verificati di ristoranti specifici a Tarvisio/Sella Nevea con prezzi aggiornati: meglio orientarsi su trattorie e agriturismi locali con cucina tipica, verificando le recensioni su Google Maps/TripAdvisor al momento del soggiorno. Ecco i piatti da cercare.</p>
+
+  <div class="box box-blu">
+    <span class="box-ic">🧀</span>
+    <div class="box-body">
+      <strong>Lato friulano (Val Canale) — piatti da provare</strong>
+      <p><b>Frico</b> — formaggio Montasio e patate, croccante fuori e filante dentro.<br>
+      <b>Jota</b> — zuppa di fagioli, crauti/brovada e maiale, piatto tipico giuliano.<br>
+      <b>Cjarsons</b> — pasta ripiena dolce-salata tipica della Carnia.</p>
+    </div>
+  </div>
+
+  <div class="box box-roccia">
+    <span class="box-ic">🇸🇮</span>
+    <div class="box-body">
+      <strong>Lato sloveno — piatti da provare</strong>
+      <p><b>Kremna rezina / Blejska kremšnita</b> — millefoglie alla crema, dolce iconico di Bled (~5-6€ nelle pasticcerie del centro).<br>
+      <b>Štruklji</b> — involtini di ricotta, dolci o salati.<br>
+      <b>Trota</b> dei laghi alpini, spesso alla griglia.<br>
+      A Bohinjska Bistrica (Bohinj) si trovano ristoranti di fascia media con buone recensioni per cucina europea/pizza.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="consigli">💡 Consigli pratici</h2>
+  <ul class="checklist">
+    <li>🪪 Per la Slovenia basta la carta d'identità valida (UE/Schengen): non serve il passaporto</li>
+    <li>💶 In Slovenia si paga in euro, come in Italia</li>
+    <li>🛣️ Vignetta autostradale slovena obbligatoria: quella settimanale costa circa 16€, acquistabile online o ai distributori/edicole al confine — occhio alle multe se si circola senza</li>
+    <li>🅿️ A Bled i parcheggi centrali sono cari: arrivate presto o parcheggiate più lontano dal centro</li>
+    <li>⏰ Ad agosto (alta stagione) visitate Bled e Vintgar la mattina presto per evitare folla e code</li>
+    <li>🧥 In quota (Sella Nevea, passi di montagna) le serate sono fresche anche in agosto: portate uno strato in più</li>
+    <li>🚗 Le strade tra Tarvisio, Kranjska Gora e Bled sono di montagna ma tranquillamente percorribili in auto in estate</li>
+    <li>🏨 Prenotate l'alloggio con un po' di anticipo: agosto è alta stagione anche qui</li>
+  </ul>
+
+  <a class="back-link" href="../">← Torna all'archivio guide</a>
+
+</div>
+
+<footer>
+  <p>Guida di Dario — aggiornata luglio 2026</p>
+</footer>
+
+</body>
+</html>
