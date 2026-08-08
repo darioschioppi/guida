@@ -271,6 +271,59 @@
     .consiglio-card p, .consiglio-card li { font-size: 15px; color: #444; }
     .consiglio-card ul { padding-left: 18px; }
 
+    /* EVENTI 2026 */
+    .eventi-section { margin: 20px 0; }
+    .evento-giorno {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+    .evt-data {
+      flex-shrink: 0;
+      width: 64px;
+      text-align: center;
+      background: var(--verde);
+      color: white;
+      border-radius: 12px;
+      padding: 8px 4px;
+    }
+    .evt-data .evt-num { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 700; line-height: 1; }
+    .evt-data .evt-mese { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.9; }
+    .evt-card {
+      flex: 1;
+      background: white;
+      border-radius: 14px;
+      padding: 14px 18px;
+      box-shadow: 0 2px 12px var(--ombra);
+      border-left: 5px solid var(--caldo);
+    }
+    .evt-card.evt-vigolana { border-left-color: var(--verde-medio); }
+    .evt-card.evt-valsugana { border-left-color: var(--blu); }
+    .evt-card h4 { font-size: 16px; color: var(--testo); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .evt-card p { font-size: 14px; color: #555; margin: 3px 0; }
+    .evt-loc { font-size: 12.5px; color: var(--verde-medio); font-weight: 700; }
+    .evt-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 10px;
+      padding: 2px 9px;
+      margin-left: 4px;
+    }
+    .evt-tag-vigolana { background: var(--verde-pallido); color: var(--verde); }
+    .evt-tag-valsugana { background: var(--blu-chiaro); color: var(--blu); }
+    .evt-tag-cimbra { background: var(--caldo-chiaro); color: #b5541a; }
+    .evt-nota-box {
+      background: #FFF9C4;
+      border-left: 5px solid #c8a000;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin: 18px 0;
+      font-size: 14px;
+      color: #5a4800;
+    }
+
     /* AMBITI */
     .ambiti-grid {
       display: grid;
@@ -610,6 +663,8 @@
     <li><a href="#hotel">🏠 Albergo Cinzia</a></li>
     <li class="nav-sep"></li>
     <li><a href="#schede">🗺️ Tutti i Posti</a></li>
+    <li class="nav-sep"></li>
+    <li><a href="#eventi">📅 Eventi 2026</a></li>
     <li class="nav-sep"></li>
     <li class="nav-ambito"><a href="#amb-laghi">🌊 Laghi</a></li>
     <li class="nav-ambito"><a href="#amb-montagna">🏔️ Panorami</a></li>
@@ -1007,6 +1062,227 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- EVENTI 2026 -->
+  <h2 class="section-title" id="eventi">📅 Eventi 2026 – Cosa Succede in Zona</h2>
+
+  <div class="schede-intro">
+    Sagre, concerti e feste di paese nell'Altopiano della Vigolana e in Valsugana. Qui trovate gli appuntamenti dell'<strong>8–17 agosto 2026</strong>, il periodo più ricco di eventi estivi della zona.
+  </div>
+
+  <div class="eventi-section">
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">8</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-cimbra" style="border-left-color: var(--caldo);">
+        <h4>🎉 Notti di San Lorenzo <span class="evt-tag evt-tag-cimbra">Alpe Cimbra</span></h4>
+        <p class="evt-loc">📍 Folgaria, Piazza San Lorenzo</p>
+        <p>Fino al 10 agosto. Musica dal vivo e spettacoli in piazza, ore 21:00.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">8</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-cimbra" style="border-left-color: var(--caldo);">
+        <h4>🥔 Cara Vecia Serrada <span class="evt-tag evt-tag-cimbra">Alpe Cimbra</span></h4>
+        <p class="evt-loc">📍 Serrada di Folgaria</p>
+        <p>Fino al 16 agosto. Mercato dei sapori antichi e dei mestieri (9:00–17:30) + un ricco programma serale ogni giorno: letture, concerti, aperitivi, mostre, fino al gran finale con spettacolo laser e fuochi d'artificio.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">8</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-valsugana">
+        <h4>🚒 Festa di San Sisto con i pompieri <span class="evt-tag evt-tag-valsugana">Caldonazzo</span></h4>
+        <p class="evt-loc">📍 Caserma dei Vigili del Fuoco, Caldonazzo</p>
+        <p>Fino al 10 agosto.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">8</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-valsugana">
+        <h4>🏃 Ultra Trail Panarotta 2026 (UTP) <span class="evt-tag evt-tag-valsugana">Levico Terme</span></h4>
+        <p class="evt-loc">📍 Levico Terme</p>
+        <p>Gara di corsa in montagna.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">8</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-valsugana">
+        <h4>📚 Levico incontra gli autori – Dario Colombo <span class="evt-tag evt-tag-valsugana">Levico Terme</span></h4>
+        <p class="evt-loc">📍 Forte Colle delle Benne, Levico, ore 18:00</p>
+        <p>Con Giorgio Antoniacomi.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">9</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-valsugana">
+        <h4>🎾 Torneo di tennis <span class="evt-tag evt-tag-valsugana">Valsugana</span></h4>
+        <p class="evt-loc">📍 Caldonazzo, Parco centrale</p>
+        <p>Ore 9:00–17:00, ingresso gratuito per il pubblico.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">9</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-valsugana">
+        <h4>🎶 Concerto corale e strumentale <span class="evt-tag evt-tag-valsugana">Levico Terme</span></h4>
+        <p class="evt-loc">📍 Chiesa Arcipretale del Santissimo Redentore, ore 21:00</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">10</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-valsugana">
+        <h4>💃 Serata Liscio <span class="evt-tag evt-tag-valsugana">Terme di Levico</span></h4>
+        <p class="evt-loc">📍 Palazzo delle Terme di Levico, ore 20:30–23:00</p>
+        <p>Ricorrente ogni lunedì fino al 26 ottobre. Ingresso 8€, consumazione compresa.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">10</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-valsugana">
+        <h4>🛒 Mercato Contadino <span class="evt-tag evt-tag-valsugana">Levico Terme</span></h4>
+        <p class="evt-loc">📍 Via Marconi, Levico, ore 8:00–13:00</p>
+        <p>Ricorrente ogni lunedì mattina fino al 28 settembre.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">10</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-valsugana">
+        <h4>📚 Levico incontra gli autori – Silvana Ghigino <span class="evt-tag evt-tag-valsugana">Levico Terme</span></h4>
+        <p class="evt-loc">📍 Installazione Sequoia, Parco di Levico, ore 18:00</p>
+        <p>Con Fabrizio Fronza.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">12</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-valsugana">
+        <h4>🎨 Artista per una sera <span class="evt-tag evt-tag-valsugana">Levico Terme</span></h4>
+        <p class="evt-loc">📍 Piazza ex Cinema, ore 20:30–22:30</p>
+        <p>Ricorrente ogni mercoledì dal 5 al 26 agosto.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">12</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-valsugana">
+        <h4>📚 Levico incontra gli autori – Alice Basso <span class="evt-tag evt-tag-valsugana">Levico Terme</span></h4>
+        <p class="evt-loc">📍 Installazione Sequoia, Parco di Levico, ore 18:00</p>
+        <p>Con Chiara Limelli.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">13</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-valsugana">
+        <h4>🎻 Concerto Haydn <span class="evt-tag evt-tag-valsugana">Terme di Levico</span></h4>
+        <p class="evt-loc">📍 Palazzo delle Terme di Levico, ore 20:30</p>
+        <p>Ingresso a pagamento: poltrone 20€, sedie 15€.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">13</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-valsugana">
+        <h4>🌆 Serata dell'Ospite (24ª ed.) <span class="evt-tag evt-tag-valsugana">Centro Levico</span></h4>
+        <p class="evt-loc">📍 Centro storico di Levico Terme</p>
+        <p>Ricorrente ogni giovedì sera dal 9 luglio al 20 agosto: negozi aperti, animazione e musica in centro.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">14</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-vigolana">
+        <h4>🥔 Festa della Patata <span class="evt-tag evt-tag-vigolana">Vigolana</span></h4>
+        <p class="evt-loc">📍 Vigolo Vattaro (Pro Loco)</p>
+        <p>Fino al 16 agosto. Stand gastronomici, tortel di patate, polenta, musica dal vivo tutte le sere.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">14</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-vigolana">
+        <h4>🎹 Concerto pianistico – Omaggio a Arturo Benedetti Michelangeli <span class="evt-tag evt-tag-vigolana">Vattaro</span></h4>
+        <p class="evt-loc">📍 Teatro Comunale di Vattaro, ore 21:00</p>
+        <p>Pianista Anfisa Bobylova (Scarlatti, Respighi, Albéniz, Chopin, Ravel). <strong>Ingresso libero</strong> — parte del Festival ABM 2026. A due passi dall'Albergo Cinzia!</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">14</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-valsugana">
+        <h4>📚 Autori alle Terme – Lorenza Gentile <span class="evt-tag evt-tag-valsugana">Terme di Levico</span></h4>
+        <p class="evt-loc">📍 Palazzo delle Terme di Levico, ore 18:00</p>
+        <p>Incontro con la scrittrice Lorenza Gentile, presenta "La volta giusta" (con Ilenia Caito, a cura della Piccola Libreria di Lisa Orlandi). <i>Nota: il 14/8 sono eccezionalmente sospese le Serate Cinema e Serate Latino del venerdì.</i></p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">14</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-valsugana">
+        <h4>🎆 Spettacolo pirotecnico – Lago di Caldonazzo <span class="evt-tag evt-tag-valsugana">Caldonazzo</span></h4>
+        <p class="evt-loc">📍 Calceranica al Lago, ore 22:15</p>
+        <p>Fuochi d'artificio sul Lago di Caldonazzo — la sera prima di quelli di Levico! Due spettacoli in due giorni consecutivi sui due laghi.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">15</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-valsugana">
+        <h4>🎆 Fuochi d'artificio sul Lago di Levico <span class="evt-tag evt-tag-valsugana">Ferragosto</span></h4>
+        <p class="evt-loc">📍 Lago di Levico Terme, ore 22:30</p>
+        <p>Lancio da due punti sul lago: Pontile del Lido Buena Onda e Pontile del Lido la Taverna — visibile praticamente da tutta la riva. Info: APT Valsugana, tel. 0461 727700.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">16</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-vigolana">
+        <h4>🚜 AgriVigolana – giro trattori d'epoca <span class="evt-tag evt-tag-vigolana">Vigolana</span></h4>
+        <p class="evt-loc">📍 Ritrovo al Palavento, Vigolo Vattaro</p>
+        <p>Giornata finale della Festa della Patata. Sfilata non competitiva di 21 km (ritrovo 7:30, partenza 8:20) che passa per <strong>Vattaro</strong>, Pian dei Pradi, <strong>Bosentino</strong> e San Giorgio. Pranzo comunitario al rientro (~13:00), quota di partecipazione 35€.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">16</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-cimbra" style="border-left-color: var(--caldo);">
+        <h4>✨ Gran finale Cara Vecia Serrada <span class="evt-tag evt-tag-cimbra">Alpe Cimbra</span></h4>
+        <p class="evt-loc">📍 Serrada, Piazza Dama</p>
+        <p>Spettacolo laser "Lightman Digital Show" e fuochi d'artificio, ore 21:30. Estrazione della lotteria.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">16</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-cimbra" style="border-left-color: var(--caldo);">
+        <h4>🎊 Magré en Festa <span class="evt-tag evt-tag-cimbra">Alpe Cimbra</span></h4>
+        <p class="evt-loc">📍 Frazione Magrè, Folgaria</p>
+        <p>Fino al 17 agosto. Messa, apertura cucina, animazione per bambini, torneo — dalle ore 11:00.</p>
+      </div>
+    </div>
+
+    <div class="evento-giorno">
+      <div class="evt-data"><div class="evt-num">17</div><div class="evt-mese">Ago</div></div>
+      <div class="evt-card evt-valsugana">
+        <h4>💃 Serata Liscio <span class="evt-tag evt-tag-valsugana">Terme di Levico</span></h4>
+        <p class="evt-loc">📍 Palazzo delle Terme di Levico, ore 20:30–23:00</p>
+        <p>Ingresso 8€, consumazione compresa.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="evt-nota-box">
+    💡 <strong>Nota:</strong> non abbiamo trovato grandi eventi specifici per Trento città, Caldonazzo (oltre al torneo del 9/8) né per Bosentino e Centa San Nicolò come centri autonomi in questo periodo — i programmi ufficiali di Comuni e Pro Loco vengono spesso pubblicati poco prima della data. Controllate le bacheche comunali e le pagine social delle Pro Loco locali per eventuali aggiornamenti prima di partire.
   </div>
 
   <!-- AMBITI -->
