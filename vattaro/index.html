@@ -352,6 +352,59 @@
       border-color: var(--verde);
     }
     .evento-giorno.evt-hidden { display: none; }
+    /* MINI CALENDARIO */
+    .evt-calendario {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 8px;
+      margin: 0 0 20px;
+    }
+    .evt-cal-giorno {
+      background: white;
+      border: 2px solid var(--verde-chiaro);
+      border-radius: 14px;
+      padding: 10px 4px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Lato', sans-serif;
+      position: relative;
+    }
+    .evt-cal-giorno:hover { border-color: var(--verde); transform: translateY(-2px); }
+    .evt-cal-num {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--testo);
+      line-height: 1;
+    }
+    .evt-cal-dow {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: var(--testo-medio);
+      margin-top: 2px;
+    }
+    .evt-cal-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--caldo);
+      margin: 4px auto 0;
+    }
+    .evt-cal-giorno.evt-cal-empty .evt-cal-dot { visibility: hidden; }
+    /* giorno "illuminato" quando selezionato */
+    .evt-cal-giorno.evt-cal-active {
+      background: linear-gradient(135deg, var(--verde) 0%, var(--verde-medio) 100%);
+      border-color: var(--verde);
+      box-shadow: 0 4px 16px var(--ombra);
+    }
+    .evt-cal-giorno.evt-cal-active .evt-cal-num,
+    .evt-cal-giorno.evt-cal-active .evt-cal-dow { color: white; }
+    .evt-cal-giorno.evt-cal-active .evt-cal-dot { background: white; }
+    @media (max-width: 600px) {
+      .evt-calendario { grid-template-columns: repeat(3, 1fr); }
+    }
 
     /* AMBITI */
     .ambiti-grid {
@@ -1100,6 +1153,18 @@
     Sagre, concerti e feste di paese nell'Altopiano della Vigolana, in Valsugana e a Trento. Qui trovate gli appuntamenti dal <strong>8 al 16 agosto 2026</strong> (incluso l'8, escluso il 17), il periodo più ricco di eventi estivi della zona. Usa i filtri sotto per vedere solo gli eventi di una zona specifica.
   </div>
 
+  <div class="evt-calendario" id="evtCalendario">
+    <div class="evt-cal-giorno" data-day="8"><div class="evt-cal-num">8</div><div class="evt-cal-dow">Sab</div><div class="evt-cal-dot"></div></div>
+    <div class="evt-cal-giorno" data-day="9"><div class="evt-cal-num">9</div><div class="evt-cal-dow">Dom</div><div class="evt-cal-dot"></div></div>
+    <div class="evt-cal-giorno" data-day="10"><div class="evt-cal-num">10</div><div class="evt-cal-dow">Lun</div><div class="evt-cal-dot"></div></div>
+    <div class="evt-cal-giorno" data-day="11"><div class="evt-cal-num">11</div><div class="evt-cal-dow">Mar</div><div class="evt-cal-dot"></div></div>
+    <div class="evt-cal-giorno" data-day="12"><div class="evt-cal-num">12</div><div class="evt-cal-dow">Mer</div><div class="evt-cal-dot"></div></div>
+    <div class="evt-cal-giorno" data-day="13"><div class="evt-cal-num">13</div><div class="evt-cal-dow">Gio</div><div class="evt-cal-dot"></div></div>
+    <div class="evt-cal-giorno" data-day="14"><div class="evt-cal-num">14</div><div class="evt-cal-dow">Ven</div><div class="evt-cal-dot"></div></div>
+    <div class="evt-cal-giorno" data-day="15"><div class="evt-cal-num">15</div><div class="evt-cal-dow">Sab</div><div class="evt-cal-dot"></div></div>
+    <div class="evt-cal-giorno" data-day="16"><div class="evt-cal-num">16</div><div class="evt-cal-dow">Dom</div><div class="evt-cal-dot"></div></div>
+  </div>
+
   <div class="evt-filtri" id="evtFiltri">
     <button type="button" class="evt-filtro-btn active" data-filtro="tutti">🗺️ Tutti</button>
     <button type="button" class="evt-filtro-btn" data-filtro="vigolana">🥔 Vigolana</button>
@@ -1113,7 +1178,7 @@
 
   <div class="eventi-section" id="eventiSection">
 
-    <div class="evento-giorno" data-loc="cimbra">
+    <div class="evento-giorno" data-loc="cimbra" data-day="8">
       <div class="evt-data"><div class="evt-num">8</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-cimbra" style="border-left-color: var(--caldo);">
         <h4>🎉 Notti di San Lorenzo <span class="evt-tag evt-tag-cimbra">Alpe Cimbra</span></h4>
@@ -1122,7 +1187,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="cimbra">
+    <div class="evento-giorno" data-loc="cimbra" data-day="8">
       <div class="evt-data"><div class="evt-num">8</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-cimbra" style="border-left-color: var(--caldo);">
         <h4>🥔 Cara Vecia Serrada <span class="evt-tag evt-tag-cimbra">Alpe Cimbra</span></h4>
@@ -1131,7 +1196,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="caldonazzo">
+    <div class="evento-giorno" data-loc="caldonazzo" data-day="8">
       <div class="evt-data"><div class="evt-num">8</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🚒 Festa di San Sisto con i pompieri <span class="evt-tag evt-tag-valsugana">Caldonazzo</span></h4>
@@ -1140,7 +1205,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="levico">
+    <div class="evento-giorno" data-loc="levico" data-day="8">
       <div class="evt-data"><div class="evt-num">8</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🏃 Ultra Trail Panarotta 2026 (UTP) <span class="evt-tag evt-tag-valsugana">Levico Terme</span></h4>
@@ -1149,7 +1214,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="levico">
+    <div class="evento-giorno" data-loc="levico" data-day="8">
       <div class="evt-data"><div class="evt-num">8</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>📚 Levico incontra gli autori – Dario Colombo <span class="evt-tag evt-tag-valsugana">Levico Terme</span></h4>
@@ -1158,7 +1223,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="trento">
+    <div class="evento-giorno" data-loc="trento" data-day="8">
       <div class="evt-data"><div class="evt-num">8</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🎶 Gli Apocrifi – Tributo a De André <span class="evt-tag evt-tag-valsugana">Trento</span></h4>
@@ -1166,7 +1231,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="trento">
+    <div class="evento-giorno" data-loc="trento" data-day="8">
       <div class="evt-data"><div class="evt-num">8</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🍷 Inchiostro 2026 <span class="evt-tag evt-tag-valsugana">Trento</span></h4>
@@ -1175,7 +1240,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="pergine">
+    <div class="evento-giorno" data-loc="pergine" data-day="8">
       <div class="evt-data"><div class="evt-num">8</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🎪 Il segreto del medaglione – Estateatro 2026 <span class="evt-tag evt-tag-valsugana">Pergine</span></h4>
@@ -1184,7 +1249,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="borgo">
+    <div class="evento-giorno" data-loc="borgo" data-day="8">
       <div class="evt-data"><div class="evt-num">8</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🏆 Palio dela Brenta – 39ª edizione <span class="evt-tag evt-tag-valsugana">Borgo Valsugana</span></h4>
@@ -1193,7 +1258,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="caldonazzo">
+    <div class="evento-giorno" data-loc="caldonazzo" data-day="9">
       <div class="evt-data"><div class="evt-num">9</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🎾 Torneo di tennis <span class="evt-tag evt-tag-valsugana">Valsugana</span></h4>
@@ -1202,7 +1267,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="levico">
+    <div class="evento-giorno" data-loc="levico" data-day="9">
       <div class="evt-data"><div class="evt-num">9</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🎶 Concerto corale e strumentale <span class="evt-tag evt-tag-valsugana">Levico Terme</span></h4>
@@ -1210,7 +1275,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="trento">
+    <div class="evento-giorno" data-loc="trento" data-day="9">
       <div class="evt-data"><div class="evt-num">9</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>✨ Sun Day &amp; Musica delle stelle <span class="evt-tag evt-tag-valsugana">Monte Bondone</span></h4>
@@ -1218,7 +1283,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="pergine">
+    <div class="evento-giorno" data-loc="pergine" data-day="9">
       <div class="evt-data"><div class="evt-num">9</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🎪 La tata perfetta – Estateatro 2026 <span class="evt-tag evt-tag-valsugana">Pergine</span></h4>
@@ -1226,7 +1291,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="levico">
+    <div class="evento-giorno" data-loc="levico" data-day="10">
       <div class="evt-data"><div class="evt-num">10</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>💃 Serata Liscio <span class="evt-tag evt-tag-valsugana">Terme di Levico</span></h4>
@@ -1235,7 +1300,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="levico">
+    <div class="evento-giorno" data-loc="levico" data-day="10">
       <div class="evt-data"><div class="evt-num">10</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🛒 Mercato Contadino <span class="evt-tag evt-tag-valsugana">Levico Terme</span></h4>
@@ -1244,7 +1309,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="levico">
+    <div class="evento-giorno" data-loc="levico" data-day="10">
       <div class="evt-data"><div class="evt-num">10</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>📚 Levico incontra gli autori – Silvana Ghigino <span class="evt-tag evt-tag-valsugana">Levico Terme</span></h4>
@@ -1253,7 +1318,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="trento">
+    <div class="evento-giorno" data-loc="trento" data-day="10">
       <div class="evt-data"><div class="evt-num">10</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🌠 Le notti delle stelle cadenti <span class="evt-tag evt-tag-valsugana">Trento</span></h4>
@@ -1262,7 +1327,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="trento">
+    <div class="evento-giorno" data-loc="trento" data-day="11">
       <div class="evt-data"><div class="evt-num">11</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🎬 Un semplice incidente <span class="evt-tag evt-tag-valsugana">Trento</span></h4>
@@ -1270,7 +1335,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="levico">
+    <div class="evento-giorno" data-loc="levico" data-day="12">
       <div class="evt-data"><div class="evt-num">12</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🎨 Artista per una sera <span class="evt-tag evt-tag-valsugana">Levico Terme</span></h4>
@@ -1279,7 +1344,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="levico">
+    <div class="evento-giorno" data-loc="levico" data-day="12">
       <div class="evt-data"><div class="evt-num">12</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>📚 Levico incontra gli autori – Alice Basso <span class="evt-tag evt-tag-valsugana">Levico Terme</span></h4>
@@ -1288,7 +1353,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="levico">
+    <div class="evento-giorno" data-loc="levico" data-day="13">
       <div class="evt-data"><div class="evt-num">13</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🎻 Concerto Haydn <span class="evt-tag evt-tag-valsugana">Terme di Levico</span></h4>
@@ -1297,7 +1362,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="levico">
+    <div class="evento-giorno" data-loc="levico" data-day="13">
       <div class="evt-data"><div class="evt-num">13</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🌆 Serata dell'Ospite (24ª ed.) <span class="evt-tag evt-tag-valsugana">Centro Levico</span></h4>
@@ -1306,7 +1371,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="trento">
+    <div class="evento-giorno" data-loc="trento" data-day="13">
       <div class="evt-data"><div class="evt-num">13</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🚶 Giro per le vie del paese a Vigo Meano <span class="evt-tag evt-tag-valsugana">Trento</span></h4>
@@ -1315,7 +1380,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="trento">
+    <div class="evento-giorno" data-loc="trento" data-day="13">
       <div class="evt-data"><div class="evt-num">13</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🎬 Sorry, Baby <span class="evt-tag evt-tag-valsugana">Trento</span></h4>
@@ -1323,7 +1388,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="pergine">
+    <div class="evento-giorno" data-loc="pergine" data-day="13">
       <div class="evt-data"><div class="evt-num">13</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🎉 Superfesta di Ferragosto <span class="evt-tag evt-tag-valsugana">Pergine</span></h4>
@@ -1332,7 +1397,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="borgo">
+    <div class="evento-giorno" data-loc="borgo" data-day="13">
       <div class="evt-data"><div class="evt-num">13</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🎬 Cinema all'aperto | USA vs URSS <span class="evt-tag evt-tag-valsugana">Borgo Valsugana</span></h4>
@@ -1340,7 +1405,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="vigolana">
+    <div class="evento-giorno" data-loc="vigolana" data-day="14">
       <div class="evt-data"><div class="evt-num">14</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-vigolana">
         <h4>🥔 Festa della Patata <span class="evt-tag evt-tag-vigolana">Vigolana</span></h4>
@@ -1349,7 +1414,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="vigolana">
+    <div class="evento-giorno" data-loc="vigolana" data-day="14">
       <div class="evt-data"><div class="evt-num">14</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-vigolana">
         <h4>🎹 Concerto pianistico – Omaggio a Arturo Benedetti Michelangeli <span class="evt-tag evt-tag-vigolana">Vattaro</span></h4>
@@ -1358,7 +1423,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="levico">
+    <div class="evento-giorno" data-loc="levico" data-day="14">
       <div class="evt-data"><div class="evt-num">14</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>📚 Autori alle Terme – Lorenza Gentile <span class="evt-tag evt-tag-valsugana">Terme di Levico</span></h4>
@@ -1367,7 +1432,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="caldonazzo">
+    <div class="evento-giorno" data-loc="caldonazzo" data-day="14">
       <div class="evt-data"><div class="evt-num">14</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🎆 Spettacolo pirotecnico – Lago di Caldonazzo <span class="evt-tag evt-tag-valsugana">Caldonazzo</span></h4>
@@ -1376,7 +1441,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="trento">
+    <div class="evento-giorno" data-loc="trento" data-day="14">
       <div class="evt-data"><div class="evt-num">14</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>✨ A tu per tu con le stelle <span class="evt-tag evt-tag-valsugana">Monte Bondone</span></h4>
@@ -1384,7 +1449,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="levico">
+    <div class="evento-giorno" data-loc="levico" data-day="15">
       <div class="evt-data"><div class="evt-num">15</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🎆 Fuochi d'artificio sul Lago di Levico <span class="evt-tag evt-tag-valsugana">Ferragosto</span></h4>
@@ -1393,7 +1458,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="trento">
+    <div class="evento-giorno" data-loc="trento" data-day="15">
       <div class="evt-data"><div class="evt-num">15</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🎬 L'isola dei ricordi <span class="evt-tag evt-tag-valsugana">Trento</span></h4>
@@ -1401,7 +1466,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="borgo">
+    <div class="evento-giorno" data-loc="borgo" data-day="15">
       <div class="evt-data"><div class="evt-num">15</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>💃 Ballando sotto le stelle + animazione bambini <span class="evt-tag evt-tag-valsugana">Borgo Valsugana</span></h4>
@@ -1409,7 +1474,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="vigolana">
+    <div class="evento-giorno" data-loc="vigolana" data-day="16">
       <div class="evt-data"><div class="evt-num">16</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-vigolana">
         <h4>🚜 AgriVigolana – giro trattori d'epoca <span class="evt-tag evt-tag-vigolana">Vigolana</span></h4>
@@ -1418,7 +1483,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="cimbra">
+    <div class="evento-giorno" data-loc="cimbra" data-day="16">
       <div class="evt-data"><div class="evt-num">16</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-cimbra" style="border-left-color: var(--caldo);">
         <h4>✨ Gran finale Cara Vecia Serrada <span class="evt-tag evt-tag-cimbra">Alpe Cimbra</span></h4>
@@ -1427,7 +1492,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="cimbra">
+    <div class="evento-giorno" data-loc="cimbra" data-day="16">
       <div class="evt-data"><div class="evt-num">16</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-cimbra" style="border-left-color: var(--caldo);">
         <h4>🎊 Magré en Festa <span class="evt-tag evt-tag-cimbra">Alpe Cimbra</span></h4>
@@ -1436,7 +1501,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="trento">
+    <div class="evento-giorno" data-loc="trento" data-day="16">
       <div class="evt-data"><div class="evt-num">16</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🎬 Amarga Navidad <span class="evt-tag evt-tag-valsugana">Trento</span></h4>
@@ -1444,7 +1509,7 @@
       </div>
     </div>
 
-    <div class="evento-giorno" data-loc="borgo">
+    <div class="evento-giorno" data-loc="borgo" data-day="16">
       <div class="evt-data"><div class="evt-num">16</div><div class="evt-mese">Ago</div></div>
       <div class="evt-card evt-valsugana">
         <h4>🍇 Festa Alpina <span class="evt-tag evt-tag-valsugana">Borgo Valsugana</span></h4>
@@ -2255,26 +2320,69 @@
 <script>
 (function() {
   var filtri = document.getElementById('evtFiltri');
-  if (!filtri) return;
+  var calendario = document.getElementById('evtCalendario');
+  var eventiSection = document.getElementById('eventiSection');
+  if (!filtri || !eventiSection) return;
+
   var btns = filtri.querySelectorAll('.evt-filtro-btn');
-  var cards = document.querySelectorAll('#eventiSection .evento-giorno');
+  var calGiorni = calendario ? calendario.querySelectorAll('.evt-cal-giorno') : [];
+  var cards = eventiSection.querySelectorAll('.evento-giorno');
 
-  filtri.addEventListener('click', function(e) {
-    var btn = e.target.closest('.evt-filtro-btn');
-    if (!btn) return;
-    var filtro = btn.getAttribute('data-filtro');
+  var activeLoc = 'tutti';
+  var activeDay = null; // null = tutti i giorni
 
-    btns.forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
+  // Illumina i puntini dei giorni che hanno almeno un evento
+  var giorniConEventi = {};
+  cards.forEach(function(card) {
+    giorniConEventi[card.getAttribute('data-day')] = true;
+  });
+  calGiorni.forEach(function(g) {
+    if (!giorniConEventi[g.getAttribute('data-day')]) {
+      g.classList.add('evt-cal-empty');
+    }
+  });
 
+  function applyFilters() {
     cards.forEach(function(card) {
-      if (filtro === 'tutti' || card.getAttribute('data-loc') === filtro) {
+      var matchLoc = (activeLoc === 'tutti' || card.getAttribute('data-loc') === activeLoc);
+      var matchDay = (activeDay === null || card.getAttribute('data-day') === activeDay);
+      if (matchLoc && matchDay) {
         card.classList.remove('evt-hidden');
       } else {
         card.classList.add('evt-hidden');
       }
     });
+  }
+
+  filtri.addEventListener('click', function(e) {
+    var btn = e.target.closest('.evt-filtro-btn');
+    if (!btn) return;
+    activeLoc = btn.getAttribute('data-filtro');
+    btns.forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    applyFilters();
   });
+
+  if (calendario) {
+    calendario.addEventListener('click', function(e) {
+      var g = e.target.closest('.evt-cal-giorno');
+      if (!g) return;
+      var day = g.getAttribute('data-day');
+
+      if (activeDay === day) {
+        // click di nuovo sullo stesso giorno: deseleziona
+        activeDay = null;
+        g.classList.remove('evt-cal-active');
+      } else {
+        activeDay = day;
+        calGiorni.forEach(function(x) { x.classList.remove('evt-cal-active'); });
+        g.classList.add('evt-cal-active');
+        // scorri fino alla sezione eventi per mostrare il risultato
+        eventiSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      applyFilters();
+    });
+  }
 })();
 </script>
 
