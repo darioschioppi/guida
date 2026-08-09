@@ -548,9 +548,12 @@
     /* GALLERIA FOTO */
     .scheda-galleria {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 8px;
       margin: 10px 0 12px;
+    }
+    @media (max-width: 640px) {
+      .scheda-galleria { grid-template-columns: repeat(2, 1fr); }
     }
     .scheda-galleria figure {
       margin: 0;
@@ -1192,6 +1195,10 @@
           <figure>
             <img src="img/panarotta-sentiero.jpg" alt="Sentiero sterrato verso la Panarotta con vista sulla valle" loading="lazy">
             <figcaption>🥾 Il sentiero verso la Panarotta, tra fiori ed epilobi</figcaption>
+          </figure>
+          <figure>
+            <img src="img/panarotta-malga-masi.jpg" alt="Pascolo e malga in quota lungo il percorso, vista sulla valle" loading="lazy">
+            <figcaption>🏔️ Malga Masi, il punto ristoro lungo l'anello</figcaption>
           </figure>
         </div>
 
