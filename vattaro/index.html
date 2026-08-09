@@ -545,6 +545,34 @@
     .scheda-header p { font-size: 13px; color: rgba(255,255,255,0.85); margin-top: 2px; }
     .scheda-body { padding: 14px 18px; flex: 1; }
     .scheda-desc { font-size: 15px; color: #444; margin-bottom: 12px; line-height: 1.6; }
+    /* GALLERIA FOTO */
+    .scheda-galleria {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin: 10px 0 12px;
+    }
+    .scheda-galleria figure {
+      margin: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    .scheda-galleria img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+    .scheda-galleria figcaption {
+      font-size: 12px;
+      color: #666;
+      padding: 4px 8px;
+      background: #fafafa;
+    }
+    @media (max-width: 480px) {
+      .scheda-galleria { grid-template-columns: 1fr; }
+    }
     .criteri {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1155,6 +1183,18 @@
       </div>
       <div class="scheda-body">
         <p class="scheda-desc">Alle spalle di Levico Terme si trovano i Monti Panarotta e Fravort: valli, laghetti alpini, baite e natura intatta, porta d'accesso al Lagorai. Il Fravort è legendariamente all'origine delle acque termali di Levico. L'escursione circolare classica parte da Vetriolo Terme, sale a Cima Esi (1.800 m) e raggiunge la Cima Panarotta (2.002 m) con vista mozzafiato sui laghi di Levico e Caldonazzo, poi scende al valico "La Bassa" e a Malga Masi (punto ristoro) prima di richiudere l'anello.</p>
+
+        <div class="scheda-galleria">
+          <figure>
+            <img src="img/panarotta-parapendio.jpg" alt="Parapendio in decollo a Vetriolo con vista sulla Valsugana" loading="lazy">
+            <figcaption>🪂 Lancio parapendio a Vetriolo, vista sulla Valsugana</figcaption>
+          </figure>
+          <figure>
+            <img src="img/panarotta-sentiero.jpg" alt="Sentiero sterrato verso la Panarotta con vista sulla valle" loading="lazy">
+            <figcaption>🥾 Il sentiero verso la Panarotta, tra fiori ed epilobi</figcaption>
+          </figure>
+        </div>
+
         <div class="criteri">
           <div class="criterio"><span><span class="c-label">Fatica</span><span class="c-val">🟡 Media – anello escursionistico</span></span></div>
           <div class="criterio"><span><span class="c-label">Durata</span><span class="c-val">⏱️ 3:20 h</span></span></div>
