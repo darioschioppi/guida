@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nuove Mete per Trekking – Altopiano della Vigolana</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:wght@700&display=swap');
+
+    :root {
+      --verde: #2D6A4F;
+      --verde-medio: #40916C;
+      --verde-chiaro: #74C69D;
+      --verde-pallido: #D8F3DC;
+      --verde-sfondo: #F0FBF4;
+      --caldo: #F4A261;
+      --caldo-chiaro: #FFDDD2;
+      --blu: #2166AC;
+      --blu-chiaro: #E3F2FD;
+      --testo: #1a2e1a;
+      --testo-medio: #4a6741;
+      --bianco: #ffffff;
+      --ombra: rgba(45,106,79,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--testo);
+      background: var(--verde-sfondo);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 50%, #40916C 100%);
+      color: white;
+      padding: 50px 24px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 40px;
+      background: var(--verde-sfondo);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-emoji { font-size: 54px; display: block; margin-bottom: 14px; }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(26px, 5.5vw, 42px);
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .hero-sub { font-size: clamp(15px, 3vw, 19px); opacity: 0.92; margin-bottom: 16px; }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.18);
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 24px;
+      padding: 8px 20px;
+      font-size: 15px;
+      font-weight: 700;
+      color: white !important;
+      text-decoration: none;
+      backdrop-filter: blur(4px);
+    }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 0 16px 60px; }
+
+    .intro-box {
+      background: white;
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin: 24px 0;
+      border-left: 5px solid var(--verde);
+      font-size: 16px;
+      color: #333;
+      box-shadow: 0 3px 14px var(--ombra);
+    }
+
+    .nav-quick {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 30px;
+    }
+    .nav-quick a {
+      background: white;
+      border: 2px solid var(--verde-chiaro);
+      color: var(--verde);
+      border-radius: 22px;
+      padding: 7px 15px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .nav-quick a:hover { background: var(--verde-pallido); }
+
+    .meta-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 0 0 34px;
+      box-shadow: 0 4px 20px var(--ombra);
+      border: 1px solid rgba(116,198,157,0.3);
+    }
+    .meta-header {
+      padding: 22px 26px;
+      color: white;
+    }
+    .meta-header .m-ic { font-size: 38px; margin-bottom: 6px; }
+    .meta-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(20px, 3.4vw, 27px);
+      margin-bottom: 4px;
+    }
+    .meta-header .m-sub { font-size: 14px; opacity: 0.9; }
+
+    .m-difficile .meta-header { background: linear-gradient(135deg, #7D4F50, #B07880); }
+    .m-media .meta-header { background: linear-gradient(135deg, #C45000, #E07830); }
+    .m-facile .meta-header { background: linear-gradient(135deg, #2D6A4F, #52B788); }
+    .m-storia .meta-header { background: linear-gradient(135deg, #4A2080, #7B52B8); }
+
+    .meta-body { padding: 24px 26px; }
+    .meta-desc { font-size: 16px; color: #333; margin-bottom: 16px; line-height: 1.75; }
+
+    .meta-criteri {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .m-crit {
+      background: var(--verde-sfondo);
+      border-radius: 10px;
+      padding: 9px 12px;
+      font-size: 14px;
+    }
+    .m-crit .mc-label { font-weight: 700; display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.3px; color: var(--verde); }
+    .m-crit .mc-val { display: block; margin-top: 2px; }
+
+    .meta-sezione-titolo {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--verde);
+      margin: 18px 0 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .meta-body p.descr { font-size: 15px; color: #444; line-height: 1.7; margin-bottom: 10px; }
+
+    .mappa-embed-wrap {
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 14px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      border: 1px solid #ddd;
+    }
+    .mappa-embed-wrap iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      display: block;
+    }
+
+    .wikiloc-box {
+      background: #FFF3E0;
+      border-left: 4px solid #C45000;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin: 14px 0;
+      font-size: 14px;
+      color: #7a3200;
+    }
+    .wikiloc-box a { color: #7a3200; font-weight: 700; text-decoration: underline; }
+
+    .grande-guerra-box {
+      background: #EDE7F6;
+      border-left: 4px solid #4A2080;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin: 14px 0;
+      font-size: 14px;
+      color: #37275f;
+    }
+
+    .avviso-box {
+      background: #fde8e8;
+      border-left: 4px solid #c0392b;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin: 14px 0;
+      font-size: 14px;
+      color: #7b2d2d;
+    }
+
+    .meta-footer {
+      padding: 12px 26px 20px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .meta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--verde);
+      color: white !important;
+      border-radius: 8px;
+      padding: 7px 15px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .meta-btn:hover { background: var(--verde-medio); }
+    .meta-btn.outline { background: white; color: var(--verde) !important; border: 2px solid var(--verde); }
+
+    .badge-diff {
+      display: inline-block;
+      border-radius: 12px;
+      padding: 3px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+    .bd-facile { background: rgba(255,255,255,0.25); color: white; }
+    .bd-media { background: rgba(255,255,255,0.25); color: white; }
+    .bd-difficile { background: rgba(255,255,255,0.25); color: white; }
+
+    footer {
+      text-align: center;
+      padding: 34px 20px;
+      background: var(--verde);
+      color: rgba(255,255,255,0.85);
+      font-size: 14px;
+    }
+    footer a { color: #FFD6A5; }
+
+    @media (max-width: 600px) {
+      .meta-header { padding: 18px 20px; }
+      .meta-body { padding: 18px 20px; }
+      .meta-footer { padding: 10px 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero" id="top">
+  <span class="hero-emoji">🥾</span>
+  <h1>Nuove Mete per Trekking</h1>
+  <p class="hero-sub">Altopiano della Vigolana · Escursioni non ancora nella guida principale</p>
+  <a class="back-link" href="index.html">⬅️ Torna alla guida di Vattaro</a>
+</div>
+
+<div class="container">
+
+  <div class="intro-box">
+    Qui trovate <strong>9 mete aggiuntive</strong> per chi vuole esplorare oltre i luoghi già segnalati nella guida principale: escursioni impegnative sulle vette della Vigolana, passeggiate più semplici vicino a Vattaro, e piccoli tesori di storia e cultura locale. Ogni scheda include dati tecnici (lunghezza, dislivello, tempi), una mappa interattiva del punto di partenza e link a tracce GPS su Wikiloc dove disponibili.
+  </div>
+
+  <div class="nav-quick">
+    <a href="#becco">🏔️ Becco di Filadonna</a>
+    <a href="#bivacco">🏠 Bivacco Vigolana</a>
+    <a href="#dossdelbue">🌳 Doss del Bue</a>
+    <a href="#casarota">🍽️ Rifugio Casarota</a>
+    <a href="#vezzena">🎖️ Cima Vezzena</a>
+    <a href="#ancino">🚶 Sentiero dell'Ancino</a>
+    <a href="#feles">⛪ Santuario Madonna di Feles</a>
+    <a href="#paolina">🙏 Casa natale Santa Paolina</a>
+    <a href="#marzola">⛰️ Cima Marzola</a>
+  </div>
+
+  <!-- BECCO DI FILADONNA -->
+  <div class="meta-card m-difficile" id="becco">
+    <div class="meta-header">
+      <div class="m-ic">🏔️</div>
+      <h2>Becco di Filadonna <span class="badge-diff bd-difficile">Impegnativa</span></h2>
+      <div class="m-sub">2.150 m · La cima più alta e panoramica dell'Alpe Cimbra e della Vigolana</div>
+    </div>
+    <div class="meta-body">
+      <p class="meta-desc">L'escursione più famosa e panoramica di tutta la zona. Si parte dal ristorante Sindech (dopo l'abitato di Carbonare, sulla strada verso Levico) e si sale, passando dal Rifugio Casarota, fino alla croce di vetta a 2.150 m. Il panorama dalla cima è a 360°: Trento, la Valsugana, l'Adamello, le Dolomiti di Brenta, i laghi di Levico, Caldonazzo e Lavarone, la Valle dei Mocheni e le cime del Lagorai.</p>
+
+      <div class="meta-criteri">
+        <div class="m-crit"><span class="mc-label">Partenza</span><span class="mc-val">Ristorante Sindech, 1.000 m</span></div>
+        <div class="m-crit"><span class="mc-label">Quota massima</span><span class="mc-val">2.150 m</span></div>
+        <div class="m-crit"><span class="mc-label">Dislivello</span><span class="mc-val">~1.000 m</span></div>
+        <div class="m-crit"><span class="mc-label">Durata</span><span class="mc-val">~5 ore (andata e ritorno)</span></div>
+        <div class="m-crit"><span class="mc-label">Difficoltà</span><span class="mc-val">Impegnativa, tratti esposti</span></div>
+        <div class="m-crit"><span class="mc-label">Punto d'appoggio</span><span class="mc-val">Rifugio Casarota (a metà salita)</span></div>
+        <div class="m-crit"><span class="mc-label">Distanza da Vattaro</span><span class="mc-val">🚗 ~35-40 min</span></div>
+      </div>
+
+      <p class="meta-sezione-titolo">🥾 Il percorso</p>
+      <p class="descr">Dal parcheggio del Sindech si segue il sentiero verso il Rifugio Casarota (1ª tappa, sale ripido nel bosco senza tregua). Da qui altre ~2 ore fino in vetta: il sentiero si addentra nella vegetazione, poi esce su roccia e pietre fino al Bus de la Zole (forcella esposta — attenzione con i bambini), da cui si scollina verso il Becco di Filadonna.</p>
+
+      <div class="avviso-box">
+        ⚠️ Percorso adatto solo a escursionisti allenati. Tratti esposti dopo il Rifugio Casarota: non indicato con bambini piccoli o in caso di maltempo.
+      </div>
+
+      <div class="mappa-embed-wrap">
+        <iframe src="https://www.google.com/maps?q=Ristorante+Sindech+Folgaria&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <div class="wikiloc-box">
+        🗺️ Tracce GPS su Wikiloc: <a href="https://it.wikiloc.com/percorsi-escursionismo/sindech-casarota-becco-di-filadonna-30044657" target="_blank">Sindech - Casarota - Becco di Filadonna</a> (percorso più diretto e standard).
+      </div>
+    </div>
+    <div class="meta-footer">
+      <a class="meta-btn" href="https://www.alpecimbra.it/it/homepage/escursione-al-becco-di-filadonna-mt-2-150/143-7472.html" target="_blank">🔗 Scheda ufficiale Alpe Cimbra</a>
+      <a class="meta-btn outline" href="https://www.outdooractive.com/it/route/escursione/altopiano-della-vigolana/sat-e442-fricca-rifugio-casarota-becco-di-filadonna/24369248/" target="_blank">📥 Traccia Outdooractive</a>
+    </div>
+  </div>
+
+  <!-- BIVACCO VIGOLANA -->
+  <div class="meta-card m-difficile" id="bivacco">
+    <div class="meta-header">
+      <div class="m-ic">🏠</div>
+      <h2>Bivacco Vigolana <span class="badge-diff bd-difficile">Impegnativa</span></h2>
+      <div class="m-sub">Architettura moderna in quota · Stesso accesso del Becco di Filadonna</div>
+    </div>
+    <div class="meta-body">
+      <p class="meta-desc">Inaugurato nel 2016 in sostituzione del vecchio bivacco del 1966 (dedicato a Giambatta Giacomelli), ha un'architettura particolarissima a tronco di piramide rovesciata, con cinque ampie superfici vetrate. Il panorama da qui si apre sull'Altopiano della Vigolana e sulla Marzola, sulla Valsugana a destra e sulla Val d'Adige con Trento a sinistra.</p>
+
+      <div class="meta-criteri">
+        <div class="m-crit"><span class="mc-label">Partenza</span><span class="mc-val">Ristorante Sindech (come Becco di Filadonna)</span></div>
+        <div class="m-crit"><span class="mc-label">Difficoltà</span><span class="mc-val">Impegnativa</span></div>
+        <div class="m-crit"><span class="mc-label">Panorama</span><span class="mc-val">Vigolana, Marzola, Valsugana, Val d'Adige, Trento</span></div>
+        <div class="m-crit"><span class="mc-label">Distanza da Vattaro</span><span class="mc-val">🚗 ~35-40 min (stesso accesso)</span></div>
+      </div>
+
+      <p class="meta-sezione-titolo">💡 Nota</p>
+      <p class="descr">Si raggiunge seguendo lo stesso sentiero verso il Becco di Filadonna. Può essere abbinato nella stessa uscita a chi ha buon allenamento, oppure essere l'obiettivo principale per chi preferisce fermarsi un po' prima della cima.</p>
+
+      <div class="mappa-embed-wrap">
+        <iframe src="https://www.google.com/maps?q=Bivacco+Vigolana&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="meta-footer">
+      <a class="meta-btn" href="https://www.alpecimbra.it/it/scopri-l-alpe-cimbra/localit%C3%A0/bivacco-vigolana/903-9683.html" target="_blank">🔗 Scheda ufficiale</a>
+    </div>
+  </div>
+
+  <!-- DOSS DEL BUE -->
+  <div class="meta-card m-facile" id="dossdelbue">
+    <div class="meta-header">
+      <div class="m-ic">🌳</div>
+      <h2>Doss del Bue <span class="badge-diff bd-facile">Facile</span></h2>
+      <div class="m-sub">1.031 m · Proprio sopra Vattaro — prati, boschi e passeggiate a cavallo</div>
+    </div>
+    <div class="meta-body">
+      <p class="meta-desc">Il Doss del Bue si trova sopra l'abitato di Vattaro, sul versante occidentale della Vigolana, tra boschi di abeti e grandi prati aperti. È il punto di partenza del sentiero tematico "Le Fiabe nel Bosco" (già presente nella guida principale) e di diversi altri percorsi, sia passeggiate semplici che trekking più lunghi verso le cime della Vigolana. Nella zona si trova anche un maneggio per passeggiate a cavallo, e i prati sono perfetti per un picnic con vista.</p>
+
+      <div class="meta-criteri">
+        <div class="m-crit"><span class="mc-label">Quota</span><span class="mc-val">1.031 m</span></div>
+        <div class="m-crit"><span class="mc-label">Difficoltà</span><span class="mc-val">Facile — adatto a tutti</span></div>
+        <div class="m-crit"><span class="mc-label">Terreno</span><span class="mc-val">Prati aperti e sentieri forestali pianeggianti</span></div>
+        <div class="m-crit"><span class="mc-label">Attività</span><span class="mc-val">Passeggiate, picnic, cavallo, punto di partenza trekking</span></div>
+        <div class="m-crit"><span class="mc-label">Distanza da Vattaro</span><span class="mc-val">🚗 5-10 min / 🚶 possibile a piedi</span></div>
+      </div>
+
+      <p class="meta-sezione-titolo">🎪 Da sapere</p>
+      <p class="descr">Il Doss del Bue è anche sede di eventi estivi: ad esempio nel 2026 vi si è tenuto un concerto con aperitivo (Coro Vigolana e fiati etnici) — vale la pena controllare il calendario eventi dell'Alpe Cimbra per la stagione in corso.</p>
+
+      <div class="mappa-embed-wrap">
+        <iframe src="https://www.google.com/maps?q=Malga+Doss+del+Bue+Vattaro&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <div class="wikiloc-box">
+        🗺️ Tracce GPS: <a href="https://it.wikiloc.com/percorsi-escursionismo/da-malga-doss-del-bue-al-rifugio-paludei-campregheri-vattaro-269019538" target="_blank">Da Malga Doss del Bue al Rifugio Paludei</a> · <a href="https://permontagnepersentieri.wordpress.com/2024/06/23/cima-vigolana/" target="_blank">Anello Cima Vigolana e Becco della Ceriola</a> (per chi vuole spingersi oltre: 19 km, 1300 m D+, 8 ore, EE).
+      </div>
+    </div>
+    <div class="meta-footer">
+      <a class="meta-btn" href="https://www.alpecimbra.it/it/homepage/appuntidiviaggio-doss-del-bue-prati-luminosi-sentieri-nel-bosco-e-panorami-sull-altopiano-della-vigolana/143-40865.html" target="_blank">🔗 Racconto e info Alpe Cimbra</a>
+    </div>
+  </div>
+
+  <!-- RIFUGIO CASAROTA -->
+  <div class="meta-card m-media" id="casarota">
+    <div class="meta-header">
+      <div class="m-ic">🍽️</div>
+      <h2>Rifugio Casarota <span class="badge-diff bd-media">Media</span></h2>
+      <div class="m-sub">Alternativa più semplice al Becco di Filadonna, con sosta panoramica</div>
+    </div>
+    <div class="meta-body">
+      <p class="meta-desc">Per chi non ha fiato o voglia di arrivare al Becco di Filadonna, la camminata nel bosco che porta al Rifugio Casarota (Sezione SAT di Centa San Nicolò) è già una gita di grande soddisfazione, con panorama sublime sui boschi della Vigolana e dell'Alpe Cimbra, e la possibilità di una sosta golosa.</p>
+
+      <div class="meta-criteri">
+        <div class="m-crit"><span class="mc-label">Partenza</span><span class="mc-val">Ristorante Sindech</span></div>
+        <div class="m-crit"><span class="mc-label">Dislivello</span><span class="mc-val">~450 m</span></div>
+        <div class="m-crit"><span class="mc-label">Durata</span><span class="mc-val">~2 ore (andata)</span></div>
+        <div class="m-crit"><span class="mc-label">Difficoltà</span><span class="mc-val">Media — sentiero 442 nel bosco, molti tornanti</span></div>
+        <div class="m-crit"><span class="mc-label">Punto ristoro</span><span class="mc-val">Rifugio Casarota</span></div>
+      </div>
+
+      <p class="meta-sezione-titolo">🥾 Il percorso</p>
+      <p class="descr">Dal parcheggio dietro al ristorante Sindech si attraversa la strada e si prende il sentiero 442, che si immerge subito nel bosco e sale costantemente, con molti tornanti, fino al Rifugio Casarota. Ideale per famiglie con un buon passo o per chi vuole solo una parte dell'ascesa al Becco di Filadonna.</p>
+
+      <div class="mappa-embed-wrap">
+        <iframe src="https://www.google.com/maps?q=Rifugio+Casarota+Centa+San+Nicolo&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="meta-footer">
+      <a class="meta-btn" href="https://www.alpecimbra.it/it/homepage/escursioni-in-vigolana/143-17542.html" target="_blank">🔗 Scheda ufficiale Alpe Cimbra</a>
+    </div>
+  </div>
+
+  <!-- CIMA VEZZENA -->
+  <div class="meta-card m-storia" id="vezzena">
+    <div class="meta-header">
+      <div class="m-ic">🎖️</div>
+      <h2>Cima Vezzena &amp; Forte Spitz Vezzena <span class="badge-diff bd-media">Media</span></h2>
+      <div class="m-sub">1.908 m · Grande Guerra: i resti del forte austro-ungarico "l'occhio degli altipiani"</div>
+    </div>
+    <div class="meta-body">
+      <p class="meta-desc">Al confine con l'Altopiano dei Sette Comuni, un'escursione che combina storia e panorami: da Passo Vezzena si sale al Forte Busa Verle, poi tra pascoli e boschi di conifere fino a Cima Vezzena (chiamata anche Pizzo di Levico), dove si trovano i resti del Forte Spitz Vezzena, costruito dall'impero austro-ungarico tra il 1910 e il 1914 e usato come osservatorio strategico.</p>
+
+      <div class="meta-criteri">
+        <div class="m-crit"><span class="mc-label">Partenza</span><span class="mc-val">Passo Vezzena, 1.404-1.428 m</span></div>
+        <div class="m-crit"><span class="mc-label">Quota massima</span><span class="mc-val">1.908 m (Pizzo di Levico)</span></div>
+        <div class="m-crit"><span class="mc-label">Lunghezza</span><span class="mc-val">~9 km</span></div>
+        <div class="m-crit"><span class="mc-label">Dislivello</span><span class="mc-val">~550-580 m</span></div>
+        <div class="m-crit"><span class="mc-label">Durata</span><span class="mc-val">~3 ore (soste escluse)</span></div>
+        <div class="m-crit"><span class="mc-label">Segnavia</span><span class="mc-val">CAI 205</span></div>
+        <div class="m-crit"><span class="mc-label">Distanza da Vattaro</span><span class="mc-val">🚗 ~40 min</span></div>
+      </div>
+
+      <p class="meta-sezione-titolo">🥾 Il percorso</p>
+      <p class="descr">Si parcheggia vicino all'Hotel Vezzena e si sale lungo la strada asfaltata fino al Forte Busa Verle. Da qui si continua tra i pascoli seguendo le indicazioni per Cima Vezzena: si può scegliere la strada militare austro-ungarica (più dolce, nel bosco poi allo scoperto) oppure un sentiero più ripido che risale direttamente da 1.600 a 1.850 m per poi ricongiungersi. Si consiglia di scendere per la strada forestale, meno impegnativa.</p>
+
+      <div class="grande-guerra-box">
+        🎖️ <strong>Panorama dalla cima:</strong> Valsugana e laghi di Levico e Caldonazzo sotto di voi, Dolomiti di Brenta in lontananza, Cima Mandriolo, Cima Portule, Cima XII, Monte Ortigara e la catena del Lagorai sullo sfondo.
+      </div>
+
+      <div class="mappa-embed-wrap">
+        <iframe src="https://www.google.com/maps?q=Passo+Vezzena&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <div class="wikiloc-box">
+        🗺️ Tracce GPS: <a href="https://it.wikiloc.com/percorsi-escursionismo/passo-vezzena-cima-forte-spitz-vezzena-86576624" target="_blank">Passo Vezzena, cima forte Spitz Vezzena</a> · <a href="https://it.wikiloc.com/percorsi-escursionismo/percorso-verso-forte-spitz-passando-per-forte-busa-verle-e-cima-vezzena-da-passo-vezzena-tn-184000099" target="_blank">Variante via Forte Busa Verle</a>
+      </div>
+    </div>
+    <div class="meta-footer">
+      <a class="meta-btn" href="https://www.inviaggiopernatura.it/escursione-a-cima-vezzena-e-al-forte-spitz-vezzena/" target="_blank">🔗 Racconto dettagliato</a>
+    </div>
+  </div>
+
+  <!-- SENTIERO DELL'ANCINO -->
+  <div class="meta-card m-storia" id="ancino">
+    <div class="meta-header">
+      <div class="m-ic">🚶</div>
+      <h2>Sentiero dell'Ancino <span class="badge-diff bd-difficile">Impegnativa</span></h2>
+      <div class="m-sub">Dal Torrente Centa a Lavarone · Storia, mulini e la via imperiale del 1192</div>
+    </div>
+    <div class="meta-body">
+      <p class="meta-desc">Un'antica mulattiera, nota fin dal 1192 come importante via di collegamento tra l'Alta Valsugana e l'Alpe Cimbra (anche chiamata "Via Imperiale"), oggi ridotta in più tratti a stretto sentiero. Il percorso segue il Torrente Centa passando per i ruderi di antichi mulini, con vista sulla spettacolare cascata del Valampach, per poi risalire il ripido versante verso il terrazzo di Lavarone.</p>
+
+      <div class="meta-criteri">
+        <div class="m-crit"><span class="mc-label">Partenza</span><span class="mc-val">Parcheggio Paldàofi, km 3,5 strada Caldonazzo-Centa San Nicolò</span></div>
+        <div class="m-crit"><span class="mc-label">Arrivo</span><span class="mc-val">Lavarone Chiesa</span></div>
+        <div class="m-crit"><span class="mc-label">Dislivello</span><span class="mc-val">~600-650 m</span></div>
+        <div class="m-crit"><span class="mc-label">Durata</span><span class="mc-val">~2h40-3h a tratta</span></div>
+        <div class="m-crit"><span class="mc-label">Segnavia</span><span class="mc-val">SAT / E217</span></div>
+        <div class="m-crit"><span class="mc-label">Difficoltà</span><span class="mc-val">Impegnativa: guado del torrente, tratti di traccia esile</span></div>
+      </div>
+
+      <p class="meta-sezione-titolo">🥾 Il percorso</p>
+      <p class="descr">Dal parcheggio si scende in località Molin Nuovo (parco fluviale attrezzato) e si costeggia il Torrente Centa fino ai ruderi del Molino Polentóni. Qui va attraversato il torrente (attenzione in caso di piene: usare cautela sui sassi o sulla trave di legno). Dopo il mulino, un tratto ripido nel bosco porta al capitello di Sant'Antonio (1865, metà percorso), poi si continua in una faggeta fino al bivio con il sentiero 219 e alla "Strada della Val Caréta" che conduce a Lavarone. Possibile deviazione al Comando Virti, sede del comando austro-ungarico nella Grande Guerra.</p>
+
+      <div class="avviso-box">
+        ⚠️ Guado del torrente da valutare con attenzione, specie con piena o gelo. Percorso lungo e con dislivello notevole: portare acqua e scarpe da trekking adeguate.
+      </div>
+
+      <div class="mappa-embed-wrap">
+        <iframe src="https://www.google.com/maps?q=Centa+San+Nicolo+Caldonazzo&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="meta-footer">
+      <a class="meta-btn" href="https://www.visittrentino.info/it/guida/tour/sat-e217-sentiero-dell-ancino-valle-del-centa-lavarone_tour_24350759" target="_blank">🔗 Scheda ufficiale Visit Trentino</a>
+      <a class="meta-btn outline" href="https://www.montagnadiviaggi.it/2022/05/sentiero-dell-ancino-da-valle-centa-a-lavarone.html" target="_blank">📖 Racconto dettagliato</a>
+    </div>
+  </div>
+
+  <!-- SANTUARIO MADONNA DI FELES -->
+  <div class="meta-card m-storia" id="feles">
+    <div class="meta-header">
+      <div class="m-ic">⛪</div>
+      <h2>Santuario Madonna di Feles &amp; Castel Vigolo <span class="badge-diff bd-facile">Facile</span></h2>
+      <div class="m-sub">Passeggiata ad anello di circa 1 ora vicino a Bosentino</div>
+    </div>
+    <div class="meta-body">
+      <p class="meta-desc">A poca distanza dal paese di Bosentino, un piccolo santuario immerso nel verde. Dal Santuario della Madonna di Feles si può raggiungere con una comoda camminata Castel Vigolo, un edificio recentemente ristrutturato (non aperto al pubblico all'interno, ma visitabile dall'esterno). Una gita tranquilla, perfetta per una mattinata rilassata a due passi da Vattaro.</p>
+
+      <div class="meta-criteri">
+        <div class="m-crit"><span class="mc-label">Comune</span><span class="mc-val">Bosentino</span></div>
+        <div class="m-crit"><span class="mc-label">Difficoltà</span><span class="mc-val">Facile — passeggiata ad anello</span></div>
+        <div class="m-crit"><span class="mc-label">Durata</span><span class="mc-val">~1 ora</span></div>
+        <div class="m-crit"><span class="mc-label">Distanza da Vattaro</span><span class="mc-val">🚗 ~10 min</span></div>
+      </div>
+
+      <div class="mappa-embed-wrap">
+        <iframe src="https://www.google.com/maps?q=Santuario+Madonna+di+Feles+Bosentino&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="meta-footer">
+      <a class="meta-btn" href="https://www.alpecimbra.it/it/homepage/6-cose-da-visitare-in-vigolana/143-17561.html" target="_blank">🔗 Scheda ufficiale Alpe Cimbra</a>
+    </div>
+  </div>
+
+  <!-- CASA NATALE SANTA PAOLINA -->
+  <div class="meta-card m-storia" id="paolina">
+    <div class="meta-header">
+      <div class="m-ic">🙏</div>
+      <h2>Casa Natale di Santa Paolina <span class="badge-diff bd-facile">Facile</span></h2>
+      <div class="m-sub">Vigolo Vattaro · Meta di pellegrinaggio internazionale</div>
+    </div>
+    <div class="meta-body">
+      <p class="meta-desc">In questa casa a Vigolo Vattaro nacque il 16 dicembre 1865 Amabile Visintainer, divenuta Santa Paolina del Cuore di Gesù Agonizzante. Emigrata in Brasile a dieci anni, si distinse per la sua grande carità e fondò la congregazione delle Piccole Suore dell'Immacolata Concezione, oggi presente con case di assistenza per minori, malati e anziani in 16 stati brasiliani e in 12 Paesi nel mondo. La casa è meta di pellegrinaggi anche dal Brasile.</p>
+
+      <div class="meta-criteri">
+        <div class="m-crit"><span class="mc-label">Comune</span><span class="mc-val">Vigolo Vattaro</span></div>
+        <div class="m-crit"><span class="mc-label">Visite</span><span class="mc-val">Su richiesta alle suore residenti nei dintorni</span></div>
+        <div class="m-crit"><span class="mc-label">Distanza da Vattaro</span><span class="mc-val">🚗 ~5 min</span></div>
+      </div>
+
+      <div class="mappa-embed-wrap">
+        <iframe src="https://www.google.com/maps?q=Casa+natale+di+Santa+Paolina+Vigolo+Vattaro&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="meta-footer">
+      <a class="meta-btn" href="https://www.alpecimbra.it/it/scopri-l-alpe-cimbra/localit%C3%A0/casa-natale-di-santa-paolina/903-9690.html" target="_blank">🔗 Scheda ufficiale</a>
+    </div>
+  </div>
+
+  <!-- CIMA MARZOLA -->
+  <div class="meta-card m-media" id="marzola">
+    <div class="meta-header">
+      <div class="m-ic">⛰️</div>
+      <h2>Cima Marzola <span class="badge-diff bd-media">Media/Difficile</span></h2>
+      <div class="m-sub">La seconda montagna simbolo della zona, con vista su Trento e Val d'Adige</div>
+    </div>
+    <div class="meta-body">
+      <p class="meta-desc">Insieme alla Vigolana, la Marzola è la montagna che caratterizza questa zona del Trentino. Da Vigolo Vattaro si prende Via Sabbionara e si prosegue lungo la strada asfaltata per il primo tratto, per poi inerpicarsi nel bosco verso la cima, con vista sul Lago di Caldonazzo, sul Lagorai, sulla Panarotta e — dal versante opposto — sulla città di Trento e la Val d'Adige.</p>
+
+      <div class="meta-criteri">
+        <div class="m-crit"><span class="mc-label">Partenza</span><span class="mc-val">Vigolo Vattaro, Via Sabbionara</span></div>
+        <div class="m-crit"><span class="mc-label">Difficoltà</span><span class="mc-val">Media, con tratti più impegnativi in vetta</span></div>
+        <div class="m-crit"><span class="mc-label">Panorama</span><span class="mc-val">Lago di Caldonazzo, Lagorai, Panarotta, Trento, Val d'Adige</span></div>
+        <div class="m-crit"><span class="mc-label">Distanza da Vattaro</span><span class="mc-val">🚗 ~10 min all'inizio del sentiero</span></div>
+      </div>
+
+      <p class="meta-sezione-titolo">💡 Nota</p>
+      <p class="descr">Il "Giro della Marzola da Vigolo Vattaro" è segnalato tra i percorsi meno affollati della zona, alternativa interessante al più battuto Becco di Filadonna per chi cerca tranquillità con panorami comunque eccellenti su lago e Valsugana.</p>
+
+      <div class="mappa-embed-wrap">
+        <iframe src="https://www.google.com/maps?q=Via+Sabbionara+Vigolo+Vattaro&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <div class="wikiloc-box">
+        🗺️ Ricerca su Wikiloc/Komoot: "Giro della Marzola da Vigolo Vattaro" — verificare la traccia più recente prima di partire, la rete di sentieri della Marzola conta oltre 100 percorsi diversi.
+      </div>
+    </div>
+    <div class="meta-footer">
+      <a class="meta-btn" href="https://www.komoot.com/it-it/guide/548423/fantastici-trekking-e-escursioni-nei-dintorni-di-altopiano-della-vigolana" target="_blank">🔗 Guida Komoot alla zona</a>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin:20px 0 0;">
+    <a class="back-link" style="background:var(--verde-pallido);color:var(--verde) !important;border-color:var(--verde-chiaro);" href="index.html">⬅️ Torna alla guida completa di Vattaro</a>
+  </div>
+
+</div>
+
+<footer>
+  Nuove mete raccolte da fonti ufficiali Alpe Cimbra, Visit Trentino, Wikiloc e blog di escursionismo trentino.<br/>
+  <small>Verificare sempre condizioni meteo e stato dei sentieri prima di partire, specialmente sui percorsi impegnativi.</small>
+</footer>
+
+</body>
+</html>
