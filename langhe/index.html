@@ -560,7 +560,7 @@
     <a href="#trekking">🥾 Trekking</a>
     <a href="#ristoranti">🍽️ Ristoranti</a>
     <a href="#attivita">🎈 Cose da fare</a>
-    <a href="#menu">📖 Menù Navigator</a>
+    <a href="#dintorni">📍 Vicino a Busca</a>
     <a href="#consigli">💡 Consigli</a>
   </div>
 </nav>
@@ -766,7 +766,7 @@
     </div>
     <div class="tratto-body">
       <span class="difficulty diff-facile">Facile</span>
-      <p>Anello di circa 9 km tra i vigneti e le frazioni di La Morra, terreno sterrato da percorrere preferibilmente asciutto. Partenza e arrivo dal centro di La Morra, con vedute che spaziano su tutta la Langa del Barolo. Perfetto per una mezza giornata, anche in bici da corsa leggera.</p>
+      <p>Anello di circa 9 km tra i vigneti e le frazioni di La Morra, terreno sterrato da percorrere preferibilmente asciutto. Partenza e arrivo dal centro di La Morra, con vedute che spaziano su tutta la Langa del Barolo. Perfetto per una mezza giornata, anche in bici da corsa leggera. Traccia GPS: <a href="https://it.wikiloc.com/percorsi-escursionismo/sentiero-del-barolo-9671446" target="_blank">Sentiero del Barolo su Wikiloc</a> oppure la variante <a href="https://it.wikiloc.com/percorsi-escursionismo/anello-langhe-del-barolo-da-la-morra-barolo-233748586" target="_blank">Anello Langhe del Barolo — Da La Morra a Barolo</a>.</p>
     </div>
   </div>
 
@@ -952,81 +952,70 @@
     </div>
   </div>
 
-  <h2 class="section-title" id="menu">📖 Menù Navigator</h2>
-  <p style="margin-bottom:10px; color:#5a4a40;">Cosa significano i piatti scritti nei menù dei ristoranti di Langa, e cosa berci insieme. Usa la ricerca o i tab per saltare subito alla categoria che ti serve.</p>
+  <h2 class="section-title" id="dintorni">📍 Nelle vicinanze di Busca</h2>
+  <p style="margin-bottom:10px; color:#5a4a40;">Cose da vedere, camminate e posti dove mangiare a due passi dall'alloggio, senza dover per forza raggiungere le Langhe.</p>
 
-  <div class="navigator" id="navigator">
-    <div class="navigator-index">
-      <div class="navigator-search">
-        <span>🔎</span>
-        <input type="text" id="nav-search" placeholder="Cerca un piatto, un formaggio, un vino... (es. tartufo)" aria-label="Cerca nel menù navigator">
+  <div class="luogo-card">
+    <span class="luogo-tag">Da vedere</span>
+    <h3>🏰 Castello del Roccolo</h3>
+    <p>Castello in stile neogotico sulle colline sopra Busca, immerso in un parco secolare di 50 ettari con sequoie, cedri del Libano e altre essenze rare. Uno dei "Luoghi del Cuore" FAI della zona: da verificare gli orari di apertura al pubblico prima di andare.</p>
+  </div>
+
+  <div class="luogo-card">
+    <span class="luogo-tag">Da vedere</span>
+    <h3>🍄 Riserva Naturale dei Ciciu del Villar</h3>
+    <p>A Villar San Costanzo, pochi minuti da Busca: le curiose "piramidi di terra" a forma di fungo (i ciciu), scolpite dall'erosione glaciale. Due percorsi ad anello nella riserva, uno più breve (~45 min) e uno più lungo (~2h), adatti anche alle famiglie.</p>
+  </div>
+
+  <div class="luogo-card">
+    <span class="luogo-tag">Da vedere</span>
+    <h3>⛰️ Strada dei Cannoni</h3>
+    <p>Antica strada militare panoramica che attraversa i comuni di Busca, Villar San Costanzo, Roccabruna e altri paesi della Valle Maira e Valle Varaita, riqualificata e aperta da inizio luglio a fine ottobre. Percorribile in auto, bici o a piedi a tratti, con vedute ampie sulle Alpi Marittime.</p>
+  </div>
+
+  <div class="luogo-card">
+    <span class="luogo-tag">Da vedere</span>
+    <h3>🏛️ Saluzzo — La Castiglia e il centro storico</h3>
+    <p>A ~15 minuti da Busca: l'antica capitale del marchesato di Saluzzo, con l'imponente Castiglia, la Cattedrale, Casa Cavassa e le vie a ciottoli del centro medievale. Comoda anche solo per una passeggiata serale.</p>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',Georgia,serif; color:var(--vino); font-size:19px; margin:30px 0 12px;">🥾 Trekking vicino a Busca</h3>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">🍄</span>
+      <div class="tratto-info">
+        <div class="quota">~45 min o ~2h a seconda dell'anello · dislivello contenuto</div>
+        <h2>Ciciu del Villar San Costanzo</h2>
       </div>
-      <div class="navigator-tabs" id="nav-tabs" role="tablist" aria-label="Categorie del menù">
-        <button class="nav-tab active" data-cat="all">🗂️ Tutte</button>
-        <button class="nav-tab" data-cat="antipasti">🥗 Antipasti</button>
-        <button class="nav-tab" data-cat="primi">🍝 Primi</button>
-        <button class="nav-tab" data-cat="secondi">🥩 Secondi</button>
-        <button class="nav-tab" data-cat="formaggi">🧀 Formaggi e tartufo</button>
-        <button class="nav-tab" data-cat="dolci">🍰 Dolci</button>
-        <button class="nav-tab" data-cat="vini">🍷 Abbinamenti vino</button>
-      </div>
-      <div class="navigator-count" id="nav-count"></div>
     </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-facile">Facile</span>
+      <p>Due anelli nella riserva naturale (breve o lungo) tra i caratteristici "funghi di pietra". Percorso ombreggiato nel bosco, ottimo anche nelle ore più calde della giornata.</p>
+    </div>
+  </div>
 
-    <div class="navigator-body">
-
-      <div class="menu-cat" data-cat="antipasti">
-        <h3 class="menu-cat-title">🥗 Antipasti</h3>
-        <div class="menu-item" data-terms="vitello tonnato tonno maionese"><b>Vitello tonnato</b> — fettine di vitello freddo ricoperte di salsa a base di tonno, acciughe, capperi e maionese.</div>
-        <div class="menu-item" data-terms="tonno di coniglio conserva sott'olio"><b>Tonno di coniglio</b> — antipasto povero contadino: coniglio cotto, sfilacciato e conservato sott'olio, consistenza simile al tonno in scatola.</div>
-        <div class="menu-item" data-terms="carne cruda battuta al coltello tartare fassone tartufo"><b>Carne cruda battuta al coltello</b> — tartare di fassone piemontese tagliata a mano, condita con olio e limone, spesso con tartufo o funghi.</div>
-        <div class="menu-item" data-terms="bagna cauda acciughe aglio olio verdure"><b>Bagna cauda</b> — intingolo caldo di acciughe, aglio e olio in cui si intingono verdure crude e cotte.</div>
-        <div class="menu-item" data-terms="peperoni bagnetto verde rosso"><b>Peperoni con bagnetto</b> — peperoni arrostiti o in agrodolce con bagnetto verde (prezzemolo/aglio) o rosso (pomodoro).</div>
-        <div class="menu-item" data-terms="insalata russa patate carote piselli maionese"><b>Insalata russa</b> — patate, carote e piselli legati con maionese; classico antipasto freddo piemontese.</div>
-        <div class="menu-item" data-terms="finanziera frattaglie rigaglie pollo animelle"><b>Finanziera</b> — piatto povero a base di frattaglie (rigaglie di pollo, filoni, animelle) sfumate con aceto o Marsala.</div>
-        <div class="menu-item" data-terms="salame di turgia testa in cassetta salumi"><b>Salame di Turgia / Testa in cassetta</b> — salumi tradizionali: il primo di manzo e suino speziato, il secondo simile a una testina cotta.</div>
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">🏔️</span>
+      <div class="tratto-info">
+        <div class="quota">Anello di cresta · impegnativo</div>
+        <h2>Massiccio della Bisalta (Bric Costa Rossa, Sperone Centrale, Besimauda)</h2>
       </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-intenso">Intenso</span>
+      <p>La montagna simbolo del Cuneese, visibile anche da Busca nelle giornate limpide. Anello di cresta con tratti rocciosi e panorami che spaziano dalle Alpi Marittime alla pianura. Traccia GPS: <a href="https://it.wikiloc.com/percorsi-escursionismo/anello-massiccio-della-bisalta-passando-per-bric-costa-rossa-sperone-centrale-monte-besimauda-e-rit-176319795" target="_blank">Anello massiccio della Bisalta su Wikiloc</a>.</p>
+    </div>
+  </div>
 
-      <div class="menu-cat" data-cat="primi">
-        <h3 class="menu-cat-title">🍝 Primi</h3>
-        <div class="menu-item" data-terms="tajarin tagliolini tartufo burro"><b>Tajarin</b> (al tartufo o al burro) — tagliolini sottilissimi all'uovo, conditi con burro e salvia o tartufo grattugiato.</div>
-        <div class="menu-item" data-terms="agnolotti del plin ravioli arrosto"><b>Agnolotti del plin</b> — piccoli ravioli ripieni di carne (arrosto misto), chiusi con un "pizzicotto" (plin), al burro o al sugo d'arrosto.</div>
-      </div>
-
-      <div class="menu-cat" data-cat="secondi">
-        <h3 class="menu-cat-title">🥩 Secondi</h3>
-        <div class="menu-item" data-terms="brasato al barolo manzo vino stufato"><b>Brasato al Barolo</b> — manzo marinato e stufato lentamente nel vino Barolo con verdure e spezie.</div>
-        <div class="menu-item" data-terms="fritto misto piemontese carni verdure frattaglie amaretti"><b>Fritto misto piemontese</b> — carni, verdure, frattaglie e persino elementi dolci (amaretti, semolino fritto) impanati e fritti insieme.</div>
-      </div>
-
-      <div class="menu-cat" data-cat="formaggi">
-        <h3 class="menu-cat-title">🧀 Formaggi e tartufo</h3>
-        <div class="menu-item" data-terms="robiola di roccaverano dop capra vacca pecora"><b>Robiola di Roccaverano DOP</b> — formaggio fresco a pasta molle, latte misto capra/vacca/pecora.</div>
-        <div class="menu-item" data-terms="castelmagno dop erborinato piccante stagionato"><b>Castelmagno DOP</b> — formaggio erborinato a pasta semidura, sapore intenso e piccante da stagionato.</div>
-        <div class="menu-item" data-terms="murazzano dop robiola ovino alta langa"><b>Murazzano DOP</b> — robiola a base di latte ovino, delicata, tipica dell'Alta Langa.</div>
-        <div class="menu-item" data-terms="tartufo bianco nero alba langhe grattugiato"><b>Tartufo bianco/nero</b> — tubero pregiato di Alba (bianco, autunnale) e delle Langhe (nero), grattugiato su tajarin, uova, carne cruda.</div>
-      </div>
-
-      <div class="menu-cat" data-cat="dolci">
-        <h3 class="menu-cat-title">🍰 Dolci</h3>
-        <div class="menu-item" data-terms="bunet bonet budino cacao amaretti caramello"><b>Bunet (o bonet)</b> — budino al cucchiaio a base di cacao, amaretti e caramello.</div>
-        <div class="menu-item" data-terms="panna cotta caramello frutti di bosco"><b>Panna cotta</b> — dessert cremoso a base di panna, servito con caramello o frutti di bosco.</div>
-        <div class="menu-item" data-terms="torta di nocciole langhe piemonte igp"><b>Torta di nocciole delle Langhe/Piemonte IGP</b> — torta senza (o quasi) farina, a base di nocciola Tonda Gentile delle Langhe.</div>
-      </div>
-
-      <div class="menu-cat" data-cat="vini">
-        <h3 class="menu-cat-title vini-title">🍷 Abbinamenti vino-piatto</h3>
-        <div class="abbinamento" data-terms="barolo arrosti carne rossa brasato cacciagione tartufo castelmagno"><span class="vino-nome">Barolo</span><p>Arrosti di carne rossa, brasato al Barolo, cacciagione, piatti tartufati, formaggi stagionati come il Castelmagno.</p></div>
-        <div class="abbinamento" data-terms="barbaresco carni rosse formaggi stagionati robiole tartufo bianco"><span class="vino-nome">Barbaresco</span><p>Simile al Barolo ma più elegante: carni rosse pregiate, formaggi stagionati, robiole scottate con tartufo bianco.</p></div>
-        <div class="abbinamento" data-terms="barbera d'alba tajarin agnolotti risotti pasta al forno"><span class="vino-nome">Barbera d'Alba</span><p>Primi piatti (tajarin, agnolotti, risotti), pasta al forno, carni rosse e brasati più "quotidiani".</p></div>
-        <div class="abbinamento" data-terms="dolcetto d'alba antipasti salumi carpacci"><span class="vino-nome">Dolcetto d'Alba</span><p>Antipasti piemontesi, salumi, carpacci: vino da tutto pasto informale.</p></div>
-        <div class="abbinamento" data-terms="nebbiolo d'alba tagliatelle risotti salumi fritti"><span class="vino-nome">Nebbiolo d'Alba</span><p>Primi a base di tagliatelle e risotti, salumi stagionati, fritti.</p></div>
-        <div class="abbinamento" data-terms="arneis roero arneis antipasti formaggi freschi robiola carni bianche pesce"><span class="vino-nome">Arneis / Roero Arneis</span><p>Antipasti di terra, formaggi freschi come la robiola, carni bianche, anche pesce di lago.</p></div>
-        <div class="abbinamento" data-terms="moscato d'asti dolci dessert bunet torta di nocciole panna cotta"><span class="vino-nome">Moscato d'Asti</span><p>Dolci e dessert (bunet, torta di nocciole, panna cotta), grazie alla dolcezza aromatica e bassa gradazione.</p></div>
-      </div>
-
-      <p class="navigator-empty" id="nav-empty">Nessun piatto o vino trovato. Provi con un altro termine? 🍇</p>
-
+  <div class="box box-noc">
+    <span class="box-ic">🍽️</span>
+    <div class="box-body">
+      <strong>Dove mangiare vicino a Busca</strong>
+      <p><b>Las Vegas</b> (Busca) — cucina piemontese casalinga, fritto misto piemontese segnalato tra i migliori della zona, buon rapporto qualità-prezzo.<br>
+      <b>Ristorante Rododendro</b> (Saluzzo, Piazza Cavour) — cucina tradizionale piemontese e cuneese con ingredienti di territorio.<br>
+      Per un'osteria di paese più informale, vale la pena chiedere in loco: le frazioni intorno a Busca e Villar San Costanzo hanno diverse trattorie familiari poco recensite online ma molto frequentate dai locali.</p>
     </div>
   </div>
 
@@ -1047,75 +1036,6 @@
 <footer>
   <p>Guida di Dario — aggiornata luglio 2026</p>
 </footer>
-
-<script>
-(function() {
-  var navigator_ = document.getElementById('navigator');
-  if (!navigator_) return;
-
-  var searchInput = document.getElementById('nav-search');
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.nav-tab'));
-  var cats = Array.prototype.slice.call(document.querySelectorAll('.menu-cat'));
-  var countEl = document.getElementById('nav-count');
-  var emptyEl = document.getElementById('nav-empty');
-  var activeCat = 'all';
-
-  function normalize(s) {
-    return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
-  }
-
-  function applyFilters() {
-    var query = normalize(searchInput.value.trim());
-    var visibleCount = 0;
-
-    cats.forEach(function(cat) {
-      var catKey = cat.getAttribute('data-cat');
-      var catMatchesTab = (activeCat === 'all' || activeCat === catKey);
-      var items = Array.prototype.slice.call(cat.querySelectorAll('.menu-item, .abbinamento'));
-      var catHasVisibleItem = false;
-
-      items.forEach(function(item) {
-        var terms = normalize(item.getAttribute('data-terms') || item.textContent);
-        var matchesQuery = query === '' || terms.indexOf(query) !== -1;
-        var show = catMatchesTab && matchesQuery;
-        item.classList.toggle('is-hidden', !show);
-        if (show) { catHasVisibleItem = true; visibleCount++; }
-      });
-
-      cat.classList.toggle('is-hidden', !catHasVisibleItem);
-    });
-
-    emptyEl.classList.toggle('show', visibleCount === 0);
-
-    if (query === '') {
-      countEl.textContent = '';
-    } else {
-      countEl.textContent = visibleCount + (visibleCount === 1 ? ' risultato trovato' : ' risultati trovati');
-    }
-  }
-
-  tabs.forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      tabs.forEach(function(t) { t.classList.remove('active'); });
-      tab.classList.add('active');
-      activeCat = tab.getAttribute('data-cat');
-      applyFilters();
-      if (activeCat !== 'all') {
-        var target = document.querySelector('.menu-cat[data-cat="' + activeCat + '"]');
-        if (target) {
-          setTimeout(function() {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 50);
-        }
-      }
-    });
-  });
-
-  searchInput.addEventListener('input', applyFilters);
-
-  applyFilters();
-})();
-</script>
 
 </body>
 </html>
