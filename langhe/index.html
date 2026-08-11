@@ -433,6 +433,110 @@
       border-color: var(--vino-chiaro);
       color: #fff;
     }
+
+    /* --- Soggiorno: hotel, itinerario, eventi --- */
+    .hotel-card {
+      background: var(--bianco);
+      border-radius: 20px;
+      padding: 24px 30px;
+      margin: 24px 0;
+      box-shadow: 0 8px 30px var(--ombra);
+      border: 2px solid var(--oro);
+    }
+    .hotel-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--vino);
+      font-size: 21px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hotel-card p { font-size: 16px; color: #3a2e28; margin: 4px 0; }
+    .hotel-card .hotel-placeholder {
+      display: inline-block;
+      background: var(--nocciola-chiaro);
+      color: #8a5a1e;
+      font-weight: 700;
+      border-radius: 10px;
+      padding: 2px 10px;
+    }
+
+    .giorno-card {
+      background: var(--bianco);
+      border-radius: 18px;
+      overflow: hidden;
+      margin: 18px 0;
+      box-shadow: 0 4px 20px var(--ombra);
+      border: 1px solid rgba(140,47,62,0.2);
+    }
+    .giorno-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, var(--vino), var(--nocciola));
+      color: white;
+    }
+    .giorno-num {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 28px;
+      font-weight: 700;
+      min-width: 46px;
+      text-align: center;
+      background: rgba(255,255,255,0.18);
+      border-radius: 12px;
+      padding: 4px 0;
+    }
+    .giorno-info { flex: 1; }
+    .giorno-info .data-label {
+      font-size: 12.5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.9;
+    }
+    .giorno-info h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 18px;
+    }
+    .giorno-body { padding: 16px 24px; }
+    .giorno-body p { font-size: 15.5px; color: #3a2e28; margin: 6px 0; }
+    .giorno-body .giorno-tag {
+      display: inline-block;
+      background: var(--vino-pallido);
+      color: var(--vino);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: 14px;
+      padding: 2px 10px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+
+    .evento-card {
+      background: var(--bianco);
+      border-radius: 14px;
+      padding: 16px 22px;
+      margin: 12px 0;
+      box-shadow: 0 3px 14px var(--ombra);
+      border-left: 5px solid var(--vino-medio);
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .evento-card .evt-data-box {
+      background: var(--vino-pallido);
+      color: var(--vino);
+      border-radius: 10px;
+      padding: 6px 10px;
+      text-align: center;
+      min-width: 52px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .evento-card h4 { font-size: 16.5px; color: var(--vino); margin-bottom: 3px; }
+    .evento-card p { font-size: 15px; color: #3a2e28; margin: 2px 0; }
   </style>
 </head>
 <body>
@@ -442,6 +546,7 @@
   <h1>Langhe</h1>
   <p class="hero-sub">Borghi fuori rotta, trekking tra le vigne, trattorie vere e menù da decifrare</p>
   <div>
+    <span class="badge-hero">📅 17–23 agosto 2026</span>
     <span class="badge-hero">📍 Provincia di Cuneo</span>
     <span class="badge-hero">🚗 ~1h da Busca</span>
     <span class="badge-hero">🍇 Terra di Barolo e tartufo</span>
@@ -450,6 +555,7 @@
 
 <nav class="toc">
   <div class="toc-inner">
+    <a href="#soggiorno">🗓️ Il tuo soggiorno</a>
     <a href="#borghi">🏘️ Borghi non turistici</a>
     <a href="#trekking">🥾 Trekking</a>
     <a href="#ristoranti">🍽️ Ristoranti</a>
@@ -467,6 +573,134 @@
     <div class="info-row"><span class="ic">🗺️</span><span>Le Langhe si dividono in tre zone: <b>Langa del Barolo</b> (attorno ad Alba, La Morra, Barolo — la più nota), <b>Bassa Langa</b> verso Dogliani, e <b>Alta Langa</b> (Bossolasco, Feisoglio, Mombarcaro — collinare, boscosa, molto meno turistica).</span></div>
     <div class="info-row"><span class="ic">🍇</span><span>Il Roero, sull'altra sponda del Tanaro rispetto ad Alba, è spesso trascurato ma ha sentieri e cantine di grande interesse (Rocche del Roero).</span></div>
     <div class="info-row"><span class="ic">📅</span><span>Ottima da visitare tutto l'anno: primavera/estate per trekking e vigneti verdi, autunno per vendemmia, foliage e tartufo.</span></div>
+  </div>
+
+  <h2 class="section-title" id="soggiorno">🗓️ Il tuo soggiorno — 17-23 agosto 2026</h2>
+
+  <div class="hotel-card">
+    <h3>🏡 Alloggio a Busca</h3>
+    <p><span class="hotel-placeholder">Nome alloggio da confermare</span> — base del soggiorno a Busca (CN), a circa 1h da Alba e dal cuore delle Langhe. Aggiorna questa scheda con il nome della struttura non appena disponibile.</p>
+  </div>
+
+  <p style="margin-bottom:10px; color:#5a4a40;">Un'idea di itinerario giorno per giorno per la settimana, da adattare liberamente in base al meteo e alla voglia del momento. Le distanze sono sempre calcolate da Busca.</p>
+
+  <div class="giorno-card">
+    <div class="giorno-header">
+      <div class="giorno-num">17</div>
+      <div class="giorno-info"><div class="data-label">Lunedì</div><h4>Arrivo a Busca e primo assaggio del territorio</h4></div>
+    </div>
+    <div class="giorno-body">
+      <span class="giorno-tag">Relax</span><span class="giorno-tag">San Rocco</span>
+      <p>Giornata di arrivo e ambientamento. Nel pomeriggio-sera, se il tempismo lo consente, la frazione San Rocco di Busca festeggia il suo patrono con tre giorni di festa (16-18 agosto): il 17 è in programma la Messa solenne delle 10:30 e la festa continua in serata con stand gastronomici e musica, a due passi da casa.</p>
+    </div>
+  </div>
+
+  <div class="giorno-card">
+    <div class="giorno-header">
+      <div class="giorno-num">18</div>
+      <div class="giorno-info"><div class="data-label">Martedì</div><h4>Saluzzo, la città dei marchesi</h4></div>
+    </div>
+    <div class="giorno-body">
+      <span class="giorno-tag">Borgo</span><span class="giorno-tag">~15 min da Busca</span>
+      <p>Mezza giornata nel centro storico di Saluzzo (Castiglia, la Cattedrale, le vie a ciottoli), a pochi minuti da Busca. In serata "Saluzzo Estate 2026" propone spesso cinema all'aperto, musica dal vivo e aperitivi in piazza: verifica il programma della settimana affisso in centro o sulla pagina Facebook del Comune.</p>
+    </div>
+  </div>
+
+  <div class="giorno-card">
+    <div class="giorno-header">
+      <div class="giorno-num">19</div>
+      <div class="giorno-info"><div class="data-label">Mercoledì</div><h4>Prima full immersion nelle Langhe: Alba e La Morra</h4></div>
+    </div>
+    <div class="giorno-body">
+      <span class="giorno-tag">Langa del Barolo</span><span class="giorno-tag">~1h da Busca</span>
+      <p>Giornata dedicata al cuore turistico delle Langhe: centro storico di Alba, poi La Morra per il tramonto sui vigneti. Volendo, spezzone a piedi del Sentiero del Barolo (vedi sezione Trekking) prima del calare del sole. Cena in una delle trattorie di Langa segnalate più sotto.</p>
+    </div>
+  </div>
+
+  <div class="giorno-card">
+    <div class="giorno-header">
+      <div class="giorno-num">20</div>
+      <div class="giorno-info"><div class="data-label">Giovedì</div><h4>Borghi fuori rotta dell'Alta Langa</h4></div>
+    </div>
+    <div class="giorno-body">
+      <span class="giorno-tag">Alta Langa</span><span class="giorno-tag">Giornata intera</span>
+      <p>Giro su strada tra Bergolo (il paese di pietra), Feisoglio e Mombarcaro, con soste nelle botteghe di nocciole e formaggi. Zona più fresca e ventilata della Langa del Barolo: buona scelta per una giornata calda d'agosto.</p>
+    </div>
+  </div>
+
+  <div class="giorno-card">
+    <div class="giorno-header">
+      <div class="giorno-num">21</div>
+      <div class="giorno-info"><div class="data-label">Venerdì</div><h4>Il Roero e le Rocche</h4></div>
+    </div>
+    <div class="giorno-body">
+      <span class="giorno-tag">Roero</span><span class="giorno-tag">Trekking facile</span>
+      <p>Giornata nel Roero, meno battuto rispetto al Barolo: camminata su uno dei sentieri dell'Ecomuseo delle Rocche (Sentiero Religioso da Montà o Sentiero degli Asfodeli da Sommariva Perno), pranzo in zona, pomeriggio libero tra le Rocche di sabbia.</p>
+    </div>
+  </div>
+
+  <div class="giorno-card">
+    <div class="giorno-header">
+      <div class="giorno-num">22</div>
+      <div class="giorno-info"><div class="data-label">Sabato</div><h4>Cortemilia e la Fiera della Nocciola</h4></div>
+    </div>
+    <div class="giorno-body">
+      <span class="giorno-tag">Evento confermato</span><span class="giorno-tag">Alta Langa</span>
+      <p>Il 22 agosto si apre ufficialmente la 72ª Fiera Nazionale della Nocciola di Cortemilia (22-30 agosto 2026): mercatini, musica e degustazioni della Tonda Gentile delle Langhe nel centro storico. Da qui è comodo anche il giro dei borghi di pietra dell'Alta Langa.</p>
+    </div>
+  </div>
+
+  <div class="giorno-card">
+    <div class="giorno-header">
+      <div class="giorno-num">23</div>
+      <div class="giorno-info"><div class="data-label">Domenica</div><h4>Cortemilia nel weekend e rientro</h4></div>
+    </div>
+    <div class="giorno-body">
+      <span class="giorno-tag">Evento confermato</span><span class="giorno-tag">Ultimo giorno</span>
+      <p>Domenica 23 agosto è tradizionalmente la giornata più intensa della Fiera della Nocciola di Cortemilia, con il centro storico animato da produttori e bancarelle. Buona occasione per gli ultimi acquisti (nocciole, formaggi, vino) prima del rientro, oppure mattinata più tranquilla in uno dei borghi del giorno 20 se preferite evitare la folla.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',Georgia,serif; color:var(--vino); font-size:20px; margin:34px 0 14px;">🎉 Eventi confermati nella settimana (17-23 agosto)</h3>
+
+  <div class="evento-card">
+    <div class="evt-data-box">17-18<br>Ago</div>
+    <div>
+      <h4>⛪ San Rocco in Festa — Busca</h4>
+      <p>Frazione San Rocco di Busca, tre giorni di festa patronale (16-18 agosto): il 17 Messa solenne alle 10:30, stand gastronomici e musica in serata. A pochi minuti dall'alloggio.</p>
+    </div>
+  </div>
+
+  <div class="evento-card">
+    <div class="evt-data-box">17-23<br>Ago</div>
+    <div>
+      <h4>🎬 Saluzzo Estate 2026</h4>
+      <p>Rassegna estiva diffusa a Saluzzo (~15 min da Busca): cinema all'aperto, concerti, teatro e aperitivi in piazza per tutta l'estate. Programma settimanale da verificare sui canali del Comune di Saluzzo o della Fondazione Bertoni.</p>
+    </div>
+  </div>
+
+  <div class="evento-card">
+    <div class="evt-data-box">22-30<br>Ago</div>
+    <div>
+      <h4>🌰 Fiera Nazionale della Nocciola — Cortemilia</h4>
+      <p>72ª edizione, dal 22 agosto al 6 settembre nel calendario estesso (nucleo centrale 22-30 agosto): musica, gusto e cultura nel borgo dell'Alta Langa, con la domenica 23 come giornata più ricca di bancarelle e produttori.</p>
+    </div>
+  </div>
+
+  <div class="evento-card">
+    <div class="evt-data-box">tutta<br>la sett.</div>
+    <div>
+      <h4>🎻 Occit'amo 2026 — Terre del Monviso e Valle Maira</h4>
+      <p>Festival diffuso di musica e cultura occitana tra borghi, rifugi e piazze delle valli intorno a Busca: concerti e passeggiate musicali sparsi durante l'estate. Programma dettagliato sul sito occitamo.it, utile controllare gli appuntamenti della settimana specifica.</p>
+    </div>
+  </div>
+
+  <div class="box box-noc" style="margin-top:20px;">
+    <span class="box-ic">ℹ️</span>
+    <div class="box-body">
+      <strong>Nota sugli eventi</strong>
+      <p>Gli eventi sopra sono confermati dai programmi ufficiali disponibili al momento della stesura di questa guida. Per manifestazioni minori (sagre di frazione, mercatini) conviene controllare in loco le locandine o i siti dei singoli Comuni nei giorni immediatamente precedenti, perché i calendari locali vengono aggiornati anche a pochi giorni di distanza.</p>
+    </div>
   </div>
 
   <h2 class="section-title" id="borghi">🏘️ Borghi e posti non turistici</h2>
