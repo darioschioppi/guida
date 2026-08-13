@@ -15,10 +15,11 @@ Raccolta di guide di viaggio create per i viaggi di Dario: storia, luoghi da ved
 - 🍷 **[Langhe](./langhe/)** — Borghi fuori rotta, trekking tra le vigne, trattorie e menù navigator — luglio 2026.
 - 🏔️ **[Alpi Giulie](./alpigiulie/)** — Tarvisio, Sella Nevea e Slovenia: itinerario di 7 giorni al fresco con budget contenuto — agosto 2026.
 - ⛵ **[Maratea](./maratea/)** — La Perla del Tirreno: borgo, spiagge nascoste e sentieri verso il Cristo Redentore.
+- 🍕 **[Napoli](./napoli/)** — Pizza, storia, sotterranei e cinque itinerari a colori, con trattorie vere e non turistiche — agosto 2026.
 
 ## Struttura
 
 Ogni cartella contiene una pagina `index.html` autonoma con lo stile grafico della destinazione. L'`index.html` alla root è l'archivio con le card di collegamento a tutte le guide.
 
 ---
-Archivio aggiornato luglio 2026.
+Archivio aggiornato agosto 2026.
