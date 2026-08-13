@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guida Napoli — Itinerari, Pizza e Sotterranei</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:wght@700&display=swap');
+
+    :root {
+      --blu: #0B4F6C;
+      --blu-medio: #1878A3;
+      --blu-chiaro: #7FC8E8;
+      --blu-pallido: #E3F3FA;
+      --sfondo: #FBF8F2;
+      --terracotta: #C1440E;
+      --terracotta-chiaro: #F5D4C1;
+      --sole: #E8A33D;
+      --sole-chiaro: #FCEBCB;
+      --verde: #3A7D44;
+      --verde-chiaro: #DCEEDE;
+      --testo: #26241f;
+      --bianco: #ffffff;
+      --ombra: rgba(11,79,108,0.14);
+
+      --c-rosso: #C1440E;
+      --c-blu: #1878A3;
+      --c-verde: #3A7D44;
+      --c-arancione: #E8A33D;
+      --c-bonus: #7B52B8;
+    }
+
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--testo);
+      background: var(--sfondo);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #062C3D 0%, #0B4F6C 50%, #1878A3 100%);
+      color: white;
+      padding: 60px 24px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 50px;
+      background: var(--sfondo);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-emoji { font-size: 60px; display: block; margin-bottom: 16px; }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(28px, 6vw, 48px);
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .hero-sub {
+      font-size: clamp(16px, 3vw, 20px);
+      opacity: 0.92;
+      margin-bottom: 20px;
+    }
+    .badge-hero {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 30px;
+      padding: 8px 22px;
+      font-size: 16px;
+      margin: 4px;
+      backdrop-filter: blur(4px);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(22px, 4vw, 30px);
+      color: var(--blu);
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--blu-chiaro);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      scroll-margin-top: 70px;
+    }
+
+    .info-card {
+      background: linear-gradient(135deg, var(--blu) 0%, var(--blu-medio) 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 28px 32px;
+      margin: 24px 0;
+      box-shadow: 0 8px 30px var(--ombra);
+    }
+    .info-card h3 {
+      font-size: 22px;
+      margin-bottom: 14px;
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    .info-row {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+      align-items: flex-start;
+    }
+    .info-row .ic { font-size: 20px; min-width: 28px; }
+    .info-row span { opacity: 0.95; font-size: 17px; }
+
+    .box {
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin: 16px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .box-blu   { background: var(--blu-pallido); border-left: 5px solid var(--blu-medio); }
+    .box-terra { background: var(--terracotta-chiaro); border-left: 5px solid var(--terracotta); }
+    .box-sole  { background: var(--sole-chiaro); border-left: 5px solid var(--sole); }
+    .box-verde { background: var(--verde-chiaro); border-left: 5px solid var(--verde); }
+    .box-ic { font-size: 26px; min-width: 36px; margin-top: 2px; }
+    .box-body { flex: 1; }
+    .box-body strong { font-size: 17px; display: block; margin-bottom: 4px; color: var(--blu); }
+    .box-body p, .box-body li { font-size: 16px; color: #333; }
+    .box-terra .box-body strong { color: #8a2f0a; }
+    .box-sole .box-body strong { color: #a56d1f; }
+    .box-verde .box-body strong { color: var(--verde); }
+
+    /* Itinerari colorati */
+    .itin-card {
+      background: var(--bianco);
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 20px 0;
+      box-shadow: 0 4px 20px var(--ombra);
+      border: 1px solid rgba(11,79,108,0.15);
+    }
+    .itin-header {
+      padding: 20px 28px;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .itin-header .itin-ic { font-size: 32px; }
+    .itin-header h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(19px, 3.2vw, 24px);
+    }
+    .itin-header .itin-tag {
+      font-size: 13px;
+      opacity: 0.9;
+      display: block;
+      margin-top: 2px;
+      font-weight: 400;
+    }
+    .itin-rosso .itin-header { background: linear-gradient(135deg, #8a2f0a, var(--c-rosso)); }
+    .itin-blu .itin-header { background: linear-gradient(135deg, #0B4F6C, var(--c-blu)); }
+    .itin-verde .itin-header { background: linear-gradient(135deg, #285c30, var(--c-verde)); }
+    .itin-arancione .itin-header { background: linear-gradient(135deg, #b3791f, var(--c-arancione)); }
+    .itin-bonus .itin-header { background: linear-gradient(135deg, #4A2080, var(--c-bonus)); }
+
+    .itin-body { padding: 20px 28px; }
+    .itin-body p { font-size: 16px; color: #333; line-height: 1.75; margin-bottom: 10px; }
+    .itin-tappe {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+    .itin-tappa {
+      background: var(--sfondo);
+      border-radius: 16px;
+      padding: 5px 13px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blu);
+      border: 1px solid var(--blu-chiaro);
+    }
+    .itin-rosso .itin-tappa { color: var(--c-rosso); border-color: var(--terracotta-chiaro); }
+    .itin-verde .itin-tappa { color: var(--c-verde); border-color: var(--verde-chiaro); }
+    .itin-arancione .itin-tappa { color: #a56d1f; border-color: var(--sole-chiaro); }
+    .itin-bonus .itin-tappa { color: var(--c-bonus); border-color: #e4d8f5; }
+
+    .ristorante {
+      background: var(--bianco);
+      border-radius: 14px;
+      padding: 18px 24px;
+      margin: 14px 0;
+      box-shadow: 0 3px 14px var(--ombra);
+    }
+    .ristorante h4 {
+      font-size: 18px;
+      color: var(--blu);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ristorante .zona {
+      font-size: 13.5px;
+      color: var(--terracotta);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .ristorante p { font-size: 16px; color: #2a3038; margin: 4px 0; }
+    .ristorante a { color: var(--blu-medio); font-weight: 700; text-decoration: none; }
+    .ristorante a:hover { text-decoration: underline; }
+
+    .fascia {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 20px;
+      padding: 3px 12px;
+      margin-left: 8px;
+    }
+    .fascia-1 { background: var(--verde-chiaro); color: var(--verde); }
+    .fascia-2 { background: var(--sole-chiaro); color: #a56d1f; }
+    .fascia-3 { background: var(--terracotta-chiaro); color: #8a2f0a; }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .checklist li {
+      background: var(--bianco);
+      border-radius: 10px;
+      padding: 12px 16px;
+      box-shadow: 0 2px 8px var(--ombra);
+      font-size: 15px;
+    }
+
+    .luoghi-lista {
+      background: var(--bianco);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin: 16px 0;
+      box-shadow: 0 3px 14px var(--ombra);
+    }
+    .luoghi-lista ol { padding-left: 22px; }
+    .luoghi-lista li { font-size: 16px; color: #333; margin: 6px 0; }
+    .luoghi-lista li ol { margin-top: 4px; margin-bottom: 4px; padding-left: 20px; }
+    .luoghi-lista li li { font-size: 15px; color: #555; }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #062C3D;
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+    }
+    footer a { color: var(--blu-chiaro); }
+
+    .back-link {
+      display: inline-block;
+      margin: 24px 0 0;
+      color: var(--blu);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    nav.toc {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(6,44,61,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    nav.toc .toc-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      gap: 4px;
+      padding: 10px 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    nav.toc .toc-inner::-webkit-scrollbar { display: none; }
+    nav.toc a {
+      white-space: nowrap;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #cfe8f5;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+      font-weight: 700;
+    }
+    nav.toc a:hover, nav.toc a:focus {
+      background: rgba(127,200,232,0.25);
+      border-color: var(--blu-chiaro);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-emoji">🍕</span>
+  <h1>Napoli</h1>
+  <p class="hero-sub">Pizza, storia, sotterranei e cinque itinerari a colori per non perdersi</p>
+  <div>
+    <span class="badge-hero">🏛️ Centro storico UNESCO</span>
+    <span class="badge-hero">🍕 Patria della pizza</span>
+    <span class="badge-hero">🕯️ Sotterranei e catacombe</span>
+  </div>
+</div>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#itinerari">🗺️ Itinerari a colori</a>
+    <a href="#vedere">👀 Cosa vedere</a>
+    <a href="#pizzerie">🍕 Pizzerie</a>
+    <a href="#ristoranti">🍽️ Ristoranti e trattorie</a>
+    <a href="#bar">🍹 Bar e dolci</a>
+    <a href="#consigli">💡 Consigli</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="info-card">
+    <h3>📌 Come usare questa guida</h3>
+    <div class="info-row"><span class="ic">🎨</span><span>Cinque itinerari a colori (Rosso, Blu, Verde, Arancione + un Bonus Track) pensati per essere fatti in giornate separate, seguendo la logistica del centro storico.</span></div>
+    <div class="info-row"><span class="ic">🍕</span><span>Le pizzerie storiche (Michele, Sorbillo) hanno file lunghissime: vale la pena andarci presto o accettare l'attesa come parte dell'esperienza — spesso c'è musica dal balcone.</span></div>
+    <div class="info-row"><span class="ic">🕯️</span><span>Per la zona Sanità (catacombe di San Gennaro e San Gaudioso, Cimitero delle Fontanelle) conviene dedicare una giornata a parte, combinandola con Capodimonte.</span></div>
+  </div>
+
+  <h2 class="section-title" id="itinerari">🗺️ Itinerari a colori</h2>
+  <p style="margin-bottom:10px; color:#5a4a40;">Percorsi pensati per essere logisticamente comodi: si cammina da un punto d'interesse al successivo senza dover tornare indietro.</p>
+
+  <div class="itin-card itin-rosso">
+    <div class="itin-header">
+      <span class="itin-ic">🔴</span>
+      <div>
+        <h3>Itinerario Rosso</h3>
+        <span class="itin-tag">Capodimonte, Sanità e catacombe — mezza giornata intensa</span>
+      </div>
+    </div>
+    <div class="itin-body">
+      <p>Si visita il Museo di Capodimonte, poi si scende alla basilica e si fanno le Catacombe di San Gennaro. Si esce alla Sanità e si visitano le Catacombe di San Gaudioso. Dopo si sale al Cimitero delle Fontanelle, poi si riscende per la Sanità verso via Foria: pranzo da Concettina ai Tre Santi, dolce da Poppella, passaggio per il mercato. Nel percorso si incontrano anche Palazzo Sanfelice e Palazzo dello Spagnuolo.</p>
+      <p><strong>Nota logistica:</strong> uscendo dalla Sanità si è già vicini al punto di partenza dell'itinerario Blu, ma è meglio dedicargli un'altra giornata invece di unire i due.</p>
+      <div class="itin-tappe">
+        <span class="itin-tappa">Museo di Capodimonte</span>
+        <span class="itin-tappa">Catacombe di San Gennaro</span>
+        <span class="itin-tappa">Catacombe di San Gaudioso</span>
+        <span class="itin-tappa">Cimitero delle Fontanelle</span>
+        <span class="itin-tappa">Palazzo Sanfelice</span>
+        <span class="itin-tappa">Palazzo dello Spagnuolo</span>
+        <span class="itin-tappa">Concettina ai Tre Santi</span>
+        <span class="itin-tappa">Poppella</span>
+        <span class="itin-tappa">Mercato della Sanità</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="itin-card itin-blu">
+    <div class="itin-header">
+      <span class="itin-ic">🔵</span>
+      <div>
+        <h3>Itinerario Blu</h3>
+        <span class="itin-tag">Museo Archeologico, Duomo e Forcella</span>
+      </div>
+    </div>
+    <div class="itin-body">
+      <p>Si comincia con il Museo Archeologico Nazionale, poi si scende per via Foria fino a via Duomo. Qui si visitano il Duomo, il Tesoro di San Gennaro, la Biblioteca dei Girolamini (se aperta — spesso è chiusa) e infine il Museo Filangieri. Lungo il percorso si incontra l'enorme murale col volto di San Gennaro: significa che si è arrivati a Forcella, quindi in zona pizzeria Michele.</p>
+      <div class="itin-tappe">
+        <span class="itin-tappa">Museo Archeologico Nazionale</span>
+        <span class="itin-tappa">Duomo di Napoli</span>
+        <span class="itin-tappa">Tesoro di San Gennaro</span>
+        <span class="itin-tappa">Biblioteca dei Girolamini</span>
+        <span class="itin-tappa">Museo Filangieri</span>
+        <span class="itin-tappa">Murale San Gennaro (Forcella)</span>
+        <span class="itin-tappa">Pizzeria Michele</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="itin-card itin-verde">
+    <div class="itin-header">
+      <span class="itin-ic">🟢</span>
+      <div>
+        <h3>Itinerario Verde</h3>
+        <span class="itin-tag">Spaccanapoli, Cristo Velato e Napoli Sotterranea</span>
+      </div>
+    </div>
+    <div class="itin-body">
+      <p>Logisticamente adiacente al Blu. Si comincia con un caffè "Harem" al bar Mexico in Piazza Dante. Si scende per via Toledo fino a intercettare Spaccanapoli e si segue tutta la strada: si incontrano piazza del Gesù (con la relativa chiesa), il Monastero di Santa Chiara e piazza San Domenico Maggiore. Da qui si sale alla Cappella Sansevero per ammirare il Cristo Velato — "i migliori 7 euro che si possano investire". Uscendo si può mangiare a via dei Tribunali; accanto alla pizzeria Decumani c'è l'entrata di Napoli Sotterranea. Dopo la visita, si compra il limoncello da Limonè (lì affianco) e si scende verso San Gregorio Armeno.</p>
+      <div class="itin-tappe">
+        <span class="itin-tappa">Bar Mexico, Piazza Dante</span>
+        <span class="itin-tappa">Via Toledo</span>
+        <span class="itin-tappa">Spaccanapoli</span>
+        <span class="itin-tappa">Piazza del Gesù</span>
+        <span class="itin-tappa">Monastero di Santa Chiara</span>
+        <span class="itin-tappa">San Domenico Maggiore</span>
+        <span class="itin-tappa">Cappella Sansevero (Cristo Velato)</span>
+        <span class="itin-tappa">Napoli Sotterranea</span>
+        <span class="itin-tappa">Limonè</span>
+        <span class="itin-tappa">San Gregorio Armeno</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="itin-card itin-arancione">
+    <div class="itin-header">
+      <span class="itin-ic">🟠</span>
+      <div>
+        <h3>Itinerario Arancione</h3>
+        <span class="itin-tag">Vomero, Certosa e Lungomare</span>
+      </div>
+    </div>
+    <div class="itin-body">
+      <p>Si sale in funicolare al Vomero per visitare la Certosa di San Martino. Per scendere si prende la funicolare Centrale, fermata Augusteo — ci si trova praticamente alla fine di via Toledo, quindi vicino a piazza Trieste e Trento, con Palazzo Reale, Teatro San Carlo, Maschio Angioino e piazza Plebiscito tutti nelle vicinanze. Da qui si scende verso il mare per il lungomare.</p>
+      <div class="itin-tappe">
+        <span class="itin-tappa">Funicolare Vomero</span>
+        <span class="itin-tappa">Certosa di San Martino</span>
+        <span class="itin-tappa">Funicolare Centrale (Augusteo)</span>
+        <span class="itin-tappa">Piazza Trieste e Trento</span>
+        <span class="itin-tappa">Palazzo Reale</span>
+        <span class="itin-tappa">Teatro San Carlo</span>
+        <span class="itin-tappa">Maschio Angioino</span>
+        <span class="itin-tappa">Piazza Plebiscito</span>
+        <span class="itin-tappa">Lungomare</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="itin-card itin-bonus">
+    <div class="itin-header">
+      <span class="itin-ic">🟣</span>
+      <div>
+        <h3>Bonus Track</h3>
+        <span class="itin-tag">La sfogliatella più buona della storia</span>
+      </div>
+    </div>
+    <div class="itin-body">
+      <p>Trovare il modo di andare in Stazione Centrale: nei dintorni c'è <strong>Attanasio</strong>, dove si mangia la sfogliatella più buona della storia.</p>
+      <div class="itin-tappe">
+        <span class="itin-tappa">Stazione Centrale</span>
+        <span class="itin-tappa">Sfogliatelle Attanasio</span>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="vedere">👀 Cosa vedere — la lista completa</h2>
+  <div class="luoghi-lista">
+    <ol>
+      <li>Museo di Capodimonte
+        <ol type="a">
+          <li>Catacombe di San Gennaro</li>
+          <li>Catacombe di San Gaudioso</li>
+          <li>Sanità (Cimitero delle Fontanelle, Palazzo Sanfelice, Palazzo dello Spagnuolo, mercato)</li>
+        </ol>
+      </li>
+      <li>Museo Archeologico Nazionale</li>
+      <li>Tesoro di San Gennaro</li>
+      <li>Museo Filangieri</li>
+      <li>Biblioteca dei Girolamini <em>(spesso chiusa — verificare prima)</em></li>
+      <li>Cristo Velato (Cappella Sansevero)</li>
+      <li>Chiesa del Gesù Nuovo</li>
+      <li>Monastero di Santa Chiara</li>
+      <li>San Domenico Maggiore</li>
+      <li>Piazza Dante</li>
+      <li>Spaccanapoli</li>
+      <li>Certosa di San Martino</li>
+      <li>Palazzo Reale e Chiesa di San Francesco di Paola; Maschio Angioino
+        <ol type="a">
+          <li>Lungomare</li>
+        </ol>
+      </li>
+      <li>San Gregorio Armeno</li>
+      <li>Napoli Sotterranea</li>
+    </ol>
+  </div>
+
+  <h2 class="section-title" id="pizzerie">🍕 Pizzerie</h2>
+
+  <div class="ristorante">
+    <span class="zona">Forcella</span>
+    <h4>🍕 L'Antica Pizzeria da Michele <span class="fascia fascia-1">Storica</span></h4>
+    <p>Aperta dal lunedì al sabato, 11:00-23:00. Una delle pizzerie più celebri di Napoli: se è aperta di lunedì vale la pena approfittarne, altrimenti bisogna andare prestissimo per evitare la fila lunghissima.</p>
+    <p><a href="https://www.tripadvisor.it/Restaurant_Review-g187785-d1235237-Reviews-L_Antica_Pizzeria_da_Michele-Naples_Province_of_Naples_Campania.html" target="_blank">📍 Scheda su Tripadvisor</a></p>
+  </div>
+
+  <div class="ristorante">
+    <span class="zona">Via dei Tribunali</span>
+    <h4>🍕 Sorbillo <span class="fascia fascia-1">Storica</span></h4>
+    <p>Aperta dal lunedì al sabato, 12:00-15:30 e 19:00-00:00. Fila garantita anche a orari normali, ma tra il bere qualcosa nell'attesa e assistere allo spettacolo di chi canta dal balcone, l'attesa si sopporta bene.</p>
+    <p><a href="https://www.tripadvisor.it/Restaurant_Review-g187785-d1034513-Reviews-Sorbillo-Naples_Province_of_Naples_Campania.html" target="_blank">📍 Scheda su Tripadvisor</a></p>
+  </div>
+
+  <div class="box box-sole">
+    <span class="box-ic">🍕</span>
+    <div class="box-body">
+      <strong>Altre pizzerie consigliate su via dei Tribunali</strong>
+      <p>Se Michele e Sorbillo hanno troppa fila, in zona via dei Tribunali si mangia sicuramente bene anche alla <b>Pizzeria Decumani</b> o <b>da Di Matteo</b>. C'è anche <b>Vesi</b>, dove si è sempre mangiato bene.</p>
+    </div>
+  </div>
+
+  <div class="box box-terra">
+    <span class="box-ic">🍕</span>
+    <div class="box-body">
+      <strong>Nella Sanità</strong>
+      <p>Quando si visita il quartiere Sanità (scendendo da Capodimonte e dalle catacombe), la pizza si mangia da <b>Concettina ai Tre Santi</b>.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="ristoranti">🍽️ Ristoranti e trattorie</h2>
+
+  <div class="ristorante">
+    <span class="zona">Centro storico</span>
+    <h4>🍝 Trattoria da Nennella <span class="fascia fascia-1">Trattoria tipica</span></h4>
+    <p>Trattoria napoletana verace, spesso abbinata a un aperitivo da Cammarota Spritz prima di cena.</p>
+    <p><a href="https://www.tripadvisor.it/Restaurant_Review-g187785-d785643-Reviews-Trattoria_Da_Nennella-Naples_Province_of_Naples_Campania.html" target="_blank">📍 Scheda su Tripadvisor</a></p>
+  </div>
+
+  <div class="ristorante">
+    <span class="zona">Via dei Tribunali</span>
+    <h4>☕ Caffè Bistrot Diaz <span class="fascia fascia-2">Bistrot</span></h4>
+    <p>Aperto dal lunedì al sabato, 06:30-23:00.</p>
+    <p><a href="https://www.tripadvisor.it/Restaurant_Review-g187785-d9795482-Reviews-Caffe_Bistrot_Diaz-Naples_Province_of_Naples_Campania.html" target="_blank">📍 Scheda su Tripadvisor</a></p>
+  </div>
+
+  <div class="ristorante">
+    <span class="zona">Via dei Tribunali</span>
+    <h4>🍽️ La Campagnola <span class="fascia fascia-1">Trattoria</span></h4>
+    <p>Aperta tutti i giorni, 09:00-00:00.</p>
+    <p><a href="https://www.tripadvisor.it/Restaurant_Review-g187785-d1021140-Reviews-La_Campagnola-Naples_Province_of_Naples_Campania.html" target="_blank">📍 Scheda su Tripadvisor</a></p>
+  </div>
+
+  <div class="box box-terra">
+    <span class="box-ic">🍝</span>
+    <div class="box-body">
+      <strong>Il ragù napoletano — Tandem</strong>
+      <p>Da assaggiare assolutamente il ragù napoletano fatto bene: <b>Tandem</b>, a via Paladino, fa praticamente solo quello — ed è un ottimo motivo per andarci.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="bar">🍹 Bar e dolci</h2>
+
+  <div class="box box-blu">
+    <span class="box-ic">🍹</span>
+    <div class="box-body">
+      <strong>Cammarota Spritz</strong>
+      <p>Aperitivo storico nel centro di Napoli: lo schema classico è "Cammarota Spritz e poi si mangia da Nennella".</p>
+      <p><a href="https://www.tripadvisor.it/Attraction_Review-g187785-d6164379-Reviews-Cammarota_Spritz-Naples_Province_of_Naples_Campania.html" target="_blank">📍 Scheda su Tripadvisor</a></p>
+    </div>
+  </div>
+
+  <div class="box box-sole">
+    <span class="box-ic">🍺</span>
+    <div class="box-body">
+      <strong>Piazza Bellini</strong>
+      <p>Alternativa più informale: una birra in piazza Bellini, punto di ritrovo serale molto frequentato.</p>
+    </div>
+  </div>
+
+  <div class="box box-verde">
+    <span class="box-ic">☕</span>
+    <div class="box-body">
+      <strong>Bar Mexico, Piazza Dante</strong>
+      <p>Punto di partenza consigliato per l'itinerario Verde: un caffè "Harem" prima di scendere per via Toledo.</p>
+    </div>
+  </div>
+
+  <div class="box box-terra">
+    <span class="box-ic">🥐</span>
+    <div class="box-body">
+      <strong>Poppella</strong>
+      <p>Dolce consigliato durante l'itinerario Rosso, nella zona Sanità/via Foria.</p>
+    </div>
+  </div>
+
+  <div class="box box-blu">
+    <span class="box-ic">🍋</span>
+    <div class="box-body">
+      <strong>Limonè</strong>
+      <p>Accanto all'uscita di Napoli Sotterranea: il posto giusto per comprare il limoncello dopo la visita.</p>
+    </div>
+  </div>
+
+  <div class="box box-sole">
+    <span class="box-ic">🥮</span>
+    <div class="box-body">
+      <strong>Sfogliatelle Attanasio (Bonus Track)</strong>
+      <p>Nei dintorni della Stazione Centrale: la sfogliatella più buona della storia, secondo la fonte di questa guida.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="consigli">💡 Consigli pratici</h2>
+  <ul class="checklist">
+    <li>🍕 Michele e Sorbillo hanno sempre fila: vai presto oppure godi dello spettacolo di strada durante l'attesa</li>
+    <li>📚 La Biblioteca dei Girolamini è spesso chiusa: non fartene un cruccio se non riesci a vederla</li>
+    <li>🕯️ Dedica una giornata intera alla zona Sanità (catacombe + Cimitero delle Fontanelle): non affrettarla</li>
+    <li>💰 Il biglietto per il Cristo Velato (Cappella Sansevero) è tra le spese più convenienti della città — non saltarlo</li>
+    <li>🚡 Le funicolari (Centrale, per il Vomero) sono il modo più comodo per salire e scendere dalle colline</li>
+    <li>🚶 Gli itinerari sono pensati per essere fatti a piedi: metti scarpe comode, il centro storico è pavimentato in basalto</li>
+  </ul>
+
+  <a class="back-link" href="../">← Torna all'archivio guide</a>
+
+</div>
+
+<footer>
+  <p>Guida di Dario — basata sui consigli di un amico napoletano, aggiornata agosto 2026</p>
+</footer>
+
+</body>
+</html>
