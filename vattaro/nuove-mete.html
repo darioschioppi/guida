@@ -254,6 +254,33 @@
       .meta-body { padding: 18px 20px; }
       .meta-footer { padding: 10px 20px 16px; }
     }
+
+    /* --- Sezioni per fascia di difficoltà --- */
+    .diff-section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(21px, 4.2vw, 29px);
+      margin: 44px 0 6px;
+      padding-bottom: 8px;
+      border-bottom: 3px solid;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      scroll-margin-top: 20px;
+    }
+    .diff-section-sub {
+      font-size: 15px;
+      color: var(--testo-medio);
+      margin: 0 0 20px;
+    }
+    .diff-difficile-title { border-color: #B07880; color: #7D4F50; }
+    .diff-media-title { border-color: #E07830; color: #C45000; }
+    .diff-facile-title { border-color: #52B788; color: #2D6A4F; }
+    .diff-misto-title { border-color: #2F80B5; color: #1E6091; }
+
+    .nav-quick a.nq-difficile { border-color: #B07880; }
+    .nav-quick a.nq-media { border-color: #E07830; }
+    .nav-quick a.nq-facile { border-color: #52B788; }
+    .nav-quick a.nq-misto { border-color: #2F80B5; }
   </style>
 </head>
 <body>
@@ -272,22 +299,25 @@
   </div>
 
   <div class="nav-quick">
-    <a href="#becco">🏔️ Becco di Filadonna</a>
-    <a href="#bivacco">🏠 Bivacco Vigolana</a>
-    <a href="#dossdelbue">🌳 Doss del Bue</a>
-    <a href="#casarota">🍽️ Rifugio Casarota</a>
-    <a href="#vezzena">🎖️ Cima Vezzena</a>
-    <a href="#ancino">🚶 Sentiero dell'Ancino</a>
-    <a href="#feles">⛪ Santuario Madonna di Feles</a>
-    <a href="#paolina">🙏 Casa natale Santa Paolina</a>
-    <a href="#marzola">⛰️ Cima Marzola</a>
-    <a href="#erdemolo">💚 Lago di Erdemolo</a>
-    <a href="#settselle">🏔️ Rifugio Sette Selle</a>
-    <a href="#frisanchi">👀 Dosso di Frisanchi</a>
-    <a href="#pine">🗺️ Altopiano di Piné</a>
+    <a class="nq-difficile" href="#becco">🏔️ Becco di Filadonna</a>
+    <a class="nq-difficile" href="#bivacco">🏠 Bivacco Vigolana</a>
+    <a class="nq-difficile" href="#ancino">🚶 Sentiero dell'Ancino</a>
+    <a class="nq-media" href="#casarota">🍽️ Rifugio Casarota</a>
+    <a class="nq-media" href="#vezzena">🎖️ Cima Vezzena</a>
+    <a class="nq-media" href="#marzola">⛰️ Cima Marzola</a>
+    <a class="nq-media" href="#settselle">🏔️ Rifugio Sette Selle</a>
+    <a class="nq-media" href="#erdemolo">💚 Lago di Erdemolo</a>
+    <a class="nq-facile" href="#dossdelbue">🌳 Doss del Bue</a>
+    <a class="nq-facile" href="#feles">⛪ Santuario Madonna di Feles</a>
+    <a class="nq-facile" href="#paolina">🙏 Casa natale Santa Paolina</a>
+    <a class="nq-facile" href="#frisanchi">👀 Dosso di Frisanchi</a>
+    <a class="nq-misto" href="#pine">🗺️ Altopiano di Piné</a>
   </div>
 
-  <!-- BECCO DI FILADONNA -->
+  <h2 class="diff-section-title diff-difficile-title" id="sez-difficili">🔴 Escursioni impegnative</h2>
+  <p class="diff-section-sub">Dislivelli importanti, tratti esposti o percorsi lunghi: da affrontare allenati, con buone scarpe e occhio al meteo.</p>
+
+<!-- BECCO DI FILADONNA -->
   <div class="meta-card m-difficile" id="becco">
     <div class="meta-header">
       <div class="m-ic">🏔️</div>
@@ -328,7 +358,7 @@
     </div>
   </div>
 
-  <!-- BIVACCO VIGOLANA -->
+<!-- BIVACCO VIGOLANA -->
   <div class="meta-card m-difficile" id="bivacco">
     <div class="meta-header">
       <div class="m-ic">🏠</div>
@@ -357,41 +387,46 @@
     </div>
   </div>
 
-  <!-- DOSS DEL BUE -->
-  <div class="meta-card m-facile" id="dossdelbue">
+<!-- SENTIERO DELL'ANCINO -->
+  <div class="meta-card m-storia" id="ancino">
     <div class="meta-header">
-      <div class="m-ic">🌳</div>
-      <h2>Doss del Bue <span class="badge-diff bd-facile">Facile</span></h2>
-      <div class="m-sub">1.031 m · Proprio sopra Vattaro — prati, boschi e passeggiate a cavallo</div>
+      <div class="m-ic">🚶</div>
+      <h2>Sentiero dell'Ancino <span class="badge-diff bd-difficile">Impegnativa</span></h2>
+      <div class="m-sub">Dal Torrente Centa a Lavarone · Storia, mulini e la via imperiale del 1192</div>
     </div>
     <div class="meta-body">
-      <p class="meta-desc">Il Doss del Bue si trova sopra l'abitato di Vattaro, sul versante occidentale della Vigolana, tra boschi di abeti e grandi prati aperti. È il punto di partenza del sentiero tematico "Le Fiabe nel Bosco" (già presente nella guida principale) e di diversi altri percorsi, sia passeggiate semplici che trekking più lunghi verso le cime della Vigolana. Nella zona si trova anche un maneggio per passeggiate a cavallo, e i prati sono perfetti per un picnic con vista.</p>
+      <p class="meta-desc">Un'antica mulattiera, nota fin dal 1192 come importante via di collegamento tra l'Alta Valsugana e l'Alpe Cimbra (anche chiamata "Via Imperiale"), oggi ridotta in più tratti a stretto sentiero. Il percorso segue il Torrente Centa passando per i ruderi di antichi mulini, con vista sulla spettacolare cascata del Valampach, per poi risalire il ripido versante verso il terrazzo di Lavarone.</p>
 
       <div class="meta-criteri">
-        <div class="m-crit"><span class="mc-label">Quota</span><span class="mc-val">1.031 m</span></div>
-        <div class="m-crit"><span class="mc-label">Difficoltà</span><span class="mc-val">Facile — adatto a tutti</span></div>
-        <div class="m-crit"><span class="mc-label">Terreno</span><span class="mc-val">Prati aperti e sentieri forestali pianeggianti</span></div>
-        <div class="m-crit"><span class="mc-label">Attività</span><span class="mc-val">Passeggiate, picnic, cavallo, punto di partenza trekking</span></div>
-        <div class="m-crit"><span class="mc-label">Distanza da Vattaro</span><span class="mc-val">🚗 5-10 min / 🚶 possibile a piedi</span></div>
+        <div class="m-crit"><span class="mc-label">Partenza</span><span class="mc-val">Parcheggio Paldàofi, km 3,5 strada Caldonazzo-Centa San Nicolò</span></div>
+        <div class="m-crit"><span class="mc-label">Arrivo</span><span class="mc-val">Lavarone Chiesa</span></div>
+        <div class="m-crit"><span class="mc-label">Dislivello</span><span class="mc-val">~600-650 m</span></div>
+        <div class="m-crit"><span class="mc-label">Durata</span><span class="mc-val">~2h40-3h a tratta</span></div>
+        <div class="m-crit"><span class="mc-label">Segnavia</span><span class="mc-val">SAT / E217</span></div>
+        <div class="m-crit"><span class="mc-label">Difficoltà</span><span class="mc-val">Impegnativa: guado del torrente, tratti di traccia esile</span></div>
       </div>
 
-      <p class="meta-sezione-titolo">🎪 Da sapere</p>
-      <p class="descr">Il Doss del Bue è anche sede di eventi estivi: ad esempio nel 2026 vi si è tenuto un concerto con aperitivo (Coro Vigolana e fiati etnici) — vale la pena controllare il calendario eventi dell'Alpe Cimbra per la stagione in corso.</p>
+      <p class="meta-sezione-titolo">🥾 Il percorso</p>
+      <p class="descr">Dal parcheggio si scende in località Molin Nuovo (parco fluviale attrezzato) e si costeggia il Torrente Centa fino ai ruderi del Molino Polentóni. Qui va attraversato il torrente (attenzione in caso di piene: usare cautela sui sassi o sulla trave di legno). Dopo il mulino, un tratto ripido nel bosco porta al capitello di Sant'Antonio (1865, metà percorso), poi si continua in una faggeta fino al bivio con il sentiero 219 e alla "Strada della Val Caréta" che conduce a Lavarone. Possibile deviazione al Comando Virti, sede del comando austro-ungarico nella Grande Guerra.</p>
+
+      <div class="avviso-box">
+        ⚠️ Guado del torrente da valutare con attenzione, specie con piena o gelo. Percorso lungo e con dislivello notevole: portare acqua e scarpe da trekking adeguate.
+      </div>
 
       <div class="mappa-embed-wrap">
-        <iframe src="https://www.google.com/maps?q=Malga+Doss+del+Bue+Vattaro&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-
-      <div class="wikiloc-box">
-        🗺️ Tracce GPS: <a href="https://it.wikiloc.com/percorsi-escursionismo/da-malga-doss-del-bue-al-rifugio-paludei-campregheri-vattaro-269019538" target="_blank">Da Malga Doss del Bue al Rifugio Paludei</a> · <a href="https://permontagnepersentieri.wordpress.com/2024/06/23/cima-vigolana/" target="_blank">Anello Cima Vigolana e Becco della Ceriola</a> (per chi vuole spingersi oltre: 19 km, 1300 m D+, 8 ore, EE).
+        <iframe src="https://www.google.com/maps?q=Centa+San+Nicolo+Caldonazzo&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
     <div class="meta-footer">
-      <a class="meta-btn" href="https://www.alpecimbra.it/it/homepage/appuntidiviaggio-doss-del-bue-prati-luminosi-sentieri-nel-bosco-e-panorami-sull-altopiano-della-vigolana/143-40865.html" target="_blank">🔗 Racconto e info Alpe Cimbra</a>
+      <a class="meta-btn" href="https://www.visittrentino.info/it/guida/tour/sat-e217-sentiero-dell-ancino-valle-del-centa-lavarone_tour_24350759" target="_blank">🔗 Scheda ufficiale Visit Trentino</a>
+      <a class="meta-btn outline" href="https://www.montagnadiviaggi.it/2022/05/sentiero-dell-ancino-da-valle-centa-a-lavarone.html" target="_blank">📖 Racconto dettagliato</a>
     </div>
   </div>
 
-  <!-- RIFUGIO CASAROTA -->
+  <h2 class="diff-section-title diff-media-title" id="sez-medie">🟠 Escursioni di media difficoltà</h2>
+  <p class="diff-section-sub">Camminate più lunghe o con qualche tratto ripido, ma senza particolari difficoltà tecniche: adatte a chi ha un minimo di allenamento.</p>
+
+<!-- RIFUGIO CASAROTA -->
   <div class="meta-card m-media" id="casarota">
     <div class="meta-header">
       <div class="m-ic">🍽️</div>
@@ -421,7 +456,7 @@
     </div>
   </div>
 
-  <!-- CIMA VEZZENA -->
+<!-- CIMA VEZZENA -->
   <div class="meta-card m-storia" id="vezzena">
     <div class="meta-header">
       <div class="m-ic">🎖️</div>
@@ -464,94 +499,7 @@
     </div>
   </div>
 
-  <!-- SENTIERO DELL'ANCINO -->
-  <div class="meta-card m-storia" id="ancino">
-    <div class="meta-header">
-      <div class="m-ic">🚶</div>
-      <h2>Sentiero dell'Ancino <span class="badge-diff bd-difficile">Impegnativa</span></h2>
-      <div class="m-sub">Dal Torrente Centa a Lavarone · Storia, mulini e la via imperiale del 1192</div>
-    </div>
-    <div class="meta-body">
-      <p class="meta-desc">Un'antica mulattiera, nota fin dal 1192 come importante via di collegamento tra l'Alta Valsugana e l'Alpe Cimbra (anche chiamata "Via Imperiale"), oggi ridotta in più tratti a stretto sentiero. Il percorso segue il Torrente Centa passando per i ruderi di antichi mulini, con vista sulla spettacolare cascata del Valampach, per poi risalire il ripido versante verso il terrazzo di Lavarone.</p>
-
-      <div class="meta-criteri">
-        <div class="m-crit"><span class="mc-label">Partenza</span><span class="mc-val">Parcheggio Paldàofi, km 3,5 strada Caldonazzo-Centa San Nicolò</span></div>
-        <div class="m-crit"><span class="mc-label">Arrivo</span><span class="mc-val">Lavarone Chiesa</span></div>
-        <div class="m-crit"><span class="mc-label">Dislivello</span><span class="mc-val">~600-650 m</span></div>
-        <div class="m-crit"><span class="mc-label">Durata</span><span class="mc-val">~2h40-3h a tratta</span></div>
-        <div class="m-crit"><span class="mc-label">Segnavia</span><span class="mc-val">SAT / E217</span></div>
-        <div class="m-crit"><span class="mc-label">Difficoltà</span><span class="mc-val">Impegnativa: guado del torrente, tratti di traccia esile</span></div>
-      </div>
-
-      <p class="meta-sezione-titolo">🥾 Il percorso</p>
-      <p class="descr">Dal parcheggio si scende in località Molin Nuovo (parco fluviale attrezzato) e si costeggia il Torrente Centa fino ai ruderi del Molino Polentóni. Qui va attraversato il torrente (attenzione in caso di piene: usare cautela sui sassi o sulla trave di legno). Dopo il mulino, un tratto ripido nel bosco porta al capitello di Sant'Antonio (1865, metà percorso), poi si continua in una faggeta fino al bivio con il sentiero 219 e alla "Strada della Val Caréta" che conduce a Lavarone. Possibile deviazione al Comando Virti, sede del comando austro-ungarico nella Grande Guerra.</p>
-
-      <div class="avviso-box">
-        ⚠️ Guado del torrente da valutare con attenzione, specie con piena o gelo. Percorso lungo e con dislivello notevole: portare acqua e scarpe da trekking adeguate.
-      </div>
-
-      <div class="mappa-embed-wrap">
-        <iframe src="https://www.google.com/maps?q=Centa+San+Nicolo+Caldonazzo&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-    <div class="meta-footer">
-      <a class="meta-btn" href="https://www.visittrentino.info/it/guida/tour/sat-e217-sentiero-dell-ancino-valle-del-centa-lavarone_tour_24350759" target="_blank">🔗 Scheda ufficiale Visit Trentino</a>
-      <a class="meta-btn outline" href="https://www.montagnadiviaggi.it/2022/05/sentiero-dell-ancino-da-valle-centa-a-lavarone.html" target="_blank">📖 Racconto dettagliato</a>
-    </div>
-  </div>
-
-  <!-- SANTUARIO MADONNA DI FELES -->
-  <div class="meta-card m-storia" id="feles">
-    <div class="meta-header">
-      <div class="m-ic">⛪</div>
-      <h2>Santuario Madonna di Feles &amp; Castel Vigolo <span class="badge-diff bd-facile">Facile</span></h2>
-      <div class="m-sub">Passeggiata ad anello di circa 1 ora vicino a Bosentino</div>
-    </div>
-    <div class="meta-body">
-      <p class="meta-desc">A poca distanza dal paese di Bosentino, un piccolo santuario immerso nel verde. Dal Santuario della Madonna di Feles si può raggiungere con una comoda camminata Castel Vigolo, un edificio recentemente ristrutturato (non aperto al pubblico all'interno, ma visitabile dall'esterno). Una gita tranquilla, perfetta per una mattinata rilassata a due passi da Vattaro.</p>
-
-      <div class="meta-criteri">
-        <div class="m-crit"><span class="mc-label">Comune</span><span class="mc-val">Bosentino</span></div>
-        <div class="m-crit"><span class="mc-label">Difficoltà</span><span class="mc-val">Facile — passeggiata ad anello</span></div>
-        <div class="m-crit"><span class="mc-label">Durata</span><span class="mc-val">~1 ora</span></div>
-        <div class="m-crit"><span class="mc-label">Distanza da Vattaro</span><span class="mc-val">🚗 ~10 min</span></div>
-      </div>
-
-      <div class="mappa-embed-wrap">
-        <iframe src="https://www.google.com/maps?q=Santuario+Madonna+di+Feles+Bosentino&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-    <div class="meta-footer">
-      <a class="meta-btn" href="https://www.alpecimbra.it/it/homepage/6-cose-da-visitare-in-vigolana/143-17561.html" target="_blank">🔗 Scheda ufficiale Alpe Cimbra</a>
-    </div>
-  </div>
-
-  <!-- CASA NATALE SANTA PAOLINA -->
-  <div class="meta-card m-storia" id="paolina">
-    <div class="meta-header">
-      <div class="m-ic">🙏</div>
-      <h2>Casa Natale di Santa Paolina <span class="badge-diff bd-facile">Facile</span></h2>
-      <div class="m-sub">Vigolo Vattaro · Meta di pellegrinaggio internazionale</div>
-    </div>
-    <div class="meta-body">
-      <p class="meta-desc">In questa casa a Vigolo Vattaro nacque il 16 dicembre 1865 Amabile Visintainer, divenuta Santa Paolina del Cuore di Gesù Agonizzante. Emigrata in Brasile a dieci anni, si distinse per la sua grande carità e fondò la congregazione delle Piccole Suore dell'Immacolata Concezione, oggi presente con case di assistenza per minori, malati e anziani in 16 stati brasiliani e in 12 Paesi nel mondo. La casa è meta di pellegrinaggi anche dal Brasile.</p>
-
-      <div class="meta-criteri">
-        <div class="m-crit"><span class="mc-label">Comune</span><span class="mc-val">Vigolo Vattaro</span></div>
-        <div class="m-crit"><span class="mc-label">Visite</span><span class="mc-val">Su richiesta alle suore residenti nei dintorni</span></div>
-        <div class="m-crit"><span class="mc-label">Distanza da Vattaro</span><span class="mc-val">🚗 ~5 min</span></div>
-      </div>
-
-      <div class="mappa-embed-wrap">
-        <iframe src="https://www.google.com/maps?q=Casa+natale+di+Santa+Paolina+Vigolo+Vattaro&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-    <div class="meta-footer">
-      <a class="meta-btn" href="https://www.alpecimbra.it/it/scopri-l-alpe-cimbra/localit%C3%A0/casa-natale-di-santa-paolina/903-9690.html" target="_blank">🔗 Scheda ufficiale</a>
-    </div>
-  </div>
-
-  <!-- CIMA MARZOLA -->
+<!-- CIMA MARZOLA -->
   <div class="meta-card m-media" id="marzola">
     <div class="meta-header">
       <div class="m-ic">⛰️</div>
@@ -584,7 +532,38 @@
     </div>
   </div>
 
-  <!-- LAGO DI ERDEMOLO -->
+<!-- RIFUGIO SETTE SELLE -->
+  <div class="meta-card m-lago" id="settselle">
+    <div class="meta-header">
+      <div class="m-ic">🏔️</div>
+      <h2>Rifugio Sette Selle e Lago Erdemolo <span class="badge-diff bd-media">Media</span></h2>
+      <div class="m-sub">Escursione ad anello nel Lagorai, combinando lago e rifugio</div>
+    </div>
+    <div class="meta-body">
+      <p class="meta-desc">Variante ad anello per chi vuole abbinare la visita al Lago di Erdemolo con una tappa al Rifugio Sette Selle, punto d'appoggio caratteristico immerso nella parte più selvaggia del Lagorai. Un'escursione un po' più lunga della semplice salita al lago, ma che regala una visione più ampia di questa catena montuosa meno turistica del Trentino.</p>
+
+      <div class="meta-criteri">
+        <div class="m-crit"><span class="mc-label">Partenza</span><span class="mc-val">Palù del Fersina (stesso accesso del Lago Erdemolo)</span></div>
+        <div class="m-crit"><span class="mc-label">Tipologia</span><span class="mc-val">Anello</span></div>
+        <div class="m-crit"><span class="mc-label">Punto d'appoggio</span><span class="mc-val">Rifugio Sette Selle</span></div>
+        <div class="m-crit"><span class="mc-label">Difficoltà</span><span class="mc-val">Media</span></div>
+        <div class="m-crit"><span class="mc-label">Distanza da Vattaro</span><span class="mc-val">🚗 ~45-50 min fino a Palù del Fersina</span></div>
+      </div>
+
+      <div class="mappa-embed-wrap">
+        <iframe src="https://www.google.com/maps?q=Rifugio+Sette+Selle&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <div class="wikiloc-box">
+        🗺️ Racconto completo con traccia: <a href="https://www.volpidelvajolet.it/2020/09/escursione-al-rifugio-sette-selle-e-al-lago-erdemolo.html" target="_blank">Rifugio Sette Selle e lago Erdemolo: escursione ad anello</a> (blog Volpi del Vajolet).
+      </div>
+    </div>
+    <div class="meta-footer">
+      <a class="meta-btn" href="https://www.volpidelvajolet.it/2020/09/escursione-al-rifugio-sette-selle-e-al-lago-erdemolo.html" target="_blank">🔗 Racconto e traccia</a>
+    </div>
+  </div>
+
+<!-- LAGO DI ERDEMOLO -->
   <div class="meta-card m-lago" id="erdemolo">
     <div class="meta-header">
       <div class="m-ic">💚</div>
@@ -621,38 +600,95 @@
     </div>
   </div>
 
-  <!-- RIFUGIO SETTE SELLE -->
-  <div class="meta-card m-lago" id="settselle">
+  <h2 class="diff-section-title diff-facile-title" id="sez-facili">🟢 Passeggiate facili</h2>
+  <p class="diff-section-sub">Percorsi brevi e pianeggianti, alla portata di tutti: ideali per famiglie, bambini o una mattinata tranquilla.</p>
+
+<!-- DOSS DEL BUE -->
+  <div class="meta-card m-facile" id="dossdelbue">
     <div class="meta-header">
-      <div class="m-ic">🏔️</div>
-      <h2>Rifugio Sette Selle e Lago Erdemolo <span class="badge-diff bd-media">Media</span></h2>
-      <div class="m-sub">Escursione ad anello nel Lagorai, combinando lago e rifugio</div>
+      <div class="m-ic">🌳</div>
+      <h2>Doss del Bue <span class="badge-diff bd-facile">Facile</span></h2>
+      <div class="m-sub">1.031 m · Proprio sopra Vattaro — prati, boschi e passeggiate a cavallo</div>
     </div>
     <div class="meta-body">
-      <p class="meta-desc">Variante ad anello per chi vuole abbinare la visita al Lago di Erdemolo con una tappa al Rifugio Sette Selle, punto d'appoggio caratteristico immerso nella parte più selvaggia del Lagorai. Un'escursione un po' più lunga della semplice salita al lago, ma che regala una visione più ampia di questa catena montuosa meno turistica del Trentino.</p>
+      <p class="meta-desc">Il Doss del Bue si trova sopra l'abitato di Vattaro, sul versante occidentale della Vigolana, tra boschi di abeti e grandi prati aperti. È il punto di partenza del sentiero tematico "Le Fiabe nel Bosco" (già presente nella guida principale) e di diversi altri percorsi, sia passeggiate semplici che trekking più lunghi verso le cime della Vigolana. Nella zona si trova anche un maneggio per passeggiate a cavallo, e i prati sono perfetti per un picnic con vista.</p>
 
       <div class="meta-criteri">
-        <div class="m-crit"><span class="mc-label">Partenza</span><span class="mc-val">Palù del Fersina (stesso accesso del Lago Erdemolo)</span></div>
-        <div class="m-crit"><span class="mc-label">Tipologia</span><span class="mc-val">Anello</span></div>
-        <div class="m-crit"><span class="mc-label">Punto d'appoggio</span><span class="mc-val">Rifugio Sette Selle</span></div>
-        <div class="m-crit"><span class="mc-label">Difficoltà</span><span class="mc-val">Media</span></div>
-        <div class="m-crit"><span class="mc-label">Distanza da Vattaro</span><span class="mc-val">🚗 ~45-50 min fino a Palù del Fersina</span></div>
+        <div class="m-crit"><span class="mc-label">Quota</span><span class="mc-val">1.031 m</span></div>
+        <div class="m-crit"><span class="mc-label">Difficoltà</span><span class="mc-val">Facile — adatto a tutti</span></div>
+        <div class="m-crit"><span class="mc-label">Terreno</span><span class="mc-val">Prati aperti e sentieri forestali pianeggianti</span></div>
+        <div class="m-crit"><span class="mc-label">Attività</span><span class="mc-val">Passeggiate, picnic, cavallo, punto di partenza trekking</span></div>
+        <div class="m-crit"><span class="mc-label">Distanza da Vattaro</span><span class="mc-val">🚗 5-10 min / 🚶 possibile a piedi</span></div>
       </div>
 
+      <p class="meta-sezione-titolo">🎪 Da sapere</p>
+      <p class="descr">Il Doss del Bue è anche sede di eventi estivi: ad esempio nel 2026 vi si è tenuto un concerto con aperitivo (Coro Vigolana e fiati etnici) — vale la pena controllare il calendario eventi dell'Alpe Cimbra per la stagione in corso.</p>
+
       <div class="mappa-embed-wrap">
-        <iframe src="https://www.google.com/maps?q=Rifugio+Sette+Selle&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps?q=Malga+Doss+del+Bue+Vattaro&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 
       <div class="wikiloc-box">
-        🗺️ Racconto completo con traccia: <a href="https://www.volpidelvajolet.it/2020/09/escursione-al-rifugio-sette-selle-e-al-lago-erdemolo.html" target="_blank">Rifugio Sette Selle e lago Erdemolo: escursione ad anello</a> (blog Volpi del Vajolet).
+        🗺️ Tracce GPS: <a href="https://it.wikiloc.com/percorsi-escursionismo/da-malga-doss-del-bue-al-rifugio-paludei-campregheri-vattaro-269019538" target="_blank">Da Malga Doss del Bue al Rifugio Paludei</a> · <a href="https://permontagnepersentieri.wordpress.com/2024/06/23/cima-vigolana/" target="_blank">Anello Cima Vigolana e Becco della Ceriola</a> (per chi vuole spingersi oltre: 19 km, 1300 m D+, 8 ore, EE).
       </div>
     </div>
     <div class="meta-footer">
-      <a class="meta-btn" href="https://www.volpidelvajolet.it/2020/09/escursione-al-rifugio-sette-selle-e-al-lago-erdemolo.html" target="_blank">🔗 Racconto e traccia</a>
+      <a class="meta-btn" href="https://www.alpecimbra.it/it/homepage/appuntidiviaggio-doss-del-bue-prati-luminosi-sentieri-nel-bosco-e-panorami-sull-altopiano-della-vigolana/143-40865.html" target="_blank">🔗 Racconto e info Alpe Cimbra</a>
     </div>
   </div>
 
-  <!-- DOSSO DI FRISANCHI -->
+<!-- SANTUARIO MADONNA DI FELES -->
+  <div class="meta-card m-storia" id="feles">
+    <div class="meta-header">
+      <div class="m-ic">⛪</div>
+      <h2>Santuario Madonna di Feles &amp; Castel Vigolo <span class="badge-diff bd-facile">Facile</span></h2>
+      <div class="m-sub">Passeggiata ad anello di circa 1 ora vicino a Bosentino</div>
+    </div>
+    <div class="meta-body">
+      <p class="meta-desc">A poca distanza dal paese di Bosentino, un piccolo santuario immerso nel verde. Dal Santuario della Madonna di Feles si può raggiungere con una comoda camminata Castel Vigolo, un edificio recentemente ristrutturato (non aperto al pubblico all'interno, ma visitabile dall'esterno). Una gita tranquilla, perfetta per una mattinata rilassata a due passi da Vattaro.</p>
+
+      <div class="meta-criteri">
+        <div class="m-crit"><span class="mc-label">Comune</span><span class="mc-val">Bosentino</span></div>
+        <div class="m-crit"><span class="mc-label">Difficoltà</span><span class="mc-val">Facile — passeggiata ad anello</span></div>
+        <div class="m-crit"><span class="mc-label">Durata</span><span class="mc-val">~1 ora</span></div>
+        <div class="m-crit"><span class="mc-label">Distanza da Vattaro</span><span class="mc-val">🚗 ~10 min</span></div>
+      </div>
+
+      <div class="mappa-embed-wrap">
+        <iframe src="https://www.google.com/maps?q=Santuario+Madonna+di+Feles+Bosentino&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="meta-footer">
+      <a class="meta-btn" href="https://www.alpecimbra.it/it/homepage/6-cose-da-visitare-in-vigolana/143-17561.html" target="_blank">🔗 Scheda ufficiale Alpe Cimbra</a>
+    </div>
+  </div>
+
+<!-- CASA NATALE SANTA PAOLINA -->
+  <div class="meta-card m-storia" id="paolina">
+    <div class="meta-header">
+      <div class="m-ic">🙏</div>
+      <h2>Casa Natale di Santa Paolina <span class="badge-diff bd-facile">Facile</span></h2>
+      <div class="m-sub">Vigolo Vattaro · Meta di pellegrinaggio internazionale</div>
+    </div>
+    <div class="meta-body">
+      <p class="meta-desc">In questa casa a Vigolo Vattaro nacque il 16 dicembre 1865 Amabile Visintainer, divenuta Santa Paolina del Cuore di Gesù Agonizzante. Emigrata in Brasile a dieci anni, si distinse per la sua grande carità e fondò la congregazione delle Piccole Suore dell'Immacolata Concezione, oggi presente con case di assistenza per minori, malati e anziani in 16 stati brasiliani e in 12 Paesi nel mondo. La casa è meta di pellegrinaggi anche dal Brasile.</p>
+
+      <div class="meta-criteri">
+        <div class="m-crit"><span class="mc-label">Comune</span><span class="mc-val">Vigolo Vattaro</span></div>
+        <div class="m-crit"><span class="mc-label">Visite</span><span class="mc-val">Su richiesta alle suore residenti nei dintorni</span></div>
+        <div class="m-crit"><span class="mc-label">Distanza da Vattaro</span><span class="mc-val">🚗 ~5 min</span></div>
+      </div>
+
+      <div class="mappa-embed-wrap">
+        <iframe src="https://www.google.com/maps?q=Casa+natale+di+Santa+Paolina+Vigolo+Vattaro&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="meta-footer">
+      <a class="meta-btn" href="https://www.alpecimbra.it/it/scopri-l-alpe-cimbra/localit%C3%A0/casa-natale-di-santa-paolina/903-9690.html" target="_blank">🔗 Scheda ufficiale</a>
+    </div>
+  </div>
+
+<!-- DOSSO DI FRISANCHI -->
   <div class="meta-card m-facile" id="frisanchi">
     <div class="meta-header">
       <div class="m-ic">👀</div>
@@ -684,7 +720,10 @@
     </div>
   </div>
 
-  <!-- ALTOPIANO DI PINÉ -->
+  <h2 class="diff-section-title diff-misto-title" id="sez-misto">🔵 Gite di un giorno intero (più mete)</h2>
+  <p class="diff-section-sub">Non una singola escursione ma un'area con più tappe facili da combinare in un'unica giornata fuori porta.</p>
+
+<!-- ALTOPIANO DI PINÉ -->
   <div class="meta-card m-lago" id="pine">
     <div class="meta-header">
       <div class="m-ic">🗺️</div>
