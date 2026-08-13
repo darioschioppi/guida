@@ -12,6 +12,7 @@
   <meta name="twitter:card" content="summary"/>
   <meta name="twitter:title" content="Guida Napoli — Itinerari, Pizza e Sotterranei"/>
   <meta name="twitter:description" content="Itinerari a colori, chiese storiche, pizzerie e trattorie vere, caffè e dolci: la guida di viaggio completa a Napoli."/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:wght@700&display=swap');
 
@@ -328,6 +329,66 @@
       border-color: var(--blu-chiaro);
       color: #fff;
     }
+
+    /* Filtro epoche chiese */
+    .era-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0 20px;
+    }
+    .era-filter button {
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 2px solid var(--blu-chiaro);
+      background: var(--bianco);
+      color: var(--blu);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .era-filter button:hover {
+      background: var(--blu-pallido);
+    }
+    .era-filter button.active {
+      background: var(--blu);
+      color: #fff;
+      border-color: var(--blu);
+    }
+    .era-block[hidden] { display: none; }
+
+    /* Filtro categorie mappa */
+    .map-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 16px;
+    }
+    .map-filter button {
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 2px solid var(--blu-chiaro);
+      background: var(--bianco);
+      color: var(--blu);
+      cursor: pointer;
+      transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .map-filter button:hover { background: var(--blu-pallido); }
+    .map-filter button.active {
+      background: var(--dot, var(--blu));
+      color: #fff;
+      border-color: var(--dot, var(--blu));
+    }
+    #napoli-map .leaflet-popup-content { font-family: 'Lato', sans-serif; font-size: 14px; }
+    #napoli-map .leaflet-popup-content a { color: var(--blu-medio); font-weight: 700; }
   </style>
 </head>
 <body>
@@ -345,7 +406,8 @@
 
 <nav class="toc">
   <div class="toc-inner">
-    <a href="#itinerari">🗺️ Itinerari a colori</a>
+    <a href="#mappa">🗺️ Mappa</a>
+    <a href="#itinerari">🎨 Itinerari a colori</a>
     <a href="#vedere">👀 Cosa vedere</a>
     <a href="#altrimonumenti">🏰 Altri luoghi</a>
     <a href="#ville">🌿 Ville storiche</a>
@@ -370,7 +432,21 @@
     <div class="info-row"><span class="ic">🆕</span><span>Guida aggiornata nel 2026: il complesso dei Girolamini (chiesa-museo e biblioteca) è tornato visitabile dopo oltre un decennio di chiusura, e la Trattoria da Nennella si è trasferita in una nuova sede — dettagli nelle rispettive schede.</span></div>
   </div>
 
-  <h2 class="section-title" id="itinerari">🗺️ Itinerari a colori</h2>
+  <h2 class="section-title" id="mappa">🗺️ Mappa d'insieme</h2>
+  <p style="margin-bottom:10px; color:#5a4a40;">Una selezione dei luoghi principali della guida, con pin colorati per categoria. Clicca su un pin per il nome del luogo e il link a Google Maps; usa i filtri sotto per isolare una categoria.</p>
+
+  <div class="map-filter" role="group" aria-label="Filtra mappa per categoria">
+    <button type="button" class="active" data-map-filter="all">Tutte</button>
+    <button type="button" data-map-filter="chiese" style="--dot:#0B4F6C">⛪ Chiese</button>
+    <button type="button" data-map-filter="pizzerie" style="--dot:#C1440E">🍕 Pizzerie</button>
+    <button type="button" data-map-filter="palazzi" style="--dot:#E8A33D">🏛️ Palazzi</button>
+    <button type="button" data-map-filter="altri" style="--dot:#3A7D44">🏰 Altri luoghi</button>
+  </div>
+
+  <div id="napoli-map" style="height:420px; border-radius:16px; margin:16px 0; box-shadow:0 3px 14px var(--ombra); z-index:1;"></div>
+  <p style="font-size:13px; color:#888; margin-top:-6px; margin-bottom:20px;">Mappa realizzata con Leaflet e dati OpenStreetMap. Non tutti i luoghi della guida sono qui: è una selezione delle tappe principali — per l'elenco completo consulta le sezioni sotto.</p>
+
+  <h2 class="section-title" id="itinerari">🎨 Itinerari a colori</h2>
   <p style="margin-bottom:10px; color:#5a4a40;">Percorsi pensati per essere logisticamente comodi: si cammina da un punto d'interesse al successivo senza dover tornare indietro.</p>
 
   <div class="itin-card itin-rosso">
@@ -592,6 +668,16 @@
     </div>
   </div>
 
+  <div class="era-filter" role="group" aria-label="Filtra chiese per epoca">
+    <button type="button" class="active" data-era-filter="all">Tutte le epoche</button>
+    <button type="button" data-era-filter="paleocristiane">🏛️ Paleocristiane (IV-IX sec.)</button>
+    <button type="button" data-era-filter="medievali">🏰 Gotico angioino (X-XIV sec.)</button>
+    <button type="button" data-era-filter="rinascimentali">🎨 Rinascimentali (XV-XVI sec.)</button>
+    <button type="button" data-era-filter="barocche">✨ Barocche (XVII-XVIII sec.)</button>
+    <button type="button" data-era-filter="moderne">🏛️ Neoclassiche (XIX-XX sec.)</button>
+  </div>
+
+  <div class="era-block" data-era="paleocristiane">
   <p style="margin:24px 0 10px; color:#5a4a40; font-weight:700;">🏛️ Paleocristiane e alto medioevo (IV-IX secolo)</p>
 
   <div class="luoghi-lista">
@@ -616,7 +702,9 @@
       </li>
     </ol>
   </div>
+  </div>
 
+  <div class="era-block" data-era="medievali">
   <p style="margin:24px 0 10px; color:#5a4a40; font-weight:700;">🏰 Basso medioevo, gotico e angioino (X-XIV secolo)</p>
 
   <div class="luoghi-lista">
@@ -677,7 +765,9 @@
       </li>
     </ol>
   </div>
+  </div>
 
+  <div class="era-block" data-era="rinascimentali">
   <p style="margin:24px 0 10px; color:#5a4a40; font-weight:700;">🎨 Rinascimentali e prima età moderna (XV-XVI secolo)</p>
 
   <div class="luoghi-lista">
@@ -693,7 +783,9 @@
       </li>
     </ol>
   </div>
+  </div>
 
+  <div class="era-block" data-era="barocche">
   <p style="margin:24px 0 10px; color:#5a4a40; font-weight:700;">✨ Barocche (XVII-XVIII secolo)</p>
 
   <div class="luoghi-lista">
@@ -760,7 +852,9 @@
       </li>
     </ol>
   </div>
+  </div>
 
+  <div class="era-block" data-era="moderne">
   <p style="margin:24px 0 10px; color:#5a4a40; font-weight:700;">🏛️ Neoclassiche e moderne (XIX-XX secolo)</p>
 
   <div class="luoghi-lista">
@@ -772,6 +866,7 @@
         <br><a href="https://www.google.com/maps/search/?api=1&query=Basilica+Incoronata+Madre+del+Buon+Consiglio+Capodimonte+Napoli" target="_blank">📍 Vedi su Google Maps</a>
       </li>
     </ol>
+  </div>
   </div>
 
   <h2 class="section-title" id="palazzi">🏛️ I palazzi più belli di Napoli <span style="font-size:14px; color:#888; font-weight:400;">(dal più antico al più recente)</span></h2>
@@ -1328,6 +1423,78 @@
 <footer>
   <p>Guida di Dario — basata sui consigli di un amico napoletano, aggiornata agosto 2026</p>
 </footer>
+
+<script>
+(function() {
+  var buttons = document.querySelectorAll('.era-filter button');
+  var blocks = document.querySelectorAll('.era-block');
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var era = btn.getAttribute('data-era-filter');
+      buttons.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      blocks.forEach(function(block) {
+        if (era === 'all' || block.getAttribute('data-era') === era) {
+          block.hidden = false;
+        } else {
+          block.hidden = true;
+        }
+      });
+    });
+  });
+})();
+</script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(function() {
+  var mapEl = document.getElementById('napoli-map');
+  if (!mapEl || typeof L === 'undefined') return;
+
+  var pois = [{"cat": "chiese", "name": "Duomo di Napoli", "lat": 40.8526527, "lon": 14.2598704}, {"cat": "chiese", "name": "Cappella Sansevero", "lat": 40.8492993, "lon": 14.2549332}, {"cat": "chiese", "name": "San Gregorio Armeno", "lat": 40.849625, "lon": 14.2574611}, {"cat": "chiese", "name": "Chiesa dei Girolamini", "lat": 40.8520496, "lon": 14.2583675}, {"cat": "chiese", "name": "Basilica del Carmine Maggiore", "lat": 40.8467228, "lon": 14.2682337}, {"cat": "chiese", "name": "Basilica di San Lorenzo Maggiore", "lat": 40.8509198, "lon": 14.2580403}, {"cat": "chiese", "name": "Basilica di San Domenico Maggiore", "lat": 40.8489751, "lon": 14.2542699}, {"cat": "chiese", "name": "Chiesa del Gesu Nuovo", "lat": 40.8475578, "lon": 14.2518743}, {"cat": "chiese", "name": "Chiesa di San Giovanni a Carbonara", "lat": 40.8561132, "lon": 14.2600278}, {"cat": "chiese", "name": "Basilica di Santa Maria della Sanita", "lat": 40.8597275, "lon": 14.2490297}, {"cat": "chiese", "name": "Basilica di San Francesco di Paola", "lat": 40.8355986, "lon": 14.2473359}, {"cat": "pizzerie", "name": "Pizzeria Gino Sorbillo", "lat": 40.8503878, "lon": 14.2553401}, {"cat": "pizzerie", "name": "Antica Pizzeria da Michele", "lat": 40.8497493, "lon": 14.263352}, {"cat": "pizzerie", "name": "50 Kalo", "lat": 40.8283858, "lon": 14.2200661}, {"cat": "pizzerie", "name": "Concettina ai Tre Santi", "lat": 40.8574315, "lon": 14.2523228}, {"cat": "pizzerie", "name": "Starita a Materdei", "lat": 40.8559192, "lon": 14.2463847}, {"cat": "pizzerie", "name": "Da Attilio alla Pignasecca", "lat": 40.8452359, "lon": 14.2482945}, {"cat": "palazzi", "name": "Palazzo Reale", "lat": 40.8363844, "lon": 14.2501293}, {"cat": "palazzi", "name": "Palazzo dello Spagnuolo", "lat": 40.8567227, "lon": 14.2541516}, {"cat": "palazzi", "name": "Palazzo Donn'Anna", "lat": 40.8198697, "lon": 14.2144786}, {"cat": "altri", "name": "Castel Nuovo", "lat": 40.8383171, "lon": 14.2537307}, {"cat": "altri", "name": "Castel Sant'Elmo", "lat": 40.8437067, "lon": 14.2392516}, {"cat": "altri", "name": "Museo Archeologico Nazionale", "lat": 40.8536064, "lon": 14.25115}, {"cat": "altri", "name": "Museo di Capodimonte", "lat": 40.8670307, "lon": 14.2508753}, {"cat": "altri", "name": "Certosa di San Martino", "lat": 40.8431636, "lon": 14.2410586}, {"cat": "chiese", "name": "Complesso di Santa Chiara", "lat": 40.8468226, "lon": 14.2529101}];
+
+  var colors = { chiese: '#0B4F6C', pizzerie: '#C1440E', palazzi: '#E8A33D', altri: '#3A7D44' };
+
+  var map = L.map('napoli-map', { scrollWheelZoom: false }).setView([40.8478, 14.2540], 14);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  function dotIcon(color) {
+    return L.divIcon({
+      className: '',
+      html: '<div style="width:16px;height:16px;border-radius:50%;background:' + color + ';border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.4);"></div>',
+      iconSize: [16, 16],
+      iconAnchor: [8, 8]
+    });
+  }
+
+  var markers = pois.map(function(p) {
+    var marker = L.marker([p.lat, p.lon], { icon: dotIcon(colors[p.cat] || '#333') }).addTo(map);
+    var mapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.name + ' Napoli');
+    marker.bindPopup('<strong>' + p.name + '</strong><br><a href="' + mapsUrl + '" target="_blank">📍 Vedi su Google Maps</a>');
+    marker._cat = p.cat;
+    return marker;
+  });
+
+  var mapButtons = document.querySelectorAll('.map-filter button');
+  mapButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var cat = btn.getAttribute('data-map-filter');
+      mapButtons.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      markers.forEach(function(m) {
+        if (cat === 'all' || m._cat === cat) {
+          if (!map.hasLayer(m)) map.addLayer(m);
+        } else {
+          if (map.hasLayer(m)) map.removeLayer(m);
+        }
+      });
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
