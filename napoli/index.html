@@ -208,6 +208,17 @@
     .itin-bonus .itin-tappa { color: var(--c-bonus); border-color: #e4d8f5; }
     a.itin-tappa { text-decoration: none; cursor: pointer; }
     a.itin-tappa:hover { text-decoration: underline; }
+    .itin-tappa-new { border-style: dashed; }
+    .itin-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 13.5px;
+      color: #6a5a4f;
+      margin: 10px 0 4px;
+      font-weight: 700;
+    }
+    .itin-meta span { display: inline-flex; align-items: center; gap: 4px; }
 
     .ristorante {
       background: var(--bianco);
@@ -452,7 +463,7 @@
   <p style="font-size:13px; color:#888; margin-top:-6px; margin-bottom:20px;">Mappa realizzata con Leaflet e dati OpenStreetMap. Le coordinate sono ottenute per geocoding automatico dal nome del luogo: per indirizzi molto specifici o insegne minori la posizione può essere approssimata al centro della via o della piazza più vicina — verifica sempre su Google Maps prima di partire.</p>
 
   <h2 class="section-title" id="itinerari">🎨 Itinerari a colori</h2>
-  <p style="margin-bottom:10px; color:#5a4a40;">Percorsi pensati per essere logisticamente comodi: si cammina da un punto d'interesse al successivo senza dover tornare indietro.</p>
+  <p style="margin-bottom:10px; color:#5a4a40;">Percorsi pensati per essere logisticamente comodi: si cammina da un punto d'interesse al successivo senza dover tornare indietro. Ogni itinerario è stato aggiornato incrociando tutti i luoghi della <a href="#mappa">mappa interattiva</a> con il percorso più vicino per posizione geografica: le tappe con il contorno tratteggiato sono le aggiunte, inserite nel punto in cui si incontrano camminando. Punto di partenza e di arrivo di ciascun itinerario sono indicati subito sotto il titolo.</p>
 
   <div class="itin-card itin-rosso">
     <div class="itin-header">
@@ -463,20 +474,33 @@
       </div>
     </div>
     <div class="itin-body">
-      <p>Si visita il Museo di Capodimonte, poi si scende alla basilica e si fanno le Catacombe di San Gennaro. Si esce alla Sanità e si visitano le Catacombe di San Gaudioso. Dopo si sale al Cimitero delle Fontanelle, poi si riscende per la Sanità verso via Foria: pranzo da Concettina ai Tre Santi, dolce da Poppella, passaggio per il mercato. Nel percorso si incontrano anche Palazzo Sanfelice e Palazzo dello Spagnuolo, entrambi celebri per le loro scale monumentali "ad ali di falco" — set di numerosi film e servizi fotografici.</p>
+      <div class="itin-meta"><span>🚩 Partenza: Museo di Capodimonte</span><span>🏁 Arrivo: Starita a Materdei</span></div>
+      <p>Si visita il Museo di Capodimonte insieme al <strong>Real Bosco</strong> che lo circonda, poi si scende verso la basilica di San Gennaro extra moenia e la vicina <strong>Basilica di San Gennaro dei Poveri</strong> per fare le Catacombe di San Gennaro. Si esce alla Sanità, dove in pochi passi si incontrano la <strong>Chiesa di Santa Maria della Vita</strong> e la maestosa <strong>Basilica di Santa Maria della Sanità</strong> (proprio sopra le Catacombe di San Gaudioso, che si visitano insieme). Dopo si sale al Cimitero delle Fontanelle, poi si riscende per la Sanità verso via Foria, incontrando anche la piccola <strong>Chiesa di Santa Maria dei Vergini</strong>: pranzo da Concettina ai Tre Santi, dolce da Poppella, passaggio per il mercato. Nel percorso si incontrano anche Palazzo Sanfelice e Palazzo dello Spagnuolo, entrambi celebri per le loro scale monumentali "ad ali di falco" — set di numerosi film e servizi fotografici.</p>
       <p><strong>Aggiunta consigliata:</strong> se si ha ancora tempo ed energie, a pochi passi da Palazzo dello Spagnuolo si trova l'ingresso dell'<strong>Ipogeo dei Cristallini</strong>, una necropoli ellenistica di oltre 2.300 anni riaperta al pubblico nel 2022 dopo un lungo restauro: quattro tombe intatte con affreschi, fregi ionici e il mito di Medusa. Va prenotato online con orario, non si visita a ingresso libero.</p>
+      <p><strong>Chiusura di giornata:</strong> il tratto finale verso via Foria e Materdei è anche l'occasione per un salto alla curiosa <strong>Farmacia Storica e Museo delle Arti Sanitarie degli Incurabili</strong> e, se si vuole allungare ancora, alla <strong>Basilica dell'Incoronata Madre del Buon Consiglio</strong>. Chi ha ancora fame può chiudere con una pizza fritta da <strong>Starita</strong> a Materdei o un piatto di mare da <strong>A Figlia d'o Marenaro</strong>, entrambi comodi punto di arrivo dell'itinerario. La <strong>Chiesa di San Carlo all'Arena</strong> e la trattoria <strong>Addù Rosettin</strong> sono altre due tappe intermedie utili se si passa da quella zona.</p>
       <p><strong>Nota logistica:</strong> uscendo dalla Sanità si è già vicini al punto di partenza dell'itinerario Blu, ma è meglio dedicargli un'altra giornata invece di unire i due.</p>
       <div class="itin-tappe">
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Museo%20di%20Capodimonte%20Napoli" target="_blank">Museo di Capodimonte</a>
-        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Catacombe%20di%20San%20Gennaro%20Napoli" target="_blank">Catacombe di San Gennaro</a>
-        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Catacombe%20di%20San%20Gaudioso%20Napoli" target="_blank">Catacombe di San Gaudioso</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Real%20Bosco%20di%20Capodimonte%20Napoli" target="_blank">Real Bosco di Capodimonte</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Basilica%20dell%27Incoronata%20Madre%20del%20Buon%20Consiglio%20Napoli" target="_blank">Basilica dell'Incoronata Madre del Buon Consiglio</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Cimitero%20delle%20Fontanelle%20Napoli" target="_blank">Cimitero delle Fontanelle</a>
-        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Palazzo%20Sanfelice%20Napoli" target="_blank">Palazzo Sanfelice</a>
-        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Palazzo%20dello%20Spagnuolo%20Napoli" target="_blank">Palazzo dello Spagnuolo</a>
-        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Ipogeo%20dei%20Cristallini%20Napoli" target="_blank">Ipogeo dei Cristallini</a>
-        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Concettina%20ai%20Tre%20Santi%20Napoli" target="_blank">Concettina ai Tre Santi</a>
-        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Poppella%20Napoli" target="_blank">Poppella</a>
+        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Catacombe%20di%20San%20Gennaro%20Napoli" target="_blank">Catacombe di San Gennaro</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Basilica%20di%20San%20Gennaro%20dei%20Poveri%20Napoli" target="_blank">Basilica di San Gennaro dei Poveri</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20Santa%20Maria%20della%20Vita%20Napoli" target="_blank">Chiesa di Santa Maria della Vita</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Mercato%20della%20Sanit%C3%A0%20Napoli" target="_blank">Mercato della Sanità</a>
+        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Catacombe%20di%20San%20Gaudioso%20Napoli" target="_blank">Catacombe di San Gaudioso</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Basilica%20di%20Santa%20Maria%20della%20Sanit%C3%A0%20Napoli" target="_blank">Basilica di Santa Maria della Sanità</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Trattoria%20Add%C3%B9%20Rosettin%20Napoli" target="_blank">Trattoria Addù Rosettin</a>
+        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Palazzo%20Sanfelice%20Napoli" target="_blank">Palazzo Sanfelice</a>
+        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Poppella%20Napoli" target="_blank">Poppella</a>
+        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Ipogeo%20dei%20Cristallini%20Napoli" target="_blank">Ipogeo dei Cristallini</a>
+        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Palazzo%20dello%20Spagnuolo%20Napoli" target="_blank">Palazzo dello Spagnuolo</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20Santa%20Maria%20dei%20Vergini%20Napoli" target="_blank">Chiesa di Santa Maria dei Vergini</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Farmacia%20Storica%20e%20Museo%20delle%20Arti%20Sanitarie%20degli%20Incurabili%20Napoli" target="_blank">Farmacia Storica e Museo delle Arti Sanitarie degli Incurabili</a>
+        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Concettina%20ai%20Tre%20Santi%20Napoli" target="_blank">Concettina ai Tre Santi</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20San%20Carlo%20all%27Arena%20Napoli" target="_blank">Chiesa di San Carlo all'Arena</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=A%20Figlia%20d%27o%20Marenaro%20Napoli" target="_blank">A Figlia d'o Marenaro</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Starita%20a%20Materdei%20Napoli" target="_blank">Starita a Materdei</a>
       </div>
     </div>
   </div>
@@ -490,17 +514,43 @@
       </div>
     </div>
     <div class="itin-body">
-      <p>Si comincia con il Museo Archeologico Nazionale, poi si scende per via Foria fino a via Duomo. Qui si visitano il Duomo, il Tesoro di San Gennaro, la Chiesa dei Girolamini con l'annessa Biblioteca — <strong>tornate entrambe visitabili</strong> dopo oltre un decennio di chiusura, quindi finalmente niente più "se è aperta" — e infine il Museo Filangieri. Lungo il percorso si incontra l'enorme murale col volto di San Gennaro: significa che si è arrivati a Forcella, quindi in zona pizzeria Michele.</p>
+      <div class="itin-meta"><span>🚩 Partenza: Museo Archeologico Nazionale</span><span>🏁 Arrivo: Pizzeria Carmnella</span></div>
+      <p>Si comincia con il Museo Archeologico Nazionale, con una sosta alla vicina <strong>Chiesa di Sant'Aniello a Caponapoli</strong>, poi si scende per via Foria fino a via Duomo. Qui si visitano il Duomo, il Tesoro di San Gennaro e il <strong>Battistero di San Giovanni in Fonte</strong> (il più antico battistero cristiano d'Occidente, proprio accanto al Duomo), poi la Chiesa dei Girolamini con l'annessa Biblioteca — <strong>tornate entrambe visitabili</strong> dopo oltre un decennio di chiusura, quindi finalmente niente più "se è aperta" — e infine il Museo Filangieri. Prima di scendere verso Forcella si può fare una piccola deviazione verso la <strong>Basilica di Santa Restituta</strong> (dentro il complesso del Duomo) e la vicina <strong>Chiesa di Santa Maria Donnaregina Vecchia</strong>, con accanto il museo d'arte contemporanea <strong>MADRE</strong>.</p>
       <p><strong>Nota 2026 sul complesso dei Girolamini:</strong> attenzione, sono due ingressi e due orari diversi. La <strong>Chiesa-Museo</strong> (ingresso da Piazza dei Girolamini, su via dei Tribunali) è riaperta dal 21 marzo 2024 ed è visitabile martedì-venerdì 10:00-18:30, sabato/domenica/festivi 8:30-13:30 (chiusa il lunedì). La <strong>Biblioteca</strong> con la mostra "Rinascimento meridionale" (ingresso da via Duomo 114) segue orari simili ma biglietto separato da 15€, con ingressi contingentati ogni 45 minuti: meglio prenotare tramite l'app Musei Italiani.</p>
+      <p><strong>Verso Forcella:</strong> lungo il percorso si incontra anche la <strong>Chiesa di San Giovanni a Carbonara</strong> e la <strong>Chiesa di Santa Caterina a Formiello</strong>, comode per chi allunga leggermente verso Porta Capuana. Poi si incontra l'enorme murale col volto di San Gennaro: significa che si è arrivati a Forcella, quindi in zona pizzeria Michele — qui le pizzerie storiche si moltiplicano nel raggio di poche decine di metri (<strong>L'Antica Pizzeria da Michele</strong>, <strong>1947 Pizza Fritta</strong>, <strong>Pizzeria del Popolo</strong>, <strong>Bro. di Ciro e Antonio Tutino</strong>, <strong>Franco Gallifuoco</strong>, <strong>Da Donato</strong>, <strong>Pizzeria Passionamij</strong>, fino a <strong>Pizzeria Carmnella</strong> più avanti verso il Mercato di Poggioreale) insieme a piccole chiese di quartiere come <strong>Sant'Agrippino</strong>, <strong>Santa Maria di Caravaggio</strong>, <strong>Santa Maria Egiziaca a Forcella</strong> e la trecentesca <strong>Basilica di Santa Maria del Carmine Maggiore</strong>. Per un pasto più completo, <strong>Addù Giggin</strong>, <strong>Il Datterino</strong> e <strong>Sapori Tra Le Mani</strong> sono trattorie di zona; per chiudere in dolcezza, l'<strong>Antico Forno delle Sfogliatelle Attanasio</strong> ha anche una sede qui vicino a Forcella.</p>
       <div class="itin-tappe">
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Museo%20Archeologico%20Nazionale%20Napoli" target="_blank">Museo Archeologico Nazionale</a>
-        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Duomo%20di%20Napoli%20Napoli" target="_blank">Duomo di Napoli</a>
-        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Tesoro%20di%20San%20Gennaro%20Napoli" target="_blank">Tesoro di San Gennaro</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20Sant%27Aniello%20a%20Caponapoli%20Napoli" target="_blank">Chiesa di Sant'Aniello a Caponapoli</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20dei%20Girolamini%20Napoli" target="_blank">Chiesa dei Girolamini</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Biblioteca%20dei%20Girolamini%20Napoli" target="_blank">Biblioteca dei Girolamini</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Basilica%20di%20Santa%20Restituta%20Napoli" target="_blank">Basilica di Santa Restituta</a>
+        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Duomo%20di%20Napoli%20Napoli" target="_blank">Duomo di Napoli</a>
+        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Tesoro%20di%20San%20Gennaro%20Napoli" target="_blank">Tesoro di San Gennaro</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Battistero%20di%20San%20Giovanni%20in%20Fonte%20Napoli" target="_blank">Battistero di San Giovanni in Fonte</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20Santa%20Maria%20Donnaregina%20Vecchia%20Napoli" target="_blank">Chiesa di Santa Maria Donnaregina Vecchia</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=MADRE%20%E2%80%94%20Museo%20d%27Arte%20Contemporanea%20Donnaregina%20Napoli" target="_blank">MADRE — Museo d'Arte Contemporanea Donnaregina</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20San%20Giovanni%20a%20Carbonara%20Napoli" target="_blank">Chiesa di San Giovanni a Carbonara</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20Santa%20Caterina%20a%20Formiello%20Napoli" target="_blank">Chiesa di Santa Caterina a Formiello</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Antico%20Forno%20delle%20Sfogliatelle%20Calde%20Fratelli%20Attanasio%20Napoli" target="_blank">Antico Forno delle Sfogliatelle Calde Fratelli Attanasio</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Museo%20Filangieri%20Napoli" target="_blank">Museo Filangieri</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Murale%20San%20Gennaro%20%28Forcella%29%20Napoli" target="_blank">Murale San Gennaro (Forcella)</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Pizzeria%20Michele%20Napoli" target="_blank">Pizzeria Michele</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=L%27Antica%20Pizzeria%20da%20Michele%20Napoli" target="_blank">L'Antica Pizzeria da Michele</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=1947%20Pizza%20Fritta%20Napoli" target="_blank">1947 Pizza Fritta</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20Santa%20Maria%20Egiziaca%20a%20Forcella%20Napoli" target="_blank">Chiesa di Santa Maria Egiziaca a Forcella</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20Santa%20Maria%20di%20Caravaggio%20Napoli" target="_blank">Chiesa di Santa Maria di Caravaggio</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20Sant%27Agrippino%20a%20Forcella%20Napoli" target="_blank">Chiesa di Sant'Agrippino a Forcella</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Add%C3%B9%20Giggin%20Napoli" target="_blank">Addù Giggin</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Il%20Datterino%20Napoli" target="_blank">Il Datterino</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20Sant%27Eligio%20Maggiore%20Napoli" target="_blank">Chiesa di Sant'Eligio Maggiore</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Pizzeria%20del%20Popolo%20Napoli" target="_blank">Pizzeria del Popolo</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Bro.%20di%20Ciro%20e%20Antonio%20Tutino%20Napoli" target="_blank">Bro. di Ciro e Antonio Tutino</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Basilica%20di%20Santa%20Maria%20del%20Carmine%20Maggiore%20Napoli" target="_blank">Basilica di Santa Maria del Carmine Maggiore</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Sapori%20Tra%20Le%20Mani%20Napoli" target="_blank">Sapori Tra Le Mani</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Pizzeria%20Passionamij%20Napoli" target="_blank">Pizzeria Passionamij</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Franco%20Gallifuoco%20Napoli" target="_blank">Franco Gallifuoco</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Da%20Donato%20Napoli" target="_blank">Da Donato</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Pizzeria%20Carmnella%20Napoli" target="_blank">Pizzeria Carmnella</a>
       </div>
     </div>
   </div>
@@ -514,19 +564,70 @@
       </div>
     </div>
     <div class="itin-body">
-      <p>Logisticamente adiacente al Blu. Si comincia con un caffè "Harem" al bar Mexico in Piazza Dante. Si scende per via Toledo fino a intercettare Spaccanapoli e si segue tutta la strada: si incontrano piazza del Gesù (con la relativa chiesa), il Monastero di Santa Chiara e piazza San Domenico Maggiore. Da qui si sale alla Cappella Sansevero per ammirare il Cristo Velato. Uscendo si può mangiare a via dei Tribunali; accanto alla pizzeria Decumani c'è l'entrata di Napoli Sotterranea. Dopo la visita, si compra il limoncello da Limonè (lì affianco) e si scende verso San Gregorio Armeno.</p>
+      <div class="itin-meta"><span>🚩 Partenza: Bar Mexico, Piazza Dante</span><span>🏁 Arrivo: Chiesa di San Giuseppe delle Scalze a Pontecorvo</span></div>
+      <p>Logisticamente adiacente al Blu, ed è di gran lunga l'itinerario con più tappe della guida: qui si concentra il centro storico più denso di Napoli, decumani compresi. Si comincia con un caffè "Harem" al bar Mexico in Piazza Dante (anche il roastery <strong>Bar Mexico — miscela Passalacqua</strong> è qui vicino), con soste possibili a <strong>Piazza Bellini</strong>, <strong>Libreria Berisio</strong> e la <strong>Chiesa di San Pietro a Majella</strong>. Si scende per via Toledo — incrociando le chiese di <strong>San Pietro Martire</strong>, <strong>Sant'Eframo Vecchio</strong> e <strong>San Giovanni Maggiore</strong> — fino a intercettare Spaccanapoli e si segue tutta la strada, tra locali come <strong>Trattoria da Nennella</strong>, <strong>400 Gradi</strong> e <strong>Cammarota Spritz</strong>: si incontrano piazza del Gesù con la <strong>Chiesa del Gesù Nuovo</strong>, il Monastero di Santa Chiara (il cui <strong>Complesso Monumentale</strong> e <strong>Chiostro Maiolicato</strong> sono le tappe da non perdere) e piazza San Domenico Maggiore, con la <strong>Basilica di San Domenico Maggiore</strong> stessa, il quattrocentesco <strong>Palazzo Diomede Carafa</strong> proprio sulla piazza e la vicina <strong>Cappella del Monte di Pietà</strong>. Da qui si sale alla Cappella Sansevero per ammirare il Cristo Velato, con accanto anche la <strong>Chiesa di Santa Maria la Nova</strong> poco più avanti.</p>
       <p><strong>Nota 2026:</strong> il biglietto ordinario della Cappella Sansevero è oggi 12€ (non più i "7 euro" di qualche anno fa) — resta comunque tra le visite più imperdibili della città. La biglietteria è stata temporaneamente trasferita in via Raimondo di Sangro 12, a pochi passi dall'ingresso: verifica sul sito ufficiale prima di andare. Consigliato prenotare online per evitare la fila, soprattutto nel weekend.</p>
+      <p><strong>Verso i decumani e San Gregorio Armeno:</strong> uscendo si può mangiare a via dei Tribunali — pizzerie storiche come <strong>Gino Sorbillo</strong>, <strong>Antonio Sorbillo</strong> e <strong>Palazzo Petrucci Pizzeria</strong> sono tutte su questo tratto, insieme a locande come <strong>Tandem</strong>, <strong>La Campagnola</strong> e <strong>Casa Lazzarò</strong>; accanto alla pizzeria Decumani c'è l'entrata di Napoli Sotterranea, con la vicina <strong>Neapolis Sotterrata</strong>. Dopo la visita, si compra il limoncello da Limonè (lì affianco) e si scende verso San Gregorio Armeno, dove chiesa e chiostro omonimi meritano entrambi la visita insieme al vicino <strong>Palazzo Marigliano</strong>. Non lontano si trovano anche <strong>Basilica di San Paolo Maggiore</strong> e <strong>Basilica di San Lorenzo Maggiore</strong>, i due complessi dei <strong>Santi Severino e Sossio</strong> e <strong>Santi Marcellino e Festo</strong> con i relativi chiostri, e — spostandosi verso la Pignasecca — la <strong>Chiesa di Sant'Anna dei Lombardi</strong>, la <strong>Basilica dello Spirito Santo</strong> e la <strong>Chiesa di San Nicola alla Carità</strong>, con soste golose da <strong>Da Attilio alla Pignasecca</strong> e <strong>La Tavernetta di Vittozzi</strong>, chiudendo con la <strong>Chiesa di San Giuseppe delle Scalze a Pontecorvo</strong>.</p>
       <div class="itin-tappe">
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Bar%20Mexico%2C%20Piazza%20Dante%20Napoli" target="_blank">Bar Mexico, Piazza Dante</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Bar%20Mexico%20%E2%80%94%20miscela%20Passalacqua%20Napoli" target="_blank">Bar Mexico — miscela Passalacqua</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Libreria%20Berisio%20Napoli" target="_blank">Libreria Berisio</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Piazza%20Bellini%20Napoli" target="_blank">Piazza Bellini</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20San%20Pietro%20a%20Majella%20Napoli" target="_blank">Chiesa di San Pietro a Majella</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Via%20Toledo%20Napoli" target="_blank">Via Toledo</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20San%20Pietro%20Martire%20Napoli" target="_blank">Chiesa di San Pietro Martire</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20Sant%27Eframo%20Vecchio%20Napoli" target="_blank">Chiesa di Sant'Eframo Vecchio</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Basilica%20di%20San%20Giovanni%20Maggiore%20Napoli" target="_blank">Basilica di San Giovanni Maggiore</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Spaccanapoli%20Napoli" target="_blank">Spaccanapoli</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Trattoria%20da%20Nennella%20Napoli" target="_blank">Trattoria da Nennella</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=400%20Gradi%20Napoli" target="_blank">400 Gradi</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Cammarota%20Spritz%20Napoli" target="_blank">Cammarota Spritz</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Piazza%20del%20Ges%C3%B9%20Napoli" target="_blank">Piazza del Gesù</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20del%20Ges%C3%B9%20Nuovo%20Napoli" target="_blank">Chiesa del Gesù Nuovo</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=OAK%20%E2%80%94%20Napoli%20Vino%20e%20Birra%20Artigianale%20Napoli" target="_blank">OAK — Napoli Vino e Birra Artigianale</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Monastero%20di%20Santa%20Chiara%20Napoli" target="_blank">Monastero di Santa Chiara</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Complesso%20Monumentale%20di%20Santa%20Chiara%20Napoli" target="_blank">Complesso Monumentale di Santa Chiara</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiostro%20Maiolicato%20di%20Santa%20Chiara%20Napoli" target="_blank">Chiostro Maiolicato di Santa Chiara</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=San%20Domenico%20Maggiore%20Napoli" target="_blank">San Domenico Maggiore</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Basilica%20di%20San%20Domenico%20Maggiore%20Napoli" target="_blank">Basilica di San Domenico Maggiore</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Palazzo%20Diomede%20Carafa%20Napoli" target="_blank">Palazzo Diomede Carafa</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Cappella%20del%20Monte%20di%20Piet%C3%A0%20Napoli" target="_blank">Cappella del Monte di Pietà</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Cappella%20Sansevero%20%28Cristo%20Velato%29%20Napoli" target="_blank">Cappella Sansevero (Cristo Velato)</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Cappella%20Sansevero%20Napoli" target="_blank">Cappella Sansevero</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20Santa%20Maria%20la%20Nova%20Napoli" target="_blank">Chiesa di Santa Maria la Nova</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Gino%20Sorbillo%20Napoli" target="_blank">Gino Sorbillo</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Antonio%20Sorbillo%20Napoli" target="_blank">Antonio Sorbillo</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Palazzo%20Petrucci%20Pizzeria%20Napoli" target="_blank">Palazzo Petrucci Pizzeria</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Tandem%20%28rag%C3%B9%20napoletano%29%20Napoli" target="_blank">Tandem (ragù napoletano)</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=La%20Campagnola%20Napoli" target="_blank">La Campagnola</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Casa%20Lazzar%C3%B2%20Napoli" target="_blank">Casa Lazzarò</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Napoli%20Sotterranea%20Napoli" target="_blank">Napoli Sotterranea</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=La%20Neapolis%20Sotterrata%20Napoli" target="_blank">La Neapolis Sotterrata</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Limon%C3%A8%20Napoli" target="_blank">Limonè</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=San%20Gregorio%20Armeno%20Napoli" target="_blank">San Gregorio Armeno</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20San%20Gregorio%20Armeno%20Napoli" target="_blank">Chiesa di San Gregorio Armeno</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiostro%20di%20San%20Gregorio%20Armeno%20Napoli" target="_blank">Chiostro di San Gregorio Armeno</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Palazzo%20Marigliano%20Napoli" target="_blank">Palazzo Marigliano</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Basilica%20di%20San%20Paolo%20Maggiore%20Napoli" target="_blank">Basilica di San Paolo Maggiore</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Basilica%20di%20San%20Lorenzo%20Maggiore%20Napoli" target="_blank">Basilica di San Lorenzo Maggiore</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Basilica%20dei%20Santi%20Severino%20e%20Sossio%20Napoli" target="_blank">Basilica dei Santi Severino e Sossio</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiostro%20del%20Platano%20%28Santi%20Severino%20e%20Sossio%29%20Napoli" target="_blank">Chiostro del Platano (Santi Severino e Sossio)</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiostro%20e%20Complesso%20dei%20Santi%20Marcellino%20e%20Festo%20Napoli" target="_blank">Chiostro e Complesso dei Santi Marcellino e Festo</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiostro%20dei%20Santi%20Marcellino%20e%20Festo%20Napoli" target="_blank">Chiostro dei Santi Marcellino e Festo</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Complesso%20Museale%20Santa%20Maria%20delle%20Anime%20del%20Purgatorio%20ad%20Arco%20Napoli" target="_blank">Complesso Museale Santa Maria delle Anime del Purgatorio ad Arco</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=A%20Mbasciata%20Napoli" target="_blank">A Mbasciata</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Caff%C3%A8%20Bistrot%20Diaz%20Napoli" target="_blank">Caffè Bistrot Diaz</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Gran%20Caff%C3%A8%20Ciorfito%20Napoli" target="_blank">Gran Caffè Ciorfito</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=La%20Figlia%20del%20Presidente%20Napoli" target="_blank">La Figlia del Presidente</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Pasticceria%20Salvatore%20Capparelli%20Napoli" target="_blank">Pasticceria Salvatore Capparelli</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20Santa%20Maria%20della%20Stella%20Napoli" target="_blank">Chiesa di Santa Maria della Stella</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20Sant%27Anna%20dei%20Lombardi%20Napoli" target="_blank">Chiesa di Sant'Anna dei Lombardi</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Basilica%20dello%20Spirito%20Santo%20Napoli" target="_blank">Basilica dello Spirito Santo</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20San%20Nicola%20alla%20Carit%C3%A0%20Napoli" target="_blank">Chiesa di San Nicola alla Carità</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Da%20Attilio%20alla%20Pignasecca%20Napoli" target="_blank">Da Attilio alla Pignasecca</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Ceraldi%20Caff%C3%A8%20Napoli" target="_blank">Ceraldi Caffè</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=La%20Tavernetta%20di%20Vittozzi%20Napoli" target="_blank">La Tavernetta di Vittozzi</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20San%20Giuseppe%20delle%20Scalze%20a%20Pontecorvo%20Napoli" target="_blank">Chiesa di San Giuseppe delle Scalze a Pontecorvo</a>
       </div>
     </div>
   </div>
@@ -540,18 +641,56 @@
       </div>
     </div>
     <div class="itin-body">
-      <p>Si sale in funicolare al Vomero per visitare la Certosa di San Martino (biglietto intero 6€, ridotto 2€ dai 18 ai 24 anni, gratuito per gli under 18 e la prima domenica del mese; aperta tutti i giorni 8:30-17:00, ultimo ingresso alle 16:00). Per scendere si prende la funicolare Centrale, fermata Augusteo — ci si trova praticamente alla fine di via Toledo, quindi vicino a piazza Trieste e Trento, con Palazzo Reale, Teatro San Carlo, Maschio Angioino e piazza Plebiscito tutti nelle vicinanze. Da qui si scende verso il mare per il lungomare.</p>
+      <div class="itin-meta"><span>🚩 Partenza: Funicolare Vomero</span><span>🏁 Arrivo: Castel dell'Ovo</span></div>
+      <p>Si sale in funicolare al Vomero, con soste possibili alla <strong>Chiesa di Santa Teresa a Chiaia</strong>, a <strong>Villa Pignatelli</strong> e alla <strong>Chiesa di Santa Maria in Portico</strong> se si sceglie di salire a piedi da Chiaia invece che in funicolare. In cima, oltre alla Certosa di San Martino (biglietto intero 6€, ridotto 2€ dai 18 ai 24 anni, gratuito per gli under 18 e la prima domenica del mese; aperta tutti i giorni 8:30-17:00, ultimo ingresso alle 16:00) vale la sosta ai suoi <strong>chiostri</strong> e al vicino <strong>Castel Sant'Elmo</strong>, con <strong>Villa Floridiana</strong> a pochi passi per chi vuole un parco panoramico in più.</p>
       <p><strong>Nota 2026:</strong> la Funicolare Centrale ha subito alcune chiusure programmate per monitoraggio dell'impianto (es. due giorni a febbraio 2026): controlla gli avvisi ANM prima di partire, e tieni come alternativa la Funicolare di Chiaia o di Montesanto.</p>
+      <p><strong>Verso il centro e il mare:</strong> per scendere si prende la funicolare Centrale, fermata Augusteo — ci si trova praticamente alla fine di via Toledo, quindi vicino a piazza Trieste e Trento, con Palazzo Reale, Teatro San Carlo, Maschio Angioino e piazza Plebiscito tutti nelle vicinanze; lungo il tragitto si incrociano anche <strong>Palazzo Serra di Cassano</strong>, <strong>Palazzo Mannajuolo</strong>, la <strong>Basilica di San Francesco di Paola</strong> che chiude Piazza Plebiscito e la <strong>Chiesa di San Ferdinando</strong>. Da qui si scende verso il mare per il lungomare, passando per <strong>Chiesa di Santa Maria Egiziaca a Pizzofalcone</strong> e il <strong>Belvedere</strong> omonimo, fino a Castel dell'Ovo.</p>
+      <p><strong>Estensione Posillipo (mezza giornata separata, non a piedi):</strong> chi vuole allontanarsi ulteriormente verso Mergellina e Posillipo trova <strong>Villa Doria d'Angri</strong> e <strong>Palazzo Donn'Anna</strong>, le pizzerie <strong>50 Kalò</strong>, <strong>La Notizia</strong>, <strong>Pizzeria Pellone</strong> e <strong>Diego Vitagliano</strong>, e infine <strong>Villa Rosebery</strong>, il <strong>Parco Virgiliano</strong> e il <strong>Parco delle Tombe di Virgilio e Leopardi</strong>: da lì la vista sul golfo è tra le più belle della città, ma la distanza (diversi km) rende più comodo l'autobus o un taxi piuttosto che proseguire a piedi dal lungomare.</p>
       <div class="itin-tappe">
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Funicolare%20Vomero%20Napoli" target="_blank">Funicolare Vomero</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20Santa%20Teresa%20a%20Chiaia%20Napoli" target="_blank">Chiesa di Santa Teresa a Chiaia</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Villa%20Pignatelli%20Napoli" target="_blank">Villa Pignatelli</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20Santa%20Maria%20in%20Portico%20Napoli" target="_blank">Chiesa di Santa Maria in Portico</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Complesso%20di%20San%20Francesco%20degli%20Scarioni%20Napoli" target="_blank">Complesso di San Francesco degli Scarioni</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Villa%20Floridiana%20Napoli" target="_blank">Villa Floridiana</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Castel%20Sant%27Elmo%20Napoli" target="_blank">Castel Sant'Elmo</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Certosa%20di%20San%20Martino%20Napoli" target="_blank">Certosa di San Martino</a>
-        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Funicolare%20Centrale%20%28Augusteo%29%20Napoli" target="_blank">Funicolare Centrale (Augusteo)</a>
-        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Piazza%20Trieste%20e%20Trento%20Napoli" target="_blank">Piazza Trieste e Trento</a>
-        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Palazzo%20Reale%20Napoli" target="_blank">Palazzo Reale</a>
-        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Teatro%20San%20Carlo%20Napoli" target="_blank">Teatro San Carlo</a>
-        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Maschio%20Angioino%20Napoli" target="_blank">Maschio Angioino</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiostri%20della%20Certosa%20di%20San%20Martino%20Napoli" target="_blank">Chiostri della Certosa di San Martino</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Da%20Marittiello%20Napoli" target="_blank">Da Marittiello</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20San%20Carlo%20alle%20Mortelle%20Napoli" target="_blank">Chiesa di San Carlo alle Mortelle</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Palazzo%20Mannajuolo%20Napoli" target="_blank">Palazzo Mannajuolo</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=La%20Masardona%20Napoli" target="_blank">La Masardona</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Palazzo%20Serra%20di%20Cassano%20Napoli" target="_blank">Palazzo Serra di Cassano</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20Santa%20Maria%20Egiziaca%20a%20Pizzofalcone%20Napoli" target="_blank">Chiesa di Santa Maria Egiziaca a Pizzofalcone</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Basilica%20di%20San%20Francesco%20di%20Paola%20Napoli" target="_blank">Basilica di San Francesco di Paola</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Piazza%20Plebiscito%20Napoli" target="_blank">Piazza Plebiscito</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Pizzeria%20Miracoli%20%E2%80%94%20F.lli%20Esposito%20Napoli" target="_blank">Pizzeria Miracoli — F.lli Esposito</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Teresa%20Iorio%20%E2%80%94%20Femmena%20e%20Fritta%20Napoli" target="_blank">Teresa Iorio — Femmena e Fritta</a>
+        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Teatro%20San%20Carlo%20Napoli" target="_blank">Teatro San Carlo</a>
+        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Palazzo%20Reale%20Napoli" target="_blank">Palazzo Reale</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Gran%20Caff%C3%A8%20Gambrinus%20Napoli" target="_blank">Gran Caffè Gambrinus</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Il%20Vero%20Bar%20del%20Professore%20Napoli" target="_blank">Il Vero Bar del Professore</a>
+        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Piazza%20Trieste%20e%20Trento%20Napoli" target="_blank">Piazza Trieste e Trento</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20San%20Ferdinando%20Napoli" target="_blank">Chiesa di San Ferdinando</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Trattoria%20del%20Buongustaio%20Napoli" target="_blank">Trattoria del Buongustaio</a>
+        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Funicolare%20Centrale%20%28Augusteo%29%20Napoli" target="_blank">Funicolare Centrale (Augusteo)</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Vico%20delle%20Quercie%20Napoli" target="_blank">Vico delle Quercie</a>
+        <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Maschio%20Angioino%20Napoli" target="_blank">Maschio Angioino</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Castel%20Nuovo%20Napoli" target="_blank">Castel Nuovo</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20San%20Giacomo%20degli%20Italiani%20Napoli" target="_blank">Chiesa di San Giacomo degli Italiani</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Belvedere%20di%20Pizzofalcone%20Napoli" target="_blank">Belvedere di Pizzofalcone</a>
         <a class="itin-tappa" href="https://www.google.com/maps/search/?api=1&query=Lungomare%20Napoli" target="_blank">Lungomare</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Castel%20dell%27Ovo%20Napoli" target="_blank">Castel dell'Ovo</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Villa%20Doria%20d%27Angri%20Napoli" target="_blank">Villa Doria d'Angri</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Palazzo%20Donn%27Anna%20Napoli" target="_blank">Palazzo Donn'Anna</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=50%20Kal%C3%B2%20Napoli" target="_blank">50 Kalò</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=La%20Notizia%20Napoli" target="_blank">La Notizia</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Pizzeria%20Pellone%20Napoli" target="_blank">Pizzeria Pellone</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Diego%20Vitagliano%20Pizzeria%20Napoli" target="_blank">Diego Vitagliano Pizzeria</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Villa%20Rosebery%20Napoli" target="_blank">Villa Rosebery</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Parco%20Virgiliano%20%28Posillipo%29%20Napoli" target="_blank">Parco Virgiliano (Posillipo)</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Parco%20delle%20Tombe%20di%20Virgilio%20e%20Leopardi%20Napoli" target="_blank">Parco delle Tombe di Virgilio e Leopardi</a>
+        <a class="itin-tappa itin-tappa-new" href="https://www.google.com/maps/search/?api=1&query=Chiesa%20di%20San%20Giovanni%20Battista%20dei%20Fiorentini%20Napoli" target="_blank">Chiesa di San Giovanni Battista dei Fiorentini</a>
       </div>
     </div>
   </div>
