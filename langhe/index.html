@@ -4,6 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Guida Langhe — Borghi, Trekking e Sapori</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:wght@700&display=swap');
 
@@ -537,6 +538,37 @@
     }
     .evento-card h4 { font-size: 16.5px; color: var(--vino); margin-bottom: 3px; }
     .evento-card p { font-size: 15px; color: #3a2e28; margin: 2px 0; }
+
+    /* Filtro categorie mappa */
+    .map-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 16px;
+    }
+    .map-filter button {
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 2px solid var(--vino-chiaro);
+      background: var(--bianco);
+      color: var(--vino);
+      cursor: pointer;
+      transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .map-filter button:hover { background: var(--vino-pallido); }
+    .map-filter button.active {
+      background: var(--dot, var(--vino));
+      color: #fff;
+      border-color: var(--dot, var(--vino));
+    }
+    #langhe-map .leaflet-popup-content { font-family: 'Lato', sans-serif; font-size: 14px; }
+    #langhe-map .leaflet-popup-content a { color: var(--vino-medio); font-weight: 700; }
   </style>
 </head>
 <body>
@@ -555,6 +587,7 @@
 
 <nav class="toc">
   <div class="toc-inner">
+    <a href="#mappa">🗺️ Mappa</a>
     <a href="#soggiorno">🗓️ Il tuo soggiorno</a>
     <a href="#borghi">🏘️ Borghi non turistici</a>
     <a href="#trekking">🥾 Trekking</a>
@@ -576,6 +609,23 @@
     <div class="info-row"><span class="ic">🍇</span><span>Il Roero, sull'altra sponda del Tanaro rispetto ad Alba, è spesso trascurato ma ha sentieri e cantine di grande interesse (Rocche del Roero).</span></div>
     <div class="info-row"><span class="ic">📅</span><span>Ottima da visitare tutto l'anno: primavera/estate per trekking e vigneti verdi, autunno per vendemmia, foliage e tartufo.</span></div>
   </div>
+
+  <h2 class="section-title" id="mappa">🗺️ Mappa d'insieme</h2>
+  <p style="margin-bottom:10px; color:#5a4a40;" id="mappa-intro">Tutti i luoghi con link Google Maps citati in questa guida — soggiorno, borghi, trekking, ristoranti, dintorni di Busca, Cuneo e Torino — con pin colorati per categoria. Clicca su un pin per il nome del luogo e il link a Google Maps; usa i filtri sotto per isolare una categoria (il numero indica quanti luoghi ci sono in ciascuna).</p>
+
+  <div class="map-filter" role="group" aria-label="Filtra mappa per categoria">
+    <button type="button" class="active" data-map-filter="all">Tutte</button>
+    <button type="button" data-map-filter="soggiorno" style="--dot:#5B1A28">🗓️ Soggiorno</button>
+    <button type="button" data-map-filter="borghi" style="--dot:#B5772E">🏘️ Borghi</button>
+    <button type="button" data-map-filter="trekking" style="--dot:#566B3E">🥾 Trekking</button>
+    <button type="button" data-map-filter="dintorni" style="--dot:#C9A227">📍 Dintorni Busca</button>
+    <button type="button" data-map-filter="ristoranti" style="--dot:#9C3D8E">🍽️ Ristoranti</button>
+    <button type="button" data-map-filter="cuneo" style="--dot:#0B4F6C">🏛️ Cuneo</button>
+    <button type="button" data-map-filter="torino" style="--dot:#1878A3">🏛️ Torino</button>
+  </div>
+
+  <div id="langhe-map" style="height:480px; border-radius:16px; margin:16px 0; box-shadow:0 3px 14px var(--ombra); z-index:1;"></div>
+  <p style="font-size:13px; color:#888; margin-top:-6px; margin-bottom:20px;">Mappa realizzata con Leaflet e dati OpenStreetMap. Le coordinate sono ottenute per geocoding automatico dal nome del luogo: per indirizzi molto specifici o insegne minori la posizione può essere approssimata al centro del comune o della via più vicina — verifica sempre su Google Maps prima di partire.</p>
 
   <h2 class="section-title" id="soggiorno">🗓️ Il tuo soggiorno — 17-23 agosto 2026</h2>
 
@@ -982,18 +1032,19 @@
   </div>
 
   <h3 style="font-family:'Playfair Display',Georgia,serif; color:var(--vino); font-size:19px; margin:30px 0 12px;">🥾 Trekking vicino a Busca</h3>
+  <p style="margin-bottom:10px; color:#5a4a40;">Percorsi specifici, verificati con dettagli di lunghezza e dislivello dove disponibili, per chi vuole camminare senza allontanarsi troppo dall'alloggio.</p>
 
   <div class="tratto-card">
     <div class="tratto-header">
       <span class="tratto-emoji">🍄</span>
       <div class="tratto-info">
-        <div class="quota">~45 min o ~2h a seconda dell'anello · dislivello contenuto</div>
-        <h2>Ciciu del Villar San Costanzo</h2>
+        <div class="quota">Ciciuvagando: ~45 min, facile · Escursionistico: ~2h verso Colle Liretta</div>
+        <h2>Riserva Naturale dei Ciciu del Villar San Costanzo</h2>
       </div>
     </div>
     <div class="tratto-body">
       <span class="difficulty diff-facile">Facile</span>
-      <p>Due anelli nella riserva naturale (breve o lungo) tra i caratteristici "funghi di pietra". Percorso ombreggiato nel bosco, ottimo anche nelle ore più calde della giornata.</p>
+      <p>La riserva propone tre percorsi distinti, tutti con partenza dal centro visite di Villar San Costanzo (pochi minuti da Busca). Il <strong>sentiero "Ciciuvagando"</strong> (~45 minuti) è il percorso introduttivo tra i caratteristici "funghi di pietra" scolpiti dall'erosione glaciale. Il <strong>percorso escursionistico</strong> (circa 2 ore) si stacca dal primo e sale lungo la Costa Pragamonti in direzione del Colle Liretta, per chi vuole allungare la camminata con più dislivello; una variante estesa arriva fino al Colle della Liretta in circa 3 ore, punto di partenza anche per il parapendio e il deltaplano. C'è pure un breve <strong>percorso ginnico</strong> con 16 stazioni di attrezzi in legno lungo un vallone di circa 500 metri, comodo se si è in famiglia con bambini.</p>
     </div>
   </div>
 
@@ -1001,13 +1052,27 @@
     <div class="tratto-header">
       <span class="tratto-emoji">🏔️</span>
       <div class="tratto-info">
-        <div class="quota">Anello di cresta · impegnativo</div>
+        <div class="quota">Anello di cresta, vette 2.231-2.403 m · impegnativo</div>
         <h2>Massiccio della Bisalta (Bric Costa Rossa, Sperone Centrale, Besimauda)</h2>
       </div>
     </div>
     <div class="tratto-body">
       <span class="difficulty diff-intenso">Intenso</span>
-      <p>La montagna simbolo del Cuneese, visibile anche da Busca nelle giornate limpide. Anello di cresta con tratti rocciosi e panorami che spaziano dalle Alpi Marittime alla pianura. Traccia GPS: <a href="https://it.wikiloc.com/percorsi-escursionismo/anello-massiccio-della-bisalta-passando-per-bric-costa-rossa-sperone-centrale-monte-besimauda-e-rit-176319795" target="_blank">Anello massiccio della Bisalta su Wikiloc</a>.</p>
+      <p>La montagna simbolo del Cuneese, visibile anche da Busca nelle giornate limpide: la vetta della Besimauda (Bisalta) raggiunge i 2.231 m, il Bric Costa Rossa i 2.403 m. Esistono più vie di accesso: da est lungo la <strong>Costa della Mula</strong>, seguendo tracce di passaggio su pietraie fino al crinale spartiacque (la via più diretta); un itinerario più lungo con partenza da <strong>San Giacomo in Val Colla</strong>; oppure un terzo percorso lungo il crinale meridionale che collega la vetta al Bric Costa Rossa, raggiungibile anche da Limone Piemonte. Anello di cresta con tratti rocciosi e panorami che spaziano dalle Alpi Marittime alla pianura padana. Traccia GPS: <a href="https://it.wikiloc.com/percorsi-escursionismo/anello-massiccio-della-bisalta-passando-per-bric-costa-rossa-sperone-centrale-monte-besimauda-e-rit-176319795" target="_blank">Anello massiccio della Bisalta su Wikiloc</a>.</p>
+    </div>
+  </div>
+
+  <div class="tratto-card">
+    <div class="tratto-header">
+      <span class="tratto-emoji">⛰️</span>
+      <div class="tratto-info">
+        <div class="quota">Variabile · da facile a moderato secondo il tratto</div>
+        <h2>Strada dei Cannoni a piedi (tratti panoramici)</h2>
+      </div>
+    </div>
+    <div class="tratto-body">
+      <span class="difficulty diff-facile">Facile / Moderato</span>
+      <p>Oltre a essere percorribile in auto o bici, la Strada dei Cannoni si presta anche a tratti a piedi: partenza consigliata da Busca o da Roccabruna, camminando lungo l'antica sede militare panoramica verso la Valle Maira e la Valle Varaita. Nessun bisogno di fare l'intero percorso: anche una passeggiata di un paio d'ore tra i tornanti panoramici regala vedute ampie sulle Alpi Marittime, con dislivello contenuto e fondo sterrato ben tenuto.</p>
     </div>
   </div>
 
@@ -1136,6 +1201,74 @@
 <footer>
   <p>Guida di Dario — aggiornata luglio 2026</p>
 </footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(function() {
+  var mapEl = document.getElementById('langhe-map');
+  if (!mapEl || typeof L === 'undefined') return;
+
+  var pois = [{"cat": "soggiorno", "name": "Busca", "lat": 44.50843, "lon": 7.449917}, {"cat": "soggiorno", "name": "Saluzzo", "lat": 44.642463, "lon": 7.486879}, {"cat": "soggiorno", "name": "Alba", "lat": 44.390436, "lon": 7.551153}, {"cat": "soggiorno", "name": "La Morra", "lat": 44.646512, "lon": 7.875957}, {"cat": "soggiorno", "name": "Cortemilia", "lat": 44.580717, "lon": 8.187689}, {"cat": "borghi", "name": "Bergolo", "lat": 44.383422, "lon": 7.535778}, {"cat": "borghi", "name": "Feisoglio", "lat": 44.772238, "lon": 7.29637}, {"cat": "borghi", "name": "Cissone", "lat": 44.56267, "lon": 7.57844}, {"cat": "borghi", "name": "Mombarcaro", "lat": 44.467637, "lon": 8.088242}, {"cat": "borghi", "name": "Niella Belbo", "lat": 44.401659, "lon": 7.890234}, {"cat": "borghi", "name": "Perno (Monforte d'Alba)", "lat": 44.6111, "lon": 7.974752}, {"cat": "borghi", "name": "Rocche del Roero", "lat": 44.79585, "lon": 7.88694}, {"cat": "borghi", "name": "Serravalle Langhe", "lat": 44.567657, "lon": 7.425409}, {"cat": "borghi", "name": "Cravanzana", "lat": 44.57101, "lon": 8.122803}, {"cat": "trekking", "name": "Sentiero del Barolo (La Morra)", "lat": 44.646512, "lon": 7.875957}, {"cat": "trekking", "name": "Sentiero Religioso del Roero (Montà)", "lat": 44.298837, "lon": 7.889281}, {"cat": "trekking", "name": "Sentiero degli Asfodeli (Sommariva Perno)", "lat": 44.745012, "lon": 7.899985}, {"cat": "trekking", "name": "Ciciu del Villar San Costanzo", "lat": 44.489885, "lon": 7.394133}, {"cat": "trekking", "name": "Massiccio della Bisalta", "lat": 44.269893, "lon": 7.605937}, {"cat": "trekking", "name": "Strada dei Cannoni", "lat": 44.491243, "lon": 7.326431}, {"cat": "dintorni", "name": "Castello del Roccolo", "lat": 44.529621, "lon": 7.468282}, {"cat": "ristoranti", "name": "Repubblica di Perno", "lat": 44.6111, "lon": 7.974752}, {"cat": "ristoranti", "name": "Osteria da Gemma (Roddino)", "lat": 44.573849, "lon": 8.019119}, {"cat": "ristoranti", "name": "Trattoria Belvedere (Monteu Roero)", "lat": 44.79585, "lon": 7.88694}, {"cat": "ristoranti", "name": "Bar La Terrazza da Renza (Castiglione Falletto)", "lat": 44.623699, "lon": 7.977453}, {"cat": "ristoranti", "name": "Osteria dell'Enoteca (Canale)", "lat": 44.37624, "lon": 7.594082}, {"cat": "ristoranti", "name": "Osteria Imperfetta (Guarene)", "lat": 44.374206, "lon": 7.898041}, {"cat": "ristoranti", "name": "Ristorante Argaj (Castiglione Falletto)", "lat": 44.623699, "lon": 7.977453}, {"cat": "ristoranti", "name": "Las Vegas (Busca)", "lat": 44.515177, "lon": 7.473635}, {"cat": "ristoranti", "name": "Ristorante Rododendro (Saluzzo)", "lat": 44.646711, "lon": 7.492036}, {"cat": "cuneo", "name": "Piazza Galimberti", "lat": 44.389501, "lon": 7.547791}, {"cat": "cuneo", "name": "Contrada Mondovì", "lat": 44.3923, "lon": 7.552082}, {"cat": "cuneo", "name": "Cattedrale di Santa Maria del Bosco", "lat": 44.390825, "lon": 7.548593}, {"cat": "cuneo", "name": "Complesso Monumentale di San Francesco", "lat": 44.39478, "lon": 7.550807}, {"cat": "cuneo", "name": "Chiesa di Sant'Ambrogio", "lat": 44.393874, "lon": 7.553154}, {"cat": "cuneo", "name": "Santuario della Madonna degli Angeli", "lat": 44.36648, "lon": 7.536996}, {"cat": "torino", "name": "Mole Antonelliana", "lat": 45.068989, "lon": 7.693192}, {"cat": "torino", "name": "Piazza San Carlo", "lat": 45.067917, "lon": 7.68272}, {"cat": "torino", "name": "Palazzo Reale", "lat": 45.073053, "lon": 7.686963}, {"cat": "torino", "name": "Palazzo Madama", "lat": 45.070965, "lon": 7.685805}, {"cat": "torino", "name": "Duomo di Torino", "lat": 45.073327, "lon": 7.685411}, {"cat": "torino", "name": "Basilica di Superga", "lat": 45.080866, "lon": 7.768671}, {"cat": "torino", "name": "Museo Egizio", "lat": 45.068435, "lon": 7.684351}];
+
+  var colors = { soggiorno: '#5B1A28', borghi: '#B5772E', trekking: '#566B3E', dintorni: '#C9A227', ristoranti: '#9C3D8E', cuneo: '#0B4F6C', torino: '#1878A3' };
+
+  var map = L.map('langhe-map', { scrollWheelZoom: false }).setView([44.62, 7.75], 10);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  function dotIcon(color) {
+    return L.divIcon({
+      className: '',
+      html: '<div style="width:16px;height:16px;border-radius:50%;background:' + color + ';border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.4);"></div>',
+      iconSize: [16, 16],
+      iconAnchor: [8, 8]
+    });
+  }
+
+  var markers = pois.map(function(p) {
+    var marker = L.marker([p.lat, p.lon], { icon: dotIcon(colors[p.cat] || '#333') }).addTo(map);
+    var mapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.name + ' Langhe');
+    marker.bindPopup('<strong>' + p.name + '</strong><br><a href="' + mapsUrl + '" target="_blank">📍 Vedi su Google Maps</a>');
+    marker._cat = p.cat;
+    return marker;
+  });
+
+  // Calcola dinamicamente la cardinalità per categoria e la scrive nei bottoni filtro
+  var counts = {};
+  pois.forEach(function(p) { counts[p.cat] = (counts[p.cat] || 0) + 1; });
+  var totalCount = pois.length;
+
+  var mapButtons = document.querySelectorAll('.map-filter button');
+  mapButtons.forEach(function(btn) {
+    var cat = btn.getAttribute('data-map-filter');
+    var n = cat === 'all' ? totalCount : (counts[cat] || 0);
+    btn.setAttribute('data-count', n);
+    btn.innerHTML = btn.innerHTML + ' (' + n + ')';
+  });
+
+  var introEl = document.getElementById('mappa-intro');
+  if (introEl) {
+    introEl.innerHTML = introEl.innerHTML.replace('Tutti i luoghi', 'Tutti i ' + totalCount + ' luoghi');
+  }
+
+  mapButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var cat = btn.getAttribute('data-map-filter');
+      mapButtons.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      markers.forEach(function(m) {
+        if (cat === 'all' || m._cat === cat) {
+          if (!map.hasLayer(m)) map.addLayer(m);
+        } else {
+          if (map.hasLayer(m)) map.removeLayer(m);
+        }
+      });
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
