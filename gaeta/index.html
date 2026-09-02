@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaeta — Guida pratica tra borgo, mare e storia</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<style>
+  :root{
+    --blu-mare:#0a5f7a;
+    --blu-scuro:#083b52;
+    --sabbia:#f6efe3;
+    --terracotta:#c96a3b;
+    --testo:#2b2b2b;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI', Roboto, Arial, sans-serif;
+    background:var(--sabbia);
+    color:var(--testo);
+    line-height:1.65;
+  }
+  header{
+    background:linear-gradient(135deg, var(--blu-scuro), var(--blu-mare));
+    color:#fff;
+    padding:60px 20px 50px;
+    text-align:center;
+  }
+  header h1{
+    font-size:2.4em;
+    margin:0 0 10px;
+    letter-spacing:0.5px;
+  }
+  header p{
+    font-size:1.1em;
+    opacity:0.92;
+    max-width:700px;
+    margin:0 auto;
+  }
+  nav{
+    background:var(--blu-scuro);
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
+    padding:12px;
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  nav a{
+    color:#fff;
+    text-decoration:none;
+    font-size:0.9em;
+    padding:8px 14px;
+    border-radius:20px;
+    transition:background 0.2s;
+  }
+  nav a:hover{ background:rgba(255,255,255,0.15); }
+  main{
+    max-width:900px;
+    margin:0 auto;
+    padding:20px;
+  }
+  section{
+    margin:50px 0;
+  }
+  section h2{
+    color:var(--blu-scuro);
+    border-bottom:3px solid var(--terracotta);
+    padding-bottom:8px;
+    font-size:1.6em;
+  }
+  .card{
+    background:#fff;
+    border-radius:12px;
+    padding:20px 24px;
+    margin:18px 0;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    border-left:5px solid var(--blu-mare);
+  }
+  .card h3{
+    margin-top:0;
+    color:var(--terracotta);
+  }
+  .card .tag{
+    display:inline-block;
+    background:var(--sabbia);
+    color:var(--blu-scuro);
+    font-size:0.75em;
+    padding:3px 10px;
+    border-radius:12px;
+    margin-bottom:8px;
+  }
+  .tip{
+    background:#eef7f4;
+    border-left:5px solid #2e8b57;
+    padding:14px 20px;
+    border-radius:8px;
+    margin:20px 0;
+    font-size:0.95em;
+  }
+  .warn{
+    background:#fdf1e8;
+    border-left:5px solid var(--terracotta);
+    padding:14px 20px;
+    border-radius:8px;
+    margin:20px 0;
+    font-size:0.95em;
+  }
+  footer{
+    text-align:center;
+    padding:30px 20px;
+    background:var(--blu-scuro);
+    color:#fff;
+    font-size:0.85em;
+  }
+  footer a{ color:#ffd9a0; }
+  ul{ padding-left:20px; }
+  .maps-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top:10px;
+    font-size:0.85em;
+    font-weight:bold;
+    color:var(--blu-mare);
+    text-decoration:none;
+    border:1px solid var(--blu-mare);
+    padding:5px 12px;
+    border-radius:16px;
+    transition:background 0.15s, color 0.15s;
+  }
+  .maps-link:hover{
+    background:var(--blu-mare);
+    color:#fff;
+  }
+  .grid2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  @media(max-width:640px){
+    .grid2{ grid-template-columns:1fr; }
+    header h1{ font-size:1.8em; }
+  }
+  /* Filtro categorie mappa */
+  .map-filter{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:12px 0 16px;
+  }
+  .map-filter button{
+    font-family:inherit;
+    font-size:14px;
+    font-weight:700;
+    padding:8px 16px;
+    border-radius:20px;
+    border:2px solid var(--blu-mare);
+    background:#fff;
+    color:var(--blu-scuro);
+    cursor:pointer;
+    transition:all 0.15s;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .map-filter button:hover{ background:var(--sabbia); }
+  .map-filter button.active{
+    background:var(--dot, var(--blu-mare));
+    color:#fff;
+    border-color:var(--dot, var(--blu-mare));
+  }
+  #gaeta-map .leaflet-popup-content{ font-family:'Segoe UI', Roboto, Arial, sans-serif; font-size:14px; }
+  #gaeta-map .leaflet-popup-content a{ color:var(--blu-mare); font-weight:700; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🌊 Gaeta, tra borgo medievale e mare cristallino</h1>
+  <p>Una guida pratica a Gaeta: storia millenaria da scoprire nel borgo antico, spiagge Bandiera Blu, sapori tipici e dove mangiare bene, con una tappa extra a Formia.</p>
+</header>
+
+<nav>
+  <a href="#storia">Storia &amp; Luoghi</a>
+  <a href="#spiagge">Spiagge</a>
+  <a href="#mangiare">Dove mangiare</a>
+  <a href="#formia">Tappa a Formia</a>
+  <a href="#mappa">Mappa</a>
+  <a href="#consigli">Consigli pratici</a>
+</nav>
+
+<main>
+
+  <section id="storia">
+    <h2>🏛️ Storia e luoghi da vedere</h2>
+    <p>Gaeta si affaccia sul Mar Tirreno con una storia millenaria: dal borgo medievale di Gaeta Vecchia alle fortificazioni che per secoli hanno reso la città un baluardo strategico del Mediterraneo, fino alla spettacolare Montagna Spaccata a picco sul mare.</p>
+
+    <div class="card">
+      <span class="tag">Medioevo — XII-XIII secolo</span>
+      <h3>Gaeta Vecchia (centro storico)</h3>
+      <p>Il cuore antico della città: un dedalo di vicoli, scale e piazzette che raccontano secoli di storia. Da girare a piedi con calma, tra botteghe, scorci sul golfo e la Chiesa di San Giovanni a Mare, uno dei simboli architettonici del borgo.</p>
+      <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=Gaeta+Vecchia+centro+storico" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+    </div>
+
+    <div class="card">
+      <span class="tag">Duomo — XII secolo, rifacimenti successivi</span>
+      <h3>Cattedrale di Sant'Erasmo</h3>
+      <p>Nel cuore del borgo antico, con il suo imponente campanile romanico che domina i tetti di Gaeta Vecchia. Dedicata al patrono della città e a Santa Maria Assunta, conserva opere d'arte e un caratteristico stendardo storico legato alla tradizione marinara locale.</p>
+      <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=Cattedrale+di+Sant%27Erasmo+Gaeta" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+    </div>
+
+    <div class="card">
+      <span class="tag">VI-VII secolo, ampliato nel '200 e nel '500</span>
+      <h3>Castello Angioino-Aragonese</h3>
+      <p>La fortezza che domina la città, con un primo nucleo che risale al VI-VII secolo come risposta alle invasioni dei Longobardi. Nel 1223 Federico II vi soggiornò ordinandone la fortificazione, poi Carlo d'Angiò e in seguito Carlo V ne ampliarono le strutture: oggi presenta due corpi comunicanti di epoche diverse. La visita interna è possibile solo in certi periodi dell'anno e su prenotazione: consigliabile controllare con la Pro Loco locale prima di andare.</p>
+      <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=Castello+Angioino+Aragonese+Gaeta" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+    </div>
+
+    <div class="card">
+      <span class="tag">XI secolo — leggenda e natura</span>
+      <h3>Santuario della Montagna Spaccata</h3>
+      <p>Uno dei luoghi più suggestivi della città: una spettacolare fenditura nella roccia a picco sul mare, costruita dai monaci benedettini nell'XI secolo. Secondo la leggenda, la montagna si spaccò in tre blocchi di roccia al momento della crocifissione di Cristo — le tre fenditure parallele si vedono bene anche dal mare, arrivando in barca da Serapo. Nel complesso si trova anche la Grotta del Turco, raggiungibile scendendo una scaletta scavata nella roccia fino quasi al livello del mare.</p>
+      <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=Santuario+della+Montagna+Spaccata+Gaeta" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+    </div>
+
+    <div class="card">
+      <span class="tag">Parco naturale</span>
+      <h3>Monte Orlando</h3>
+      <p>Parco naturale panoramico che si estende sul promontorio tra Serapo e il centro storico: sentieri tra la macchia mediterranea, resti archeologici (tra cui il Mausoleo di Lucio Munazio Planco) e punti panoramici con vista mozzafiato sulla costa e sul golfo. Ottimo per una passeggiata o un trekking leggero, soprattutto nelle ore più fresche della giornata.</p>
+      <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=Parco+Monte+Orlando+Gaeta" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+    </div>
+
+    <div class="card">
+      <span class="tag">Mura storiche</span>
+      <h3>Mura borboniche</h3>
+      <p>I resti delle antiche fortificazioni borboniche che cingevano la città vecchia, testimonianza del ruolo strategico e militare di Gaeta nei secoli, quando la piazzaforte resistette a più assedi prima dell'Unità d'Italia. Un buon complemento alla visita del centro storico per chi ama la storia militare.</p>
+      <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=Mura+Borboniche+Gaeta" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+    </div>
+  </section>
+
+  <section id="spiagge">
+    <h2>🏖️ Spiagge</h2>
+    <p>La zona di Gaeta offre 7 spiagge diverse tra loro, molte premiate con la Bandiera Blu per la qualità delle acque.</p>
+
+    <div class="card">
+      <span class="tag">La principale</span>
+      <h3>Spiaggia di Serapo</h3>
+      <p>La spiaggia più rinomata e frequentata di Gaeta: si estende per circa 1,5 km lungo la costa, con sabbia fine e dorata e acque cristalline. È il vero "salotto sul mare" della città, ben servita da bar e stabilimenti, ma anche da tratti liberi.</p>
+      <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=Spiaggia+di+Serapo+Gaeta" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+    </div>
+
+    <div class="card">
+      <span class="tag">Solo via mare</span>
+      <h3>Spiaggetta dei 40 Remi</h3>
+      <p>Piccola insenatura più raccolta e pittoresca rispetto a Serapo, incastonata nella roccia tra la spiaggia di Fontania e il Pozzo del Diavolo. Il nome deriva dalle circa 40 remate necessarie per raggiungerla dagli approdi più vicini: è infatti accessibile <b>solo via mare</b> (nuotando, in canoa o in barca, partendo da Ariana, Fontania o Serapo), non esiste un accesso a piedi.</p>
+      <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=Spiaggia+dei+40+Remi+Gaeta" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+    </div>
+
+    <div class="card">
+      <span class="tag">Attenzione ai gradini!</span>
+      <h3>Spiaggia dei 300 Gradini (Arenauta)</h3>
+      <p>Lungo la Via Flacca in direzione Sperlonga, al km 24 circa, si trova questa spiaggia molto suggestiva incastonata nella roccia, circondata da ginestre, mirto e pini marittimi. Il nome dice tutto: per raggiungerla si scendono (e poi si risalgono) <b>esattamente 300 scalini</b> scavati nella roccia — da valutare bene con bambini piccoli, persone con mobilità ridotta o se si porta molto bagaglio da spiaggia. È presente anche un lido con servizi (Arenautamare) per chi non vuole portare tutto l'occorrente.</p>
+      <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=Spiaggia+300+Gradini+Arenauta+Gaeta" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+    </div>
+
+    <div class="card">
+      <span class="tag">Alternativa comoda — stabilimento</span>
+      <h3>Lido Bahia Blanca</h3>
+      <p>Per chi preferisce evitare scalinate, un'ottima alternativa nella zona è il lido <b>Bahia Blanca</b>, nella spiaggia Ariana lungo la Via Flacca: uno stabilimento organizzato e ben sistemato (con anche ristorante e possibilità di pernottare in camere/bungalow), comodo da raggiungere senza gradini. Nei weekend, specialmente a inizio settembre quando è ancora alta stagione, è consigliabile telefonare in anticipo per prenotare ombrellone e lettini.</p>
+      <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=Bahia+Blanca+Gaeta" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+    </div>
+
+    <div class="tip">💡 <b>Consiglio pratico:</b> in alta stagione arrivare a Serapo prima delle 9:00 per trovare parcheggio comodo (zona Quick Gaeta o limitrofe); nei mesi estivi sono spesso attive anche navette gratuite dal centro verso le spiagge principali. Per i lidi organizzati (come Bahia Blanca) meglio chiamare prima nei weekend per essere sicuri di trovare posto.</div>
+  </section>
+
+  <section id="mangiare">
+    <h2>🍽️ Dove mangiare e sapori tipici</h2>
+    <p>Da provare assolutamente la <b>tiella di Gaeta</b>: due dischi di pasta lievitata che racchiudono un ripieno di mare o di terra (la variante più iconica è con il polpo), sigillati a mano con la caratteristica bordatura a pizzicotti. Un piatto identitario, nato come pranzo dei pescatori e diffuso già in epoca borbonica. Da assaggiare anche le celebri <b>olive di Gaeta</b> e il pesce fresco, spesso comprato all'asta di Formia.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Antico Vico</h3>
+        <p>Nel cuore del centro storico di Gaeta Vecchia, punto di riferimento per chi cerca pesce di qualità: valorizza il pescato locale e le materie prime di stagione in un'atmosfera intima da borgo medievale.</p>
+        <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=Antico+Vico+Gaeta" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+      </div>
+      <div class="card">
+        <h3>La Salute</h3>
+        <p>Il ristorante più antico di Gaeta, attivo dal 1930, con vista sul golfo. Una garanzia di tradizione per chi vuole un'esperienza storica oltre che gastronomica.</p>
+        <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=Ristorante+La+Salute+Gaeta" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+      </div>
+      <div class="card">
+        <h3>Il Follaro</h3>
+        <p>Di fronte alla Porta di Terra, nella Gaeta medievale: piatti sia classici che più contaminati firmati dallo chef Davide Orlando, per chi cerca una cucina di pesce con qualche spunto creativo.</p>
+        <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=Il+Follaro+Gaeta" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+      </div>
+      <div class="card">
+        <h3>Scirocco Bistrot</h3>
+        <p>Atmosfera elegante ed affacciata sulla Chiesa di San Giovanni a Mare, nel borgo antico: una delle soste consigliate anche dallo staff degli hotel locali.</p>
+        <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=Scirocco+Bistrot+Gaeta" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+      </div>
+      <div class="card">
+        <h3>La Cocina di Popolla</h3>
+        <p>Cucina di mare creativa nel cuore del borgo medievale, affacciata su una piccola piazzetta: un'ottima scelta per cena con atmosfera raccolta.</p>
+        <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=La+Cocina+di+Popolla+Gaeta" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+      </div>
+      <div class="card">
+        <h3>La Tana di Cagliostro</h3>
+        <p>Affacciato sul mare nel cuore di Gaeta, specializzato in cucina di pesce: celebre per la "Votapiatto Gaetana", preparata con il pescato fresco locale del Golfo.</p>
+        <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=La+Tana+di+Cagliostro+Gaeta" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+      </div>
+    </div>
+
+    <div class="warn">⚠️ <b>Nota onesta:</b> informazioni raccolte da recensioni aggregate online al momento della stesura (settembre 2026). Prezzi, orari e qualità possono cambiare: prima di andare vale la pena controllare le recensioni più recenti su Google Maps o TripAdvisor e prenotare, soprattutto nei mesi estivi.</div>
+  </section>
+
+  <section id="formia">
+    <h2>🚗 Tappa fuori porta: Ristorante La Villetta a Formia</h2>
+    <p>A pochi minuti di auto da Gaeta, Formia è una tappa gastronomica che vale il piccolo spostamento — soprattutto per una cena dopo una giornata di mare.</p>
+
+    <div class="card">
+      <span class="tag">Cucina di pesce · Immerso nel verde</span>
+      <h3>Ristorante La Villetta</h3>
+      <p>Cucina italiana specializzata in pesce (ma con buone opzioni di carne), con specialità come coda di rospo, tartare e ravioli, e dolci fatti in casa come millefoglie e tiramisù. Ambiente elegante e curato, immerso nel verde, con ampi spazi sia interni che esterni. Valutazioni molto positive: 9.6/10 su TheFork, 4.3-4.4★ su Google e TripAdvisor, con servizio descritto come attento e ospitale. Prezzo medio intorno ai 39€ a persona, con opzioni senza glutine e vegetariane disponibili.</p>
+      <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=Ristorante+La+Villetta+Formia" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+    </div>
+
+    <div class="tip">💡 <b>Consiglio:</b> prenotare con anticipo, specialmente nei weekend estivi — il locale è molto richiesto sia da chi soggiorna a Formia che da chi arriva dalla vicina Gaeta. Prenotando tramite <b>TheFork</b> con un po' di anticipo, a seconda del periodo si può ottenere anche un piccolo sconto.</div>
+  </section>
+
+  <section id="mappa">
+    <h2>🗺️ Mappa d'insieme</h2>
+    <p style="margin-bottom:10px; color:#5a4a40;" id="mappa-intro">Tutti i luoghi citati in questa guida — storia, spiagge, ristoranti e la tappa a Formia — con pin colorati per categoria. Clicca su un pin per il nome del luogo e il link a Google Maps; usa i filtri sotto per isolare una categoria (il numero indica quanti luoghi ci sono in ciascuna).</p>
+
+    <div class="map-filter" role="group" aria-label="Filtra mappa per categoria">
+      <button type="button" class="active" data-map-filter="all">Tutte</button>
+      <button type="button" data-map-filter="storia" style="--dot:#083b52">🏛️ Storia</button>
+      <button type="button" data-map-filter="spiagge" style="--dot:#0a5f7a">🏖️ Spiagge</button>
+      <button type="button" data-map-filter="ristoranti" style="--dot:#c96a3b">🍽️ Ristoranti</button>
+      <button type="button" data-map-filter="formia" style="--dot:#2e8b57">🚗 Formia</button>
+    </div>
+
+    <div id="gaeta-map" style="height:480px; border-radius:16px; margin:16px 0; box-shadow:0 2px 8px rgba(0,0,0,0.08); z-index:1;"></div>
+    <p style="font-size:13px; color:#888; margin-top:-6px; margin-bottom:20px;">Mappa realizzata con Leaflet e dati OpenStreetMap. Le coordinate sono ottenute per geocoding dal nome/indirizzo del luogo: per indirizzi molto specifici o insegne minori la posizione può essere approssimata al centro della via più vicina — verifica sempre su Google Maps prima di partire.</p>
+  </section>
+
+  <section id="consigli">
+    <h2>🧭 Consigli pratici</h2>
+    <ul>
+      <li><b>Come arrivare:</b> in auto tramite l'A1/Autostrada del Sole (uscita Cassino o Frosinone e poi statale) o la SS7 Formia-Gaeta; da Roma anche in treno fino a Formia-Gaeta e poi bus locale.</li>
+      <li><b>Parcheggio:</b> centro storico soggetto a ZTL — utilizzare Piazzale 5 Febbraio o Via Firenze (strisce blu, circa 2€/ora), oppure le zone gratuite di Calegna (attenzione al mercoledì, giorno di mercato). Per Serapo, arrivare presto o usare le navette estive gratuite dal centro.</li>
+      <li><b>Periodo migliore:</b> l'estate è perfetta per mare e passeggiate serali nel borgo; primavera e autunno sono ideali per godersi centro storico e trekking a Monte Orlando senza folla e con temperature più miti.</li>
+      <li><b>Scarpe comode:</b> utili per il centro storico acciottolato, per la scaletta della Grotta del Turco e per i sentieri di Monte Orlando.</li>
+      <li><b>Nei dintorni:</b> Formia (anche per il traghetto verso le Isole Ponziane), Sperlonga e Ponza sono facilmente raggiungibili per una gita di un giorno.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <p>Guida creata per Dario — contenuti raccolti e verificati tramite ricerche web, settembre 2026.</p>
+  <p>⚠️ Alcune informazioni su locali e prezzi possono cambiare: verificare sempre orari e disponibilità aggiornati prima della visita.</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(function() {
+  var mapEl = document.getElementById('gaeta-map');
+  if (!mapEl || typeof L === 'undefined') return;
+
+  var pois = [
+    {"cat": "storia", "name": "Gaeta Vecchia (centro storico)", "lat": 41.2087427, "lon": 13.5862955},
+    {"cat": "storia", "name": "Cattedrale di Sant'Erasmo", "lat": 41.2089371, "lon": 13.5868749},
+    {"cat": "storia", "name": "Castello Angioino-Aragonese", "lat": 41.207517, "lon": 13.5845538},
+    {"cat": "storia", "name": "Santuario della Montagna Spaccata", "lat": 41.2047639, "lon": 13.5702449},
+    {"cat": "storia", "name": "Monte Orlando", "lat": 41.2070926, "lon": 13.5767251},
+    {"cat": "storia", "name": "Chiesa di San Giovanni a Mare", "lat": 41.2094696, "lon": 13.5893083},
+    {"cat": "storia", "name": "Porta di Terra", "lat": 41.2133206, "lon": 13.5764231},
+    {"cat": "spiagge", "name": "Spiaggia di Serapo", "lat": 41.2096125, "lon": 13.5697461},
+    {"cat": "spiagge", "name": "Spiaggetta dei 40 Remi (solo via mare)", "lat": 41.2108989, "lon": 13.5444895},
+    {"cat": "spiagge", "name": "Spiaggia dei 300 Gradini (Arenauta)", "lat": 41.2228369, "lon": 13.5241738},
+    {"cat": "spiagge", "name": "Lido Bahia Blanca", "lat": 41.24416, "lon": 13.57841},
+    {"cat": "ristoranti", "name": "Antico Vico", "lat": 41.2086704, "lon": 13.5877918},
+    {"cat": "ristoranti", "name": "Ristorante La Salute", "lat": 41.2098245, "lon": 13.5849904},
+    {"cat": "ristoranti", "name": "Il Follaro", "lat": 41.2131462, "lon": 13.5768941},
+    {"cat": "ristoranti", "name": "Scirocco Bistrot", "lat": 41.2121859, "lon": 13.5809124},
+    {"cat": "ristoranti", "name": "La Cocina di Popolla", "lat": 41.2092165, "lon": 13.5851094},
+    {"cat": "ristoranti", "name": "La Tana di Cagliostro", "lat": 41.2163177, "lon": 13.5709902},
+    {"cat": "formia", "name": "Ristorante La Villetta (Formia)", "lat": 41.2542984, "lon": 13.6785135}
+  ];
+
+  var colors = { storia: '#083b52', spiagge: '#0a5f7a', ristoranti: '#c96a3b', formia: '#2e8b57' };
+
+  var map = L.map('gaeta-map', { scrollWheelZoom: false }).setView([41.215, 13.585], 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  function dotIcon(color) {
+    return L.divIcon({
+      className: '',
+      html: '<div style="width:16px;height:16px;border-radius:50%;background:' + color + ';border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.4);"></div>',
+      iconSize: [16, 16],
+      iconAnchor: [8, 8]
+    });
+  }
+
+  var markers = pois.map(function(p) {
+    var marker = L.marker([p.lat, p.lon], { icon: dotIcon(colors[p.cat] || '#333') }).addTo(map);
+    var mapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.name + ' Gaeta');
+    marker.bindPopup('<strong>' + p.name + '</strong><br><a href="' + mapsUrl + '" target="_blank">📍 Vedi su Google Maps</a>');
+    marker._cat = p.cat;
+    return marker;
+  });
+
+  var counts = {};
+  pois.forEach(function(p) { counts[p.cat] = (counts[p.cat] || 0) + 1; });
+  var totalCount = pois.length;
+
+  var mapButtons = document.querySelectorAll('.map-filter button');
+  mapButtons.forEach(function(btn) {
+    var cat = btn.getAttribute('data-map-filter');
+    var n = cat === 'all' ? totalCount : (counts[cat] || 0);
+    btn.setAttribute('data-count', n);
+    btn.innerHTML = btn.innerHTML + ' (' + n + ')';
+  });
+
+  var introEl = document.getElementById('mappa-intro');
+  if (introEl) {
+    introEl.innerHTML = introEl.innerHTML.replace('Tutti i luoghi', 'Tutti i ' + totalCount + ' luoghi');
+  }
+
+  mapButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var cat = btn.getAttribute('data-map-filter');
+      mapButtons.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      markers.forEach(function(m) {
+        if (cat === 'all' || m._cat === cat) {
+          if (!map.hasLayer(m)) map.addLayer(m);
+        } else {
+          if (map.hasLayer(m)) map.removeLayer(m);
+        }
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
