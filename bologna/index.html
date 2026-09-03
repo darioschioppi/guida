@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Guida Bologna 2026 — La Dotta, La Grassa, La Rossa</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -347,6 +348,38 @@
       .card-grid { grid-template-columns: 1fr; }
       .hero-meta { flex-direction: column; align-items: center; gap: 8px; }
     }
+
+    /* ── MAPPA ── */
+    .map-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0;
+    }
+    .map-filter button {
+      background: #222;
+      border: 1px solid #444;
+      color: #d4c8b8;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      font-family: Georgia, serif;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .map-filter button:hover { border-color: #e07b39; color: #f5c842; }
+    .map-filter button.active {
+      background: var(--dot, #c0392b);
+      color: #fff;
+      border-color: var(--dot, #c0392b);
+    }
+    #bologna-map .leaflet-popup-content { font-family: Georgia, serif; font-size: 14px; color: #222; }
+    #bologna-map .leaflet-popup-content a { color: #8b0000; font-weight: 700; }
+    #bologna-map .leaflet-popup-content-wrapper { background: #f5e9c8; }
+    #bologna-map .leaflet-popup-tip { background: #f5e9c8; }
   </style>
 </head>
 <body>
@@ -375,6 +408,7 @@
   </div>
 
   <div id="nav-generale" class="nav-main nav-section visible">
+    <a href="#mappa">📍 Mappa</a>
     <a href="#orientarsi">🗺️ Orientarsi</a>
     <a href="#logistica">🚗 Come arrivare</a>
     <a href="#itinerario">📅 Itinerario</a>
@@ -393,6 +427,7 @@
 
   <div id="nav-cibo" class="nav-main nav-section">
     <a href="#gastronomia">🍝 Gastronomia</a>
+    <a href="#pizzerie">🍕 Pizzerie</a>
     <a href="#ristoranti">🍽️ Ristoranti</a>
     <a href="#gelato">🍦 Gelato</a>
     <a href="#mercati">🛒 Mercati</a>
@@ -424,6 +459,29 @@ function showNav(cat) {
 </script>
 
 <div class="container">
+
+  <!-- MAPPA -->
+  <section id="mappa">
+    <h2>📍 Mappa d'insieme</h2>
+    <p id="mappa-intro">Tutti i luoghi citati in questa guida — piazze, torri, chiese, musei, portici, mercati, pizzerie, ristoranti, gelaterie e locali — con pin colorati per categoria. Clicca su un pin per il nome del luogo e il link a Google Maps; usa i filtri sotto per isolare una categoria (il numero indica quanti luoghi ci sono in ciascuna).</p>
+
+    <div class="map-filter" role="group" aria-label="Filtra mappa per categoria">
+      <button type="button" class="active" data-map-filter="all">Tutte</button>
+      <button type="button" data-map-filter="piazze" style="--dot:#c0392b">🏙️ Piazze</button>
+      <button type="button" data-map-filter="torri" style="--dot:#e07b39">🗼 Torri</button>
+      <button type="button" data-map-filter="chiese" style="--dot:#2980b9">⛪ Chiese</button>
+      <button type="button" data-map-filter="musei" style="--dot:#4a7c59">🏛️ Musei</button>
+      <button type="button" data-map-filter="portici" style="--dot:#5dade2">🏛️ Portici</button>
+      <button type="button" data-map-filter="mercati" style="--dot:#f5c842">🛒 Mercati</button>
+      <button type="button" data-map-filter="pizzerie" style="--dot:#e8491d">🍕 Pizzerie</button>
+      <button type="button" data-map-filter="ristoranti" style="--dot:#9c3d8e">🍽️ Ristoranti</button>
+      <button type="button" data-map-filter="dolci" style="--dot:#d4879c">🍦 Gelato & Dolci</button>
+      <button type="button" data-map-filter="vita" style="--dot:#7b52b8">🌙 Vita notturna</button>
+    </div>
+
+    <div id="bologna-map" style="height:480px; border-radius:10px; margin:16px 0; border:1px solid #333; z-index:1;"></div>
+    <p style="font-size:0.82rem; color:#888; margin-top:-6px;">Mappa realizzata con Leaflet e dati OpenStreetMap. Le coordinate sono ottenute per geocoding automatico dal nome del luogo: per indirizzi molto specifici o insegne minori la posizione può essere approssimata al centro della via o della piazza più vicina — verifica sempre su Google Maps prima di partire.</p>
+  </section>
 
   <!-- ORIENTARSI -->
   <section id="orientarsi">
@@ -682,6 +740,54 @@ function showNav(cat) {
 
     <div class="tip-box">
       Nei mesi estivi (giugno-settembre) cerca le gelaterie che offrono il cornetto-gelato già dalla mattina. È la colazione preferita dai bolognesi quando fa caldo: fresco, goloso e veloce.
+    </div>
+  </section>
+
+  <!-- PIZZERIE -->
+  <section id="pizzerie">
+    <h2>🍕 Pizzerie</h2>
+    <p>Bologna non è la patria della pizza, ma negli ultimi anni ha attirato grandi nomi napoletani e alcune eccellenze locali di altissimo livello.</p>
+
+    <div class="restaurant-card">
+      <h4>Gino Sorbillo <span class="price-tag">€€</span></h4>
+      <div class="resto-meta">📍 Via Santo Stefano, Bologna</div>
+      <p>Il celebre pizzaiolo napoletano ha portato a Bologna le sue pizze gourmet dedicate alle regioni italiane. Grande affluenza, prenotazione consigliata.</p>
+    </div>
+
+    <div class="restaurant-card">
+      <h4>Vincenzo Capuano <span class="price-tag">€€</span></h4>
+      <div class="resto-meta">📍 Via Santo Stefano, 33 · Bologna</div>
+      <p>Pizza napoletana alta e soffice, locale spazioso in pieno centro. Ambiente moderno, servizio rapido.</p>
+    </div>
+
+    <div class="restaurant-card">
+      <h4>Zia Margherita <span class="price-tag">€</span></h4>
+      <div class="resto-meta">📍 Via Guglielmo Oberdan, 24 · Bologna</div>
+      <p>Pizzeria napoletana nel cuore del centro storico. Specialità pizza fritta ripiena e paste partenopee.</p>
+    </div>
+
+    <div class="restaurant-card">
+      <h4>Da Zero <span class="price-tag">€€</span></h4>
+      <div class="resto-meta">📍 Via Malcontenti, 3 · Bologna</div>
+      <p>Pizza cotta al forno a legna con richiami alla Dieta Mediterranea e ai prodotti tipici del Cilento. Catena nata a Milano, ben radicata anche a Bologna.</p>
+    </div>
+
+    <div class="restaurant-card">
+      <h4>Ranzani13 <span class="price-tag">€</span></h4>
+      <div class="resto-meta">📍 Via Camillo Ranzani, 5 · Bologna</div>
+      <p>Pizze gourmet, dalle tradizionali alle rivisitate, abbinate a un'ottima selezione di birre artigianali. Zona Cirenaica, molto amato dai bolognesi. Consigliata prenotazione nei weekend.</p>
+    </div>
+
+    <div class="restaurant-card">
+      <h4>SPAN Pizzeria <span class="price-tag">€</span></h4>
+      <div class="resto-meta">📍 Tre sedi: Via Laura Bassi Veratti 1/H · Via G. Massarenti 91/C · Via Goito 3/G</div>
+      <p>Società Pizzaioli Anonimi Napoletani: pizza napoletana autentica, impasto sottile e croccante fuori, morbido dentro. Tre indirizzi in città.</p>
+    </div>
+
+    <div class="restaurant-card">
+      <h4>Berberè <span class="price-tag">€€</span></h4>
+      <div class="resto-meta">📍 Via Petroni, 9/C e Piazza di Porta Saragozza, 6/A · Bologna</div>
+      <p>Nata a Bologna nel 2010, oggi è una delle insegne di pizza artigianale più note d'Italia: lievito madre vivo, ingredienti biologici e impasti leggeri. Due sedi in città, spesso affollate.</p>
     </div>
   </section>
 
@@ -997,6 +1103,73 @@ function showNav(cat) {
   <p>📍 Guida Bologna 2026 · Realizzata da Dario Schioppi</p>
   <p style="margin-top:6px"><a href="https://github.com/darioschioppi">github.com/darioschioppi</a></p>
 </footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(function() {
+  var mapEl = document.getElementById('bologna-map');
+  if (!mapEl || typeof L === 'undefined') return;
+
+  var pois = [{"cat":"piazze","name":"Piazza Maggiore","lat":44.4936561,"lon":11.3430486},{"cat":"piazze","name":"Piazza Santo Stefano","lat":44.4921451,"lon":11.3482911},{"cat":"piazze","name":"Piazza Verdi","lat":44.4962112,"lon":11.3507627},{"cat":"piazze","name":"Fontana del Nettuno","lat":44.4942662,"lon":11.3426606},{"cat":"torri","name":"Torre degli Asinelli","lat":44.4952134,"lon":11.3443475},{"cat":"torri","name":"Torre Garisenda","lat":44.4943605,"lon":11.3467794},{"cat":"chiese","name":"Basilica di San Petronio","lat":44.4927365,"lon":11.3430324},{"cat":"chiese","name":"Basilica di Santo Stefano (Sette Chiese)","lat":44.4920292,"lon":11.3487155},{"cat":"chiese","name":"Santuario della Madonna di San Luca","lat":44.479093,"lon":11.2981656},{"cat":"musei","name":"MAMbo - Museo d'Arte Moderna","lat":44.5025522,"lon":11.3369646},{"cat":"musei","name":"MAST Gallery","lat":44.5050203,"lon":11.2962674},{"cat":"musei","name":"Museo di Palazzo Poggi","lat":44.496778,"lon":11.3523444},{"cat":"musei","name":"Archiginnasio di Bologna","lat":44.4918717,"lon":11.3438538},{"cat":"musei","name":"Museo Civico Medievale","lat":44.4962748,"lon":11.3420561},{"cat":"musei","name":"Pinacoteca Nazionale di Bologna","lat":44.4979104,"lon":11.3536215},{"cat":"portici","name":"Portico di San Luca","lat":44.4904694,"lon":11.3274967},{"cat":"portici","name":"Portici di Via dell'Indipendenza","lat":44.50229,"lon":11.3447675},{"cat":"portici","name":"Portici di Strada Maggiore","lat":44.4938334,"lon":11.3473741},{"cat":"portici","name":"Portici del Pavaglione","lat":44.4935638,"lon":11.3438082},{"cat":"mercati","name":"Quadrilatero","lat":44.4936025,"lon":11.3445963},{"cat":"mercati","name":"Mercato delle Erbe","lat":44.4960715,"lon":11.3382767},{"cat":"mercati","name":"Paolo Atti & Figli","lat":44.4936844,"lon":11.3462577},{"cat":"mercati","name":"Salumeria Simoni","lat":44.4935707,"lon":11.3451652},{"cat":"pizzerie","name":"Gino Sorbillo","lat":44.4898735,"lon":11.3506379},{"cat":"pizzerie","name":"Vincenzo Capuano","lat":44.4905546,"lon":11.3496161},{"cat":"pizzerie","name":"Zia Margherita","lat":44.496621,"lon":11.3459261},{"cat":"pizzerie","name":"Da Zero","lat":44.4977763,"lon":11.3438547},{"cat":"pizzerie","name":"Ranzani13","lat":44.5009287,"lon":11.3574961},{"cat":"pizzerie","name":"SPAN Pizzeria","lat":44.4853409,"lon":11.3687362},{"cat":"pizzerie","name":"Berberè Petroni","lat":44.4948876,"lon":11.3518535},{"cat":"pizzerie","name":"Berberè Porta Saragozza","lat":44.490572,"lon":11.3310533},{"cat":"ristoranti","name":"Trattoria Anna Maria","lat":44.4975936,"lon":11.3495648},{"cat":"ristoranti","name":"Osteria dell'Orsa","lat":44.4970383,"lon":11.347386},{"cat":"ristoranti","name":"Trattoria Bertozzi","lat":44.4952147,"lon":11.3197823},{"cat":"ristoranti","name":"Mercato di Mezzo","lat":44.4933821,"lon":11.3447783},{"cat":"ristoranti","name":"Ristorante Cesarina","lat":44.4918235,"lon":11.3483039},{"cat":"dolci","name":"Gelateria Dalla Gianna","lat":44.4762873,"lon":11.3291355},{"cat":"dolci","name":"Cremeria Funivia","lat":44.4908792,"lon":11.3020866},{"cat":"dolci","name":"Gelateria Gianni","lat":44.4936561,"lon":11.3430486},{"cat":"dolci","name":"Gelateria Stefino","lat":44.4948303,"lon":11.3309019},{"cat":"vita","name":"Via del Pratello","lat":44.4955031,"lon":11.3327894},{"cat":"vita","name":"Via Zamboni","lat":44.4965073,"lon":11.3525506},{"cat":"vita","name":"Parco della Montagnola","lat":44.5023317,"lon":11.3465998},{"cat":"vita","name":"Sede ARCI Bologna","lat":44.5061854,"lon":11.3554179}];
+
+  var colors = { piazze:'#c0392b', torri:'#e07b39', chiese:'#2980b9', musei:'#4a7c59', portici:'#5dade2', mercati:'#f5c842', pizzerie:'#e8491d', ristoranti:'#9c3d8e', dolci:'#d4879c', vita:'#7b52b8' };
+
+  var map = L.map('bologna-map', { scrollWheelZoom: false }).setView([44.4949, 11.3426], 14);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  function dotIcon(color) {
+    return L.divIcon({
+      className: '',
+      html: '<div style="width:16px;height:16px;border-radius:50%;background:' + color + ';border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.4);"></div>',
+      iconSize: [16, 16],
+      iconAnchor: [8, 8]
+    });
+  }
+
+  var markers = pois.map(function(p) {
+    var marker = L.marker([p.lat, p.lon], { icon: dotIcon(colors[p.cat] || '#333') }).addTo(map);
+    var mapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.name + ' Bologna');
+    marker.bindPopup('<strong>' + p.name + '</strong><br><a href="' + mapsUrl + '" target="_blank">📍 Vedi su Google Maps</a>');
+    marker._cat = p.cat;
+    return marker;
+  });
+
+  var counts = {};
+  pois.forEach(function(p) { counts[p.cat] = (counts[p.cat] || 0) + 1; });
+  var totalCount = pois.length;
+
+  var mapButtons = document.querySelectorAll('.map-filter button');
+  mapButtons.forEach(function(btn) {
+    var cat = btn.getAttribute('data-map-filter');
+    var n = cat === 'all' ? totalCount : (counts[cat] || 0);
+    btn.setAttribute('data-count', n);
+    btn.innerHTML = btn.innerHTML + ' (' + n + ')';
+  });
+
+  var introEl = document.getElementById('mappa-intro');
+  if (introEl) {
+    introEl.innerHTML = introEl.innerHTML.replace('Tutti i luoghi', 'Tutti i ' + totalCount + ' luoghi');
+  }
+
+  mapButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var cat = btn.getAttribute('data-map-filter');
+      mapButtons.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      markers.forEach(function(m) {
+        if (cat === 'all' || m._cat === cat) {
+          if (!map.hasLayer(m)) map.addLayer(m);
+        } else {
+          if (map.hasLayer(m)) map.removeLayer(m);
+        }
+      });
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
