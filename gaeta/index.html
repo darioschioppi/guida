@@ -189,6 +189,7 @@
   <a href="#spiagge">Spiagge</a>
   <a href="#mangiare">Dove mangiare</a>
   <a href="#formia">Tappa a Formia</a>
+  <a href="#sperlonga">Sperlonga</a>
   <a href="#mappa">Mappa</a>
   <a href="#consigli">Consigli pratici</a>
 </nav>
@@ -328,6 +329,25 @@
     <div class="tip">💡 <b>Consiglio:</b> prenotare con anticipo, specialmente nei weekend estivi — il locale è molto richiesto sia da chi soggiorna a Formia che da chi arriva dalla vicina Gaeta. Prenotando tramite <b>TheFork</b> con un po' di anticipo, a seconda del periodo si può ottenere anche un piccolo sconto.</div>
   </section>
 
+  <section id="sperlonga">
+    <h2>🌊 Gita fuori porta: Sperlonga</h2>
+    <p>A circa 20 minuti da Gaeta si trova Sperlonga, uno dei borghi più belli del Lazio e sicuramente merita una visita. È un caratteristico borgo di mare con casette bianche imbiancate a calce, vicoli stretti che si intrecciano tra piazzette e pergolati, e splendide viste sul mare.</p>
+
+    <div class="card">
+      <span class="tag">Borgo marinaro</span>
+      <h3>Centro storico di Sperlonga</h3>
+      <p>Un labirinto di vicoletti bianchi, scalinate, logge e piazzette a picco sul mare. Da vedere anche la Torre Truglia, torre di difesa del XVI secolo, e la Chiesa di Santa Maria. Ottimo anche solo per una passeggiata serale o un aperitivo con vista.</p>
+      <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=Sperlonga+centro+storico" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+    </div>
+
+    <div class="card">
+      <span class="tag">Archeologia romana</span>
+      <h3>Museo Archeologico Nazionale e Area Archeologica di Sperlonga</h3>
+      <p>Per chi ha qualche ora in più, merita una visita il Museo Archeologico Nazionale, che conserva straordinarie sculture di epoca romana, insieme all'area archeologica della Villa di Tiberio e della Grotta omonima: i resti della residenza sul mare dell'imperatore Tiberio, ai piedi del borgo.</p>
+      <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query=Museo+Archeologico+Nazionale+di+Sperlonga" target="_blank" rel="noopener">📍 Apri su Google Maps</a>
+    </div>
+  </section>
+
   <section id="mappa">
     <h2>🗺️ Mappa d'insieme</h2>
     <p style="margin-bottom:10px; color:#5a4a40;" id="mappa-intro">Tutti i luoghi citati in questa guida — storia, spiagge, ristoranti e la tappa a Formia — con pin colorati per categoria. Clicca su un pin per il nome del luogo e il link a Google Maps; usa i filtri sotto per isolare una categoria (il numero indica quanti luoghi ci sono in ciascuna).</p>
@@ -338,6 +358,7 @@
       <button type="button" data-map-filter="spiagge" style="--dot:#0a5f7a">🏖️ Spiagge</button>
       <button type="button" data-map-filter="ristoranti" style="--dot:#c96a3b">🍽️ Ristoranti</button>
       <button type="button" data-map-filter="formia" style="--dot:#2e8b57">🚗 Formia</button>
+      <button type="button" data-map-filter="sperlonga" style="--dot:#7b52b8">🌊 Sperlonga</button>
     </div>
 
     <div id="gaeta-map" style="height:480px; border-radius:16px; margin:16px 0; box-shadow:0 2px 8px rgba(0,0,0,0.08); z-index:1;"></div>
@@ -385,10 +406,12 @@
     {"cat": "ristoranti", "name": "Scirocco Bistrot", "lat": 41.2121859, "lon": 13.5809124},
     {"cat": "ristoranti", "name": "La Cocina di Popolla", "lat": 41.2092165, "lon": 13.5851094},
     {"cat": "ristoranti", "name": "La Tana di Cagliostro", "lat": 41.2163177, "lon": 13.5709902},
-    {"cat": "formia", "name": "Ristorante La Villetta (Formia)", "lat": 41.2519797, "lon": 13.6742153}
+    {"cat": "formia", "name": "Ristorante La Villetta (Formia)", "lat": 41.2519797, "lon": 13.6742153},
+    {"cat": "sperlonga", "name": "Centro storico di Sperlonga", "lat": 41.2597255, "lon": 13.4385354},
+    {"cat": "sperlonga", "name": "Museo Archeologico Nazionale di Sperlonga", "lat": 41.2525576, "lon": 13.4492004}
   ];
 
-  var colors = { storia: '#083b52', spiagge: '#0a5f7a', ristoranti: '#c96a3b', formia: '#2e8b57' };
+  var colors = { storia: '#083b52', spiagge: '#0a5f7a', ristoranti: '#c96a3b', formia: '#2e8b57', sperlonga: '#7b52b8' };
 
   var map = L.map('gaeta-map', { scrollWheelZoom: false }).setView([41.215, 13.585], 13);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
